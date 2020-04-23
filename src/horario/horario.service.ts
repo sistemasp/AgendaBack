@@ -5,6 +5,7 @@ import { HorarioI } from 'src/interfaces/horario.interface';
 import { CitaService } from 'src/cita/cita.service';
 import { CitaI } from 'src/interfaces/cita.interface';
 import { response } from 'express';
+import { HorarioDto } from 'src/dto/horario-dto';
 
 @Injectable()
 export class HorarioService {
@@ -76,6 +77,15 @@ export class HorarioService {
         return response;
     }
 
+    schedulesToday(horarios: HorarioI[], hora: string): HorarioI[] {
+        console.log(hora);
+        return horarios.filter(horario => {
+            console.log(horario.hora.substring(0, 2));
+            console.log(Number(hora) <= Number(horario.hora.substring(0, 2)));
+            return Number(hora) <= Number(horario.hora.substring(0, 2));
+        });
+    }
+
     /**
      * Busca horarios mediante su disponibilidad de cierto dia en la BD y sucursal
      * @param date 
@@ -84,7 +94,13 @@ export class HorarioService {
      */
     async findScheduleByDateAndSucursalAndService(date: string, sucursalId: string, service: string): Promise<HorarioI[]> {
         const citas = await this.citaService.findDatesByDateAndSucursalAndService(date, sucursalId, service);
-        const horarios = await this.horarioModel.find().sort('hora');
+        let horarios = await this.horarioModel.find().sort('hora');
+        const today =  new Date();
+        const todayString = `${today.getDate()}/${Number(today.getMonth()) + 1}/${today.getFullYear()}`;
+        if (todayString === date) {
+            console.log("ES HOY");
+            horarios = await this.schedulesToday(horarios, today.getHours().toString());
+        }
         const response = await this.filterSchedulesAndService(horarios, citas, service);
         return response;
     }
