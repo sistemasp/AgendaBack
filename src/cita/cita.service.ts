@@ -15,7 +15,9 @@ export class CitaService {
         return await this.citaModel.find().sort('hora')
             .populate('paciente')
             .populate('sucursal')
-            .populate('tratamientos');
+            .populate('tratamientos')
+            .populate('quien_agenda')
+            .populate('quien_confirma');
     }
 
     /**
@@ -25,7 +27,9 @@ export class CitaService {
         return await this.citaModel.find( {sucursal: sucursalId} ).sort('hora')
             .populate('paciente')
             .populate('sucursal')
-            .populate('tratamientos');
+            .populate('tratamientos')
+            .populate('quien_agenda')
+            .populate('quien_confirma');
     }
 
     /**
@@ -35,7 +39,9 @@ export class CitaService {
         return await this.citaModel.find( {sucursal: sucursalId, $or: [ {asistio: 'ASISTIO'}, {asistio: 'PENDIENTE'}]} ).sort('hora')
             .populate('paciente')
             .populate('sucursal')
-            .populate('tratamientos');
+            .populate('tratamientos')
+            .populate('quien_agenda')
+            .populate('quien_confirma');
     }
 
     /**
@@ -45,7 +51,9 @@ export class CitaService {
         return await this.citaModel.find( {fecha: date} ).sort('hora')
             .populate('paciente')
             .populate('sucursal')
-            .populate('tratamientos');
+            .populate('tratamientos')
+            .populate('quien_agenda')
+            .populate('quien_confirma');
     }
 
     /**
@@ -55,7 +63,9 @@ export class CitaService {
         return await this.citaModel.find( {fecha: date, sucursal: sucursalId} ).sort('hora')
             .populate('paciente')
             .populate('sucursal')
-            .populate('tratamientos');
+            .populate('tratamientos')
+            .populate('quien_agenda')
+            .populate('quien_confirma');
     }
 
     /**
@@ -65,7 +75,9 @@ export class CitaService {
         return await this.citaModel.find( {fecha: date, sucursal: sucursalId, servicio: servicio} ).sort('hora')
             .populate('paciente')
             .populate('sucursal')
-            .populate('tratamientos');
+            .populate('tratamientos')
+            .populate('quien_agenda')
+            .populate('quien_confirma');
     }
 
     /**
@@ -76,7 +88,9 @@ export class CitaService {
         return await this.citaModel.findOne( { _id: idCita } )
             .populate('paciente')
             .populate('sucursal')
-            .populate('tratamientos');
+            .populate('tratamientos')
+            .populate('quien_agenda')
+            .populate('quien_confirma');
     }
 
     /**
@@ -86,7 +100,9 @@ export class CitaService {
         return await this.citaModel.find( {paciente: pacienteId} ).sort('fecha')
             .populate('paciente')
             .populate('sucursal')
-            .populate('tratamientos');
+            .populate('tratamientos')
+            .populate('quien_agenda')
+            .populate('quien_confirma');
     }
 
     /**
