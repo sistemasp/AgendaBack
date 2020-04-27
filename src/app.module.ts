@@ -32,6 +32,12 @@ import { CitaSchema } from './schemas/cita.schema';
 import { HorarioService } from './horario/horario.service';
 import { HorarioController } from './horario/horario.controller';
 import { HorarioSchema } from './schemas/horario.schema';
+import { RolSchema } from './schemas/rol.schema';
+import { EmpleadoSchema } from './schemas/empleado.schema';
+import { RolController } from './rol/rol.controller';
+import { EmpleadoController } from './empleado/empleado.controller';
+import { RolService } from './rol/rol.service';
+import { EmpleadoService } from './empleado/empleado.service';
 
 @Module({
   imports: [
@@ -46,11 +52,13 @@ import { HorarioSchema } from './schemas/horario.schema';
       { name: 'Cosmetologa', schema: CosmetologaSchema },
       { name: 'Dermatologo', schema: DermatologoSchema },
       { name: 'Cita', schema: CitaSchema },
-      { name: 'Horario', schema: HorarioSchema }
+      { name: 'Horario', schema: HorarioSchema },
+      { name: 'Rol', schema: RolSchema },
+      { name: 'Empleado', schema: EmpleadoSchema },
     ])
   ],
-  controllers: [AppController, PacienteController, SucursalController, ServicioController, TratamientoController, PaqueteController, RecepcionistaController, DermatologoController, CitaController, CosmetologaController, HorarioController],
-  providers: [AppService, PacienteService, SucursalService, ServicioService, TratamientoService, PaqueteService, RecepcionistaService, DermatologoService, CitaService, CosmetologaService, HorarioService],
+  controllers: [AppController, PacienteController, SucursalController, ServicioController, TratamientoController, PaqueteController, RecepcionistaController, DermatologoController, CitaController, CosmetologaController, HorarioController, RolController, EmpleadoController],
+  providers: [AppService, PacienteService, SucursalService, ServicioService, TratamientoService, PaqueteService, RecepcionistaService, DermatologoService, CitaService, CosmetologaService, HorarioService, RolService, EmpleadoService],
 })
 
 export class AppModule {}
