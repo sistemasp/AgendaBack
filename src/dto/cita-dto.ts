@@ -1,6 +1,7 @@
 import { TratamientoDto } from "./tratamiento-dto";
 import { PacienteDto } from "./paciente-dto";
 import { SucursalDto } from "./sucursal-dto";
+import { EmpleadoDto } from "./empleado-dto";
 
 export class CitaDto {
     readonly hora : String;
@@ -10,10 +11,10 @@ export class CitaDto {
     readonly servicio : String;
     readonly tratamientos : TratamientoDto[];
     readonly numero_sesion : String;
-    readonly recepcionista : String;
+    readonly quien_agenda : EmpleadoDto;
     readonly tipo_cita : String;
     readonly confirmo : String;
-    readonly quien_confirma : String;
+    readonly quien_confirma : EmpleadoDto;
     readonly asistio : String;
     readonly precio : String;
     readonly tiempo : String;
