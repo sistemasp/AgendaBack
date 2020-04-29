@@ -57,7 +57,7 @@ export class EmpleadoService {
      * @param idEmpleado 
      */
     async deleteEmployee(idEmpleado: string ): Promise<EmpleadoI> {
-        return await this.empleadoModel.findOneAndDelete(idEmpleado);
+        return await this.empleadoModel.findOneAndDelete({ _id: idEmpleado });
     }
 
 }

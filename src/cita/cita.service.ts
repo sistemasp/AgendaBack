@@ -128,7 +128,7 @@ export class CitaService {
      * @param idCita 
      */
     async deleteDate(idCita: string ): Promise<CitaI> {
-        return await this.citaModel.findOneAndDelete(idCita);
+        return await this.citaModel.findOneAndDelete({ _id: idCita });
     }
 
 }

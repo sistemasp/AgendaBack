@@ -46,7 +46,7 @@ export class ServicioService {
      * @param idServicio 
      */
     async deleteService(idServicio: string ): Promise<ServicioI> {
-        return await this.servicioModel.findOneAndDelete(idServicio);
+        return await this.servicioModel.findOneAndDelete({ _id: idServicio });
     }
 
 }
