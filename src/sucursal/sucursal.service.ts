@@ -46,7 +46,7 @@ export class SucursalService {
      * @param idSucursal 
      */
     async deleteOffice(idSucursal: string ): Promise<SucursalI> {
-        return await this.sucursalModel.findOneAndDelete(idSucursal);
+        return await this.sucursalModel.findOneAndDelete({ _id: idSucursal });
     }
 
 }

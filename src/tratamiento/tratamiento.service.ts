@@ -54,7 +54,8 @@ export class TratamientoService {
      * @param idTratamiento 
      */
     async deleteTreatment(idTratamiento: string ): Promise<TratamientoI> {
-        return await this.tratamientoModel.findOneAndDelete(idTratamiento);
+        console.log('idTratamiento', idTratamiento);
+        return await this.tratamientoModel.findOneAndDelete({ _id: idTratamiento });
     }
 
 }

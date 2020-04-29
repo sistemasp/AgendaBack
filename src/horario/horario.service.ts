@@ -128,7 +128,7 @@ export class HorarioService {
      * @param idHorario 
      */
     async deleteSchedule(idHorario: string ): Promise<HorarioI> {
-        return await this.horarioModel.findOneAndDelete(idHorario);
+        return await this.horarioModel.findOneAndDelete({ _id: idHorario });
     }
 
 }

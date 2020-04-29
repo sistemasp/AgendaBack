@@ -46,7 +46,7 @@ export class PaqueteService {
      * @param idPaquete 
      */
     async deletePack(idPaquete: string ): Promise<PaqueteI> {
-        return await this.paqueteModel.findOneAndDelete(idPaquete);
+        return await this.paqueteModel.findOneAndDelete({ _id: idPaquete });
     }
     
 }
