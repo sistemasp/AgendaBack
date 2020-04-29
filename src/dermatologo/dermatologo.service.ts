@@ -46,7 +46,7 @@ export class DermatologoService {
      * @param idDermatologo 
      */
     async deleteDermatologist(idDermatologo: string ): Promise<DermatologoI> {
-        return await this.dermatologoModel.findOneAndDelete(idDermatologo);
+        return await this.dermatologoModel.findOneAndDelete({ _id: idDermatologo });
     }
 
 }

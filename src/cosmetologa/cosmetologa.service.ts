@@ -46,7 +46,7 @@ export class CosmetologaService {
      * @param idCosmetologa 
      */
     async deleteCosmetic(idCosmetologa: string ): Promise<CosmetologaI> {
-        return await this.cosmetologaModel.findOneAndDelete(idCosmetologa);
+        return await this.cosmetologaModel.findOneAndDelete({ _id: idCosmetologa });
     }
 
 }

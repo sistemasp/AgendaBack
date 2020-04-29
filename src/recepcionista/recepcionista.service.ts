@@ -54,7 +54,7 @@ export class RecepcionistaService {
      * @param idRecepcionista 
      */
     async deleteRecepcionist(idRecepcionista: string ): Promise<RecepcionistaI> {
-        return await this.recepcionistaModel.findOneAndDelete(idRecepcionista);
+        return await this.recepcionistaModel.findOneAndDelete({ _id: idRecepcionista });
     }
 
 }

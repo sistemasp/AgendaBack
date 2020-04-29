@@ -54,7 +54,7 @@ export class RolService {
      * @param idRol 
      */
     async deleteRol(idRol: string ): Promise<RolI> {
-        return await this.rolModel.findOneAndDelete(idRol);
+        return await this.rolModel.findOneAndDelete({ _id: idRol });
     }
 
 }

@@ -54,7 +54,7 @@ export class PacienteService {
      * @param idPaciente 
      */
     async deletePatient(idPaciente: string ): Promise<PacienteI> {
-        return await this.pacienteModel.findOneAndDelete(idPaciente);
+        return await this.pacienteModel.findOneAndDelete({ _id: idPaciente });
     }
 
 }
