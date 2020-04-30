@@ -71,6 +71,18 @@ export class CitaService {
     /**
      * Muestra todas las citas de la BD que correspondan a una fecha y una sucursal
      */
+    async findDatesByRangeDateAndSucursal(startDate, endDate, sucursalId): Promise<CitaI[]> {
+        return await this.citaModel.find( {fecha: {$gte: startDate, $lte: endDate}, sucursal: sucursalId} ).sort('hora')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('tratamientos')
+            .populate('quien_agenda')
+            .populate('quien_confirma');
+    }
+
+    /**
+     * Muestra todas las citas de la BD que correspondan a una fecha y una sucursal
+     */
     async findDatesByDateAndSucursalAndService(date, sucursalId, servicio): Promise<CitaI[]> {
         return await this.citaModel.find( {fecha: date, sucursal: sucursalId, servicio: servicio} ).sort('hora')
             .populate('paciente')
