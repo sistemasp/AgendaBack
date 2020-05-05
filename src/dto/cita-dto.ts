@@ -16,6 +16,7 @@ export class CitaDto {
     readonly confirmo : String;
     readonly quien_confirma : EmpleadoDto;
     readonly asistio : String;
+    readonly motivos : String;
     readonly precio : String;
     readonly tiempo : String;
     readonly sucursal : SucursalDto;

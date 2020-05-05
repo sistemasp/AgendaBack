@@ -78,10 +78,7 @@ export class HorarioService {
     }
 
     schedulesToday(horarios: HorarioI[], hora: string): HorarioI[] {
-        console.log(hora);
         return horarios.filter(horario => {
-            console.log(horario.hora.substring(0, 2));
-            console.log(Number(hora) <= Number(horario.hora.substring(0, 2)));
             return Number(hora) <= Number(horario.hora.substring(0, 2));
         });
     }
@@ -98,7 +95,6 @@ export class HorarioService {
         const today =  new Date();
         const todayString = `${today.getDate()}/${Number(today.getMonth()) + 1}/${today.getFullYear()}`;
         if (todayString === date) {
-            console.log("ES HOY");
             horarios = await this.schedulesToday(horarios, today.getHours().toString());
         }
         const response = await this.filterSchedulesAndService(horarios, citas, service);

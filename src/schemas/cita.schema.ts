@@ -15,6 +15,7 @@ export const CitaSchema = new Schema({
     confirmo : String,
     quien_confirma : { type: Schema.ObjectId, ref: 'Empleado'},
     asistio : String,
+    motivos : String,
     precio : String,
     tiempo : String,
     sucursal : { type: Schema.ObjectId, ref: 'Sucursal'}

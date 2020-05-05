@@ -16,6 +16,7 @@ export interface CitaI {
     confirmo : String;
     quien_confirma : EmpleadoI;
     asistio : String;
+    motivos : String;
     precio : String;
     tiempo : String;
     sucursal : SucursalI;
