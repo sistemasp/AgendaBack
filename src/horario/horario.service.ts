@@ -47,6 +47,14 @@ export class HorarioService {
         return horarios;
     }
 
+    compararHorario(horaCita: String, duracionCita: String, horario: String): Boolean {
+        const splitHoraCita = horaCita.split(':');
+        const minCita = Number(splitHoraCita[0]) * 60 + Number(splitHoraCita[1]);
+        const splitHorario = horario.split(':');
+        const minHorario = Number(splitHorario[0]) * 60 + Number(splitHorario[1]);
+        return minHorario >= minCita && minHorario < (minCita + Number(duracionCita));
+    }
+
     /**
      * Filtrar los horarios segun la disponibilidad de servicios.
      * @param horarios 
@@ -54,16 +62,17 @@ export class HorarioService {
      * @param service
      */
     async filterSchedulesAndService(horarios: HorarioI[], citas: CitaI[], service: string): Promise<HorarioI[]> {
-        await horarios.forEach((horario, index) => {
+        const newHorarios = [];
+        await horarios.forEach((horario) => {
             const numCitas = citas.filter(c => {
-                return c.hora === horario.hora && (c.asistio === 'PENDIENTE' || c.asistio === 'ASISTIO') && service === c.servicio;
+                return this.compararHorario(c.hora, c.tiempo, horario.hora) && (c.asistio === 'PENDIENTE' || c.asistio === 'ASISTIO') && service === c.servicio;
             }).length;
-            if (numCitas > (service !== 'FACIAL' ? 0 : 3) ) {
-                horarios.splice(index, 1);
+            if (numCitas <= (service !== 'FACIAL' ? 0 : 4)) {
+                newHorarios.push(horario);
             }
         });
         
-        return horarios;
+        return newHorarios;
     }
 
     /**
