@@ -17,6 +17,8 @@ export class CitaService {
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
+            .populate('promovendedor')
+            .populate('cosmetologa')
             .populate('quien_confirma');
     }
 
@@ -29,6 +31,8 @@ export class CitaService {
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
+            .populate('promovendedor')
+            .populate('cosmetologa')
             .populate('quien_confirma');
     }
 
@@ -41,6 +45,8 @@ export class CitaService {
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
+            .populate('promovendedor')
+            .populate('cosmetologa')
             .populate('quien_confirma');
     }
 
@@ -53,6 +59,8 @@ export class CitaService {
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
+            .populate('promovendedor')
+            .populate('cosmetologa')
             .populate('quien_confirma');
     }
 
@@ -65,6 +73,8 @@ export class CitaService {
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
+            .populate('promovendedor')
+            .populate('cosmetologa')
             .populate('quien_confirma');
     }
 
@@ -77,6 +87,8 @@ export class CitaService {
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
+            .populate('promovendedor')
+            .populate('cosmetologa')
             .populate('quien_confirma');
     }
 
@@ -89,6 +101,8 @@ export class CitaService {
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
+            .populate('promovendedor')
+            .populate('cosmetologa')
             .populate('quien_confirma');
     }
 
@@ -102,6 +116,8 @@ export class CitaService {
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
+            .populate('promovendedor')
+            .populate('cosmetologa')
             .populate('quien_confirma');
     }
 
@@ -114,6 +130,8 @@ export class CitaService {
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
+            .populate('promovendedor')
+            .populate('cosmetologa')
             .populate('quien_confirma');
     }
 

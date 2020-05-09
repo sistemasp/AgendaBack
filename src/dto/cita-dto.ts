@@ -20,4 +20,6 @@ export class CitaDto {
     readonly precio : String;
     readonly tiempo : String;
     readonly sucursal : SucursalDto;
+    readonly promovendedor : EmpleadoDto;
+    readonly cosmetologa : EmpleadoDto;
 }

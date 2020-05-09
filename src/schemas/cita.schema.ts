@@ -18,5 +18,7 @@ export const CitaSchema = new Schema({
     motivos : String,
     precio : String,
     tiempo : String,
-    sucursal : { type: Schema.ObjectId, ref: 'Sucursal'}
+    sucursal : { type: Schema.ObjectId, ref: 'Sucursal'},
+    promovendedor : { type: Schema.ObjectId, ref: 'Empleado'},
+    cosmetologa : { type: Schema.ObjectId, ref: 'Empleado'},
 });

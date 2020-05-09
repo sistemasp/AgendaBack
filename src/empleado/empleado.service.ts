@@ -35,6 +35,15 @@ export class EmpleadoService {
     }
 
     /**
+     * Busca empleados que tienen un ROL en la BD
+     * @param idRol 
+     */
+    async findEmployeesByRolId(idRol: string): Promise<EmpleadoI[]> {
+        return await this.empleadoModel.find( { rol: idRol } )
+            .populate('rol');
+    }
+
+    /**
      * Genera un nuevo empleado en la BD
      * @param empleado 
      */

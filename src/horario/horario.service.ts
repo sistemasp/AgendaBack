@@ -67,7 +67,7 @@ export class HorarioService {
             const numCitas = citas.filter(c => {
                 return this.compararHorario(c.hora, c.tiempo, horario.hora) && (c.asistio === 'PENDIENTE' || c.asistio === 'ASISTIO') && service === c.servicio;
             }).length;
-            if (numCitas <= (service !== 'FACIAL' ? 0 : 4)) {
+            if (numCitas <= (service !== 'FACIAL' ? 0 : 3)) {
                 newHorarios.push(horario);
             }
         });
