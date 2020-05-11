@@ -52,4 +52,10 @@ export class EmpleadoController {
         return this.empleadoService.deleteEmployee(idEmpleado);
     }
 
+    @Get('login/:employeeNumber/:password')
+    loginEmployee(@Param('employeeNumber') employeeNumber: string, @Param('password') password: string): Promise<EmpleadoI> {
+        console.log(this.TAG, "loginEmployee");
+        return this.empleadoService.loginEmployee(employeeNumber, password);
+    }
+
 }

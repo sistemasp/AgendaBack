@@ -69,4 +69,13 @@ export class EmpleadoService {
         return await this.empleadoModel.findOneAndDelete({ _id: idEmpleado });
     }
 
+    /**
+     * Busca solo un empleado mediante su numero de empleado en la BD
+     * @param idEmpleado 
+     */
+    async loginEmployee(employeeNumber: string, password: string): Promise<EmpleadoI> {
+        return await this.empleadoModel.findOne( { numero_empleado: employeeNumber, password: password } )
+            .populate('rol');
+    }
+
 }
