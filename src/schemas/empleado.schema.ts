@@ -6,5 +6,6 @@ export const EmpleadoSchema = new Schema({
     nombre : String,
     numero_empleado : String,
     telefono : String,
+    password : String,
     rol : { type: Schema.ObjectId, ref: 'Rol'}
 });
