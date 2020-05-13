@@ -19,6 +19,7 @@ export class CitaDto {
     readonly motivos : String;
     readonly precio : String;
     readonly tiempo : String;
+    readonly observaciones : String;
     readonly sucursal : SucursalDto;
     readonly promovendedor : EmpleadoDto;
     readonly cosmetologa : EmpleadoDto;

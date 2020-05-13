@@ -19,6 +19,7 @@ export interface CitaI {
     motivos : String;
     precio : String;
     tiempo : String;
+    observaciones : String;
     sucursal : SucursalI;
     promovendedor : EmpleadoI;
     cosmetologa : EmpleadoI;

@@ -18,6 +18,7 @@ export const CitaSchema = new Schema({
     motivos : String,
     precio : String,
     tiempo : String,
+    observaciones : String,
     sucursal : { type: Schema.ObjectId, ref: 'Sucursal'},
     promovendedor : { type: Schema.ObjectId, ref: 'Empleado'},
     cosmetologa : { type: Schema.ObjectId, ref: 'Empleado'},
