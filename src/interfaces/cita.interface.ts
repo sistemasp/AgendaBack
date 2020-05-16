@@ -7,7 +7,7 @@ export interface CitaI {
     hora : String;
     fecha : String;
     paciente : PacienteI;
-    dermatologo : String;
+    dermatologo : EmpleadoI;
     servicio : String;
     tratamientos : TratamientoI[];
     numero_sesion : String;

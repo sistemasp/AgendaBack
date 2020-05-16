@@ -6,7 +6,7 @@ export const CitaSchema = new Schema({
     hora : String,
     fecha : String,
     paciente : { type: Schema.ObjectId, ref: 'Paciente'},
-    dermatologo : String,
+    dermatologo : { type: Schema.ObjectId, ref: 'Empleado'},
     servicio : String,
     tratamientos : [{ type: Schema.ObjectId, ref: 'Tratamiento'}],
     numero_sesion : String,

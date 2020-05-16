@@ -7,7 +7,7 @@ export class CitaDto {
     readonly hora : String;
     readonly fecha : String;
     readonly paciente : PacienteDto;
-    readonly dermatologo : String;
+    readonly dermatologo : EmpleadoDto;
     readonly servicio : String;
     readonly tratamientos : TratamientoDto[];
     readonly numero_sesion : String;

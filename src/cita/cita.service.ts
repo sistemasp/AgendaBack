@@ -19,6 +19,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
+            .populate('dermatologo')
             .populate('quien_confirma');
     }
 
@@ -33,6 +34,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
+            .populate('dermatologo')
             .populate('quien_confirma');
     }
 
@@ -47,6 +49,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
+            .populate('dermatologo')
             .populate('quien_confirma');
     }
 
@@ -61,6 +64,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
+            .populate('dermatologo')
             .populate('quien_confirma');
     }
 
@@ -75,6 +79,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
+            .populate('dermatologo')
             .populate('quien_confirma');
     }
 
@@ -89,6 +94,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
+            .populate('dermatologo')
             .populate('quien_confirma');
     }
 
@@ -103,6 +109,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
+            .populate('dermatologo')
             .populate('quien_confirma');
     }
 
@@ -118,6 +125,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
+            .populate('dermatologo')
             .populate('quien_confirma');
     }
 
@@ -132,6 +140,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
+            .populate('dermatologo')
             .populate('quien_confirma');
     }
 
