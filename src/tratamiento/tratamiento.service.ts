@@ -27,8 +27,8 @@ export class TratamientoService {
      * Busca solo todos los tratamientos mediante su Clave de Servicio en la BD
      * @param idTratamiento 
      */
-    async findTreatmentByServicio(claveServicio: string): Promise<TratamientoI> {
-        return await this.tratamientoModel.find( { servicio: claveServicio } );
+    async findTreatmentByServicio(servicioId: string): Promise<TratamientoI> {
+        return await this.tratamientoModel.find( { servicio: servicioId } );
     }
 
     /**

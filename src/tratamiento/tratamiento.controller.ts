@@ -22,10 +22,10 @@ export class TratamientoController {
         return this.tratamientoService.findTreatmentById(idTratamiento);
     }
 
-    @Get('servicio/:claveServicio')
-    findTreatmentByServicio(@Param('claveServicio') claveServicio: string): Promise<TratamientoI> {
+    @Get('servicio/:servicioId')
+    findTreatmentByServicio(@Param('servicioId') servicioId: string): Promise<TratamientoI> {
         console.log(this.TAG, "findTreatmentByServicio");
-        return this.tratamientoService.findTreatmentByServicio(claveServicio);
+        return this.tratamientoService.findTreatmentByServicio(servicioId);
     }
 
     @Post()

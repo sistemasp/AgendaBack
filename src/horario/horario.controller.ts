@@ -10,6 +10,12 @@ export class HorarioController {
 
     constructor(private readonly horarioService: HorarioService) {}
 
+    @Get('consulta/:consultaId/:dia/:mes/:anio/:sucursal')
+    findScheduleInConsultByDateAndSucursal(@Param('consultaId') consultaId: string, @Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursal') sucursalId: string): Promise<HorarioI[]> {
+        console.log(this.TAG, "findScheduleInConsultByDateAndSucursal");
+        return this.horarioService.findScheduleInConsultByDateAndSucursal(consultaId, `${dia}/${mes}/${anio}`, sucursalId );
+    }
+
     @Get()
     showAllSchedules(): Promise<HorarioI[]> {
         console.log(this.TAG, "showAllSchedules");
@@ -20,6 +26,12 @@ export class HorarioController {
     findScheduleById(@Param('id') idHorario: string): Promise<HorarioI> {
         console.log(this.TAG, "findScheduleById");
         return this.horarioService.findScheduleById(idHorario);
+    }
+
+    @Get('/servicio/:idservicio')
+    findSchedulesByService(@Param('idservicio') idServicio: string): Promise<HorarioI[]> {
+        console.log(this.TAG, "findSchedulesByService");
+        return this.horarioService.findSchedulesByService(idServicio);
     }
 
     @Get(':dia/:mes/:anio')
@@ -33,6 +45,12 @@ export class HorarioController {
         console.log(this.TAG, "findScheduleByDateAndSucursalAndService");
         return this.horarioService.findScheduleByDateAndSucursalAndService(`${dia}/${mes}/${anio}`, sucursalId, service );
     }
+
+    /*@Get('cita/:dia/:mes/:anio/:sucursal/:service')
+    findScheduleInDatesByDateAndSucursalAndService(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursal') sucursalId: string, @Param('service') service: string): Promise<HorarioI[]> {
+        console.log(this.TAG, "findScheduleInDatesByDateAndSucursalAndService");
+        return this.horarioService.findScheduleInDatesByDateAndSucursalAndService(`${dia}/${mes}/${anio}`, sucursalId, service );
+    }*/
 
     @Post()
     createSchedule(@Body() horarioDto: HorarioDto): Promise<HorarioI> {

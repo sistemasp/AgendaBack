@@ -14,13 +14,16 @@ export class CitaService {
     async showAllDates(): Promise<CitaI[]> {
         return await this.citaModel.find().sort('hora')
             .populate('paciente')
+            .populate('servicio')
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('dermatologo')
-            .populate('quien_confirma');
+            .populate('medico')
+            .populate('quien_confirma')
+            .populate('tipo_cita')
+            .populate('status');
     }
 
     /**
@@ -29,28 +32,34 @@ export class CitaService {
     async showAllDatesBySucursal(sucursalId): Promise<CitaI[]> {
         return await this.citaModel.find( {sucursal: sucursalId} ).sort('hora')
             .populate('paciente')
+            .populate('servicio')
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('dermatologo')
-            .populate('quien_confirma');
+            .populate('medico')
+            .populate('quien_confirma')
+            .populate('tipo_cita')
+            .populate('status');
     }
 
     /**
      * Muestra todas las citas de la BD
      */
     async showAllDatesBySucursalAsistio(sucursalId): Promise<CitaI[]> {
-        return await this.citaModel.find( {sucursal: sucursalId, $or: [ {asistio: 'ASISTIO'}, {asistio: 'PENDIENTE'}]} ).sort('hora')
+        return await this.citaModel.find( {sucursal: sucursalId, $or: [ {status: 'ASISTIO'}, {status: 'PENDIENTE'}]} ).sort('hora')
             .populate('paciente')
+            .populate('servicio')
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('dermatologo')
-            .populate('quien_confirma');
+            .populate('medico')
+            .populate('quien_confirma')
+            .populate('tipo_cita')
+            .populate('status');
     }
 
     /**
@@ -59,13 +68,16 @@ export class CitaService {
     async findDatesByDate(date): Promise<CitaI[]> {
         return await this.citaModel.find( {fecha: date} ).sort('hora')
             .populate('paciente')
+            .populate('servicio')
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('dermatologo')
-            .populate('quien_confirma');
+            .populate('medico')
+            .populate('quien_confirma')
+            .populate('tipo_cita')
+            .populate('status');
     }
 
     /**
@@ -74,13 +86,16 @@ export class CitaService {
     async findDatesByDateAndSucursal(date, sucursalId): Promise<CitaI[]> {
         return await this.citaModel.find( {fecha: date, sucursal: sucursalId} ).sort('hora')
             .populate('paciente')
+            .populate('servicio')
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('dermatologo')
-            .populate('quien_confirma');
+            .populate('medico')
+            .populate('quien_confirma')
+            .populate('tipo_cita')
+            .populate('status');
     }
 
     /**
@@ -89,13 +104,16 @@ export class CitaService {
     async findDatesByRangeDateAndSucursal(startDate, endDate, sucursalId): Promise<CitaI[]> {
         return await this.citaModel.find( {fecha: {$gte: startDate, $lte: endDate}, sucursal: sucursalId} ).sort('hora')
             .populate('paciente')
+            .populate('servicio')
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('dermatologo')
-            .populate('quien_confirma');
+            .populate('medico')
+            .populate('quien_confirma')
+            .populate('tipo_cita')
+            .populate('status');
     }
 
     /**
@@ -104,13 +122,16 @@ export class CitaService {
     async findDatesByDateAndSucursalAndService(date, sucursalId, servicio): Promise<CitaI[]> {
         return await this.citaModel.find( {fecha: date, sucursal: sucursalId, servicio: servicio} ).sort('hora')
             .populate('paciente')
+            .populate('servicio')
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('dermatologo')
-            .populate('quien_confirma');
+            .populate('medico')
+            .populate('quien_confirma')
+            .populate('tipo_cita')
+            .populate('status');
     }
 
     /**
@@ -120,13 +141,16 @@ export class CitaService {
     async findDateById(idCita: string): Promise<CitaI> {
         return await this.citaModel.findOne( { _id: idCita } )
             .populate('paciente')
+            .populate('servicio')
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('dermatologo')
-            .populate('quien_confirma');
+            .populate('medico')
+            .populate('quien_confirma')
+            .populate('tipo_cita')
+            .populate('status');
     }
 
     /**
@@ -135,13 +159,16 @@ export class CitaService {
     async findHistoricByPaciente(pacienteId: string): Promise<CitaI[]> {
         return await this.citaModel.find( {paciente: pacienteId} ).sort('fecha')
             .populate('paciente')
+            .populate('servicio')
             .populate('sucursal')
             .populate('tratamientos')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('dermatologo')
-            .populate('quien_confirma');
+            .populate('medico')
+            .populate('quien_confirma')
+            .populate('tipo_cita')
+            .populate('status');
     }
 
     /**

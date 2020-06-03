@@ -38,6 +38,18 @@ import { RolController } from './rol/rol.controller';
 import { EmpleadoController } from './empleado/empleado.controller';
 import { RolService } from './rol/rol.service';
 import { EmpleadoService } from './empleado/empleado.service';
+import { ConsultorioSchema } from './schemas/consultorio.schema';
+import { ConsultorioController } from './consultorio/consultorio.controller';
+import { ConsultorioService } from './consultorio/consultorio.service';
+import { ConsultaSchema } from './schemas/consulta.schema';
+import { ConsultaController } from './consulta/consulta.controller';
+import { ConsultaService } from './consulta/consulta.service';
+import { TipoCitaSchema } from './schemas/tipo-cita.schema';
+import { TipoCitaController } from './tipo_cita/tipo-cita.controller';
+import { TipoCitaService } from './tipo_cita/tipo-cita.service';
+import { StatusSchema } from './schemas/status.schema';
+import { StatusController } from './status/status.controller';
+import { StatusService } from './status/status.service';
 
 @Module({
   imports: [
@@ -55,10 +67,50 @@ import { EmpleadoService } from './empleado/empleado.service';
       { name: 'Horario', schema: HorarioSchema },
       { name: 'Rol', schema: RolSchema },
       { name: 'Empleado', schema: EmpleadoSchema },
+      { name: 'Consultorio', schema: ConsultorioSchema },
+      { name: 'Consulta', schema: ConsultaSchema },
+      { name: 'TipoCita', schema: TipoCitaSchema },
+      { name: 'Status', schema: StatusSchema },
     ])
   ],
-  controllers: [AppController, PacienteController, SucursalController, ServicioController, TratamientoController, PaqueteController, RecepcionistaController, DermatologoController, CitaController, CosmetologaController, HorarioController, RolController, EmpleadoController],
-  providers: [AppService, PacienteService, SucursalService, ServicioService, TratamientoService, PaqueteService, RecepcionistaService, DermatologoService, CitaService, CosmetologaService, HorarioService, RolService, EmpleadoService],
+  controllers: [
+    AppController,
+    PacienteController,
+    SucursalController,
+    ServicioController,
+    TratamientoController,
+    PaqueteController,
+    RecepcionistaController,
+    DermatologoController,
+    CitaController,
+    CosmetologaController,
+    HorarioController,
+    RolController,
+    EmpleadoController,
+    ConsultorioController,
+    ConsultaController,
+    TipoCitaController,
+    StatusController
+  ],
+  providers: [
+    AppService,
+    PacienteService,
+    SucursalService,
+    ServicioService,
+    TratamientoService,
+    PaqueteService,
+    RecepcionistaService,
+    DermatologoService,
+    CitaService,
+    CosmetologaService,
+    HorarioService,
+    RolService,
+    EmpleadoService,
+    ConsultorioService,
+    ConsultaService,
+    TipoCitaService,
+    StatusService
+  ],
 })
 
 export class AppModule {}

@@ -1,4 +1,6 @@
+import { ServicioDto } from "./servicio-dto";
+
 export class HorarioDto {
     readonly hora : string;
-    readonly clave_tratamiento : string;
+    readonly servicio : ServicioDto;
 }

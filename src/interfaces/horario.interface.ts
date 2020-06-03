@@ -1,4 +1,6 @@
+import { ServicioI } from "./servicio.interface";
+
 export interface HorarioI {
     hora : string;
-    clave_tratamiento : string;
+    servicio : ServicioI;
 }
