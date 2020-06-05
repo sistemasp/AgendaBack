@@ -8,36 +8,36 @@ export class ServicioController {
 
     TAG = "ServicioController";
 
-    constructor(private readonly pacienteService: ServicioService) {}
+    constructor(private readonly service: ServicioService) {}
 
     @Get()
     showAllServices() : Promise<ServicioI[]> {
         console.log(this.TAG, "showAllServices");
-        return this.pacienteService.showAllServices();
+        return this.service.showAllServices();
     }
 
     @Get(':id')
     findServiceById(@Param('id') idServicio: string): Promise<ServicioI> {
         console.log(this.TAG, "findServiceById");
-        return this.pacienteService.findServiceById(idServicio);
+        return this.service.findServiceById(idServicio);
     }
 
     @Post()
     createService(@Body() pacienteDto: ServicioDto): Promise<ServicioI> {
         console.log(this.TAG, "createService");
-        return this.pacienteService.createService(pacienteDto);
+        return this.service.createService(pacienteDto);
     }
 
     @Put(':id') 
     updateService(@Param('id') idServicio: string, @Body() pacienteDto: ServicioDto): Promise<ServicioI> {
         console.log(this.TAG, "updateService");
-        return this.pacienteService.updateService(idServicio, pacienteDto);
+        return this.service.updateService(idServicio, pacienteDto);
     }
 
     @Delete(':id')
     deleteService(@Param('id') idServicio: string): Promise<ServicioI> {
         console.log(this.TAG, "deleteService");
-        return this.pacienteService.deleteService(idServicio);
+        return this.service.deleteService(idServicio);
     }
 
 }

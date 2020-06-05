@@ -4,19 +4,24 @@ import { Model } from 'mongoose';
 import { HorarioI } from 'src/interfaces/horario.interface';
 import { CitaService } from 'src/cita/cita.service';
 import { CitaI } from 'src/interfaces/cita.interface';
-import { response } from 'express';
-import { HorarioDto } from 'src/dto/horario-dto';
+import { ConsultaService } from 'src/consulta/consulta.service';
+import { ConsultaI } from 'src/interfaces/consulta.interface';
 
 @Injectable()
 export class HorarioService {
 
-    constructor(@InjectModel('Horario') private readonly horarioModel : Model<HorarioI>, private readonly citaService: CitaService) {}
+    constructor(@InjectModel('Horario') 
+        private readonly horarioModel : Model<HorarioI>, 
+        private readonly citaService: CitaService,
+        private readonly consultaService: ConsultaService
+    ) {}
 
     /**
      * Muestra todos los horarios de la BD
      */
     async showAllSchedules(): Promise<HorarioI[]> {
-        return await this.horarioModel.find().sort('hora');
+        return await this.horarioModel.find().sort('hora')
+            .populate('servicio');
     }
 
     /**
@@ -24,7 +29,16 @@ export class HorarioService {
      * @param idHorario 
      */
     async findScheduleById(idHorario: string): Promise<HorarioI> {
-        return await this.horarioModel.findOne( { _id: idHorario } );
+        return await this.horarioModel.findOne( { _id: idHorario } )
+            .populate('servicio');
+    }
+
+    /**
+     * Muestra todos los horarios de la BD
+     */
+    async findSchedulesByService(idService: string): Promise<HorarioI[]> {
+        return await this.horarioModel.find( {servicio: idService} ).sort('hora')
+            .populate('servicio');
     }
 
     /**
@@ -38,7 +52,7 @@ export class HorarioService {
             // SOLO 4 CITAS POR CADA HORA
 
             const numCitas = citas.filter(c => {
-                return c.hora === horario.hora && (c.asistio === undefined || c.asistio === 'ASISTIO')
+                return c.hora === horario.hora && (c.status.nombre === undefined || c.status.nombre === 'ASISTIO')
             }).length;
             if (numCitas > 3) {
                 horarios.splice(index, 1);
@@ -65,9 +79,29 @@ export class HorarioService {
         const newHorarios = [];
         await horarios.forEach((horario) => {
             const numCitas = citas.filter(c => {
-                return this.compararHorario(c.hora, c.tiempo, horario.hora) && (c.asistio === 'PENDIENTE' || c.asistio === 'ASISTIO') && service === c.servicio;
+                return this.compararHorario(c.hora, c.tiempo, horario.hora) && (c.status.nombre === 'PENDIENTE' || c.status.nombre === 'ASISTIO') && service === c.servicio.nombre;
             }).length;
             if (numCitas <= (service !== 'FACIAL' ? 0 : 3)) {
+                newHorarios.push(horario);
+            }
+        });
+        
+        return newHorarios;
+    }
+
+    /**
+     * Filtrar los horarios segun la disponibilidad de consulñtas.
+     * @param horarios 
+     * @param citas 
+     * @param service
+     */
+    async filterSchedulesInConsult(horarios: HorarioI[], consulta: ConsultaI[]): Promise<HorarioI[]> {
+        const newHorarios = [];
+        await horarios.forEach((horario) => {
+            const numConsultas = consulta.filter(c => {
+                return this.compararHorario(c.hora, c.tiempo, horario.hora) && (c.estado === 'PENDIENTE' || c.estado === 'ASISTIO');
+            }).length;
+            if (numConsultas <= 3) {
                 newHorarios.push(horario);
             }
         });
@@ -111,11 +145,49 @@ export class HorarioService {
     }
 
     /**
+     * Busca horarios en citas mediante su disponibilidad de cierto dia en la BD y sucursal
+     * @param date 
+     * @param sucursalId
+     * @param service
+     */
+    async findScheduleInDatesByDateAndSucursalAndService(date: string, sucursalId: string, service: string): Promise<HorarioI[]> {
+        const citas = await this.citaService.findDatesByDateAndSucursalAndService(date, sucursalId, service);
+        let horarios = await this.horarioModel.find().sort('hora');
+        const today =  new Date();
+        const todayString = `${today.getDate()}/${Number(today.getMonth()) + 1}/${today.getFullYear()}`;
+        if (todayString === date) {
+            horarios = await this.schedulesToday(horarios, today.getHours().toString());
+        }
+        const response = await this.filterSchedulesAndService(horarios, citas, service);
+        return response;
+    }
+
+    /**
+     * Busca horarios en consultas mediante su disponibilidad de cierto dia en la BD y sucursal
+     * @param date 
+     * @param sucursalId
+     * @param service
+     */
+    async findScheduleInConsultByDateAndSucursal(consultaId: string, date: string, sucursalId: string): Promise<HorarioI[]> {
+        const consultas = await this.consultaService.findConsultsByDateAndSucursal(date, sucursalId);
+        console.log("consultas", consultas);
+        let horarios = await this.horarioModel.find( {servicio: consultaId} ).sort('hora');
+        const today =  new Date();
+        const todayString = `${today.getDate()}/${Number(today.getMonth()) + 1}/${today.getFullYear()}`;
+        if (todayString === date) {
+            horarios = await this.schedulesToday(horarios, today.getHours().toString());
+        }
+        const response = await this.filterSchedulesInConsult(horarios, consultas);
+        return response;
+    }
+
+    /**
      * Genera un nuevo horario en la BD
      * @param horario 
      */
     async createSchedule(horario: HorarioI): Promise<HorarioI> {
-        const newSchedule = new this.horarioModel(horario);
+        const newSchedule = new this.horarioModel(horario)
+            .populate('servicio');
         return await newSchedule.save();
     }
 

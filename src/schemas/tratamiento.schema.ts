@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 export const TratamientoSchema = new Schema({
     nombre : String,
     clave : String,
-    servicio : String,
+    servicio : { type: Schema.ObjectId, ref: 'Servicio'},
     tiempo : String,
     precio : String
 });

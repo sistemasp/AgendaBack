@@ -4,5 +4,5 @@ const Schema = mongoose.Schema;
 
 export const HorarioSchema = new Schema({
     hora : String,
-    clave_tratamiento : String
+    servicio : { type: Schema.ObjectId, ref: 'Servicio'}
 });
