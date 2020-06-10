@@ -12,7 +12,7 @@ export class CitaService {
      * Muestra todas las citas de la BD
      */
     async showAllDates(): Promise<CitaI[]> {
-        return await this.citaModel.find().sort('hora')
+        return await this.citaModel.find().sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
@@ -30,7 +30,7 @@ export class CitaService {
      * Muestra todas las citas de la BD de una sucursal
      */
     async showAllDatesBySucursal(sucursalId): Promise<CitaI[]> {
-        return await this.citaModel.find( {sucursal: sucursalId} ).sort('hora')
+        return await this.citaModel.find( {sucursal: sucursalId} ).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
@@ -48,7 +48,7 @@ export class CitaService {
      * Muestra todas las citas de la BD
      */
     async showAllDatesBySucursalAsistio(sucursalId): Promise<CitaI[]> {
-        return await this.citaModel.find( {sucursal: sucursalId, $or: [ {status: '5eda8c4193664a4cb8592b99'}, {status: '5eda8c7593664a4cb8592b9c'}]} ).sort('hora')
+        return await this.citaModel.find( {sucursal: sucursalId, $or: [ {status: '5eda8c4193664a4cb8592b99'}, {status: '5eda8c7593664a4cb8592b9c'}]} ).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
@@ -66,7 +66,15 @@ export class CitaService {
      * Muestra todas las citas de la BD que correspondan a una fecha
      */
     async findDatesByDate(date): Promise<CitaI[]> {
-        return await this.citaModel.find( {fecha: date} ).sort('hora')
+        let startDate = new Date(date);
+        startDate.setHours(-5);
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date(date);
+        endDate.setHours(18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+        return await this.citaModel.find( {fecha_hora: { $gte: startDate, $lte: endDate }} ).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
@@ -84,7 +92,15 @@ export class CitaService {
      * Muestra todas las citas de la BD que correspondan a una fecha y una sucursal
      */
     async findDatesByDateAndSucursal(date, sucursalId): Promise<CitaI[]> {
-        return await this.citaModel.find( {fecha: date, sucursal: sucursalId} ).sort('hora')
+        let startDate = new Date(date);
+        startDate.setHours(-5);
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date(date);
+        endDate.setHours(18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+        return await this.citaModel.find( {fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId} ).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
@@ -101,8 +117,16 @@ export class CitaService {
     /**
      * Muestra todas las citas de la BD que correspondan a una fecha y una sucursal
      */
-    async findDatesByRangeDateAndSucursal(startDate, endDate, sucursalId): Promise<CitaI[]> {
-        return await this.citaModel.find( {fecha: {$gte: startDate, $lte: endDate}, sucursal: sucursalId} ).sort('hora')
+    async findDatesByRangeDateAndSucursal(startDateS, endDateS, sucursalId): Promise<CitaI[]> {
+        let startDate = new Date(startDateS);
+        startDate.setHours(-5);
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date(endDateS);
+        endDate.setHours(18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+        return await this.citaModel.find( {fecha_hora: {$gte: startDate, $lte: endDate}, sucursal: sucursalId} ).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
@@ -120,7 +144,15 @@ export class CitaService {
      * Muestra todas las citas de la BD que correspondan a una fecha y una sucursal
      */
     async findDatesByDateAndSucursalAndService(date, sucursalId, servicio): Promise<CitaI[]> {
-        return await this.citaModel.find( {fecha: date, sucursal: sucursalId, servicio: servicio} ).sort('hora')
+        let startDate = new Date(date);
+        startDate.setHours(-5);
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date(date);
+        endDate.setHours(18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+        return await this.citaModel.find( {fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId, servicio: servicio} ).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
@@ -157,7 +189,7 @@ export class CitaService {
      * Muestra todo el histotico de una persona buscando por su numero de telefono
      */
     async findHistoricByPaciente(pacienteId: string): Promise<CitaI[]> {
-        return await this.citaModel.find( {paciente: pacienteId} ).sort('fecha')
+        return await this.citaModel.find( {paciente: pacienteId} ).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
