@@ -48,7 +48,7 @@ export class CitaService {
      * Muestra todas las citas de la BD
      */
     async showAllDatesBySucursalAsistio(sucursalId): Promise<CitaI[]> {
-        return await this.citaModel.find( {sucursal: sucursalId, $or: [ {status: '5eceb37a5da339304c86c993'}, {status: '5eceb3e75da339304c86c996'}]} ).sort('fecha_hora')
+        return await this.citaModel.find( {sucursal: sucursalId, $or: [ {status: '5eea5087e86b0e0017413c22'}, {status: '5eea5918e86b0e0017413c27'}]} ).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
