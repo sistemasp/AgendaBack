@@ -3,7 +3,8 @@ import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const CitaSchema = new Schema({
-    fecha_hora : { type : Date },
+    hora : String,
+    fecha : String,
     paciente : { type: Schema.ObjectId, ref: 'Paciente'},
     medico : { type: Schema.ObjectId, ref: 'Empleado'},
     servicio : { type: Schema.ObjectId, ref: 'Servicio'},

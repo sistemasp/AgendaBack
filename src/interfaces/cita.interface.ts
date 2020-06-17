@@ -7,7 +7,8 @@ import { StatusI } from "./status.interface";
 import { ServicioI } from "./servicio.interface";
 
 export interface CitaI {
-    fecha_hora : Date;
+    hora : String;
+    fecha : String;
     paciente : PacienteI;
     medico : EmpleadoI;
     servicio : ServicioI;

@@ -52,8 +52,7 @@ export class HorarioService {
             // SOLO 4 CITAS POR CADA HORA
 
             const numCitas = citas.filter(c => {
-                const hora = `${c.fecha_hora.getHours()}:${c.fecha_hora.getMinutes()}`;
-                return hora === horario.hora && (c.status.nombre === undefined || c.status.nombre === 'ASISTIO')
+                return c.hora === horario.hora && (c.status.nombre === undefined || c.status.nombre === 'ASISTIO')
             }).length;
             if (numCitas > 3) {
                 horarios.splice(index, 1);
@@ -80,8 +79,7 @@ export class HorarioService {
         const newHorarios = [];
         await horarios.forEach((horario) => {
             const numCitas = citas.filter(c => {
-                const hora = `${c.fecha_hora.getHours()}:${c.fecha_hora.getMinutes()}`;
-                return this.compararHorario(hora, c.tiempo, horario.hora) && (c.status.nombre === 'PENDIENTE' || c.status.nombre === 'ASISTIO') && service === c.servicio.nombre;
+                return this.compararHorario(c.hora, c.tiempo, horario.hora) && (c.status.nombre === 'PENDIENTE' || c.status.nombre === 'ASISTIO') && service === c.servicio.nombre;
             }).length;
             if (numCitas <= (service !== 'FACIAL' ? 0 : 3)) {
                 newHorarios.push(horario);

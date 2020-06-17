@@ -7,7 +7,8 @@ import { StatusDto } from "./status-dto";
 import { ServicioDto } from "./servicio-dto";
 
 export class CitaDto {
-    readonly fecha_hora : Date;
+    readonly hora : String;
+    readonly fecha : String;
     readonly paciente : PacienteDto;
     readonly medico : EmpleadoDto;
     readonly servicio : ServicioDto;

@@ -31,13 +31,13 @@ export class CitaController {
     @Get(':dia/:mes/:anio')
     findDatesByDate(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string) : Promise<CitaI[]> {
         console.log(this.TAG, "findDatesByDate");
-        return this.citaService.findDatesByDate(`${anio}-${mes}-${dia}`);
+        return this.citaService.findDatesByDate(`${dia}/${mes}/${anio}`);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId')
     findDatesByDateAndSucursal(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursalId') sucursalId: string) : Promise<CitaI[]> {
         console.log(this.TAG, "findDatesByDateAndSucursal");
-        return this.citaService.findDatesByDateAndSucursal(`${anio}-${mes}-${dia}`, sucursalId);
+        return this.citaService.findDatesByDateAndSucursal(`${dia}/${mes}/${anio}`, sucursalId);
     }
 
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')
@@ -45,14 +45,14 @@ export class CitaController {
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
         @Param('sucursalId') sucursalId: string) : Promise<CitaI[]> {
         console.log(this.TAG, "findDatesByRangeDateAndSucursal");
-        return this.citaService.findDatesByRangeDateAndSucursal(`${anioi}-${mesi}-${diai}`, `${aniof}-${mesf}-${diaf}`, sucursalId);
+        return this.citaService.findDatesByRangeDateAndSucursal(`${diai}/${mesi}/${anioi}`, `${diaf}/${mesf}/${aniof}`, sucursalId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/:servicio')
     findDatesByDateAndSucursalAndService(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
         @Param('sucursalId') sucursalId: string, @Param('servicio') servicio: string) : Promise<CitaI[]> {
         console.log(this.TAG, "findDatesByDateAndSucursalAndService");
-        return this.citaService.findDatesByDateAndSucursalAndService(`${anio}-${mes}-${dia}`, sucursalId, servicio);
+        return this.citaService.findDatesByDateAndSucursalAndService(`${dia}/${mes}/${anio}`, sucursalId, servicio);
     }
 
     @Get('/histotic/:pacienteId')
