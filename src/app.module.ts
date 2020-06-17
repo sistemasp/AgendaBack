@@ -53,7 +53,7 @@ import { StatusService } from './status/status.service';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://prueba:Abcd1234@ds155461.mlab.com:55461/heroku_g44h57p1'),
+    MongooseModule.forRoot('mongodb://admin:admin123@ds155461.mlab.com:55461/heroku_g44h57p1'),
     MongooseModule.forFeature([
       { name: 'Paciente', schema: PacienteSchema },
       { name: 'Sucursal', schema: SucursalSchema },
