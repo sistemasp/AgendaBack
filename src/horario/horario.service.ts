@@ -101,7 +101,8 @@ export class HorarioService {
         const newHorarios = [];
         await horarios.forEach((horario) => {
             const numConsultas = consulta.filter(c => {
-                return this.compararHorario(c.hora, c.tiempo, horario.hora) && (c.estado === 'PENDIENTE' || c.estado === 'ASISTIO');
+                const hora = `${c.fecha_hora.getHours()}:${c.fecha_hora.getMinutes()}`;
+                return this.compararHorario(hora, c.tiempo, horario.hora) && (c.status.nombre === 'PENDIENTE' || c.status.nombre === 'ASISTIO');
             }).length;
             if (numConsultas <= 3) {
                 newHorarios.push(horario);
@@ -172,7 +173,6 @@ export class HorarioService {
      */
     async findScheduleInConsultByDateAndSucursal(consultaId: string, date: string, sucursalId: string): Promise<HorarioI[]> {
         const consultas = await this.consultaService.findConsultsByDateAndSucursal(date, sucursalId);
-        console.log("consultas", consultas);
         let horarios = await this.horarioModel.find( {servicio: consultaId} ).sort('hora');
         const today =  new Date();
         const todayString = `${today.getDate()}/${Number(today.getMonth()) + 1}/${today.getFullYear()}`;

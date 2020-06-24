@@ -6,13 +6,16 @@ import { InjectModel } from '@nestjs/mongoose';
 @Injectable()
 export class ConsultorioService {
 
-    constructor(@InjectModel('Consultorio') private readonly consultorioModel : Model<ConsultorioI>) {}
+    constructor(@InjectModel('Consultorio') private readonly consultorioModel: Model<ConsultorioI>) { }
 
     /**
      * Muestra todos los consultorios de la BD
      */
     async showAllSurgeries(): Promise<ConsultorioI[]> {
-        return await this.consultorioModel.find();
+        return await this.consultorioModel.find()
+            .populate('medico')
+            .populate('consulta')
+            .populate('paciente');
     }
 
     /**
@@ -20,7 +23,10 @@ export class ConsultorioService {
      * @param idConsultorio 
      */
     async findSurgeryById(idConsultorio: string): Promise<ConsultorioI> {
-        return await this.consultorioModel.findOne( { _id: idConsultorio } );
+        return await this.consultorioModel.findOne({ _id: idConsultorio })
+            .populate('medico')
+            .populate('consulta')
+            .populate('paciente');
     }
 
     /**
@@ -28,7 +34,29 @@ export class ConsultorioService {
      * @param sucursalId 
      */
     async findSurgeryBySucursalId(sucursalId: string): Promise<ConsultorioI[]> {
-        return await this.consultorioModel.find( { sucursal: sucursalId } );
+        return await this.consultorioModel.find({ sucursal: sucursalId })
+            .populate('medico')
+            .populate('consulta')
+            .populate('paciente');
+    }
+
+    /**
+     * Busca solo un consultorio mediante su ID de la sucursal en la BD
+     * @param sucursalId 
+     */
+    async findSurgeryBySucursalIdAndFree(sucursalId: string): Promise<ConsultorioI[]> {
+        return await this.consultorioModel.find({ sucursal: sucursalId, disponible: true })
+            .populate('medico')
+            .populate('consulta')
+            .populate('paciente');
+    }
+
+    /**
+     * Busca solo un consultorio mediante su ID de la sucursal en la BD
+     * @param sucursalId 
+     */
+    async breakFreeSurgeryById(consultorioId: string): Promise<ConsultorioI[]> {
+        return await this.consultorioModel.updateOne({ _id: consultorioId }, {$unset: {paciente: undefined}});
     }
 
     /**
@@ -53,7 +81,7 @@ export class ConsultorioService {
      * Busca un consultorio por su ID y lo elimina de la BD
      * @param idConsultorio 
      */
-    async deleteSurgery(idConsultorio: string ): Promise<ConsultorioI> {
+    async deleteSurgery(idConsultorio: string): Promise<ConsultorioI> {
         return await this.consultorioModel.findOneAndDelete({ _id: idConsultorio });
     }
 

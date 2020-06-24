@@ -28,16 +28,28 @@ export class ConsultorioController {
         return this.consultorioService.findSurgeryBySucursalId(sucursalId);
     }
 
+    @Get('/sucursal/:sucursalId/libre')
+    findSurgeryBySucursalIdAndFree(@Param('sucursalId') sucursalId: string): Promise<ConsultorioI[]> {
+        console.log(this.TAG, "findSurgeryBySucursalIdAndFree");
+        return this.consultorioService.findSurgeryBySucursalIdAndFree(sucursalId);
+    }
+
+    @Put('/liberar/:consultorioId')
+    breakFreeSurgeryById(@Param('consultorioId') consultorioId: string): Promise<ConsultorioI[]> {
+        console.log(this.TAG, "breakFreeSurgeryById");
+        return this.consultorioService.breakFreeSurgeryById(consultorioId);
+    }
+
     @Post()
-    createSurgery(@Body() pacienteDto: ConsultorioDto): Promise<ConsultorioI> {
+    createSurgery(@Body() consultorioDto: ConsultorioDto): Promise<ConsultorioI> {
         console.log(this.TAG, "createSurgery");
-        return this.consultorioService.createSurgery(pacienteDto);
+        return this.consultorioService.createSurgery(consultorioDto);
     }
 
     @Put(':id') 
-    updateSurgery(@Param('id') idConsultorio: string, @Body() pacienteDto: ConsultorioDto): Promise<ConsultorioI> {
+    updateSurgery(@Param('id') idConsultorio: string, @Body() consultorioDto: ConsultorioDto): Promise<ConsultorioI> {
         console.log(this.TAG, "updateSurgery");
-        return this.consultorioService.updateSurgery(idConsultorio, pacienteDto);
+        return this.consultorioService.updateSurgery(idConsultorio, consultorioDto);
     }
 
     @Delete(':id')

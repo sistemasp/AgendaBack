@@ -6,4 +6,10 @@ export interface EmpleadoI {
     telefono : String;
     password : String;
     rol : RolI;
+    color : String;
+    cedula : String;
+    fecha_ingreso : Date;
+    fecha_baja : Date;
+    disponible : Boolean;
+    porcentaje : String;
 }

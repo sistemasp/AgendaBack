@@ -7,5 +7,11 @@ export const EmpleadoSchema = new Schema({
     numero_empleado : String,
     telefono : String,
     password : String,
-    rol : { type: Schema.ObjectId, ref: 'Rol'}
+    rol : { type: Schema.ObjectId, ref: 'Rol'},
+    color : String,
+    cedula : String,
+    fecha_ingreso : { type : Date },
+    fecha_baja : { type : Date },
+    disponible : { type: Boolean, default: true },
+    porcentaje : String,
 });
