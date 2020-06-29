@@ -28,6 +28,12 @@ export class ConsultaController {
         return this.consultaService.showAllConsultsBySucursalAsistio(sucursalId);
     }
 
+    @Get('histotico/medicos/:medicoId')
+    findHistoricByMedicId(@Param('medicoId') medicoId: string): Promise<ConsultaI[]> {
+        console.log(this.TAG, "findHistoricByMedicId");
+        return this.consultaService.findHistoricByMedicId(medicoId);
+    }
+
     @Get(':dia/:mes/:anio')
     findConsultsByDate(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string) : Promise<ConsultaI[]> {
         console.log(this.TAG, "findConsultsByDate");

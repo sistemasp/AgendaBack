@@ -1,0 +1,51 @@
+import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
+import { PagoService } from './pago.service';
+import { PagoI } from 'src/interfaces/pago.interface';
+import { PagoDto } from 'src/dto/pago-dto';
+
+@Controller('pago')
+export class PagoController {
+
+    TAG = "PagoController";
+
+    constructor(private readonly pagoService: PagoService) {}
+
+    @Get()
+    showAllPagos() : Promise<PagoI[]> {
+        console.log(this.TAG, "showAllPagos");
+        return this.pagoService.showAllPagos();
+    }
+
+    @Get(':id')
+    findPagoById(@Param('id') idPago: string): Promise<PagoI> {
+        console.log(this.TAG, "findPagoById");
+        return this.pagoService.findPagoById(idPago);
+    }
+
+    @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')
+    findPaysByRangeDateAndSucursal(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
+        @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
+        @Param('sucursalId') sucursalId: string) : Promise<PagoI[]> {
+        console.log(this.TAG, "findConsultsByRangeDateAndSucursal");
+        return this.pagoService.findPaysByRangeDateAndSucursal(`${anioi}-${mesi}-${diai}`, `${aniof}-${mesf}-${diaf}`, sucursalId);
+    }
+
+    @Post()
+    createPago(@Body() pagoDto: PagoDto): Promise<PagoI> {
+        console.log(this.TAG, "createPago");
+        return this.pagoService.createPago(pagoDto);
+    }
+
+    @Put(':id') 
+    updatePago(@Param('id') idPago: string, @Body() pagoDto: PagoDto): Promise<PagoI> {
+        console.log(this.TAG, "updatePago");
+        return this.pagoService.updatePago(idPago, pagoDto);
+    }
+
+    @Delete(':id')
+    deletePago(@Param('id') idPago: string): Promise<PagoI> {
+        console.log(this.TAG, "deletePago");
+        return this.pagoService.deletePago(idPago);
+    }
+
+}

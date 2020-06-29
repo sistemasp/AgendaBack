@@ -50,6 +50,20 @@ import { TipoCitaService } from './tipo_cita/tipo-cita.service';
 import { StatusSchema } from './schemas/status.schema';
 import { StatusController } from './status/status.controller';
 import { StatusService } from './status/status.service';
+import { MedicosController } from './medicos/medicos.controller';
+import { MedicosService } from './medicos/medicos.service';
+import { MetodoPagoController } from './metodo_pago/metodo-pago.controller';
+import { MetodoPagoService } from './metodo_pago/metodo-pago.service';
+import { MetodoPagoSchema } from './schemas/metodo-pago.schema';
+import { BancoSchema } from './schemas/banco.schema';
+import { PagoSchema } from './schemas/pago.schema';
+import { BancoController } from './banco/banco.controller';
+import { PagoController } from './pago/pago.controller';
+import { BancoService } from './banco/banco.service';
+import { PagoService } from './pago/pago.service';
+import { TipoTarjetaSchema } from './schemas/tipo-tarjeta.schema';
+import { TipoTarjetaController } from './tipo_tarjeta/tipo-tarjeta.controller';
+import { TipoTarjetaService } from './tipo_tarjeta/tipo-tarjeta.service';
 
 @Module({
   imports: [
@@ -71,6 +85,10 @@ import { StatusService } from './status/status.service';
       { name: 'Consulta', schema: ConsultaSchema },
       { name: 'TipoCita', schema: TipoCitaSchema },
       { name: 'Status', schema: StatusSchema },
+      { name: 'MetodoPago', schema: MetodoPagoSchema },
+      { name: 'Banco', schema: BancoSchema },
+      { name: 'Pago', schema: PagoSchema },
+      { name: 'TipoTarjeta', schema: TipoTarjetaSchema },
     ])
   ],
   controllers: [
@@ -90,7 +108,12 @@ import { StatusService } from './status/status.service';
     ConsultorioController,
     ConsultaController,
     TipoCitaController,
-    StatusController
+    StatusController,
+    MedicosController,
+    MetodoPagoController,
+    BancoController,
+    PagoController,
+    TipoTarjetaController,
   ],
   providers: [
     AppService,
@@ -109,7 +132,12 @@ import { StatusService } from './status/status.service';
     ConsultorioService,
     ConsultaService,
     TipoCitaService,
-    StatusService
+    StatusService,
+    MedicosService,
+    MetodoPagoService,
+    BancoService,
+    PagoService,
+    TipoTarjetaService,
   ],
 })
 

@@ -1,0 +1,84 @@
+import { Injectable } from '@nestjs/common';
+import { Model } from 'mongoose';
+import { PagoI } from 'src/interfaces/pago.interface';
+import { InjectModel } from '@nestjs/mongoose';
+
+@Injectable()
+export class PagoService {
+
+    constructor(@InjectModel('Pago') private readonly pagoModel : Model<PagoI>) {}
+
+    /**
+     * Muestra todos los pagos de la BD
+     */
+    async showAllPagos(): Promise<PagoI[]> {
+        return await this.pagoModel.find();
+    }
+
+    /**
+     * Busca solo un pago mediante su ID en la BD
+     * @param idPago 
+     */
+    async findPagoById(idPago: string): Promise<PagoI> {
+        return await this.pagoModel.findOne( { _id: idPago } );
+    }
+
+    /**
+     * Busca solo un pago mediante su numero de empleado en la BD
+     * @param idPago 
+     */
+    async findPagoByEmployeeNumber(employeeNumber: string): Promise<PagoI> {
+        return await this.pagoModel.findOne( { numero_empleado: employeeNumber } );
+    }
+
+    /**
+     * Muestra todas las consultas de la BD que correspondan a una fecha_hora y una sucursal
+     */
+    async findPaysByRangeDateAndSucursal(startDateS, endDateS, sucursalId): Promise<PagoI[]> {
+        let startDate = new Date(startDateS);
+        startDate.setHours(-5);
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date(endDateS);
+        endDate.setHours(18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+        return await this.pagoModel.find( {fecha_pago: {$gte: startDate, $lte: endDate}, sucursal: sucursalId} ).sort('fecha_pago')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('banco')
+            .populate('tipo_tarjeta')
+            .populate('metodo_pago')
+            .populate('medico')
+            .populate('servicio')
+            .populate('tratamientos')
+            .populate('quien_recibe_pago');
+    }
+
+    /**
+     * Genera un nuevo pago en la BD
+     * @param pago 
+     */
+    async createPago(pago: PagoI): Promise<PagoI> {
+        const newPago = new this.pagoModel(pago);
+        return await newPago.save();
+    }
+
+    /**
+     * Busca un pago por su Id para poder actualizarlo
+     * @param idPago 
+     * @param pago 
+     */
+    async updatePago(idPago: string, pago: PagoI): Promise<PagoI> {
+        return await this.pagoModel.updateOne({ _id: idPago }, pago);
+    }
+
+    /**
+     * Busca un pago por su ID y lo elimina de la BD
+     * @param idPago 
+     */
+    async deletePago(idPago: string ): Promise<PagoI> {
+        return await this.pagoModel.findOneAndDelete({ _id: idPago });
+    }
+
+}

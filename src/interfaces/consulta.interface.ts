@@ -3,6 +3,7 @@ import { SucursalI } from "./sucursal.interface";
 import { EmpleadoI } from "./empleado.interface";
 import { StatusI } from "./status.interface";
 import { TipoCitaI } from "./tipo-cita.interface";
+import { PagoI } from "./pago.interface";
 
 export interface ConsultaI {
     fecha_hora : Date;

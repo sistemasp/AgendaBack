@@ -3,6 +3,7 @@ import { SucursalDto } from "./sucursal-dto";
 import { EmpleadoDto } from "./empleado-dto";
 import { StatusDto } from "./status-dto";
 import { TipoCitaDto } from "./tipo-cita-dto";
+import { PagoDto } from "./pago-dto";
 
 export class ConsultaDto {
     readonly fecha_hora : Date;

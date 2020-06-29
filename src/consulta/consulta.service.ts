@@ -20,6 +20,7 @@ export class ConsultaService {
             .populate('medico')
             .populate('quien_confirma')
             .populate('tipo_cita')
+            .populate('pago')
             .populate('status');
     }
 
@@ -35,6 +36,7 @@ export class ConsultaService {
             .populate('medico')
             .populate('quien_confirma')
             .populate('tipo_cita')
+            .populate('pago')
             .populate('status');
     }
 
@@ -50,6 +52,7 @@ export class ConsultaService {
             .populate('medico')
             .populate('quien_confirma')
             .populate('tipo_cita')
+            .populate('pago')
             .populate('status');
     }
 
@@ -65,6 +68,7 @@ export class ConsultaService {
             .populate('medico')
             .populate('quien_confirma')
             .populate('tipo_cita')
+            .populate('pago')
             .populate('status');
     }
 
@@ -88,6 +92,7 @@ export class ConsultaService {
             .populate('medico')
             .populate('quien_confirma')
             .populate('tipo_cita')
+            .populate('pago')
             .populate('status');
     }
 
@@ -111,6 +116,7 @@ export class ConsultaService {
             .populate('medico')
             .populate('quien_confirma')
             .populate('tipo_cita')
+            .populate('pago')
             .populate('status');
     }
 
@@ -151,6 +157,7 @@ export class ConsultaService {
             .populate('medico')
             .populate('quien_confirma')
             .populate('tipo_cita')
+            .populate('pago')
             .populate('status');
     }
 
@@ -166,6 +173,23 @@ export class ConsultaService {
             .populate('medico')
             .populate('quien_confirma')
             .populate('tipo_cita')
+            .populate('pago')
+            .populate('status');
+    }
+
+    /**
+     * Muestra todo el histotico de una persona buscando por su numero de telefono
+     */
+    async findHistoricByMedicId(medicoId: string): Promise<ConsultaI[]> {
+        return await this.consultaModel.find( {medico: medicoId} ).sort('fecha_hora')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('quien_agenda')
+            .populate('promovendedor')
+            .populate('medico')
+            .populate('quien_confirma')
+            .populate('tipo_cita')
+            .populate('pago')
             .populate('status');
     }
 
