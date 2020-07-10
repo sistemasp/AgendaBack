@@ -32,6 +32,14 @@ export class PagoService {
     }
 
     /**
+     * Busca solo un pago mediante su ID en la BD
+     * @param idPagos 
+     */
+    async findPagoByIds(idPagos: string): Promise<PagoI[]> {
+        return await this.pagoModel.find( { _id: { $in: idPagos } } );
+    }
+
+    /**
      * Muestra todas las consultas de la BD que correspondan a una fecha_hora y una sucursal
      */
     async findPaysByRangeDateAndSucursal(startDateS, endDateS, sucursalId): Promise<PagoI[]> {
@@ -53,6 +61,23 @@ export class PagoService {
             .populate('servicio')
             .populate('tratamientos')
             .populate('quien_recibe_pago');
+    }
+
+    /**
+     * Busca solo un pago mediante su ID de la cita en la BD
+     * @param idCita 
+     */
+    async findPagosByCita(idCita: string): Promise<PagoI[]> {
+        return await this.pagoModel.find( { cita: idCita } )
+        .populate('paciente')
+        .populate('sucursal')
+        .populate('banco')
+        .populate('tipo_tarjeta')
+        .populate('metodo_pago')
+        .populate('medico')
+        .populate('servicio')
+        .populate('tratamientos')
+        .populate('quien_recibe_pago');;
     }
 
     /**

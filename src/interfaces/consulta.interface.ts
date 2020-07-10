@@ -23,4 +23,5 @@ export interface ConsultaI {
     sucursal : SucursalI;
     promovendedor : EmpleadoI;
     pagado : Boolean;
+    pagos : PagoI[];
 }

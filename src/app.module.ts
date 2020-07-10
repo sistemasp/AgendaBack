@@ -64,6 +64,15 @@ import { PagoService } from './pago/pago.service';
 import { TipoTarjetaSchema } from './schemas/tipo-tarjeta.schema';
 import { TipoTarjetaController } from './tipo_tarjeta/tipo-tarjeta.controller';
 import { TipoTarjetaService } from './tipo_tarjeta/tipo-tarjeta.service';
+import { RazonSocialController } from './razon-social/razon-social.controller';
+import { FacturaController } from './factura/factura.controller';
+import { UsoCfdiController } from './uso-cfdi/uso-cfdi.controller';
+import { RazonSocialService } from './razon-social/razon-social.service';
+import { FacturaService } from './factura/factura.service';
+import { UsoCfdiService } from './uso-cfdi/uso-cfdi.service';
+import { RazonSocialSchema } from './schemas/razon-social.schema';
+import { UsoCfdiSchema } from './schemas/uso-cfdi.schema';
+import { FacturaSchema } from './schemas/factura.schema';
 
 @Module({
   imports: [
@@ -89,6 +98,9 @@ import { TipoTarjetaService } from './tipo_tarjeta/tipo-tarjeta.service';
       { name: 'Banco', schema: BancoSchema },
       { name: 'Pago', schema: PagoSchema },
       { name: 'TipoTarjeta', schema: TipoTarjetaSchema },
+      { name: 'RazonSocial', schema: RazonSocialSchema },
+      { name: 'Factura', schema: FacturaSchema },
+      { name: 'UsoCfdi', schema: UsoCfdiSchema },
     ])
   ],
   controllers: [
@@ -114,6 +126,9 @@ import { TipoTarjetaService } from './tipo_tarjeta/tipo-tarjeta.service';
     BancoController,
     PagoController,
     TipoTarjetaController,
+    RazonSocialController,
+    FacturaController,
+    UsoCfdiController,
   ],
   providers: [
     AppService,
@@ -138,6 +153,9 @@ import { TipoTarjetaService } from './tipo_tarjeta/tipo-tarjeta.service';
     BancoService,
     PagoService,
     TipoTarjetaService,
+    RazonSocialService,
+    FacturaService,
+    UsoCfdiService,
   ],
 })
 

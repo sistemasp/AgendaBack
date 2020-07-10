@@ -6,10 +6,12 @@ import { ServicioDto } from "./servicio-dto";
 import { BancoDto } from "./banco-dto";
 import { TipoTarjetaDto } from "./tipo-tarjeta-dto";
 import { MetodoPagoDto } from "./metodo-pago-dto";
+import { CitaDto } from "./cita-dto";
 
 export class PagoDto {
     readonly fecha_pago : Date;
     readonly paciente : PacienteDto;
+    readonly cita : CitaDto;
     readonly medico : EmpleadoDto;
     readonly servicio : ServicioDto;
     readonly tratamientos : TratamientoDto[];

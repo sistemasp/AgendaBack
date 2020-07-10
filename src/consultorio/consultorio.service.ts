@@ -45,7 +45,12 @@ export class ConsultorioService {
      * @param sucursalId 
      */
     async findSurgeryBySucursalIdAndFree(sucursalId: string): Promise<ConsultorioI[]> {
-        return await this.consultorioModel.find({ sucursal: sucursalId, disponible: true })
+        return await this.consultorioModel.find(
+            {
+                sucursal: sucursalId,
+                medico: { $ne: undefined },
+                disponible: true
+            })
             .populate('medico')
             .populate('consulta')
             .populate('paciente');
@@ -55,8 +60,16 @@ export class ConsultorioService {
      * Busca solo un consultorio mediante su ID de la sucursal en la BD
      * @param sucursalId 
      */
-    async breakFreeSurgeryById(consultorioId: string): Promise<ConsultorioI[]> {
-        return await this.consultorioModel.updateOne({ _id: consultorioId }, {$unset: {paciente: undefined}});
+    async breakFreeSurgeryByIdPaciente(consultorioId: string): Promise<ConsultorioI[]> {
+        return await this.consultorioModel.updateOne({ _id: consultorioId }, {$unset: {paciente: undefined, consulta: undefined}});
+    }
+
+    /**
+     * Busca solo un consultorio mediante su ID de la sucursal en la BD
+     * @param sucursalId 
+     */
+    async breakFreeSurgeryByIdMedico(consultorioId: string): Promise<ConsultorioI[]> {
+        return await this.consultorioModel.updateOne({ _id: consultorioId }, {$unset: {medico: undefined}});
     }
 
     /**

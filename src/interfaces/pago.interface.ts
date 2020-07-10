@@ -6,10 +6,12 @@ import { ServicioI } from "./servicio.interface";
 import { BancoI } from "./banco.interface";
 import { TipoTarjetaI } from "./tipo-tarjeta.interface";
 import { MetodoPagoI } from "./metodo-pago.interface";
+import { CitaI } from "./cita.interface";
 
 export interface PagoI {
     fecha_pago: Date;
     paciente: PacienteI;
+    cita : CitaI;
     medico: EmpleadoI;
     servicio: ServicioI;
     tratamientos: TratamientoI[];

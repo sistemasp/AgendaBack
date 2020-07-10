@@ -23,4 +23,5 @@ export class ConsultaDto {
     readonly sucursal : SucursalDto;
     readonly promovendedor : EmpleadoDto;
     readonly pagado : Boolean;
+    readonly pagos : PagoDto[];
 }

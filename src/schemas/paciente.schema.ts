@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 export const PacienteSchema = new Schema({
     nombres : String,
     apellidos : String,
-    fecha_nacimiento : { type : Date },
+    fecha_nacimiento : { type : String },
     direccion : String,
     telefono : String
 });

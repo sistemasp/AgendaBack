@@ -20,4 +20,5 @@ export const ConsultaSchema = new Schema({
     sucursal : { type: Schema.ObjectId, ref: 'Sucursal'},
     promovendedor : { type: Schema.ObjectId, ref: 'Empleado'},
     pagado : { type: Boolean, default: false },
+    pagos : [{ type: Schema.ObjectId, ref: 'Pago'}],
 });

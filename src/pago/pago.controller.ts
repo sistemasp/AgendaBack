@@ -22,6 +22,20 @@ export class PagoController {
         return this.pagoService.findPagoById(idPago);
     }
 
+    @Get('pagos/cita/:idCita')
+    findPagosByCita(@Param('idCita') idCita: string): Promise<PagoI[]> {
+        console.log(this.TAG, "findPagosByCita");
+        return this.pagoService.findPagosByCita(idCita);
+    }    
+
+    @Get('pagos/:pagosIds')
+    findPagoByIds(@Param('pagosIds') pagosIds: string): Promise<PagoI[]> {
+        console.log(this.TAG, "findPagoByIds");
+        console.log(this.TAG, pagosIds);
+
+        return this.pagoService.findPagoByIds(pagosIds);
+    }
+
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')
     findPaysByRangeDateAndSucursal(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
