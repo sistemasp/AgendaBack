@@ -12,7 +12,7 @@ export class TratamientoService {
      * Muestra todos los tratamientos de la BD
      */
     async showAllTreatments(): Promise<TratamientoI[]> {
-        return await this.tratamientoModel.find();
+        return await this.tratamientoModel.find().sort('nombre');
     }
 
     /**
@@ -28,7 +28,7 @@ export class TratamientoService {
      * @param idTratamiento 
      */
     async findTreatmentByServicio(servicioId: string): Promise<TratamientoI> {
-        return await this.tratamientoModel.find( { servicio: servicioId } );
+        return await this.tratamientoModel.find( { servicio: servicioId } ).sort('nombre');
     }
 
     /**

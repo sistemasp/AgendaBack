@@ -137,6 +137,10 @@ export class HorarioService {
      */
     async findScheduleByDateAndSucursalAndService(date: string, sucursalId: string, service: string): Promise<HorarioI[]> {
         const citas = await this.citaService.findDatesByDateAndSucursalAndService(date, sucursalId, service);
+        //console.log("DATE", date);
+        //console.log("sucursalId", sucursalId);
+        //console.log("service", service);
+        //console.log("CITAS", citas);
         let horarios = await this.horarioModel.find().sort('hora');
         const today =  new Date();
         const todayString = `${today.getDate()}/${Number(today.getMonth()) + 1}/${today.getFullYear()}`;
