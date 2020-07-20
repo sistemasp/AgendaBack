@@ -44,16 +44,21 @@ export class ConsultaService {
      * Muestra todas las consultas de la BD
      */
     async showAllConsultsBySucursalAsistio(sucursalId): Promise<ConsultaI[]> {
-        return await this.consultaModel.find( {sucursal: sucursalId, $or: [ {status: '5eceb37a5da339304c86c993'}, {status: '5eceb3e75da339304c86c996'}]} ).sort('fecha_hora')
-            .populate('paciente')
-            .populate('sucursal')
-            .populate('quien_agenda')
-            .populate('promovendedor')
+        return await this.consultaModel.find( {sucursal: sucursalId, $or: [ 
+            {status: '5eceb37a5da339304c86c993'}, //ASISTIO
+            {status: '5eceb3e75da339304c86c996'}, // PENDIENTE
+            {status: '5ef272fc3d7b0e41982d8241'}, // EN CONSULTORIO
+            {status: '5ef2735e3d7b0e41982d8242'},  // ATENDIDO
+        ]} ).sort('fecha_hora')
+            //.populate('paciente')   
+            //.populate('sucursal')
+            //.populate('quien_agenda')
+            //.populate('promovendedor')
             .populate('medico')
-            .populate('quien_confirma')
-            .populate('tipo_cita')
-            .populate('pago')
-            .populate('status');
+            //.populate('quien_confirma')
+            //.populate('tipo_cita')
+            //.populate('pago')
+            //.populate('status');
     }
 
     /**
@@ -84,7 +89,11 @@ export class ConsultaService {
         endDate.setHours(18);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
-        return await this.consultaModel.find( {fecha_hora: { $gte: startDate, $lte: endDate }} ).sort('fecha_hora')
+        return await this.consultaModel.find( 
+            {
+                fecha_hora: { $gte: startDate, $lte: endDate },
+                sucursal: sucursalId
+            } ).sort('fecha_hora')
             .populate('paciente')
             .populate('sucursal')
             .populate('quien_agenda')

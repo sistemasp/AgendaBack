@@ -12,31 +12,31 @@ export class StatusController {
 
     @Get()
     showAllStatus() : Promise<StatusI[]> {
-        console.log(this.TAG, "showAllStatus");
+        console.log(new Date(), this.TAG, "showAllStatus");
         return this.statusService.showAllStatus();
     }
 
     @Get(':id')
     findStatusById(@Param('id') idStatus: string): Promise<StatusI> {
-        console.log(this.TAG, "findStatusById");
+        console.log(new Date(), this.TAG, "findStatusById");
         return this.statusService.findStatusById(idStatus);
     }
 
     @Post()
     createStatus(@Body() rolDto: StatusDto): Promise<StatusI> {
-        console.log(this.TAG, "createStatus");
+        console.log(new Date(), this.TAG, "createStatus");
         return this.statusService.createStatus(rolDto);
     }
 
     @Put(':id') 
     updateStatus(@Param('id') idStatus: string, @Body() rolDto: StatusDto): Promise<StatusI> {
-        console.log(this.TAG, "updateStatus");
+        console.log(new Date(), this.TAG, "updateStatus");
         return this.statusService.updateStatus(idStatus, rolDto);
     }
 
     @Delete(':id')
     deleteStatus(@Param('id') idStatus: string): Promise<StatusI> {
-        console.log(this.TAG, "deleteStatus");
+        console.log(new Date(), this.TAG, "deleteStatus");
         return this.statusService.deleteStatus(idStatus);
     }
 

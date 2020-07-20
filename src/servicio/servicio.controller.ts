@@ -12,31 +12,31 @@ export class ServicioController {
 
     @Get()
     showAllServices() : Promise<ServicioI[]> {
-        console.log(this.TAG, "showAllServices");
+        console.log(new Date(), this.TAG, "showAllServices");
         return this.service.showAllServices();
     }
 
     @Get(':id')
     findServiceById(@Param('id') idServicio: string): Promise<ServicioI> {
-        console.log(this.TAG, "findServiceById");
+        console.log(new Date(), this.TAG, "findServiceById");
         return this.service.findServiceById(idServicio);
     }
 
     @Post()
     createService(@Body() pacienteDto: ServicioDto): Promise<ServicioI> {
-        console.log(this.TAG, "createService");
+        console.log(new Date(), this.TAG, "createService");
         return this.service.createService(pacienteDto);
     }
 
     @Put(':id') 
     updateService(@Param('id') idServicio: string, @Body() pacienteDto: ServicioDto): Promise<ServicioI> {
-        console.log(this.TAG, "updateService");
+        console.log(new Date(), this.TAG, "updateService");
         return this.service.updateService(idServicio, pacienteDto);
     }
 
     @Delete(':id')
     deleteService(@Param('id') idServicio: string): Promise<ServicioI> {
-        console.log(this.TAG, "deleteService");
+        console.log(new Date(), this.TAG, "deleteService");
         return this.service.deleteService(idServicio);
     }
 

@@ -34,7 +34,25 @@ export class ConsultorioService {
      * @param sucursalId 
      */
     async findSurgeryBySucursalId(sucursalId: string): Promise<ConsultorioI[]> {
-        return await this.consultorioModel.find({ sucursal: sucursalId })
+        return await this.consultorioModel.find(
+            {
+                sucursal: sucursalId
+            })
+            .populate('medico')
+            .populate('consulta')
+            .populate('paciente');
+    }
+
+    /**
+     * Busca solo un consultorio mediante su ID de la sucursal en la BD
+     * @param sucursalId 
+     */
+    async findSurgeryBySucursalIdWaitingList(sucursalId: string): Promise<ConsultorioI[]> {
+        return await this.consultorioModel.find(
+            {
+                sucursal: sucursalId,
+                medico: { $ne: undefined }
+            })
             .populate('medico')
             .populate('consulta')
             .populate('paciente');

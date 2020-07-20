@@ -42,6 +42,18 @@ export class HorarioService {
     }
 
     /**
+     * Muestra todos los horarios de la BD por sucursal y servicio
+     */
+    async findSchedulesBySucursalAndServicio(idSucursal: string, idService: string): Promise<HorarioI[]> {
+        return await this.horarioModel.find( 
+            {
+                servicio: idService,
+                sucursal: idSucursal
+            } ).sort('hora');
+    }
+    
+
+    /**
      * Filtra los horarios segun la cantidad de citas que se tengan en cierto dia.
      * @param horarios 
      * @param citas 
@@ -80,10 +92,10 @@ export class HorarioService {
         const newHorarios = [];
         await horarios.forEach((horario) => {
             const numCitas = citas.filter(c => {
-                const hora = `${c.fecha_hora.getHours()}:${c.fecha_hora.getMinutes()}`;
-                return this.compararHorario(hora, c.tiempo, horario.hora) && (c.status.nombre === 'PENDIENTE' || c.status.nombre === 'ASISTIO') && service === c.servicio.nombre;
+                const hora = `${c.fecha_hora.getHours() + 5}:${c.fecha_hora.getMinutes()}`;
+                return this.compararHorario(hora, c.tiempo, horario.hora) && (c.status.nombre === 'PENDIENTE' || c.status.nombre === 'ASISTIO');
             }).length;
-            if (numCitas <= (service !== 'FACIAL' ? 0 : 3)) {
+            if (numCitas <= (service !== '5e7399124ba91f33306f77a6' ? 0 : 3)) { // '5e7399124ba91f33306f77a6' --> FACIAL
                 newHorarios.push(horario);
             }
         });
@@ -137,9 +149,12 @@ export class HorarioService {
      */
     async findScheduleByDateAndSucursalAndService(date: string, sucursalId: string, service: string): Promise<HorarioI[]> {
         const citas = await this.citaService.findDatesByDateAndSucursalAndService(date, sucursalId, service);
-        let horarios = await this.horarioModel.find().sort('hora');
+        let horarios = await this.horarioModel.find({
+            servicio: service,
+            sucursal: sucursalId
+        }).sort('hora');
         const today =  new Date();
-        const todayString = `${today.getDate()}/${Number(today.getMonth()) + 1}/${today.getFullYear()}`;
+        const todayString = `${today.getFullYear()}-${Number(today.getMonth()) + 1}-${today.getDate()}`;
         if (todayString === date) {
             horarios = await this.schedulesToday(horarios, today.getHours().toString());
         }
@@ -155,7 +170,10 @@ export class HorarioService {
      */
     async findScheduleInDatesByDateAndSucursalAndService(date: string, sucursalId: string, service: string): Promise<HorarioI[]> {
         const citas = await this.citaService.findDatesByDateAndSucursalAndService(date, sucursalId, service);
-        let horarios = await this.horarioModel.find().sort('hora');
+        let horarios = await this.horarioModel.find({
+            servicio: service,
+            sucursal: sucursalId
+        }).sort('hora');
         const today =  new Date();
         const todayString = `${today.getDate()}/${Number(today.getMonth()) + 1}/${today.getFullYear()}`;
         if (todayString === date) {
@@ -173,7 +191,10 @@ export class HorarioService {
      */
     async findScheduleInConsultByDateAndSucursal(consultaId: string, date: string, sucursalId: string): Promise<HorarioI[]> {
         const consultas = await this.consultaService.findConsultsByDateAndSucursal(date, sucursalId);
-        let horarios = await this.horarioModel.find( {servicio: consultaId} ).sort('hora');
+        let horarios = await this.horarioModel.find( {
+            servicio: consultaId,
+            sucursal: sucursalId
+        } ).sort('hora');
         const today =  new Date();
         const todayString = `${today.getDate()}/${Number(today.getMonth()) + 1}/${today.getFullYear()}`;
         if (todayString === date) {

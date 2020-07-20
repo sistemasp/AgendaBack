@@ -12,31 +12,31 @@ export class DermatologoController {
 
     @Get()
     showAllDermatologists() : Promise<DermatologoI[]> {
-        console.log(this.TAG, "showAllDermatologists");
+        console.log(new Date(), this.TAG, "showAllDermatologists");
         return this.dermatologoService.showAllDermatologists();
     }
 
     @Get(':id')
     findDermatologistById(@Param('id') idDermatologo: string): Promise<DermatologoI> {
-        console.log(this.TAG, "findDermatologistById");
+        console.log(new Date(), this.TAG, "findDermatologistById");
         return this.dermatologoService.findDermatologistById(idDermatologo);
     }
 
     @Post()
     createDermatologist(@Body() dermatologoDto: DermatologoDto): Promise<DermatologoI> {
-        console.log(this.TAG, "createDermatologist");
+        console.log(new Date(), this.TAG, "createDermatologist");
         return this.dermatologoService.createDermatologist(dermatologoDto);
     }
 
     @Put(':id') 
     updateDermatologist(@Param('id') idDermatologo: string, @Body() dermatologoDto: DermatologoDto): Promise<DermatologoI> {
-        console.log(this.TAG, "updateDermatologist");
+        console.log(new Date(), this.TAG, "updateDermatologist");
         return this.dermatologoService.updateDermatologist(idDermatologo, dermatologoDto);
     }
 
     @Delete(':id')
     deleteDermatologist(@Param('id') idDermatologo: string): Promise<DermatologoI> {
-        console.log(this.TAG, "deleteDermatologist");
+        console.log(new Date(), this.TAG, "deleteDermatologist");
         return this.dermatologoService.deleteDermatologist(idDermatologo);
     }
 

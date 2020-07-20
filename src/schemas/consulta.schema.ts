@@ -3,6 +3,7 @@ import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const ConsultaSchema = new Schema({
+    folio : String,
     fecha_hora : { type : Date },
     paciente : { type: Schema.ObjectId, ref: 'Paciente'},
     medico : { type: Schema.ObjectId, ref: 'Empleado'},
@@ -21,4 +22,5 @@ export const ConsultaSchema = new Schema({
     promovendedor : { type: Schema.ObjectId, ref: 'Empleado'},
     pagado : { type: Boolean, default: false },
     pagos : [{ type: Schema.ObjectId, ref: 'Pago'}],
+    consecutivo : String,
 });

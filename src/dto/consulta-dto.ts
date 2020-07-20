@@ -6,6 +6,7 @@ import { TipoCitaDto } from "./tipo-cita-dto";
 import { PagoDto } from "./pago-dto";
 
 export class ConsultaDto {
+    readonly folio : String;
     readonly fecha_hora : Date;
     readonly paciente : PacienteDto;
     readonly medico : EmpleadoDto;
@@ -24,4 +25,5 @@ export class ConsultaDto {
     readonly promovendedor : EmpleadoDto;
     readonly pagado : Boolean;
     readonly pagos : PagoDto[];
+    readonly consecutivo : String;
 }

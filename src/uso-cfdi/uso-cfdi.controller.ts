@@ -12,13 +12,13 @@ export class UsoCfdiController {
 
     @Get()
     showAllUsoCfdis() : Promise<UsoCfdiI[]> {
-        console.log(this.TAG, "showAllUsoCfdis");
+        console.log(new Date(), this.TAG, "showAllUsoCfdis");
         return this.usoCfdiService.showAllUsoCfdis();
     }
 
     @Get(':id')
     findUsoCfdiById(@Param('id') idUsoCfdi: string): Promise<UsoCfdiI> {
-        console.log(this.TAG, "findUsoCfdiById");
+        console.log(new Date(), this.TAG, "findUsoCfdiById");
         return this.usoCfdiService.findUsoCfdiById(idUsoCfdi);
     }
 
@@ -29,13 +29,13 @@ export class UsoCfdiController {
 
     @Put(':id') 
     updateUsoCfdi(@Param('id') idUsoCfdi: string, @Body() usoCfdiDto: UsoCfdiDto): Promise<UsoCfdiI> {
-        console.log(this.TAG, "updateUsoCfdi");
+        console.log(new Date(), this.TAG, "updateUsoCfdi");
         return this.usoCfdiService.updateUsoCfdi(idUsoCfdi, usoCfdiDto);
     }
 
     @Delete(':id')
     deleteUsoCfdi(@Param('id') idUsoCfdi: string): Promise<UsoCfdiI> {
-        console.log(this.TAG, "deleteUsoCfdi");
+        console.log(new Date(), this.TAG, "deleteUsoCfdi");
         return this.usoCfdiService.deleteUsoCfdi(idUsoCfdi);
     }
 

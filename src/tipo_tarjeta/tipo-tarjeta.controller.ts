@@ -12,31 +12,31 @@ export class TipoTarjetaController {
 
     @Get()
     showAllTipoTarjetas() : Promise<TipoTarjetaI[]> {
-        console.log(this.TAG, "showAllTipoTarjetas");
+        console.log(new Date(), this.TAG, "showAllTipoTarjetas");
         return this.tipoTarjetaService.showAllTipoTarjetas();
     }
 
     @Get(':id')
     findTipoTarjetaById(@Param('id') idTipoTarjeta: string): Promise<TipoTarjetaI> {
-        console.log(this.TAG, "findTipoTarjetaById");
+        console.log(new Date(), this.TAG, "findTipoTarjetaById");
         return this.tipoTarjetaService.findTipoTarjetaById(idTipoTarjeta);
     }
 
     @Post()
     createTipoTarjeta(@Body() rolDto: TipoTarjetaDto): Promise<TipoTarjetaI> {
-        console.log(this.TAG, "createTipoTarjeta");
+        console.log(new Date(), this.TAG, "createTipoTarjeta");
         return this.tipoTarjetaService.createTipoTarjeta(rolDto);
     }
 
     @Put(':id') 
     updateTipoTarjeta(@Param('id') idTipoTarjeta: string, @Body() rolDto: TipoTarjetaDto): Promise<TipoTarjetaI> {
-        console.log(this.TAG, "updateTipoTarjeta");
+        console.log(new Date(), this.TAG, "updateTipoTarjeta");
         return this.tipoTarjetaService.updateTipoTarjeta(idTipoTarjeta, rolDto);
     }
 
     @Delete(':id')
     deleteTipoTarjeta(@Param('id') idTipoTarjeta: string): Promise<TipoTarjetaI> {
-        console.log(this.TAG, "deleteTipoTarjeta");
+        console.log(new Date(), this.TAG, "deleteTipoTarjeta");
         return this.tipoTarjetaService.deleteTipoTarjeta(idTipoTarjeta);
     }
 

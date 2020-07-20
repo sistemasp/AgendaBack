@@ -12,31 +12,31 @@ export class CosmetologaController {
 
     @Get()
     showAllCosmetics(): Promise<CosmetologaI[]> {
-        console.log(this.TAG, "showAllCosmetics");
+        console.log(new Date(), this.TAG, "showAllCosmetics");
         return this.cosmetologaService.showAllCosmetics();
     }
 
     @Get(':id')
     findCosmeticById(@Param('id') idCosmetologa: string): Promise<CosmetologaI> {
-        console.log(this.TAG, "findCosmeticById");
+        console.log(new Date(), this.TAG, "findCosmeticById");
         return this.cosmetologaService.findCosmeticById(idCosmetologa);
     }
 
     @Post()
     createCosmetic(@Body() cosmetologaDto: CosmetologaDto): Promise<CosmetologaI> {
-        console.log(this.TAG, "createCosmetic");
+        console.log(new Date(), this.TAG, "createCosmetic");
         return this.cosmetologaService.createCosmetic(cosmetologaDto);
     }
 
     @Put(':id') 
     updateCosmetic(@Param('id') idCosmetologa: string, @Body() cosmetologaDto: CosmetologaDto): Promise<CosmetologaI> {
-        console.log(this.TAG, "updateCosmetic");
+        console.log(new Date(), this.TAG, "updateCosmetic");
         return this.cosmetologaService.updateCosmetic(idCosmetologa, cosmetologaDto);
     }
 
     @Delete(':id')
     deleteCosmetic(@Param('id') idCosmetologa: string): Promise<CosmetologaI> {
-        console.log(this.TAG, "deleteCosmetic");
+        console.log(new Date(), this.TAG, "deleteCosmetic");
         return this.cosmetologaService.deleteCosmetic(idCosmetologa);
     }
 

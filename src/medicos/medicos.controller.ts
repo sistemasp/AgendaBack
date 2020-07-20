@@ -12,7 +12,7 @@ export class MedicosController {
 
     @Get('/histotico/:medicoId')
     findHistoricByMedicId(@Param('medicoId') medicoId: string): Promise<ConsultaI[]> {
-        console.log(this.TAG, "findHistoricByMedicId");
+        console.log(new Date(), this.TAG, "findHistoricByMedicId");
         return this.consultaService.findHistoricByMedicId(medicoId);
     }
 

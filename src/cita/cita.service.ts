@@ -153,16 +153,7 @@ export class CitaService {
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.citaModel.find( {fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId, servicio: servicio} ).sort('fecha_hora')
-            .populate('paciente')
             .populate('servicio')
-            .populate('sucursal')
-            .populate('tratamientos')
-            .populate('quien_agenda')
-            .populate('promovendedor')
-            .populate('cosmetologa')
-            .populate('medico')
-            .populate('quien_confirma')
-            .populate('tipo_cita')
             .populate('status');
     }
 

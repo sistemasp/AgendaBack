@@ -12,37 +12,37 @@ export class RecepcionistaController {
 
     @Get()
     showAllRecepcionists() : Promise<RecepcionistaI[]> {
-        console.log(this.TAG, "showAllRecepcionists");
+        console.log(new Date(), this.TAG, "showAllRecepcionists");
         return this.recepcionistaService.showAllRecepcionists();
     }
 
     @Get(':id')
     findRecepcionistById(@Param('id') idRecepcionista: string): Promise<RecepcionistaI> {
-        console.log(this.TAG, "findRecepcionistById");
+        console.log(new Date(), this.TAG, "findRecepcionistById");
         return this.recepcionistaService.findRecepcionistById(idRecepcionista);
     }
 
     @Get('number/:employeeNumber')
     findRecepcionistByEmployeeNumber(@Param('employeeNumber') employeeNumber: string): Promise<RecepcionistaI> {
-        console.log(this.TAG, "findRecepcionistByEmployeeNumber");
+        console.log(new Date(), this.TAG, "findRecepcionistByEmployeeNumber");
         return this.recepcionistaService.findRecepcionistByEmployeeNumber(employeeNumber);
     }
 
     @Post()
     createRecepcionist(@Body() recepcionistaDto: RecepcionistaDto): Promise<RecepcionistaI> {
-        console.log(this.TAG, "createRecepcionist");
+        console.log(new Date(), this.TAG, "createRecepcionist");
         return this.recepcionistaService.createRecepcionist(recepcionistaDto);
     }
 
     @Put(':id') 
     updateRecepcionist(@Param('id') idRecepcionista: string, @Body() recepcionistaDto: RecepcionistaDto): Promise<RecepcionistaI> {
-        console.log(this.TAG, "updateRecepcionist");
+        console.log(new Date(), this.TAG, "updateRecepcionist");
         return this.recepcionistaService.updateRecepcionist(idRecepcionista, recepcionistaDto);
     }
 
     @Delete(':id')
     deleteRecepcionist(@Param('id') idRecepcionista: string): Promise<RecepcionistaI> {
-        console.log(this.TAG, "deleteRecepcionist");
+        console.log(new Date(), this.TAG, "deleteRecepcionist");
         return this.recepcionistaService.deleteRecepcionist(idRecepcionista);
     }
 

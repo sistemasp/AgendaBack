@@ -6,7 +6,7 @@ import { InjectModel } from '@nestjs/mongoose';
 @Injectable()
 export class FacturaService {
 
-    constructor(@InjectModel('Factura') private readonly facturaModel : Model<FacturaI>) {}
+    constructor(@InjectModel('Factura') private readonly facturaModel: Model<FacturaI>) { }
 
     /**
      * Muestra todos los facturas de la BD
@@ -20,7 +20,19 @@ export class FacturaService {
      * @param idFactura 
      */
     async findFacturaById(idFactura: string): Promise<FacturaI> {
-        return await this.facturaModel.findOne( { _id: idFactura } );
+        return await this.facturaModel.findOne({ _id: idFactura });
+    }
+
+    /**
+     * Busca solo un factura mediante su ID en la BD
+     * @param razonSocialId 
+     */
+    async findFacturaByRazonSocialId(razonSocialId: string): Promise<FacturaI> {
+        return await this.facturaModel.find({ razon_social: razonSocialId })
+            .populate('paciente')
+            .populate('metodo_pago')
+            .populate('sucursal')
+            .populate('uso_cfdi');;
     }
 
     /**
@@ -28,7 +40,7 @@ export class FacturaService {
      * @param idFactura 
      */
     async findFacturaByEmployeeNumber(employeeNumber: string): Promise<FacturaI> {
-        return await this.facturaModel.findOne( { numero_empleado: employeeNumber } );
+        return await this.facturaModel.findOne({ numero_empleado: employeeNumber });
     }
 
     /**
@@ -43,15 +55,13 @@ export class FacturaService {
         endDate.setHours(18);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
-        console.log('startDate', startDate);
-        console.log('endDate', endDate);
-        console.log('sucursal', sucursalId);
 
-        return await this.facturaModel.find( {fecha_hora: {$gte: startDate, $lte: endDate}, sucursal: sucursalId} ).sort('fecha_hora')
+        return await this.facturaModel.find({ fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId }).sort('fecha_hora')
             .populate('paciente')
             .populate('razon_social')
             .populate('pago')
             .populate('metodo_pago')
+            .populate('sucursal')
             .populate('uso_cfdi');
     }
 
@@ -77,7 +87,7 @@ export class FacturaService {
      * Busca un factura por su ID y lo elimina de la BD
      * @param idFactura 
      */
-    async deleteFactura(idFactura: string ): Promise<FacturaI> {
+    async deleteFactura(idFactura: string): Promise<FacturaI> {
         return await this.facturaModel.findOneAndDelete({ _id: idFactura });
     }
 

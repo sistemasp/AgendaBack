@@ -12,26 +12,26 @@ export class PagoController {
 
     @Get()
     showAllPagos() : Promise<PagoI[]> {
-        console.log(this.TAG, "showAllPagos");
+        console.log(new Date(), this.TAG, "showAllPagos");
         return this.pagoService.showAllPagos();
     }
 
     @Get(':id')
     findPagoById(@Param('id') idPago: string): Promise<PagoI> {
-        console.log(this.TAG, "findPagoById");
+        console.log(new Date(), this.TAG, "findPagoById");
         return this.pagoService.findPagoById(idPago);
     }
 
     @Get('pagos/cita/:idCita')
     findPagosByCita(@Param('idCita') idCita: string): Promise<PagoI[]> {
-        console.log(this.TAG, "findPagosByCita");
+        console.log(new Date(), this.TAG, "findPagosByCita");
         return this.pagoService.findPagosByCita(idCita);
     }    
 
     @Get('pagos/:pagosIds')
     findPagoByIds(@Param('pagosIds') pagosIds: string): Promise<PagoI[]> {
-        console.log(this.TAG, "findPagoByIds");
-        console.log(this.TAG, pagosIds);
+        console.log(new Date(), this.TAG, "findPagoByIds");
+        console.log(new Date(), this.TAG, pagosIds);
 
         return this.pagoService.findPagoByIds(pagosIds);
     }
@@ -40,25 +40,25 @@ export class PagoController {
     findPaysByRangeDateAndSucursal(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
         @Param('sucursalId') sucursalId: string) : Promise<PagoI[]> {
-        console.log(this.TAG, "findConsultsByRangeDateAndSucursal");
+        console.log(new Date(), this.TAG, "findConsultsByRangeDateAndSucursal");
         return this.pagoService.findPaysByRangeDateAndSucursal(`${anioi}-${mesi}-${diai}`, `${aniof}-${mesf}-${diaf}`, sucursalId);
     }
 
     @Post()
     createPago(@Body() pagoDto: PagoDto): Promise<PagoI> {
-        console.log(this.TAG, "createPago");
+        console.log(new Date(), this.TAG, "createPago");
         return this.pagoService.createPago(pagoDto);
     }
 
     @Put(':id') 
     updatePago(@Param('id') idPago: string, @Body() pagoDto: PagoDto): Promise<PagoI> {
-        console.log(this.TAG, "updatePago");
+        console.log(new Date(), this.TAG, "updatePago");
         return this.pagoService.updatePago(idPago, pagoDto);
     }
 
     @Delete(':id')
     deletePago(@Param('id') idPago: string): Promise<PagoI> {
-        console.log(this.TAG, "deletePago");
+        console.log(new Date(), this.TAG, "deletePago");
         return this.pagoService.deletePago(idPago);
     }
 

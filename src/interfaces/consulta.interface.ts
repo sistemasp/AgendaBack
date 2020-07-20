@@ -6,6 +6,7 @@ import { TipoCitaI } from "./tipo-cita.interface";
 import { PagoI } from "./pago.interface";
 
 export interface ConsultaI {
+    folio : String;
     fecha_hora : Date;
     paciente : PacienteI;
     medico : EmpleadoI;
@@ -24,4 +25,5 @@ export interface ConsultaI {
     promovendedor : EmpleadoI;
     pagado : Boolean;
     pagos : PagoI[];
+    consecutivo : String;
 }

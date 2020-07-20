@@ -12,31 +12,31 @@ export class MetodoPagoController {
 
     @Get()
     showAllMetodoPagos() : Promise<MetodoPagoI[]> {
-        console.log(this.TAG, "showAllMetodoPagos");
+        console.log(new Date(), this.TAG, "showAllMetodoPagos");
         return this.metodoPagoService.showAllMetodoPagos();
     }
 
     @Get(':id')
     findMetodoPagoById(@Param('id') idMetodoPago: string): Promise<MetodoPagoI> {
-        console.log(this.TAG, "findMetodoPagoById");
+        console.log(new Date(), this.TAG, "findMetodoPagoById");
         return this.metodoPagoService.findMetodoPagoById(idMetodoPago);
     }
 
     @Post()
     createMetodoPago(@Body() metodoPagoDto: MetodoPagoDto): Promise<MetodoPagoI> {
-        console.log(this.TAG, "createMetodoPago");
+        console.log(new Date(), this.TAG, "createMetodoPago");
         return this.metodoPagoService.createMetodoPago(metodoPagoDto);
     }
 
     @Put(':id') 
     updateMetodoPago(@Param('id') idMetodoPago: string, @Body() metodoPagoDto: MetodoPagoDto): Promise<MetodoPagoI> {
-        console.log(this.TAG, "updateMetodoPago");
+        console.log(new Date(), this.TAG, "updateMetodoPago");
         return this.metodoPagoService.updateMetodoPago(idMetodoPago, metodoPagoDto);
     }
 
     @Delete(':id')
     deleteMetodoPago(@Param('id') idMetodoPago: string): Promise<MetodoPagoI> {
-        console.log(this.TAG, "deleteMetodoPago");
+        console.log(new Date(), this.TAG, "deleteMetodoPago");
         return this.metodoPagoService.deleteMetodoPago(idMetodoPago);
     }
 

@@ -12,31 +12,31 @@ export class TipoCitaController {
 
     @Get()
     showAllTipoCitas() : Promise<TipoCitaI[]> {
-        console.log(this.TAG, "showAllTipoCitas");
+        console.log(new Date(), this.TAG, "showAllTipoCitas");
         return this.tipoCitaService.showAllTipoCitas();
     }
 
     @Get(':id')
     findTipoCitaById(@Param('id') idTipoCita: string): Promise<TipoCitaI> {
-        console.log(this.TAG, "findTipoCitaById");
+        console.log(new Date(), this.TAG, "findTipoCitaById");
         return this.tipoCitaService.findTipoCitaById(idTipoCita);
     }
 
     @Post()
     createTipoCita(@Body() rolDto: TipoCitaDto): Promise<TipoCitaI> {
-        console.log(this.TAG, "createTipoCita");
+        console.log(new Date(), this.TAG, "createTipoCita");
         return this.tipoCitaService.createTipoCita(rolDto);
     }
 
     @Put(':id') 
     updateTipoCita(@Param('id') idTipoCita: string, @Body() rolDto: TipoCitaDto): Promise<TipoCitaI> {
-        console.log(this.TAG, "updateTipoCita");
+        console.log(new Date(), this.TAG, "updateTipoCita");
         return this.tipoCitaService.updateTipoCita(idTipoCita, rolDto);
     }
 
     @Delete(':id')
     deleteTipoCita(@Param('id') idTipoCita: string): Promise<TipoCitaI> {
-        console.log(this.TAG, "deleteTipoCita");
+        console.log(new Date(), this.TAG, "deleteTipoCita");
         return this.tipoCitaService.deleteTipoCita(idTipoCita);
     }
 

@@ -12,37 +12,37 @@ export class PacienteController {
 
     @Get()
     showAllPatients() : Promise<PacienteI[]> {
-        console.log(this.TAG, "showAllPatients");
+        console.log(new Date(), this.TAG, "showAllPatients");
         return this.pacienteService.showAllPatients();
     }
 
     @Get(':id')
     findPatientById(@Param('id') idPaciente: string): Promise<PacienteI> {
-        console.log(this.TAG, "findPatientById");
+        console.log(new Date(), this.TAG, "findPatientById");
         return this.pacienteService.findPatientById(idPaciente);
     }
 
     @Get('phonenumber/:telefono')
     findPatientByPhoneNumber(@Param('telefono') telefono: string): Promise<PacienteI[]> {
-        console.log(this.TAG, "findPatientByPhoneNumber");
+        console.log(new Date(), this.TAG, "findPatientByPhoneNumber");
         return this.pacienteService.findPatientByPhoneNumber(telefono);
     }
 
     @Post()
     createPatient(@Body() pacienteDto: PacienteDto): Promise<PacienteI> {
-        console.log(this.TAG, "createPatient");
+        console.log(new Date(), this.TAG, "createPatient");
         return this.pacienteService.createPatient(pacienteDto);
     }
 
     @Put(':id') 
     updatePatient(@Param('id') idPaciente: string, @Body() pacienteDto: PacienteDto): Promise<PacienteI> {
-        console.log(this.TAG, "updatePatient");
+        console.log(new Date(), this.TAG, "updatePatient");
         return this.pacienteService.updatePatient(idPaciente, pacienteDto);
     }
 
     @Delete(':id')
     deletePatient(@Param('id') idPaciente: string): Promise<PacienteI> {
-        console.log(this.TAG, "deletePatient");
+        console.log(new Date(), this.TAG, "deletePatient");
         return this.pacienteService.deletePatient(idPaciente);
     }
 }

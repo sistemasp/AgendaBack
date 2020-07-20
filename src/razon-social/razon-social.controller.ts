@@ -12,31 +12,31 @@ export class RazonSocialController {
 
     @Get()
     showAllRazonSocials() : Promise<RazonSocialI[]> {
-        console.log(this.TAG, "showAllRazonSocials");
+        console.log(new Date(), this.TAG, "showAllRazonSocials");
         return this.razonSocialService.showAllRazonSocials();
     }
 
     @Get(':id')
     findRazonSocialById(@Param('id') idRazonSocial: string): Promise<RazonSocialI> {
-        console.log(this.TAG, "findRazonSocialById");
+        console.log(new Date(), this.TAG, "findRazonSocialById");
         return this.razonSocialService.findRazonSocialById(idRazonSocial);
     }
 
     @Post()
     createRazonSocial(@Body() razonSocialDto: RazonSocialDto): Promise<RazonSocialI> {
-        console.log(this.TAG, "createRazonSocial");
+        console.log(new Date(), this.TAG, "createRazonSocial");
         return this.razonSocialService.createRazonSocial(razonSocialDto);
     }
 
     @Put(':id') 
     updateRazonSocial(@Param('id') idRazonSocial: string, @Body() razonSocialDto: RazonSocialDto): Promise<RazonSocialI> {
-        console.log(this.TAG, "updateRazonSocial");
+        console.log(new Date(), this.TAG, "updateRazonSocial");
         return this.razonSocialService.updateRazonSocial(idRazonSocial, razonSocialDto);
     }
 
     @Delete(':id')
     deleteRazonSocial(@Param('id') idRazonSocial: string): Promise<RazonSocialI> {
-        console.log(this.TAG, "deleteRazonSocial");
+        console.log(new Date(), this.TAG, "deleteRazonSocial");
         return this.razonSocialService.deleteRazonSocial(idRazonSocial);
     }
 

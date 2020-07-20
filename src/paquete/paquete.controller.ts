@@ -12,31 +12,31 @@ export class PaqueteController {
 
     @Get()
     showAllPacks() : Promise<PaqueteI[]> {
-        console.log(this.TAG, "showAllPacks");
+        console.log(new Date(), this.TAG, "showAllPacks");
         return this.paqueteService.showAllPacks();
     }
 
     @Get(':id')
     findPackById(@Param('id') idPaquete: string): Promise<PaqueteI> {
-        console.log(this.TAG, "findPackById");
+        console.log(new Date(), this.TAG, "findPackById");
         return this.paqueteService.findPackById(idPaquete);
     }
 
     @Post()
     createPack(@Body() paqueteDto: PaqueteDto): Promise<PaqueteI> {
-        console.log(this.TAG, "createPack");
+        console.log(new Date(), this.TAG, "createPack");
         return this.paqueteService.createPack(paqueteDto);
     }
 
     @Put(':id') 
     updatePack(@Param('id') idPaquete: string, @Body() paqueteDto: PaqueteDto): Promise<PaqueteI> {
-        console.log(this.TAG, "updatePack");
+        console.log(new Date(), this.TAG, "updatePack");
         return this.paqueteService.updatePack(idPaquete, paqueteDto);
     }
 
     @Delete(':id')
     deletePack(@Param('id') idPaquete: string): Promise<PaqueteI> {
-        console.log(this.TAG, "deletePack");
+        console.log(new Date(), this.TAG, "deletePack");
         return this.paqueteService.deletePack(idPaquete);
     }
 

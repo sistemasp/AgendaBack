@@ -12,49 +12,49 @@ export class EmpleadoController {
 
     @Get()
     showAllEmployees() : Promise<EmpleadoI[]> {
-        console.log(this.TAG, "showAllEmployees");
+        console.log(new Date(), this.TAG, "showAllEmployees");
         return this.empleadoService.showAllEmployees();
     }
 
     @Get(':id')
     findEmployeeById(@Param('id') idEmpleado: string): Promise<EmpleadoI> {
-        console.log(this.TAG, "findEmployeeById");
+        console.log(new Date(), this.TAG, "findEmployeeById");
         return this.empleadoService.findEmployeeById(idEmpleado);
     }
 
     @Get('number/:employeeNumber')
     findEmployeeByEmployeeNumber(@Param('employeeNumber') employeeNumber: string): Promise<EmpleadoI> {
-        console.log(this.TAG, "findEmployeeByEmployeeNumber");
+        console.log(new Date(), this.TAG, "findEmployeeByEmployeeNumber");
         return this.empleadoService.findEmployeeByEmployeeNumber(employeeNumber);
     }
 
     @Get('rol/:id_rol')
     findEmployeesByRolId(@Param('id_rol') idRol: string): Promise<EmpleadoI[]> {
-        console.log(this.TAG, "findEmployeesByRolId");
+        console.log(new Date(), this.TAG, "findEmployeesByRolId");
         return this.empleadoService.findEmployeesByRolId(idRol);
     }
 
     @Post()
     createEmployee(@Body() empleadoDto: EmpleadoDto): Promise<EmpleadoI> {
-        console.log(this.TAG, "createEmployee");
+        console.log(new Date(), this.TAG, "createEmployee");
         return this.empleadoService.createEmployee(empleadoDto);
     }
 
     @Put(':id') 
     updateEmployee(@Param('id') idEmpleado: string, @Body() empleadoDto: EmpleadoDto): Promise<EmpleadoI> {
-        console.log(this.TAG, "updateEmployee");
+        console.log(new Date(), this.TAG, "updateEmployee");
         return this.empleadoService.updateEmployee(idEmpleado, empleadoDto);
     }
 
     @Delete(':id')
     deleteEmployee(@Param('id') idEmpleado: string): Promise<EmpleadoI> {
-        console.log(this.TAG, "deleteEmployee");
+        console.log(new Date(), this.TAG, "deleteEmployee");
         return this.empleadoService.deleteEmployee(idEmpleado);
     }
 
     @Get('login/:employeeNumber/:password')
     loginEmployee(@Param('employeeNumber') employeeNumber: string, @Param('password') password: string): Promise<EmpleadoI> {
-        console.log(this.TAG, "loginEmployee");
+        console.log(new Date(), this.TAG, "loginEmployee");
         return this.empleadoService.loginEmployee(employeeNumber, password);
     }
 
