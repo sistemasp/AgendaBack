@@ -147,7 +147,7 @@ export class HorarioService {
      * @param sucursalId
      * @param service
      */
-    async findScheduleByDateAndSucursalAndService(date: string, sucursalId: string, service: string): Promise<HorarioI[]> {
+    async findScheduleByDateAndSucursalAndService(date: string, sucursalId: string, service: string): Promise<HorarioI[]> {        
         const citas = await this.citaService.findDatesByDateAndSucursalAndService(date, sucursalId, service);
         let horarios = await this.horarioModel.find({
             servicio: service,

@@ -73,6 +73,9 @@ import { UsoCfdiService } from './uso-cfdi/uso-cfdi.service';
 import { RazonSocialSchema } from './schemas/razon-social.schema';
 import { UsoCfdiSchema } from './schemas/uso-cfdi.schema';
 import { FacturaSchema } from './schemas/factura.schema';
+import { TratamientoPrecioSchema } from './schemas/tratamiento-precio.schema';
+import { TratamientoPrecioController } from './tratamiento_precio/tratamiento-precio.controller';
+import { TratamientoPrecioService } from './tratamiento_precio/tratamiento-precio.service';
 
 @Module({
   imports: [
@@ -101,6 +104,7 @@ import { FacturaSchema } from './schemas/factura.schema';
       { name: 'RazonSocial', schema: RazonSocialSchema },
       { name: 'Factura', schema: FacturaSchema },
       { name: 'UsoCfdi', schema: UsoCfdiSchema },
+      { name: 'TratamientoPrecio', schema: TratamientoPrecioSchema },
     ])
   ],
   controllers: [
@@ -129,6 +133,7 @@ import { FacturaSchema } from './schemas/factura.schema';
     RazonSocialController,
     FacturaController,
     UsoCfdiController,
+    TratamientoPrecioController,
   ],
   providers: [
     AppService,
@@ -156,6 +161,7 @@ import { FacturaSchema } from './schemas/factura.schema';
     RazonSocialService,
     FacturaService,
     UsoCfdiService,
+    TratamientoPrecioService,
   ],
 })
 

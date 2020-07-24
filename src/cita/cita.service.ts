@@ -199,6 +199,20 @@ export class CitaService {
      * @param cita 
      */
     async createDate(cita: CitaI): Promise<CitaI> {
+        let startDate = new Date();
+        startDate.setHours(-5);
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date();
+        endDate.setHours(18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+        const consecutivo = await this.citaModel.find( {
+            sucursal: cita.sucursal,
+            servicio: cita.servicio,
+            fecha_hora: {$gte: startDate, $lte: endDate}
+        });
+        cita.consecutivo = consecutivo.length;
         const newDate = new this.citaModel(cita);
         return await newDate.save();
     }

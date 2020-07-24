@@ -207,6 +207,19 @@ export class ConsultaService {
      * @param consulta 
      */
     async createConsult(consulta: ConsultaI): Promise<ConsultaI> {
+        let startDate = new Date();
+        startDate.setHours(-5);
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date();
+        endDate.setHours(18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+        const consecutivo = await this.consultaModel.find( {
+            sucursal: consulta.sucursal,
+            fecha_hora: {$gte: startDate, $lte: endDate}
+        });
+        consulta.consecutivo = consecutivo.length;
         const newDate = new this.consultaModel(consulta);
         return await newDate.save();
     }

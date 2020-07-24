@@ -20,7 +20,7 @@ export class SucursalService {
      * @param idSucursal 
      */
     async findOfficeById(idSucursal: string): Promise<SucursalI> {
-        return await this.sucursalModel.findOne( { _id: idSucursal } );
+        return await this.sucursalModel.findOne( { _id: idSucursal } ).populate('servicios');
     }
 
     /**
@@ -43,7 +43,7 @@ export class SucursalService {
 
     /**
      * Busca un sucursal por su ID y lo elimina de la BD
-     * @param idSucursal 
+     * @param idSucursal
      */
     async deleteOffice(idSucursal: string ): Promise<SucursalI> {
         return await this.sucursalModel.findOneAndDelete({ _id: idSucursal });
