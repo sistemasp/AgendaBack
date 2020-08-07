@@ -21,6 +21,7 @@ export class ConsultaService {
             .populate('quien_confirma')
             .populate('tipo_cita')
             .populate('pago')
+            .populate('frecuencia')
             .populate('status');
     }
 
@@ -37,6 +38,7 @@ export class ConsultaService {
             .populate('quien_confirma')
             .populate('tipo_cita')
             .populate('pago')
+            .populate('frecuencia')
             .populate('status');
     }
 
@@ -74,6 +76,7 @@ export class ConsultaService {
             .populate('quien_confirma')
             .populate('tipo_cita')
             .populate('pago')
+            .populate('frecuencia')
             .populate('status');
     }
 
@@ -102,6 +105,7 @@ export class ConsultaService {
             .populate('quien_confirma')
             .populate('tipo_cita')
             .populate('pago')
+            .populate('frecuencia')
             .populate('status');
     }
 
@@ -126,6 +130,7 @@ export class ConsultaService {
             .populate('quien_confirma')
             .populate('tipo_cita')
             .populate('pago')
+            .populate('frecuencia')
             .populate('status');
     }
 
@@ -167,6 +172,7 @@ export class ConsultaService {
             .populate('quien_confirma')
             .populate('tipo_cita')
             .populate('pago')
+            .populate('frecuencia')
             .populate('status');
     }
 
@@ -183,6 +189,7 @@ export class ConsultaService {
             .populate('quien_confirma')
             .populate('tipo_cita')
             .populate('pago')
+            .populate('frecuencia')
             .populate('status');
     }
 
@@ -199,6 +206,7 @@ export class ConsultaService {
             .populate('quien_confirma')
             .populate('tipo_cita')
             .populate('pago')
+            .populate('frecuencia')
             .populate('status');
     }
 

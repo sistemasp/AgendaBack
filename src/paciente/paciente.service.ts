@@ -12,7 +12,7 @@ export class PacienteService {
      * Muestra todos los pacientes de la BD
      */
     async showAllPatients(): Promise<PacienteI[]> {
-        return await this.pacienteModel.find();
+        return await this.pacienteModel.find().populate('sexo');
     }
 
     /**
@@ -20,7 +20,7 @@ export class PacienteService {
      * @param idPaciente 
      */
     async findPatientById(idPaciente: string): Promise<PacienteI> {
-        return await this.pacienteModel.findOne( { _id: idPaciente } );
+        return await this.pacienteModel.findOne( { _id: idPaciente } ).populate('sexo');
     }
 
     /**
@@ -28,7 +28,7 @@ export class PacienteService {
      * @param number 
      */
     async findPatientByPhoneNumber(number: string): Promise<PacienteI[]> {
-        return await this.pacienteModel.find( { telefono: number } );
+        return await this.pacienteModel.find( { telefono: number } ).populate('sexo');
     }
 
     /**

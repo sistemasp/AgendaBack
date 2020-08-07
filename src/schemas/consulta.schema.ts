@@ -23,4 +23,5 @@ export const ConsultaSchema = new Schema({
     pagado : { type: Boolean, default: false },
     pagos : [{ type: Schema.ObjectId, ref: 'Pago'}],
     consecutivo : String,
+    frecuencia : { type: Schema.ObjectId, ref: 'Frecuencia'},
 });

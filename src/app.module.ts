@@ -76,6 +76,15 @@ import { FacturaSchema } from './schemas/factura.schema';
 import { TratamientoPrecioSchema } from './schemas/tratamiento-precio.schema';
 import { TratamientoPrecioController } from './tratamiento_precio/tratamiento-precio.controller';
 import { TratamientoPrecioService } from './tratamiento_precio/tratamiento-precio.service';
+import { FrecuenciaSchema } from './schemas/frecuencia.schema';
+import { FrecuenciaController } from './frecuencia/frecuencia.controller';
+import { FrecuenciaService } from './frecuencia/frecuencia.service';
+import { AcidoSchema } from './schemas/acido.schema';
+import { AcidoController } from './acido/acido.controller';
+import { AcidoService } from './acido/acido.service';
+import { SexoSchema } from './schemas/sexo.schema';
+import { SexoController } from './sexo/sexo.controller';
+import { SexoService } from './sexo/sexo.service';
 
 @Module({
   imports: [
@@ -105,6 +114,9 @@ import { TratamientoPrecioService } from './tratamiento_precio/tratamiento-preci
       { name: 'Factura', schema: FacturaSchema },
       { name: 'UsoCfdi', schema: UsoCfdiSchema },
       { name: 'TratamientoPrecio', schema: TratamientoPrecioSchema },
+      { name: 'Frecuencia', schema: FrecuenciaSchema },
+      { name: 'Acido', schema: AcidoSchema },
+      { name: 'Sexo', schema: SexoSchema },
     ])
   ],
   controllers: [
@@ -134,6 +146,9 @@ import { TratamientoPrecioService } from './tratamiento_precio/tratamiento-preci
     FacturaController,
     UsoCfdiController,
     TratamientoPrecioController,
+    FrecuenciaController,
+    AcidoController,
+    SexoController,
   ],
   providers: [
     AppService,
@@ -162,6 +177,9 @@ import { TratamientoPrecioService } from './tratamiento_precio/tratamiento-preci
     FacturaService,
     UsoCfdiService,
     TratamientoPrecioService,
+    FrecuenciaService,
+    AcidoService,
+    SexoService,
   ],
 })
 

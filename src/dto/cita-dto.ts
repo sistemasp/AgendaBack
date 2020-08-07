@@ -31,5 +31,5 @@ export class CitaDto {
     readonly pagado: Boolean;
     readonly pagos: PagoDto[];
     readonly consecutivo : String;
-    readonly tratamientos_precios : [];
+    readonly tratamientos : [];
 }

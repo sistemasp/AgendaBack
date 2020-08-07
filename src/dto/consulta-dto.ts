@@ -4,6 +4,7 @@ import { EmpleadoDto } from "./empleado-dto";
 import { StatusDto } from "./status-dto";
 import { TipoCitaDto } from "./tipo-cita-dto";
 import { PagoDto } from "./pago-dto";
+import { FrecuenciaDto } from "./frecuencia-dto";
 
 export class ConsultaDto {
     readonly folio : String;
@@ -26,4 +27,5 @@ export class ConsultaDto {
     readonly pagado : Boolean;
     readonly pagos : PagoDto[];
     readonly consecutivo : String;
+    readonly frecuencia : FrecuenciaDto;
 }

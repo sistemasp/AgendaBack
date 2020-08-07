@@ -26,5 +26,5 @@ export const CitaSchema = new Schema({
     pagado: { type: Boolean, default: false },
     pagos: [{ type: Schema.ObjectId, ref: 'Pago' }],
     consecutivo: String,
-    tratamientos_precios: [{}],
+    tratamientos: [{}],
 });

@@ -61,6 +61,12 @@ export class CitaController {
         return this.citaService.findHistoricByPaciente(pacienteId);
     }
 
+    @Get('/histotic/:pacienteId/servicio/:serviceId')
+    findHistoricByPacienteAndService(@Param('pacienteId') pacienteId: string, @Param('serviceId') serviceId: string): Promise<CitaI[]> {
+        console.log(new Date(), this.TAG, "findHistoricByPacienteAndService");
+        return this.citaService.findHistoricByPacienteAndService(pacienteId, serviceId);
+    }
+
     @Get(':id')
     findDateById(@Param('id') idCita: string): Promise<CitaI> {
         console.log(new Date(), this.TAG, "findDateById");

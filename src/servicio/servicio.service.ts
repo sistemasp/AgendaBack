@@ -12,7 +12,7 @@ export class ServicioService {
      * Muestra todos los servicios de la BD
      */
     async showAllServices(): Promise<ServicioI[]> {
-        return await this.servicioModel.find();
+        return await this.servicioModel.find().sort('nombre');
     }
 
     /**

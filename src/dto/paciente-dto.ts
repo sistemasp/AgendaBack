@@ -1,7 +1,16 @@
+import { SexoDto } from "./sexo-dto";
+
 export class PacienteDto {
     readonly nombres : string;
     readonly apellidos : string;
     readonly fecha_nacimiento : string;
     readonly direccion : string;
     readonly telefono : string;
+    readonly sexo : SexoDto;
+    readonly ocupacion : string;
+    readonly alerta_medica : boolean;
+    readonly estado : string;
+    readonly municipio : string;
+    readonly colonia : string;
+    readonly cp : string;
 }

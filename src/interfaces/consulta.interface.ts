@@ -4,6 +4,7 @@ import { EmpleadoI } from "./empleado.interface";
 import { StatusI } from "./status.interface";
 import { TipoCitaI } from "./tipo-cita.interface";
 import { PagoI } from "./pago.interface";
+import { FrecuenciaI } from "./frecuencia.interface";
 
 export interface ConsultaI {
     folio : String;
@@ -26,4 +27,5 @@ export interface ConsultaI {
     pagado : Boolean;
     pagos : PagoI[];
     consecutivo : String;
+    frecuencia : FrecuenciaI;
 }

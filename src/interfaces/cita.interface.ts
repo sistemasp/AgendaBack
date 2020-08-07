@@ -31,5 +31,5 @@ export interface CitaI {
     pagado: Boolean;
     pagos: PagoI[];
     consecutivo : String;
-    tratamientos_precios : [];
+    tratamientos : [];
 }

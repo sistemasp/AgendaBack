@@ -16,7 +16,6 @@ export class CitaService {
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
-            .populate('tratamientos')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
@@ -34,7 +33,6 @@ export class CitaService {
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
-            .populate('tratamientos')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
@@ -52,7 +50,6 @@ export class CitaService {
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
-            .populate('tratamientos')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
@@ -78,7 +75,6 @@ export class CitaService {
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
-            .populate('tratamientos')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
@@ -104,7 +100,6 @@ export class CitaService {
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
-            .populate('tratamientos')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
@@ -130,7 +125,6 @@ export class CitaService {
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
-            .populate('tratamientos')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
@@ -166,7 +160,6 @@ export class CitaService {
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
-            .populate('tratamientos')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
@@ -184,7 +177,25 @@ export class CitaService {
             .populate('paciente')
             .populate('servicio')
             .populate('sucursal')
-            .populate('tratamientos')
+            .populate('quien_agenda')
+            .populate('promovendedor')
+            .populate('cosmetologa')
+            .populate('medico')
+            .populate('quien_confirma')
+            .populate('tipo_cita')
+            .populate('status');
+    }
+
+    /**
+     * Muestra todo el histotico de una persona buscando por su numero de telefono
+     */
+    async findHistoricByPacienteAndService(pacienteId: string, serviceId: string): Promise<CitaI[]> {
+        console.log();
+
+        return await this.citaModel.find( {paciente: pacienteId, servicio: serviceId} ).sort('fecha_hora')
+            .populate('paciente')
+            .populate('servicio')
+            .populate('sucursal')
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
