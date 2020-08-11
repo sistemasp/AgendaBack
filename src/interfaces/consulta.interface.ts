@@ -13,7 +13,8 @@ export interface ConsultaI {
     medico : EmpleadoI;
     quien_agenda : EmpleadoI;
     tipo_cita : TipoCitaI;
-    quien_confirma : EmpleadoI;
+    quien_confirma_llamada: EmpleadoI;
+    quien_confirma_asistencia: EmpleadoI;
     status : StatusI;
     motivos : String;
     precio : String;

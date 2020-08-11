@@ -46,6 +46,13 @@ export class ConsultaController {
         return this.consultaService.findConsultsByDateAndSucursal(`${anio}-${mes}-${dia}`, sucursalId);
     }
 
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId')
+    findConsultsByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
+    @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,) : Promise<ConsultaI[]> {
+        console.log(new Date(), this.TAG, "findConsultsByPayOfDoctor");
+        return this.consultaService.findConsultsByPayOfDoctor(`${anio}-${mes}-${dia}`, sucursalId, medicoId, atendidoId);
+    }
+
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')
     findConsultsByRangeDateAndSucursal(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,

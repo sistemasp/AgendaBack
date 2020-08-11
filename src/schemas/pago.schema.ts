@@ -22,4 +22,6 @@ export const PagoSchema = new Schema({
     factura : { type: Boolean, default: false },
     deposito_confirmado : { type: Boolean, default: false },
     observaciones : String,
+    porcentaje_descuento : String,
+    descuento : String,
 });

@@ -13,7 +13,8 @@ export class ConsultaDto {
     readonly medico : EmpleadoDto;
     readonly quien_agenda : EmpleadoDto;
     readonly tipo_cita : TipoCitaDto;
-    readonly quien_confirma : EmpleadoDto;
+    readonly quien_confirma_llamada: EmpleadoDto;
+    readonly quien_confirma_asistencia: EmpleadoDto;
     readonly status : StatusDto;
     readonly motivos : String;
     readonly precio : String;

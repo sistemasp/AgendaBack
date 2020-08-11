@@ -20,7 +20,8 @@ export class CitaService {
             .populate('promovendedor')
             .populate('cosmetologa')
             .populate('medico')
-            .populate('quien_confirma')
+            .populate('quien_confirma_asistencia')
+            .populate('quien_confirma_llamada')
             .populate('tipo_cita')
             .populate('status');
     }
@@ -37,7 +38,8 @@ export class CitaService {
             .populate('promovendedor')
             .populate('cosmetologa')
             .populate('medico')
-            .populate('quien_confirma')
+            .populate('quien_confirma_asistencia')
+            .populate('quien_confirma_llamada')
             .populate('tipo_cita')
             .populate('status');
     }
@@ -54,7 +56,8 @@ export class CitaService {
             .populate('promovendedor')
             .populate('cosmetologa')
             .populate('medico')
-            .populate('quien_confirma')
+            .populate('quien_confirma_asistencia')
+            .populate('quien_confirma_llamada')
             .populate('tipo_cita')
             .populate('status');
     }
@@ -79,7 +82,8 @@ export class CitaService {
             .populate('promovendedor')
             .populate('cosmetologa')
             .populate('medico')
-            .populate('quien_confirma')
+            .populate('quien_confirma_asistencia')
+            .populate('quien_confirma_llamada')
             .populate('tipo_cita')
             .populate('status');
     }
@@ -104,7 +108,8 @@ export class CitaService {
             .populate('promovendedor')
             .populate('cosmetologa')
             .populate('medico')
-            .populate('quien_confirma')
+            .populate('quien_confirma_asistencia')
+            .populate('quien_confirma_llamada')
             .populate('tipo_cita')
             .populate('status');
     }
@@ -129,7 +134,8 @@ export class CitaService {
             .populate('promovendedor')
             .populate('cosmetologa')
             .populate('medico')
-            .populate('quien_confirma')
+            .populate('quien_confirma_asistencia')
+            .populate('quien_confirma_llamada')
             .populate('tipo_cita')
             .populate('status');
     }
@@ -164,7 +170,8 @@ export class CitaService {
             .populate('promovendedor')
             .populate('cosmetologa')
             .populate('medico')
-            .populate('quien_confirma')
+            .populate('quien_confirma_asistencia')
+            .populate('quien_confirma_llamada')
             .populate('tipo_cita')
             .populate('status');
     }
@@ -181,7 +188,8 @@ export class CitaService {
             .populate('promovendedor')
             .populate('cosmetologa')
             .populate('medico')
-            .populate('quien_confirma')
+            .populate('quien_confirma_asistencia')
+            .populate('quien_confirma_llamada')
             .populate('tipo_cita')
             .populate('status');
     }
@@ -200,7 +208,8 @@ export class CitaService {
             .populate('promovendedor')
             .populate('cosmetologa')
             .populate('medico')
-            .populate('quien_confirma')
+            .populate('quien_confirma_asistencia')
+            .populate('quien_confirma_llamada')
             .populate('tipo_cita')
             .populate('status');
     }

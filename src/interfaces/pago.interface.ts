@@ -28,4 +28,6 @@ export interface PagoI {
     factura: Boolean;
     deposito_confirmado: Boolean;
     observaciones: String;
+    porcentaje_descuento : String;
+    descuento : String;
 }

@@ -28,4 +28,6 @@ export class PagoDto {
     readonly factura : Boolean;
     readonly deposito_confirmado : Boolean;
     readonly observaciones : String;
+    readonly porcentaje_descuento : String;
+    readonly descuento : String;
 }
