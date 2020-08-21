@@ -26,6 +26,12 @@ export class PagoController {
     findPagosByCita(@Param('idCita') idCita: string): Promise<PagoI[]> {
         console.log(new Date(), this.TAG, "findPagosByCita");
         return this.pagoService.findPagosByCita(idCita);
+    }
+
+    @Get('pagos/tipo_servicio/:idTipoServicio/servicio/:idServicio')
+    findPagosByTipoServicioAndServicio(@Param('idTipoServicio') idTipoServicio: string, @Param('idServicio') idServicio: string): Promise<PagoI[]> {
+        console.log(new Date(), this.TAG, "findPagosByTipoServicioAndServicio");
+        return this.pagoService.findPagosByTipoServicioAndServicio(idTipoServicio, idServicio);
     }    
 
     @Get('pagos/:pagosIds')

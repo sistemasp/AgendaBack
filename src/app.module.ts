@@ -85,6 +85,15 @@ import { AcidoService } from './acido/acido.service';
 import { SexoSchema } from './schemas/sexo.schema';
 import { SexoController } from './sexo/sexo.controller';
 import { SexoService } from './sexo/sexo.service';
+import { CirugiaSchema } from './schemas/cirugia.schema';
+import { BiopsiaSchema } from './schemas/biopsia.schema';
+import { CirugiaController } from './cirugia/cirugia.controller';
+import { BiopsiaController } from './biopsia/biopsia.controller';
+import { CirugiaService } from './cirugia/cirugia.service';
+import { BiopsiaService } from './biopsia/biosia.service';
+import { MaterialSchema } from './schemas/material.schema';
+import { MaterialController } from './material/material.controller';
+import { MaterialService } from './material/material.service';
 
 @Module({
   imports: [
@@ -117,6 +126,9 @@ import { SexoService } from './sexo/sexo.service';
       { name: 'Frecuencia', schema: FrecuenciaSchema },
       { name: 'Acido', schema: AcidoSchema },
       { name: 'Sexo', schema: SexoSchema },
+      { name: 'Cirugia', schema: CirugiaSchema },
+      { name: 'Biopsia', schema: BiopsiaSchema },
+      { name: 'Material', schema: MaterialSchema },
     ])
   ],
   controllers: [
@@ -149,6 +161,9 @@ import { SexoService } from './sexo/sexo.service';
     FrecuenciaController,
     AcidoController,
     SexoController,
+    CirugiaController,
+    BiopsiaController,
+    MaterialController,
   ],
   providers: [
     AppService,
@@ -180,6 +195,9 @@ import { SexoService } from './sexo/sexo.service';
     FrecuenciaService,
     AcidoService,
     SexoService,
+    CirugiaService,
+    BiopsiaService,
+    MaterialService,
   ],
 })
 

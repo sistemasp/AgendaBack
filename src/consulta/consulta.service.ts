@@ -126,10 +126,10 @@ export class ConsultaService {
                 sucursal: sucursalId,
                 medico: medicoId,
                 status: atendidoId,
-            }).sort('fecha_hora')
+            }).sort('consecutivo')
+            .populate('paciente')
             .populate('sucursal')
             .populate('pagos');
-
     }
 
     /**
@@ -175,10 +175,11 @@ export class ConsultaService {
                 fecha_hora: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
                 status: statusAsistioId,
-                pagado: true
+                // pagado: true
 
             }).sort('hora_llegada')
             .populate('paciente')
+            .populate('sucursal')
             .populate('medico');
     }
 
@@ -242,11 +243,11 @@ export class ConsultaService {
      * @param consulta 
      */
     async createConsult(consulta: ConsultaI): Promise<ConsultaI> {
-        let startDate = new Date();
+        let startDate = new Date(consulta.fecha_hora);
         startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date();
+        let endDate = new Date(consulta.fecha_hora);
         endDate.setHours(18);
         endDate.setMinutes(59);
         endDate.setSeconds(59);

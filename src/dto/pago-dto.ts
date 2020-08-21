@@ -13,7 +13,6 @@ export class PagoDto {
     readonly paciente : PacienteDto;
     readonly cita : CitaDto;
     readonly medico : EmpleadoDto;
-    readonly servicio : ServicioDto;
     readonly tratamientos : TratamientoDto[];
     readonly quien_recibe_pago : EmpleadoDto;
     readonly cantidad : String;
@@ -30,4 +29,6 @@ export class PagoDto {
     readonly observaciones : String;
     readonly porcentaje_descuento : String;
     readonly descuento : String;
+    readonly tipo_servicio : ServicioDto;
+    readonly servicio : String;
 }

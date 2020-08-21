@@ -11,16 +11,15 @@ import { CitaI } from "./cita.interface";
 export interface PagoI {
     fecha_pago: Date;
     paciente: PacienteI;
-    cita : CitaI;
+    cita: CitaI;
     medico: EmpleadoI;
-    servicio: ServicioI;
     tratamientos: TratamientoI[];
     quien_recibe_pago: EmpleadoI;
     cantidad: String;
     porcentaje_comision: String;
     comision: String;
     total: String;
-    metodo_pago : MetodoPagoI;
+    metodo_pago: MetodoPagoI;
     banco: BancoI;
     tipo_tarjeta: TipoTarjetaI;
     digitos: String;
@@ -28,6 +27,8 @@ export interface PagoI {
     factura: Boolean;
     deposito_confirmado: Boolean;
     observaciones: String;
-    porcentaje_descuento : String;
-    descuento : String;
+    porcentaje_descuento: String;
+    descuento: String;
+    tipo_servicio: ServicioI;
+    servicio: String;
 }

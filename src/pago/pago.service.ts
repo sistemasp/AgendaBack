@@ -81,6 +81,23 @@ export class PagoService {
     }
 
     /**
+     * Busca solo un pago mediante su tipo de servicio y su ID del servicio en la BD
+     * @param idCita 
+     */
+    async findPagosByTipoServicioAndServicio(idTipoServicio: string, idServicio: string ): Promise<PagoI[]> {
+        return await this.pagoModel.find( { tipo_servicio: idTipoServicio, servicio: idServicio } )
+        .populate('paciente')
+        .populate('sucursal')
+        .populate('banco')
+        .populate('tipo_tarjeta')
+        .populate('metodo_pago')
+        .populate('medico')
+        .populate('servicio')
+        .populate('tratamientos')
+        .populate('quien_recibe_pago');;
+    }
+
+    /**
      * Genera un nuevo pago en la BD
      * @param pago 
      */
