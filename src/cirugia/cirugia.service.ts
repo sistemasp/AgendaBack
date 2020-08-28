@@ -2,11 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { CirugiaI } from 'src/interfaces/cirugia.interface';
 import { InjectModel } from '@nestjs/mongoose';
+import { ConsecutivoI } from 'src/interfaces/consecutivo.interface';
 
 @Injectable()
 export class CirugiaService {
 
-    constructor(@InjectModel('Cirugia') private readonly cirugiaModel: Model<CirugiaI>) { }
+    constructor(
+        @InjectModel('Cirugia') private readonly cirugiaModel: Model<CirugiaI>,
+        @InjectModel('Consecutivo') private readonly consecutivoModel: Model<ConsecutivoI>) { }
 
     /**
      * Muestra todos los cirugias de la BD
@@ -31,7 +34,9 @@ export class CirugiaService {
      */
     async findCirugiaByConsultaId(consultaId: string): Promise<CirugiaI> {
         return await this.cirugiaModel.findOne({ consulta: consultaId })
+            .populate('patologo')
             .populate('consulta');
+
     }
 
     /**
@@ -43,10 +48,86 @@ export class CirugiaService {
     }
 
     /**
+     * Muestra todas las consultas de la BD que correspondan a un pagos de un medico de algun dia 
+     */
+    async findCirugiasByPayOfDoctor(date, sucursalId, medicoId): Promise<CirugiaI[]> {
+        let startDate = new Date(date);
+        startDate.setHours(-5);
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date(date);
+        endDate.setHours(18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+
+        return await this.cirugiaModel.find(
+            {
+                fecha_hora: { $gte: startDate, $lte: endDate },
+                sucursal: sucursalId,
+                medico: medicoId,
+                pagado: true,
+            }).sort('consecutivo')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('pagos');
+    }
+
+    /**
+     * Muestra todas las cirugias de la BD que correspondan a un pagos de un medico de algun dia y turno
+     * turno:
+     *  1 = MATUTINO
+     *  2 = VESPERTINO
+     */
+    async findCirugiasByPayOfDoctorTurno(date, sucursalId, medicoId, turno): Promise<CirugiaI[]> {
+        let startDate = new Date(date);
+        startDate.setHours(turno === 'm' ? -5 : (startDate.getDay() === 6 ? 8 : 9));
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date(date);
+        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+
+        return await this.cirugiaModel.find(
+            {
+                fecha_hora: { $gte: startDate, $lte: endDate },
+                sucursal: sucursalId,
+                medico: medicoId,
+            }).sort('consecutivo')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('pagos');
+    }
+
+    /**
+     * Muestra todas las cirugias de la BD que correspondan a una fecha_hora y una sucursal
+     */
+    async findCirugiasByRangeDateAndSucursal(startDateS, endDateS, sucursalId): Promise<CirugiaI[]> {
+        let startDate = new Date(startDateS);
+        startDate.setHours(-5);
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date(endDateS);
+        endDate.setHours(18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+        return await this.cirugiaModel.find({ fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId }).sort('consecutivo')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('patologo')
+            .populate('consulta')
+            .populate('pagos');
+    }
+
+    /**
      * Genera un nuevo cirugia en la BD
      * @param cirugia 
      */
     async createCirugia(cirugia: CirugiaI): Promise<CirugiaI> {
+        const consecutivo = await this.consecutivoModel.find({
+            sucursal: cirugia.sucursal,
+        });
+        cirugia.consecutivo = consecutivo.length;
         const newCirugia = new this.cirugiaModel(cirugia);
         return await newCirugia.save();
     }

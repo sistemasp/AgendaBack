@@ -22,10 +22,18 @@ export class BiopsiaController {
         return this.biopsiaService.findBiopsiaById(idBiopsia);
     }
 
+    @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')
+    findBiopsiasByRangeDateAndSucursal(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
+        @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
+        @Param('sucursalId') sucursalId: string) : Promise<BiopsiaI[]> {
+        console.log(new Date(), this.TAG, "findBiopsiasByRangeDateAndSucursal");
+        return this.biopsiaService.findBiopsiasByRangeDateAndSucursal(`${anioi}-${mesi}-${diai}`, `${aniof}-${mesf}-${diaf}`, sucursalId);
+    }
+
     @Post()
-    createBiopsia(@Body() biopsiaDto: BiopsiaDto): Promise<BiopsiaI> {
+    createBiopsia(@Body() biopsiasDto: BiopsiaDto[]): Promise<BiopsiaI[]> {
         console.log(new Date(), this.TAG, "createBiopsia");
-        return this.biopsiaService.createBiopsia(biopsiaDto);
+        return this.biopsiaService.createBiopsia(biopsiasDto);
     }
 
     @Put(':id') 

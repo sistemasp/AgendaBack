@@ -94,6 +94,9 @@ import { BiopsiaService } from './biopsia/biosia.service';
 import { MaterialSchema } from './schemas/material.schema';
 import { MaterialController } from './material/material.controller';
 import { MaterialService } from './material/material.service';
+import { ConsecutivoSchema } from './schemas/consecutivo.schema';
+import { ConsecutivoController } from './consecutivo/consecutivo.controller';
+import { ConsecutivoService } from './consecutivo/consecutivo.service';
 
 @Module({
   imports: [
@@ -129,6 +132,7 @@ import { MaterialService } from './material/material.service';
       { name: 'Cirugia', schema: CirugiaSchema },
       { name: 'Biopsia', schema: BiopsiaSchema },
       { name: 'Material', schema: MaterialSchema },
+      { name: 'Consecutivo', schema: ConsecutivoSchema },
     ])
   ],
   controllers: [
@@ -164,6 +168,7 @@ import { MaterialService } from './material/material.service';
     CirugiaController,
     BiopsiaController,
     MaterialController,
+    ConsecutivoController,
   ],
   providers: [
     AppService,
@@ -198,6 +203,7 @@ import { MaterialService } from './material/material.service';
     CirugiaService,
     BiopsiaService,
     MaterialService,
+    ConsecutivoService,
   ],
 })
 

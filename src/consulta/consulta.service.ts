@@ -2,17 +2,21 @@ import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { ConsultaI } from 'src/interfaces/consulta.interface';
+import { ConsecutivoI } from 'src/interfaces/consecutivo.interface';
 
 @Injectable()
 export class ConsultaService {
 
-    constructor(@InjectModel('Consulta') private readonly consultaModel: Model<ConsultaI>) { }
+    constructor(
+        @InjectModel('Consulta') private readonly consultaModel: Model<ConsultaI>,
+        @InjectModel('Consecutivo') private readonly consecutivoModel: Model<ConsecutivoI>
+    ) { }
 
     /**
      * Muestra todas las consultas de la BD
      */
     async showAllConsults(): Promise<ConsultaI[]> {
-        return await this.consultaModel.find().sort('fecha_hora')
+        return await this.consultaModel.find().sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
             .populate('quien_agenda')
@@ -30,7 +34,7 @@ export class ConsultaService {
      * Muestra todas las consultas de la BD de una sucursal
      */
     async showAllConsultsBySucursal(sucursalId): Promise<ConsultaI[]> {
-        return await this.consultaModel.find({ sucursal: sucursalId }).sort('fecha_hora')
+        return await this.consultaModel.find({ sucursal: sucursalId }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
             .populate('quien_agenda')
@@ -55,7 +59,7 @@ export class ConsultaService {
                 { status: '5ef272fc3d7b0e41982d8241' }, // EN CONSULTORIO
                 { status: '5ef2735e3d7b0e41982d8242' },  // ATENDIDO
             ]
-        }).sort('fecha_hora')
+        }).sort('consecutivo')
             .populate('sucursal')
             .populate('medico')
     }
@@ -64,7 +68,7 @@ export class ConsultaService {
      * Muestra todas las consultas de la BD que correspondan a una fecha_hora
      */
     async findConsultsByDate(date): Promise<ConsultaI[]> {
-        return await this.consultaModel.find({ fecha_hora: date }).sort('fecha_hora')
+        return await this.consultaModel.find({ fecha_hora: date }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
             .populate('quien_agenda')
@@ -94,7 +98,7 @@ export class ConsultaService {
             {
                 fecha_hora: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId
-            }).sort('fecha_hora')
+            }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
             .populate('quien_agenda')
@@ -133,6 +137,34 @@ export class ConsultaService {
     }
 
     /**
+     * Muestra todas las consultas de la BD que correspondan a un pagos de un medico de algun dia y turno
+     * turno:
+     *  1 = MATUTINO
+     *  2 = VESPERTINO
+     */
+    async findConsultsByPayOfDoctorTurno(date, sucursalId, medicoId, atendidoId, turno): Promise<ConsultaI[]> {
+        let startDate = new Date(date);
+        startDate.setHours(turno === 'm' ? -5 : (startDate.getDay() === 6 ? 8 : 9));
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date(date);
+        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+
+        return await this.consultaModel.find(
+            {
+                fecha_hora: { $gte: startDate, $lte: endDate },
+                sucursal: sucursalId,
+                medico: medicoId,
+                status: atendidoId,
+            }).sort('consecutivo')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('pagos');
+    }
+
+    /**
      * Muestra todas las consultas de la BD que correspondan a una fecha_hora y una sucursal
      */
     async findConsultsByRangeDateAndSucursal(startDateS, endDateS, sucursalId): Promise<ConsultaI[]> {
@@ -144,7 +176,7 @@ export class ConsultaService {
         endDate.setHours(18);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
-        return await this.consultaModel.find({ fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId }).sort('fecha_hora')
+        return await this.consultaModel.find({ fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
             .populate('quien_agenda')
@@ -206,7 +238,7 @@ export class ConsultaService {
      * Muestra todo el histotico de una persona buscando por su numero de telefono
      */
     async findHistoricByPaciente(pacienteId: string): Promise<ConsultaI[]> {
-        return await this.consultaModel.find({ paciente: pacienteId }).sort('fecha_hora')
+        return await this.consultaModel.find({ paciente: pacienteId }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
             .populate('quien_agenda')
@@ -224,7 +256,7 @@ export class ConsultaService {
      * Muestra todo el histotico de una persona buscando por su numero de telefono
      */
     async findHistoricByMedicId(medicoId: string): Promise<ConsultaI[]> {
-        return await this.consultaModel.find({ medico: medicoId }).sort('fecha_hora')
+        return await this.consultaModel.find({ medico: medicoId }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
             .populate('quien_agenda')
@@ -243,21 +275,21 @@ export class ConsultaService {
      * @param consulta 
      */
     async createConsult(consulta: ConsultaI): Promise<ConsultaI> {
-        let startDate = new Date(consulta.fecha_hora);
+        /*let startDate = new Date(consulta.fecha_hora);
         startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(consulta.fecha_hora);
         endDate.setHours(18);
         endDate.setMinutes(59);
-        endDate.setSeconds(59);
-        const consecutivo = await this.consultaModel.find({
+        endDate.setSeconds(59);*/
+        const consecutivo = await this.consecutivoModel.find({
             sucursal: consulta.sucursal,
-            fecha_hora: { $gte: startDate, $lte: endDate }
+            // fecha_hora: { $gte: startDate, $lte: endDate }
         });
         consulta.consecutivo = consecutivo.length;
-        const newDate = new this.consultaModel(consulta);
-        return await newDate.save();
+        const newConsult = new this.consultaModel(consulta);
+        return await newConsult.save();
     }
 
     /**
