@@ -212,6 +212,7 @@ export class ConsultaService {
             }).sort('hora_llegada')
             .populate('paciente')
             .populate('sucursal')
+            .populate('tipo_servicio')
             .populate('medico');
     }
 
@@ -288,6 +289,7 @@ export class ConsultaService {
             // fecha_hora: { $gte: startDate, $lte: endDate }
         });
         consulta.consecutivo = consecutivo.length;
+        consulta.create_date = new Date();
         const newConsult = new this.consultaModel(consulta);
         return await newConsult.save();
     }

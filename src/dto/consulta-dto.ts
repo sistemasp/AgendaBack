@@ -5,8 +5,10 @@ import { StatusDto } from "./status-dto";
 import { TipoCitaDto } from "./tipo-cita-dto";
 import { PagoDto } from "./pago-dto";
 import { FrecuenciaDto } from "./frecuencia-dto";
+import { ServicioDto } from "./servicio-dto";
 
 export class ConsultaDto {
+    readonly create_date: Date;
     readonly folio : String;
     readonly fecha_hora : Date;
     readonly paciente : PacienteDto;
@@ -29,4 +31,5 @@ export class ConsultaDto {
     readonly pagos : PagoDto[];
     readonly consecutivo : String;
     readonly frecuencia : FrecuenciaDto;
+    readonly tipo_servicio : ServicioDto;
 }

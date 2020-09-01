@@ -1,6 +1,7 @@
 import { SexoDto } from "./sexo-dto";
 
 export class PacienteDto {
+    readonly create_date: Date;
     readonly nombres : string;
     readonly apellidos : string;
     readonly fecha_nacimiento : string;

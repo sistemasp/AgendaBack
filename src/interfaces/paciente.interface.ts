@@ -1,6 +1,7 @@
 import { SexoI } from "./sexo.interface";
 
 export interface PacienteI {
+    create_date: Date;
     nombres: string;
     apellidos: string;
     fecha_nacimiento: string;

@@ -36,6 +36,7 @@ export class PacienteService {
      * @param paciente 
      */
     async createPatient(paciente: PacienteI): Promise<PacienteI> {
+        paciente.create_date = new Date();
         const newPatient = new this.pacienteModel(paciente);
         return await newPatient.save();
     }

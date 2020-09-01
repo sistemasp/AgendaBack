@@ -6,6 +6,7 @@ import { EmpleadoDto } from "./empleado-dto";
 import { SucursalDto } from "./sucursal-dto";
 
 export class CirugiaDto {
+    readonly create_date: Date;
     readonly fecha_hora: Date;
     readonly pagado: Boolean;
     readonly consulta: ConsultaDto;

@@ -5,8 +5,10 @@ import { StatusI } from "./status.interface";
 import { TipoCitaI } from "./tipo-cita.interface";
 import { PagoI } from "./pago.interface";
 import { FrecuenciaI } from "./frecuencia.interface";
+import { ServicioI } from "./servicio.interface";
 
 export interface ConsultaI {
+    create_date: Date;
     folio : String;
     fecha_hora : Date;
     paciente : PacienteI;
@@ -29,4 +31,5 @@ export interface ConsultaI {
     pagos : PagoI[];
     consecutivo : String;
     frecuencia : FrecuenciaI;
+    tipo_servicio : ServicioI;
 }

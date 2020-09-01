@@ -91,13 +91,13 @@ export class CitaService {
     /**
      * Muestra todas las citas de la BD que correspondan a una fecha y una sucursal
      */
-    async findDatesByDateAndSucursal(date, sucursalId): Promise<CitaI[]> {
-        let startDate = new Date(date);
+    async findDatesByDateAndSucursal(anio, mes, dia, sucursalId): Promise<CitaI[]> {
+        let startDate = new Date(anio, mes - 1 , dia);
         startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(date);
-        endDate.setHours(18);
+        let endDate = new Date(anio, mes - 1, dia);
+        endDate.setHours(17);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.citaModel.find( {fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId} ).sort('fecha_hora')
@@ -233,6 +233,7 @@ export class CitaService {
             fecha_hora: {$gte: startDate, $lte: endDate}
         });
         cita.consecutivo = consecutivo.length;
+        cita.create_date = new Date();
         const newDate = new this.citaModel(cita);
         return await newDate.save();
     }

@@ -124,6 +124,7 @@ export class CirugiaService {
      * @param cirugia 
      */
     async createCirugia(cirugia: CirugiaI): Promise<CirugiaI> {
+        cirugia.create_date = new Date();
         const consecutivo = await this.consecutivoModel.find({
             sucursal: cirugia.sucursal,
         });

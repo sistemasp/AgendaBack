@@ -9,6 +9,7 @@ import { PagoI } from "./pago.interface";
 import { TratamientoPrecioI } from "./tratamiento-precio.interface";
 
 export interface CitaI {
+    create_date: Date;
     fecha_hora : Date;
     paciente : PacienteI;
     medico : EmpleadoI;

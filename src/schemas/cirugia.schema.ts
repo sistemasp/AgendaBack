@@ -3,6 +3,7 @@ import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const CirugiaSchema = new Schema({
+    create_date: { type : Date },
     fecha_hora: { type: Date },
     consulta: { type: Schema.ObjectId, ref: 'Consulta' },
     paciente : { type: Schema.ObjectId, ref: 'Paciente'},
@@ -17,4 +18,5 @@ export const CirugiaSchema = new Schema({
     biopsias: [{ type: Schema.ObjectId, ref: 'Biopsia' }],
     hasBiopsia : { type: Boolean, default: false },
     costo_biopsias: String,
+    tipo_servicio: { type: Schema.ObjectId, ref: 'Servicio' },
 });

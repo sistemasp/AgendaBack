@@ -5,6 +5,7 @@ import { StatusDto } from "./status-dto";
 import { ConsultaDto } from "./consulta-dto";
 
 export class BiopsiaDto {
+    readonly create_date: Date;
     readonly consecutivo: String;
     readonly fecha_realizacion: Date;
     readonly consulta: ConsultaDto;

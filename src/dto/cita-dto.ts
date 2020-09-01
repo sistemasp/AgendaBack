@@ -9,6 +9,7 @@ import { PagoDto } from "./pago-dto";
 import { TratamientoPrecioDto } from "./tratamiento-precio-dto";
 
 export class CitaDto {
+    readonly create_date: Date;
     readonly fecha_hora: Date;
     readonly paciente: PacienteDto;
     readonly medico: EmpleadoDto;

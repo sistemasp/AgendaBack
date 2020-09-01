@@ -3,6 +3,7 @@ import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const CitaSchema = new Schema({
+    create_date: { type : Date },
     fecha_hora: { type: Date },
     paciente: { type: Schema.ObjectId, ref: 'Paciente' },
     cita: { type: Schema.ObjectId, ref: 'Cta' },
@@ -28,4 +29,5 @@ export const CitaSchema = new Schema({
     pagos: [{ type: Schema.ObjectId, ref: 'Pago' }],
     consecutivo: String,
     tratamientos: [{}],
+    tipo_servicio: { type: Schema.ObjectId, ref: 'Servicio' },
 });

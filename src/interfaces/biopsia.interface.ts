@@ -5,6 +5,7 @@ import { SucursalI } from "./sucursal.interface";
 import { StatusI } from "./status.interface";
 
 export interface BiopsiaI {
+    create_date: Date;
     consecutivo: String;
     fecha_realizacion: Date;
     consulta: ConsultaI

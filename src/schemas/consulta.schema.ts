@@ -3,6 +3,7 @@ import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const ConsultaSchema = new Schema({
+    create_date: { type : Date },
     folio : String,
     fecha_hora : { type : Date },
     paciente : { type: Schema.ObjectId, ref: 'Paciente'},
@@ -25,4 +26,5 @@ export const ConsultaSchema = new Schema({
     pagos : [{ type: Schema.ObjectId, ref: 'Pago'}],
     consecutivo : String,
     frecuencia : { type: Schema.ObjectId, ref: 'Frecuencia'},
+    tipo_servicio: { type: Schema.ObjectId, ref: 'Servicio' },
 });

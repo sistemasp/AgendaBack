@@ -5,6 +5,7 @@ import { EmpleadoI } from "./empleado.interface";
 import { SucursalI } from "./sucursal.interface";
 
 export interface CirugiaI {
+    create_date: Date;
     fecha_hora: Date;
     consulta: ConsultaI;
     paciente : PacienteI;

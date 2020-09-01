@@ -58,6 +58,7 @@ export class BiopsiaService {
      */
     async createBiopsia(biopsias: BiopsiaI[]): Promise<BiopsiaI[]> {
         const respBiopsias = Promise.all(biopsias.map(async (biopsia) => {
+            biopsia.create_date = new Date();
             const newBiopsia = new this.biopsiaModel(biopsia);
             const newBiop = await newBiopsia.save();
             return newBiop;

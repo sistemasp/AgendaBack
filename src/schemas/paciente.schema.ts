@@ -3,6 +3,7 @@ import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const PacienteSchema = new Schema({
+    create_date: { type : Date },
     nombres: String,
     apellidos: String,
     fecha_nacimiento: { type: String },
