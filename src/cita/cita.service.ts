@@ -49,17 +49,8 @@ export class CitaService {
      */
     async showAllDatesBySucursalAsistio(sucursalId): Promise<CitaI[]> {
         return await this.citaModel.find( {sucursal: sucursalId, $or: [ {status: '5eda8c7593664a4cb8592b9c'}, {status: '5eda8c4193664a4cb8592b99'}]} ).sort('fecha_hora')
-            .populate('paciente')
             .populate('servicio')
-            .populate('sucursal')
-            .populate('tratamientos')
-            .populate('quien_agenda')
-            .populate('promovendedor')
-            .populate('cosmetologa')
-            .populate('medico')
-            .populate('quien_confirma')
-            .populate('tipo_cita')
-            .populate('status');
+            .populate('tratamientos');
     }
 
     /**
@@ -91,15 +82,16 @@ export class CitaService {
     /**
      * Muestra todas las citas de la BD que correspondan a una fecha y una sucursal
      */
-    async findDatesByDateAndSucursal(date, sucursalId): Promise<CitaI[]> {
-        let startDate = new Date(date);
+    async findDatesByDateAndSucursal(anio, mes, dia, sucursalId): Promise<CitaI[]> {
+        let startDate = new Date(anio, mes - 1, dia);
         startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(date);
+        let endDate = new Date(anio, mes - 1, dia);
         endDate.setHours(18);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
+        console.log();
         return await this.citaModel.find( {fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId} ).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
@@ -143,12 +135,12 @@ export class CitaService {
     /**
      * Muestra todas las citas de la BD que correspondan a una fecha y una sucursal
      */
-    async findDatesByDateAndSucursalAndService(date, sucursalId, servicio): Promise<CitaI[]> {
-        let startDate = new Date(date);
+    async findDatesByDateAndSucursalAndService(anio, mes, dia, sucursalId, servicio): Promise<CitaI[]> {
+        let startDate = new Date(anio, mes - 1, dia);
         startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(date);
+        let endDate = new Date(anio, mes - 1, dia);
         endDate.setHours(18);
         endDate.setMinutes(59);
         endDate.setSeconds(59);

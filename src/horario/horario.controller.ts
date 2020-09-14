@@ -43,13 +43,13 @@ export class HorarioController {
     @Get(':dia/:mes/:anio/:sucursal/:service')
     findScheduleByDateAndSucursalAndService(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursal') sucursalId: string, @Param('service') service: string): Promise<HorarioI[]> {
         console.log(this.TAG, "findScheduleByDateAndSucursalAndService");
-        return this.horarioService.findScheduleByDateAndSucursalAndService(`${anio}-${mes}-${dia}`, sucursalId, service );
+        return this.horarioService.findScheduleByDateAndSucursalAndService(anio, mes, dia, sucursalId, service );
     }
 
     /*@Get('cita/:dia/:mes/:anio/:sucursal/:service')
     findScheduleInDatesByDateAndSucursalAndService(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursal') sucursalId: string, @Param('service') service: string): Promise<HorarioI[]> {
         console.log(this.TAG, "findScheduleInDatesByDateAndSucursalAndService");
-        return this.horarioService.findScheduleInDatesByDateAndSucursalAndService(`${anio}-${mes}-${dia}`, sucursalId, service );
+        return this.horarioService.findScheduleInDatesByDateAndSucursalAndService(anio, mes, dia, sucursalId, service );
     }*/
 
     @Post()
