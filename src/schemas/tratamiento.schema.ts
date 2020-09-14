@@ -3,9 +3,6 @@ import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const TratamientoSchema = new Schema({
-    nombre : String,
-    clave : String,
-    servicio : { type: Schema.ObjectId, ref: 'Servicio'},
-    tiempo : String,
-    precio : String
+    nombre: String,
+    servicio: { type: Schema.ObjectId, ref: 'Servicio' },
 });

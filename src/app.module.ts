@@ -97,6 +97,9 @@ import { MaterialService } from './material/material.service';
 import { ConsecutivoSchema } from './schemas/consecutivo.schema';
 import { ConsecutivoController } from './consecutivo/consecutivo.controller';
 import { ConsecutivoService } from './consecutivo/consecutivo.service';
+import { AreaSchema } from './schemas/area.schema';
+import { AreaController } from './area/area.controller';
+import { AreaService } from './area/area.service';
 
 @Module({
   imports: [
@@ -133,6 +136,7 @@ import { ConsecutivoService } from './consecutivo/consecutivo.service';
       { name: 'Biopsia', schema: BiopsiaSchema },
       { name: 'Material', schema: MaterialSchema },
       { name: 'Consecutivo', schema: ConsecutivoSchema },
+      { name: 'Area', schema: AreaSchema },
     ])
   ],
   controllers: [
@@ -169,6 +173,7 @@ import { ConsecutivoService } from './consecutivo/consecutivo.service';
     BiopsiaController,
     MaterialController,
     ConsecutivoController,
+    AreaController,
   ],
   providers: [
     AppService,
@@ -204,6 +209,7 @@ import { ConsecutivoService } from './consecutivo/consecutivo.service';
     BiopsiaService,
     MaterialService,
     ConsecutivoService,
+    AreaService,
   ],
 })
 
