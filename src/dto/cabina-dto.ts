@@ -4,9 +4,9 @@ import { SucursalDto } from "./sucursal-dto";
 import { ConsultaDto } from "./consulta-dto";
 import { ServicioDto } from "./servicio-dto";
 
-export class ConsultorioDto {
+export class CabinaDto {
     readonly nombre: String;
-    readonly medico: EmpleadoDto;
+    readonly cosmetologa: EmpleadoDto;
     readonly paciente: PacienteDto;
     readonly tipo_servicio: ServicioDto;
     readonly servicio: String;

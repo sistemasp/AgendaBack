@@ -73,6 +73,12 @@ export class CitaController {
         return this.citaService.findDateById(idCita);
     }
 
+    @Get('sucursal/:sucursalId/asistio/:statusAsistioId')
+    waitingList(@Param('sucursalId') sucursalId: string, @Param('statusAsistioId') statusAsistioId: string) : Promise<CitaI[]> {
+        console.log(new Date(), this.TAG, "waitingList");
+        return this.citaService.waitingList(sucursalId, statusAsistioId);
+    }
+
     @Post()
     createDate(@Body() citaDto: CitaDto): Promise<CitaI> {
         console.log(new Date(), this.TAG, "createDate");

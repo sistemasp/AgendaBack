@@ -9,6 +9,8 @@ export const CitaSchema = new Schema({
     cita: { type: Schema.ObjectId, ref: 'Cta' },
     medico: { type: Schema.ObjectId, ref: 'Empleado' },
     servicio: { type: Schema.ObjectId, ref: 'Servicio' },
+    tratamientos: [{}],
+    areas: [{ type: Schema.ObjectId, ref: 'Area' }],
     numero_sesion: String,
     quien_agenda: { type: Schema.ObjectId, ref: 'Empleado' },
     tipo_cita: { type: Schema.ObjectId, ref: 'TipoCita' },
@@ -28,6 +30,4 @@ export const CitaSchema = new Schema({
     pagado: { type: Boolean, default: false },
     pagos: [{ type: Schema.ObjectId, ref: 'Pago' }],
     consecutivo: String,
-    tratamientos: [{}],
-    tipo_servicio: { type: Schema.ObjectId, ref: 'Servicio' },
 });

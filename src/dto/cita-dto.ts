@@ -1,4 +1,3 @@
-import { TratamientoDto } from "./tratamiento-dto";
 import { PacienteDto } from "./paciente-dto";
 import { SucursalDto } from "./sucursal-dto";
 import { EmpleadoDto } from "./empleado-dto";
@@ -6,7 +5,7 @@ import { TipoCitaDto } from "./tipo-cita-dto";
 import { StatusDto } from "./status-dto";
 import { ServicioDto } from "./servicio-dto";
 import { PagoDto } from "./pago-dto";
-import { TratamientoPrecioDto } from "./tratamiento-precio-dto";
+import { AreaDto } from "./area-dto";
 
 export class CitaDto {
     readonly create_date: Date;
@@ -14,6 +13,8 @@ export class CitaDto {
     readonly paciente: PacienteDto;
     readonly medico: EmpleadoDto;
     readonly servicio: ServicioDto;
+    readonly tratamientos : [];
+    readonly areas : AreaDto[];
     readonly numero_sesion: String;
     readonly quien_agenda: EmpleadoDto;
     readonly tipo_cita: TipoCitaDto;
@@ -32,6 +33,5 @@ export class CitaDto {
     readonly hora_salida: String;
     readonly pagado: Boolean;
     readonly pagos: PagoDto[];
-    readonly consecutivo : String;
-    readonly tratamientos : [];
+    readonly consecutivo : String;    
 }

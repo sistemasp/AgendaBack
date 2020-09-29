@@ -31,5 +31,5 @@ export interface ConsultaI {
     pagos : PagoI[];
     consecutivo : String;
     frecuencia : FrecuenciaI;
-    tipo_servicio : ServicioI;
+    servicio : ServicioI;
 }

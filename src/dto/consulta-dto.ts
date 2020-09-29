@@ -31,5 +31,5 @@ export class ConsultaDto {
     readonly pagos : PagoDto[];
     readonly consecutivo : String;
     readonly frecuencia : FrecuenciaDto;
-    readonly tipo_servicio : ServicioDto;
+    readonly servicio : ServicioDto;
 }

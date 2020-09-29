@@ -4,9 +4,9 @@ import { SucursalI } from "./sucursal.interface";
 import { ConsultaI } from "./consulta.interface";
 import { ServicioI } from "./servicio.interface";
 
-export interface ConsultorioI {
+export interface CabinaI {
     nombre: String;
-    medico: EmpleadoI;
+    cosmetologa: EmpleadoI;
     paciente: PacienteI;
     tipo_servicio: ServicioI;
     servicio: String;

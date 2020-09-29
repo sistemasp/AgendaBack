@@ -212,7 +212,7 @@ export class ConsultaService {
             }).sort('hora_llegada')
             .populate('paciente')
             .populate('sucursal')
-            .populate('tipo_servicio')
+            .populate('servicio')
             .populate('medico');
     }
 
