@@ -2,11 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { CitaI } from 'src/interfaces/cita.interface';
+import { ConsecutivoI } from 'src/interfaces/consecutivo.interface';
 
 @Injectable()
 export class CitaService {
 
-    constructor(@InjectModel('Cita') private readonly citaModel: Model<CitaI>) { }
+    constructor(
+        @InjectModel('Cita') private readonly citaModel: Model<CitaI>,
+        @InjectModel('Consecutivo') private readonly consecutivoModel: Model<ConsecutivoI>
+    ) { }
 
     /**
      * Muestra todas las citas de la BD
@@ -249,6 +253,58 @@ export class CitaService {
             .populate('medico');
     }
 
+     /**
+     * Muestra todas las citas de la BD que correspondan a un pagos de un medico de algun dia 
+     */
+    async findDatesByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId): Promise<CitaI[]> {
+        let startDate = new Date(anio, mes - 1, dia);
+        startDate.setHours(-5);
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date(anio, mes - 1, dia);
+        endDate.setHours(18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+        return await this.citaModel.find(
+            {
+                fecha_hora: { $gte: startDate, $lte: endDate },
+                sucursal: sucursalId,
+                medico: medicoId,
+                status: atendidoId,
+            }).sort('consecutivo')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('pagos');
+    }
+
+    /**
+     * Muestra todas las citas de la BD que correspondan a un pagos de un medico de algun dia y turno
+     * turno:
+     *  1 = MATUTINO
+     *  2 = VESPERTINO
+     */
+    async findDatesByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno): Promise<CitaI[]> {
+        let startDate = new Date(anio, mes - 1, dia);
+        startDate.setHours(turno === 'm' ? -5 : (startDate.getDay() === 6 ? 8 : 9));
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date(anio, mes - 1, dia);
+        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+
+        return await this.citaModel.find(
+            {
+                fecha_hora: { $gte: startDate, $lte: endDate },
+                sucursal: sucursalId,
+                medico: medicoId,
+                status: atendidoId,
+            }).sort('consecutivo')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('pagos');
+    }
+
     /**
      * Genera un nuevo cita en la BD
      * @param cita 
@@ -262,7 +318,7 @@ export class CitaService {
         endDate.setHours(18);
         endDate.setMinutes(59);
         endDate.setSeconds(59);*/
-        const consecutivo = await this.citaModel.find({
+        const consecutivo = await this.consecutivoModel.find({
             sucursal: cita.sucursal,
             //servicio: cita.servicio,
             //fecha_hora: { $gte: startDate, $lte: endDate }
@@ -271,6 +327,7 @@ export class CitaService {
         cita.create_date = new Date();
         const newDate = new this.citaModel(cita);
         return await newDate.save();
+
     }
 
     /**

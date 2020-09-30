@@ -79,6 +79,21 @@ export class CitaController {
         return this.citaService.waitingList(sucursalId, statusAsistioId);
     }
 
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId')
+    findDatesByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
+    @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,) : Promise<CitaI[]> {
+        console.log(new Date(), this.TAG, "findDatesByPayOfDoctor");
+        return this.citaService.findDatesByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId);
+    }
+
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/turno/:turno')
+    findDatesByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
+    @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,
+    @Param('turno') turno: string) : Promise<CitaI[]> {
+        console.log(new Date(), this.TAG, "findDatesByPayOfDoctorTurno");
+        return this.citaService.findDatesByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno);
+    }
+
     @Post()
     createDate(@Body() citaDto: CitaDto): Promise<CitaI> {
         console.log(new Date(), this.TAG, "createDate");

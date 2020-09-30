@@ -103,6 +103,7 @@ export class ConsultaService {
             .populate('sucursal')
             .populate('quien_agenda')
             .populate('promovendedor')
+            .populate('servicio')
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
