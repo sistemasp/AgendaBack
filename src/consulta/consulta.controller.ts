@@ -37,20 +37,20 @@ export class ConsultaController {
     @Get(':dia/:mes/:anio')
     findConsultsByDate(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string) : Promise<ConsultaI[]> {
         console.log(new Date(), this.TAG, "findConsultsByDate");
-        return this.consultaService.findConsultsByDate(`${anio}-${mes}-${dia}`);
+        return this.consultaService.findConsultsByDate(anio, mes , dia);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId')
     findConsultsByDateAndSucursal(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursalId') sucursalId: string) : Promise<ConsultaI[]> {
         console.log(new Date(), this.TAG, "findConsultsByDateAndSucursal");
-        return this.consultaService.findConsultsByDateAndSucursal(`${anio}-${mes}-${dia}`, sucursalId);
+        return this.consultaService.findConsultsByDateAndSucursal(anio, mes , dia, sucursalId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId')
     findConsultsByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
     @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,) : Promise<ConsultaI[]> {
         console.log(new Date(), this.TAG, "findConsultsByPayOfDoctor");
-        return this.consultaService.findConsultsByPayOfDoctor(`${anio}-${mes}-${dia}`, sucursalId, medicoId, atendidoId);
+        return this.consultaService.findConsultsByPayOfDoctor(anio, mes , dia, sucursalId, medicoId, atendidoId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/turno/:turno')
@@ -58,7 +58,7 @@ export class ConsultaController {
     @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,
     @Param('turno') turno: string) : Promise<ConsultaI[]> {
         console.log(new Date(), this.TAG, "findConsultsByPayOfDoctorTurno");
-        return this.consultaService.findConsultsByPayOfDoctorTurno(`${anio}-${mes}-${dia}`, sucursalId, medicoId, atendidoId, turno);
+        return this.consultaService.findConsultsByPayOfDoctorTurno(anio, mes , dia, sucursalId, medicoId, atendidoId, turno);
     }
 
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')

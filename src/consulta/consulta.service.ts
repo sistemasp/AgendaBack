@@ -67,7 +67,8 @@ export class ConsultaService {
     /**
      * Muestra todas las consultas de la BD que correspondan a una fecha_hora
      */
-    async findConsultsByDate(date): Promise<ConsultaI[]> {
+    async findConsultsByDate(anio, mes, dia): Promise<ConsultaI[]> {
+        const date = new Date(anio, mes - 1, dia);
         return await this.consultaModel.find({ fecha_hora: date }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
@@ -85,12 +86,12 @@ export class ConsultaService {
     /**
      * Muestra todas las consultas de la BD que correspondan a una fecha_hora y una sucursal
      */
-    async findConsultsByDateAndSucursal(date, sucursalId): Promise<ConsultaI[]> {
-        let startDate = new Date(date);
+    async findConsultsByDateAndSucursal(anio, mes, dia, sucursalId): Promise<ConsultaI[]> {
+        let startDate = new Date(anio, mes - 1, dia);
         startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(date);
+        let endDate = new Date(anio, mes - 1, dia);
         endDate.setHours(18);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
@@ -116,12 +117,12 @@ export class ConsultaService {
     /**
      * Muestra todas las consultas de la BD que correspondan a un pagos de un medico de algun dia 
      */
-    async findConsultsByPayOfDoctor(date, sucursalId, medicoId, atendidoId): Promise<ConsultaI[]> {
-        let startDate = new Date(date);
+    async findConsultsByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId): Promise<ConsultaI[]> {
+        let startDate = new Date(anio, mes - 1, dia);
         startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(date);
+        let endDate = new Date(anio, mes - 1, dia);
         endDate.setHours(18);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
@@ -143,12 +144,12 @@ export class ConsultaService {
      *  1 = MATUTINO
      *  2 = VESPERTINO
      */
-    async findConsultsByPayOfDoctorTurno(date, sucursalId, medicoId, atendidoId, turno): Promise<ConsultaI[]> {
-        let startDate = new Date(date);
+    async findConsultsByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno): Promise<ConsultaI[]> {
+        let startDate = new Date(anio, mes - 1, dia);
         startDate.setHours(turno === 'm' ? -5 : (startDate.getDay() === 6 ? 8 : 9));
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(date);
+        let endDate = new Date(anio, mes - 1, dia);
         endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 18);
         endDate.setMinutes(59);
         endDate.setSeconds(59);

@@ -31,7 +31,7 @@ export class CitaController {
     @Get(':dia/:mes/:anio')
     findDatesByDate(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string) : Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "findDatesByDate");
-        return this.citaService.findDatesByDate(`${anio}-${mes}-${dia}`);
+        return this.citaService.findDatesByDate(anio, mes, dia);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId')
@@ -52,7 +52,7 @@ export class CitaController {
     findDatesByDateAndSucursalAndService(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
         @Param('sucursalId') sucursalId: string, @Param('servicio') servicio: string) : Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "findDatesByDateAndSucursalAndService");
-        return this.citaService.findDatesByDateAndSucursalAndService(`${anio}-${mes}-${dia}`, sucursalId, servicio);
+        return this.citaService.findDatesByDateAndSucursalAndService(anio, mes, dia, sucursalId, servicio);
     }
 
     @Get('/histotic/:pacienteId')

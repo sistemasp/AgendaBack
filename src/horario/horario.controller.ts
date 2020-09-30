@@ -13,7 +13,7 @@ export class HorarioController {
     @Get('consulta/:consultaId/:dia/:mes/:anio/:sucursal')
     findScheduleInConsultByDateAndSucursal(@Param('consultaId') consultaId: string, @Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursal') sucursalId: string): Promise<HorarioI[]> {
         console.log(new Date(), this.TAG, "findScheduleInConsultByDateAndSucursal");
-        return this.horarioService.findScheduleInConsultByDateAndSucursal(consultaId, `${anio}-${mes}-${dia}`, sucursalId );
+        return this.horarioService.findScheduleInConsultByDateAndSucursal(consultaId, anio, mes , dia, sucursalId );
     }
 
     @Get()
@@ -43,19 +43,19 @@ export class HorarioController {
     @Get(':dia/:mes/:anio')
     findScheduleByDate(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string): Promise<HorarioI[]> {
         console.log(new Date(), this.TAG, "findScheduleByDate");
-        return this.horarioService.findScheduleByDate(`${anio}-${mes}-${dia}`);
+        return this.horarioService.findScheduleByDate(anio, mes , dia);
     }
 
     @Get(':dia/:mes/:anio/:sucursal/:service')
     findScheduleByDateAndSucursalAndService(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursal') sucursalId: string, @Param('service') service: string): Promise<HorarioI[]> {
         console.log(new Date(), this.TAG, "findScheduleByDateAndSucursalAndService");
-        return this.horarioService.findScheduleByDateAndSucursalAndService(`${anio}-${mes}-${dia}`, sucursalId, service );
+        return this.horarioService.findScheduleByDateAndSucursalAndService(anio, mes , dia, sucursalId, service );
     }
 
     /*@Get('cita/:dia/:mes/:anio/:sucursal/:service')
     findScheduleInDatesByDateAndSucursalAndService(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursal') sucursalId: string, @Param('service') service: string): Promise<HorarioI[]> {
         console.log(new Date(), this.TAG, "findScheduleInDatesByDateAndSucursalAndService");
-        return this.horarioService.findScheduleInDatesByDateAndSucursalAndService(`${anio}-${mes}-${dia}`, sucursalId, service );
+        return this.horarioService.findScheduleInDatesByDateAndSucursalAndService(anio, mes , dia, sucursalId, service );
     }*/
 
     @Post()

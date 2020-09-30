@@ -72,12 +72,12 @@ export class CitaService {
     /**
      * Muestra todas las citas de la BD que correspondan a una fecha
      */
-    async findDatesByDate(date): Promise<CitaI[]> {
-        let startDate = new Date(date);
+    async findDatesByDate(anio, mes, dia): Promise<CitaI[]> {
+        let startDate = new Date(anio, mes - 1, dia);
         startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(date);
+        let endDate = new Date(anio, mes - 1, dia);
         endDate.setHours(18);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
@@ -153,12 +153,12 @@ export class CitaService {
     /**
      * Muestra todas las citas de la BD que correspondan a una fecha y una sucursal
      */
-    async findDatesByDateAndSucursalAndService(date, sucursalId, servicio): Promise<CitaI[]> {
-        let startDate = new Date(date);
+    async findDatesByDateAndSucursalAndService(anio, mes, dia, sucursalId, servicio): Promise<CitaI[]> {
+        let startDate = new Date(anio, mes - 1, dia);
         startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(date);
+        let endDate = new Date(anio, mes - 1, dia);
         endDate.setHours(18);
         endDate.setMinutes(59);
         endDate.setSeconds(59);

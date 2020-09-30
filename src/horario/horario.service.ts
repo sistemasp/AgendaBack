@@ -128,8 +128,8 @@ export class HorarioService {
      * Busca horarios mediante su disponibilidad de cierto dia en la BD
      * @param date 
      */
-    async findScheduleByDate(date: string): Promise<HorarioI[]> {
-        const citas = await this.citaService.findDatesByDate(date);
+    async findScheduleByDate(anio, mes, dia): Promise<HorarioI[]> {
+        const citas = await this.citaService.findDatesByDate(anio, mes - 1, dia);
         const horarios = await this.horarioModel.find().sort('hora');
         const response = await this.filterSchedules(horarios, citas); 
         return response;
@@ -147,15 +147,15 @@ export class HorarioService {
      * @param sucursalId
      * @param service
      */
-    async findScheduleByDateAndSucursalAndService(date: string, sucursalId: string, service: string): Promise<HorarioI[]> {        
-        const citas = await this.citaService.findDatesByDateAndSucursalAndService(date, sucursalId, service);
+    async findScheduleByDateAndSucursalAndService(anio, mes, dia: string, sucursalId: string, service: string): Promise<HorarioI[]> {        
+        const citas = await this.citaService.findDatesByDateAndSucursalAndService(anio, mes, dia, sucursalId, service);
         let horarios = await this.horarioModel.find({
             servicio: service,
             sucursal: sucursalId
         }).sort('hora');
         const today =  new Date();
         const todayString = `${today.getFullYear()}-${Number(today.getMonth()) + 1}-${today.getDate()}`;
-        if (todayString === date) {
+        if (todayString === `${anio}-${mes}-${dia}`) {
             horarios = await this.schedulesToday(horarios, today.getHours().toString());
         }
         const response = await this.filterSchedulesAndService(horarios, citas, service);
@@ -168,15 +168,15 @@ export class HorarioService {
      * @param sucursalId
      * @param service
      */
-    async findScheduleInDatesByDateAndSucursalAndService(date: string, sucursalId: string, service: string): Promise<HorarioI[]> {
-        const citas = await this.citaService.findDatesByDateAndSucursalAndService(date, sucursalId, service);
+    async findScheduleInDatesByDateAndSucursalAndService(anio, mes, dia: string, sucursalId: string, service: string): Promise<HorarioI[]> {
+        const citas = await this.citaService.findDatesByDateAndSucursalAndService(anio, mes, dia, sucursalId, service);
         let horarios = await this.horarioModel.find({
             servicio: service,
             sucursal: sucursalId
         }).sort('hora');
         const today =  new Date();
         const todayString = `${today.getDate()}/${Number(today.getMonth()) + 1}/${today.getFullYear()}`;
-        if (todayString === date) {
+        if (todayString === `${anio}-${mes}-${dia}`) {
             horarios = await this.schedulesToday(horarios, today.getHours().toString());
         }
         const response = await this.filterSchedulesAndService(horarios, citas, service);
@@ -189,15 +189,15 @@ export class HorarioService {
      * @param sucursalId
      * @param service
      */
-    async findScheduleInConsultByDateAndSucursal(consultaId: string, date: string, sucursalId: string): Promise<HorarioI[]> {
-        const consultas = await this.consultaService.findConsultsByDateAndSucursal(date, sucursalId);
+    async findScheduleInConsultByDateAndSucursal(consultaId: string, anio, mes, dia, sucursalId: string): Promise<HorarioI[]> {
+        const consultas = await this.consultaService.findConsultsByDateAndSucursal(anio, mes, dia, sucursalId);
         let horarios = await this.horarioModel.find( {
             servicio: consultaId,
             sucursal: sucursalId
         } ).sort('hora');
         const today =  new Date();
         const todayString = `${today.getDate()}/${Number(today.getMonth()) + 1}/${today.getFullYear()}`;
-        if (todayString === date) {
+        if (todayString === `${anio}-${mes}-${dia}`) {
             horarios = await this.schedulesToday(horarios, today.getHours().toString());
         }
         const response = await this.filterSchedulesInConsult(horarios, consultas);

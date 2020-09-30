@@ -50,12 +50,12 @@ export class CirugiaService {
     /**
      * Muestra todas las consultas de la BD que correspondan a un pagos de un medico de algun dia 
      */
-    async findCirugiasByPayOfDoctor(date, sucursalId, medicoId): Promise<CirugiaI[]> {
-        let startDate = new Date(date);
+    async findCirugiasByPayOfDoctor(anio, mes, dia, sucursalId, medicoId): Promise<CirugiaI[]> {
+        let startDate = new Date(anio, mes - 1, dia);
         startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(date);
+        let endDate = new Date(anio, mes - 1, dia);
         endDate.setHours(18);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
@@ -78,12 +78,12 @@ export class CirugiaService {
      *  1 = MATUTINO
      *  2 = VESPERTINO
      */
-    async findCirugiasByPayOfDoctorTurno(date, sucursalId, medicoId, turno): Promise<CirugiaI[]> {
-        let startDate = new Date(date);
+    async findCirugiasByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, turno): Promise<CirugiaI[]> {
+        let startDate = new Date(anio, mes - 1, dia);
         startDate.setHours(turno === 'm' ? -5 : (startDate.getDay() === 6 ? 8 : 9));
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(date);
+        let endDate = new Date(anio, mes - 1, dia);
         endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 18);
         endDate.setMinutes(59);
         endDate.setSeconds(59);

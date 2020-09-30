@@ -32,14 +32,14 @@ export class CirugiaController {
     findCirugiasByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
         @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,): Promise<CirugiaI[]> {
         console.log(new Date(), this.TAG, "findCirugiasByPayOfDoctor");
-        return this.cirugiaService.findCirugiasByPayOfDoctor(`${anio}-${mes}-${dia}`, sucursalId, medicoId);
+        return this.cirugiaService.findCirugiasByPayOfDoctor(anio, mes, dia, sucursalId, medicoId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/turno/:turno')
     findCirugiasByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
         @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('turno') turno: string,): Promise<CirugiaI[]> {
         console.log(new Date(), this.TAG, "findCirugiasByPayOfDoctorTurno");
-        return this.cirugiaService.findCirugiasByPayOfDoctorTurno(`${anio}-${mes}-${dia}`, sucursalId, medicoId, turno);
+        return this.cirugiaService.findCirugiasByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, turno);
     }
 
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')
