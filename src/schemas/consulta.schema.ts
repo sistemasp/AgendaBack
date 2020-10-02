@@ -10,6 +10,7 @@ export const ConsultaSchema = new Schema({
     medico : { type: Schema.ObjectId, ref: 'Empleado'},
     quien_agenda : { type: Schema.ObjectId, ref: 'Empleado'},
     tipo_cita : { type: Schema.ObjectId, ref: 'TipoCita'},
+    medio: { type: Schema.ObjectId, ref: 'Medio' },
     quien_confirma_llamada: { type: Schema.ObjectId, ref: 'Empleado' },
     quien_confirma_asistencia: { type: Schema.ObjectId, ref: 'Empleado' },
     status : { type: Schema.ObjectId, ref: 'Status'},

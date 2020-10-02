@@ -9,4 +9,7 @@ export interface AreaI {
     precio_ma: String;
     precio_oc: String;
     precio_fe: String;
+    comision_derivado: String;
+    comision_revisado: String;
+    comision_realizado: String;
 }

@@ -6,6 +6,7 @@ import { TipoCitaDto } from "./tipo-cita-dto";
 import { PagoDto } from "./pago-dto";
 import { FrecuenciaDto } from "./frecuencia-dto";
 import { ServicioDto } from "./servicio-dto";
+import { MedioDto } from "./medio-dto";
 
 export class ConsultaDto {
     readonly create_date: Date;
@@ -15,6 +16,7 @@ export class ConsultaDto {
     readonly medico : EmpleadoDto;
     readonly quien_agenda : EmpleadoDto;
     readonly tipo_cita : TipoCitaDto;
+    readonly medio: MedioDto;
     readonly quien_confirma_llamada: EmpleadoDto;
     readonly quien_confirma_asistencia: EmpleadoDto;
     readonly status : StatusDto;

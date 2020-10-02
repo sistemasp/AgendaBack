@@ -103,6 +103,9 @@ import { AreaService } from './area/area.service';
 import { CabinaController } from './cabina/cabina.controller';
 import { CabinaService } from './cabina/cabina.service';
 import { CabinaSchema } from './schemas/cabina.schema';
+import { MedioSchema } from './schemas/medio.schema';
+import { MedioController } from './medio/medio.controller';
+import { MedioService } from './medio/medio.service';
 
 @Module({
   imports: [
@@ -141,6 +144,7 @@ import { CabinaSchema } from './schemas/cabina.schema';
       { name: 'Consecutivo', schema: ConsecutivoSchema },
       { name: 'Area', schema: AreaSchema },
       { name: 'Cabina', schema: CabinaSchema },
+      { name: 'Medio', schema: MedioSchema },
     ])
   ],
   controllers: [
@@ -179,6 +183,7 @@ import { CabinaSchema } from './schemas/cabina.schema';
     ConsecutivoController,
     AreaController,
     CabinaController,
+    MedioController,
   ],
   providers: [
     AppService,
@@ -216,6 +221,7 @@ import { CabinaSchema } from './schemas/cabina.schema';
     ConsecutivoService,
     AreaService,
     CabinaService,
+    MedioService,
   ],
 })
 

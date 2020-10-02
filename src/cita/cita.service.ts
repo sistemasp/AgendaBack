@@ -28,6 +28,7 @@ export class CitaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('medio')
             .populate('status');
     }
 
@@ -47,6 +48,7 @@ export class CitaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('medio')
             .populate('status');
     }
 
@@ -66,6 +68,7 @@ export class CitaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('medio')
             .populate('status');
     }
 
@@ -93,6 +96,7 @@ export class CitaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('medio')
             .populate('status');
     }
 
@@ -120,6 +124,7 @@ export class CitaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('medio')
             .populate('status');
     }
 
@@ -147,6 +152,7 @@ export class CitaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('medio')
             .populate('status');
     }
 
@@ -184,6 +190,7 @@ export class CitaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('medio')
             .populate('status');
     }
 
@@ -203,6 +210,7 @@ export class CitaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('medio')
             .populate('status');
     }
 
@@ -224,6 +232,7 @@ export class CitaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('medio')
             .populate('status');
     }
 

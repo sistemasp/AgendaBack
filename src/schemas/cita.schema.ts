@@ -3,7 +3,7 @@ import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const CitaSchema = new Schema({
-    create_date: { type : Date },
+    create_date: { type: Date },
     fecha_hora: { type: Date },
     paciente: { type: Schema.ObjectId, ref: 'Paciente' },
     cita: { type: Schema.ObjectId, ref: 'Cta' },
@@ -14,6 +14,7 @@ export const CitaSchema = new Schema({
     numero_sesion: String,
     quien_agenda: { type: Schema.ObjectId, ref: 'Empleado' },
     tipo_cita: { type: Schema.ObjectId, ref: 'TipoCita' },
+    medio: { type: Schema.ObjectId, ref: 'Medio' },
     quien_confirma_llamada: { type: Schema.ObjectId, ref: 'Empleado' },
     quien_confirma_asistencia: { type: Schema.ObjectId, ref: 'Empleado' },
     status: { type: Schema.ObjectId, ref: 'Status' },

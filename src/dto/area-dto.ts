@@ -9,4 +9,7 @@ export class AreaDto {
     readonly precio_ma : String;
     readonly precio_oc : String;
     readonly precio_fe : String;
+    readonly comision_derivado : String;
+    readonly comision_revisado : String;
+    readonly comision_realizado : String;
 }

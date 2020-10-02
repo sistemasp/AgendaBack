@@ -6,6 +6,7 @@ import { StatusDto } from "./status-dto";
 import { ServicioDto } from "./servicio-dto";
 import { PagoDto } from "./pago-dto";
 import { AreaDto } from "./area-dto";
+import { MedioDto } from "./medio-dto";
 
 export class CitaDto {
     readonly create_date: Date;
@@ -18,6 +19,7 @@ export class CitaDto {
     readonly numero_sesion: String;
     readonly quien_agenda: EmpleadoDto;
     readonly tipo_cita: TipoCitaDto;
+    readonly medio: MedioDto;
     readonly quien_confirma_llamada: EmpleadoDto;
     readonly quien_confirma_asistencia: EmpleadoDto;
     readonly status: StatusDto;

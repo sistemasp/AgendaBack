@@ -25,7 +25,8 @@ export class ConsultaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
-            .populate('pagoss')
+            .populate('medio')
+            .populate('pagos')
             .populate('frecuencia')
             .populate('status');
     }
@@ -43,6 +44,7 @@ export class ConsultaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('medio')
             .populate('pagos')
             .populate('frecuencia')
             .populate('status');
@@ -78,6 +80,7 @@ export class ConsultaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('medio')
             .populate('pagos')
             .populate('frecuencia')
             .populate('status');
@@ -109,6 +112,7 @@ export class ConsultaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('medio')
             .populate('pagos')
             .populate('frecuencia')
             .populate('status');
@@ -187,6 +191,7 @@ export class ConsultaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('medio')
             .populate('pagos')
             .populate('frecuencia')
             .populate('status');
@@ -232,6 +237,7 @@ export class ConsultaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('medio')
             .populate('pagos')
             .populate('frecuencia')
             .populate('status');
@@ -250,6 +256,7 @@ export class ConsultaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('medio')
             .populate('pagos')
             .populate('frecuencia')
             .populate('status');
@@ -268,6 +275,7 @@ export class ConsultaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('medio')
             .populate('pagos')
             .populate('frecuencia')
             .populate('status');
