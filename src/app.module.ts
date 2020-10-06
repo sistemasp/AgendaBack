@@ -106,6 +106,18 @@ import { CabinaSchema } from './schemas/cabina.schema';
 import { MedioSchema } from './schemas/medio.schema';
 import { MedioController } from './medio/medio.controller';
 import { MedioService } from './medio/medio.service';
+import { EsteticaSchema } from './schemas/estetica.schema';
+import { EsteticaController } from './estetica/estetica.controller';
+import { EsteticaService } from './estetica/estetica.service';
+import { TipoEsteticaSchema } from './schemas/tipo-estetica.schema';
+import { MaterialEsteticaSchema } from './schemas/material-estetica.schema';
+import { TipoEsteticaController } from './tipo_estetica/tipo-estetica.controller';
+import { TipoEsteticaService } from './tipo_estetica/tipo-estetica.service';
+import { MaterialEsteticaController } from './material-estetica/material-estetica.controller';
+import { MaterialEsteticaService } from './material-estetica/material-estetica.service';
+import { SalaCirugiaSchema } from './schemas/sala-cirugia.schema';
+import { SalaCirugiaController } from './sala-cirugia/sala-cirugia.controller';
+import { SalaCirugiaService } from './sala-cirugia/sala-cirugia.service';
 
 @Module({
   imports: [
@@ -145,6 +157,10 @@ import { MedioService } from './medio/medio.service';
       { name: 'Area', schema: AreaSchema },
       { name: 'Cabina', schema: CabinaSchema },
       { name: 'Medio', schema: MedioSchema },
+      { name: 'Estetica', schema: EsteticaSchema },
+      { name: 'TipoEstetica', schema: TipoEsteticaSchema },
+      { name: 'MaterialEstetica', schema: MaterialEsteticaSchema },
+      { name: 'SalaCirugia', schema: SalaCirugiaSchema },
     ])
   ],
   controllers: [
@@ -184,6 +200,10 @@ import { MedioService } from './medio/medio.service';
     AreaController,
     CabinaController,
     MedioController,
+    EsteticaController,
+    TipoEsteticaController,
+    MaterialEsteticaController,
+    SalaCirugiaController,
   ],
   providers: [
     AppService,
@@ -222,6 +242,10 @@ import { MedioService } from './medio/medio.service';
     AreaService,
     CabinaService,
     MedioService,
+    EsteticaService,
+    TipoEsteticaService,
+    MaterialEsteticaService,
+    SalaCirugiaService,
   ],
 })
 
