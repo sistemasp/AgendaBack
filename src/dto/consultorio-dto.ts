@@ -12,4 +12,5 @@ export class ConsultorioDto {
     readonly servicio: String;
     readonly sucursal: SucursalDto;
     readonly disponible: Boolean;
+    readonly consulta: ConsultaDto;
 }

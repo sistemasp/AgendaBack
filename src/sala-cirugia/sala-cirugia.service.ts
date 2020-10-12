@@ -66,10 +66,8 @@ export class SalaCirugiaService {
         return await this.salaCirugiaModel.find(
             {
                 sucursal: sucursalId,
-                medico: { $ne: undefined },
                 disponible: true
             })
-            .populate('medico')
             .populate('consulta')
             .populate('paciente');
     }

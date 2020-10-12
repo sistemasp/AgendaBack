@@ -3,6 +3,7 @@ import { PacienteI } from "./paciente.interface";
 import { SucursalI } from "./sucursal.interface";
 import { ConsultaI } from "./consulta.interface";
 import { ServicioI } from "./servicio.interface";
+import { CirugiaI } from "./cirugia.interface";
 
 export interface SalaCirugiaI {
     nombre: String;
@@ -12,4 +13,5 @@ export interface SalaCirugiaI {
     servicio: String;
     sucursal: SucursalI;
     disponible: Boolean;
+    cirugia: CirugiaI;
 }

@@ -79,7 +79,13 @@ export class ConsultorioService {
      * @param sucursalId 
      */
     async breakFreeSurgeryByIdPaciente(consultorioId: string): Promise<ConsultorioI[]> {
-        return await this.consultorioModel.updateOne({ _id: consultorioId }, {$unset: {paciente: undefined, consulta: undefined}});
+        return await this.consultorioModel.updateOne({ _id: consultorioId }, 
+            {$unset: {
+                paciente: undefined,
+                consulta: undefined,
+                tipo_servicio: undefined,
+                servicio: undefined,
+            }});
     }
 
     /**

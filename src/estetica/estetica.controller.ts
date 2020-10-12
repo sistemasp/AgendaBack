@@ -50,6 +50,12 @@ export class EsteticaController {
         return this.esteticaService.findEsteticasByRangeDateAndSucursal(`${anioi}-${mesi}-${diai}`, `${aniof}-${mesf}-${diaf}`, sucursalId);
     }
 
+    @Get('sucursal/:sucursalId/asistio/:statusAsistioId')
+    waitingList(@Param('sucursalId') sucursalId: string, @Param('statusAsistioId') statusAsistioId: string) : Promise<EsteticaI[]> {
+        console.log(new Date(), this.TAG, "waitingList");
+        return this.esteticaService.waitingList(sucursalId, statusAsistioId);
+    }
+
     @Post()
     createEstetica(@Body() esteticaDto: EsteticaDto): Promise<EsteticaI> {
         console.log(new Date(), this.TAG, "createEstetica");

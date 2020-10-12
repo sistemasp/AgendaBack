@@ -4,11 +4,14 @@ import { BiopsiaDto } from "./biopsia-dto";
 import { PacienteDto } from "./paciente-dto";
 import { EmpleadoDto } from "./empleado-dto";
 import { SucursalDto } from "./sucursal-dto";
+import { StatusDto } from "./status-dto";
+import { ServicioDto } from "./servicio-dto";
 
 export class CirugiaDto {
     readonly create_date: Date;
     readonly fecha_hora: Date;
     readonly pagado: Boolean;
+    readonly status: StatusDto;
     readonly consulta: ConsultaDto;
     readonly paciente: PacienteDto;
     readonly medico: EmpleadoDto;
@@ -21,4 +24,5 @@ export class CirugiaDto {
     readonly biopsias: BiopsiaDto[];
     readonly hasBiopsia: Boolean;
     readonly costo_biopsias: String;
+    readonly servicio: ServicioDto;
 }

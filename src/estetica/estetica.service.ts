@@ -113,7 +113,6 @@ export class EsteticaService {
         return await this.esteticaModel.find({ fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
-            .populate('patologo')
             .populate('consulta')
             .populate('pagos');
     }
@@ -130,6 +129,31 @@ export class EsteticaService {
         estetica.consecutivo = consecutivo.length;
         const newEstetica = new this.esteticaModel(estetica);
         return await newEstetica.save();
+    }
+
+    /**
+     * Muestra todas las esteticas de la BD de una sucursal
+     */
+    async waitingList(sucursalId, statusAsistioId): Promise<EsteticaI[]> {
+        let startDate = new Date();
+        startDate.setHours(-5);
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date();
+        endDate.setHours(18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+        return await this.esteticaModel.find(
+            {
+                fecha_hora: { $gte: startDate, $lte: endDate },
+                sucursal: sucursalId,
+                status: statusAsistioId,
+                // pagado: true
+            }).sort('hora_llegada')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('consulta')
+            .populate('medico');
     }
 
     /**

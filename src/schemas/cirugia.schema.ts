@@ -10,6 +10,7 @@ export const CirugiaSchema = new Schema({
     medico : { type: Schema.ObjectId, ref: 'Empleado'},
     patologo : { type: Schema.ObjectId, ref: 'Empleado'},
     sucursal : { type: Schema.ObjectId, ref: 'Sucursal'},
+    status : { type: Schema.ObjectId, ref: 'Status'},
     consecutivo: String,
     pagado : { type: Boolean, default: false },
     precio: String,
@@ -18,5 +19,5 @@ export const CirugiaSchema = new Schema({
     biopsias: [{ type: Schema.ObjectId, ref: 'Biopsia' }],
     hasBiopsia : { type: Boolean, default: false },
     costo_biopsias: String,
-    tipo_servicio: { type: Schema.ObjectId, ref: 'Servicio' },
+    servicio: { type: Schema.ObjectId, ref: 'Servicio' },
 });

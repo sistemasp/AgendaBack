@@ -9,5 +9,6 @@ export const ConsultorioSchema = new Schema({
     tipo_servicio : { type: Schema.ObjectId, ref: 'Servicio'},
     servicio : String,
     sucursal : { type: Schema.ObjectId, ref: 'Sucursal'},
-    disponible : { type: Boolean, default: true }
+    disponible : { type: Boolean, default: true },
+    consulta : { type: Schema.ObjectId, ref: 'Consulta'}
 });

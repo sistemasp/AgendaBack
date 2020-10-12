@@ -12,4 +12,5 @@ export interface ConsultorioI {
     servicio: String;
     sucursal: SucursalI;
     disponible: Boolean;
+    consulta: ConsultaI;
 }

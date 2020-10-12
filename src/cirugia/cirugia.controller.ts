@@ -50,6 +50,12 @@ export class CirugiaController {
         return this.cirugiaService.findCirugiasByRangeDateAndSucursal(`${anioi}-${mesi}-${diai}`, `${aniof}-${mesf}-${diaf}`, sucursalId);
     }
 
+    @Get('waitingList/sucursal/:sucursalId/asistio/:statusAsistioId')
+    waitingList(@Param('sucursalId') sucursalId: string, @Param('statusAsistioId') statusAsistioId: string) : Promise<CirugiaI[]> {
+        console.log(new Date(), this.TAG, "waitingList");
+        return this.cirugiaService.waitingList(sucursalId, statusAsistioId);
+    }
+
     @Post()
     createCirugia(@Body() cirugiaDto: CirugiaDto): Promise<CirugiaI> {
         console.log(new Date(), this.TAG, "createCirugia");

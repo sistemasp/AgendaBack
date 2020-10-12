@@ -34,6 +34,12 @@ export class EmpleadoController {
         return this.empleadoService.findEmployeesByRolId(idRol);
     }
 
+    @Get('rol/:id_rol/available')
+    findEmployeesByRolIdAvailable(@Param('id_rol') idRol: string): Promise<EmpleadoI[]> {
+        console.log(new Date(), this.TAG, "findEmployeesByRolIdAvailable");
+        return this.empleadoService.findEmployeesByRolIdAvailable(idRol);
+    }
+
     @Post()
     createEmployee(@Body() empleadoDto: EmpleadoDto): Promise<EmpleadoI> {
         console.log(new Date(), this.TAG, "createEmployee");
