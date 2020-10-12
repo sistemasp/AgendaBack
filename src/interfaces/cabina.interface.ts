@@ -1,8 +1,8 @@
 import { EmpleadoI } from "./empleado.interface";
 import { PacienteI } from "./paciente.interface";
 import { SucursalI } from "./sucursal.interface";
-import { ConsultaI } from "./consulta.interface";
 import { ServicioI } from "./servicio.interface";
+import { CitaI } from "./cita.interface";
 
 export interface CabinaI {
     nombre: String;
@@ -12,4 +12,5 @@ export interface CabinaI {
     servicio: String;
     sucursal: SucursalI;
     disponible: Boolean;
+    cita: CitaI;
 }

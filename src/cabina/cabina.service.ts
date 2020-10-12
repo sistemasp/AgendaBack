@@ -14,7 +14,7 @@ export class CabinaService {
     async showAllCabinas(): Promise<CabinaI[]> {
         return await this.cabinaModel.find()
             .populate('medico')
-            .populate('consulta')
+            .populate('cita')
             .populate('paciente');
     }
 
@@ -25,7 +25,7 @@ export class CabinaService {
     async findCabinaById(idCabina: string): Promise<CabinaI> {
         return await this.cabinaModel.findOne({ _id: idCabina })
             .populate('medico')
-            .populate('consulta')
+            .populate('cita')
             .populate('paciente');
     }
 
@@ -39,7 +39,7 @@ export class CabinaService {
                 sucursal: sucursalId
             })
             .populate('medico')
-            .populate('consulta')
+            .populate('cita')
             .populate('paciente');
     }
 
@@ -54,7 +54,7 @@ export class CabinaService {
                 medico: { $ne: undefined }
             })
             .populate('medico')
-            .populate('consulta')
+            .populate('cita')
             .populate('paciente');
     }
 
@@ -76,7 +76,18 @@ export class CabinaService {
      * @param sucursalId 
      */
     async breakFreeCabinaByIdPaciente(cabinaId: string): Promise<CabinaI[]> {
-        return await this.cabinaModel.updateOne({ _id: cabinaId }, {$unset: {paciente: undefined, consulta: undefined}});
+        return await this.cabinaModel.updateOne({ _id: cabinaId }, 
+            {
+                $unset:{
+                    paciente: undefined,
+                    cita: undefined,
+                    tipo_servicio: undefined,
+                    servicio: undefined,
+                },
+                $set:{
+                    disponible: true,
+                }
+            });
     }
 
     /**
