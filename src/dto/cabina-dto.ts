@@ -8,6 +8,7 @@ import { CitaDto } from "./cita-dto";
 export class CabinaDto {
     readonly nombre: String;
     readonly cosmetologa: EmpleadoDto;
+    readonly medico: EmpleadoDto;
     readonly paciente: PacienteDto;
     readonly tipo_servicio: ServicioDto;
     readonly servicio: String;

@@ -77,7 +77,20 @@ export class SalaCirugiaService {
      * @param sucursalId 
      */
     async breakFreeSalaCirugiaByIdPaciente(salaCirugiaId: string): Promise<SalaCirugiaI[]> {
-        return await this.salaCirugiaModel.updateOne({ _id: salaCirugiaId }, {$unset: {paciente: undefined, consulta: undefined}});
+        return await this.salaCirugiaModel.updateOne(
+            { _id: salaCirugiaId },
+            {
+                $unset: {
+                    paciente: undefined,
+                    cirugia: undefined,
+                    tipo_servicio: undefined,
+                    servicio: undefined,
+                },
+                $set: {
+                    disponible: true,
+                }
+            }
+        );
     }
 
     /**
@@ -85,7 +98,7 @@ export class SalaCirugiaService {
      * @param sucursalId 
      */
     async breakFreeSalaCirugiaByIdMedico(salaCirugiaId: string): Promise<SalaCirugiaI[]> {
-        return await this.salaCirugiaModel.updateOne({ _id: salaCirugiaId }, {$unset: {medico: undefined}});
+        return await this.salaCirugiaModel.updateOne({ _id: salaCirugiaId }, { $unset: { medico: undefined } });
     }
 
     /**
