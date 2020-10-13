@@ -20,4 +20,5 @@ export const CirugiaSchema = new Schema({
     hasBiopsia : { type: Boolean, default: false },
     costo_biopsias: String,
     servicio: { type: Schema.ObjectId, ref: 'Servicio' },
+    pagos: [{ type: Schema.ObjectId, ref: 'Pago' }],
 });

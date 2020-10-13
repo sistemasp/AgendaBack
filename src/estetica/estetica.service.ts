@@ -16,7 +16,9 @@ export class EsteticaService {
      */
     async showAllEsteticas(): Promise<EsteticaI[]> {
         return await this.esteticaModel.find().sort('nombre')
-            .populate('consulta');
+            .populate('consulta')
+            .populate('status')
+            .populate('servicio');
     }
 
     /**
@@ -25,7 +27,9 @@ export class EsteticaService {
      */
     async findEsteticaById(idEstetica: string): Promise<EsteticaI> {
         return await this.esteticaModel.findOne({ _id: idEstetica })
-            .populate('consulta');
+            .populate('consulta')
+            .populate('status')
+            .populate('servicio');
     }
 
     /**
@@ -34,8 +38,9 @@ export class EsteticaService {
      */
     async findEsteticaByConsultaId(consultaId: string): Promise<EsteticaI> {
         return await this.esteticaModel.findOne({ consulta: consultaId })
-            .populate('patologo')
-            .populate('consulta');
+            .populate('consulta')
+            .populate('status')
+            .populate('servicio');
     }
 
     /**
@@ -68,6 +73,8 @@ export class EsteticaService {
             }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
+            .populate('servicio')
+            .populate('status')
             .populate('pagos');
     }
 
@@ -95,6 +102,7 @@ export class EsteticaService {
             }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
+            .populate('status')
             .populate('pagos');
     }
 
@@ -153,6 +161,8 @@ export class EsteticaService {
             .populate('paciente')
             .populate('sucursal')
             .populate('consulta')
+            .populate('servicio')
+            .populate('status')
             .populate('medico');
     }
 

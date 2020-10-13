@@ -5,6 +5,7 @@ import { EmpleadoI } from "./empleado.interface";
 import { SucursalI } from "./sucursal.interface";
 import { StatusI } from "./status.interface";
 import { ServicioI } from "./servicio.interface";
+import { PagoI } from "./pago.interface";
 
 export interface CirugiaI {
     create_date: Date;
@@ -24,4 +25,5 @@ export interface CirugiaI {
     hasBiopsia: Boolean;
     costo_biopsias: String;
     servicio: ServicioI;
+    pagos : PagoI[];
 }

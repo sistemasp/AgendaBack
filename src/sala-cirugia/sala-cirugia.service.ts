@@ -85,6 +85,7 @@ export class SalaCirugiaService {
                     cirugia: undefined,
                     tipo_servicio: undefined,
                     servicio: undefined,
+                    medico: undefined,
                 },
                 $set: {
                     disponible: true,

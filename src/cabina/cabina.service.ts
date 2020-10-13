@@ -88,6 +88,7 @@ export class CabinaService {
                     tipo_servicio: undefined,
                     servicio: undefined,
                     cosmetologa: undefined,
+                    medico: undefined,
                 },
                 $set:{
                     disponible: true,

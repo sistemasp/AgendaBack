@@ -3,6 +3,7 @@ import { PacienteDto } from "./paciente-dto";
 import { SucursalDto } from "./sucursal-dto";
 import { StatusDto } from "./status-dto";
 import { ConsultaDto } from "./consulta-dto";
+import { PagoDto } from "./pago-dto";
 
 export class BiopsiaDto {
     readonly create_date: Date;
@@ -23,4 +24,5 @@ export class BiopsiaDto {
     readonly a_quien_se_entrega: EmpleadoDto;
     readonly fecha_entrega: Date;
     readonly quien_lo_entrega: EmpleadoDto;
+    readonly pagos : PagoDto[];
 }

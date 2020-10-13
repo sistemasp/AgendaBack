@@ -3,6 +3,7 @@ import { EmpleadoI } from "./empleado.interface";
 import { PacienteI } from "./paciente.interface";
 import { SucursalI } from "./sucursal.interface";
 import { StatusI } from "./status.interface";
+import { PagoI } from "./pago.interface";
 
 export interface BiopsiaI {
     create_date: Date;
@@ -23,4 +24,5 @@ export interface BiopsiaI {
     a_quien_se_entrega: EmpleadoI;
     fecha_entrega: Date;
     quien_lo_entrega: EmpleadoI;
+    pagos : PagoI[];
 }

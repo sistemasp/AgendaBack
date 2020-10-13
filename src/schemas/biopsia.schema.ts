@@ -22,4 +22,5 @@ export const BiopsiaSchema = new Schema({
     fecha_entrega: { type : Date },
     quien_lo_entrega: { type: Schema.ObjectId, ref: 'Empleado'},
     tipo_servicio: { type: Schema.ObjectId, ref: 'Servicio' },
+    pagos: [{ type: Schema.ObjectId, ref: 'Pago' }],
 });

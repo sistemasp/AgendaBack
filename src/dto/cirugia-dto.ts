@@ -6,6 +6,7 @@ import { EmpleadoDto } from "./empleado-dto";
 import { SucursalDto } from "./sucursal-dto";
 import { StatusDto } from "./status-dto";
 import { ServicioDto } from "./servicio-dto";
+import { PagoDto } from "./pago-dto";
 
 export class CirugiaDto {
     readonly create_date: Date;
@@ -25,4 +26,5 @@ export class CirugiaDto {
     readonly hasBiopsia: Boolean;
     readonly costo_biopsias: String;
     readonly servicio: ServicioDto;
+    readonly pagos : PagoDto[];
 }
