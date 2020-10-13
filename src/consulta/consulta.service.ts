@@ -171,6 +171,38 @@ export class ConsultaService {
     }
 
     /**
+     * Muestra todas las consultas de la BD que correspondan a un pagos de un medico de algun dia y turno
+     * turno:
+     *  1 = MATUTINO
+     *  2 = VESPERTINO
+     * frecuencia:
+     *  1 = PRIMERA VEZ
+     *  2 = RECONSULTA
+     */
+    async findConsultsByPayOfDoctorTurnoFrecuencia(anio, mes, dia, sucursalId, medicoId, atendidoId, turno, frecuenciaId): Promise<ConsultaI[]> {
+        let startDate = new Date(anio, mes - 1, dia);
+        startDate.setHours(turno === 'm' ? -5 : (startDate.getDay() === 6 ? 8 : 9));
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date(anio, mes - 1, dia);
+        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+
+        return await this.consultaModel.find(
+            {
+                fecha_hora: { $gte: startDate, $lte: endDate },
+                sucursal: sucursalId,
+                medico: medicoId,
+                status: atendidoId,
+                frecuencia: frecuenciaId,
+            }).sort('consecutivo')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('pagos');
+    }
+
+    /**
      * Muestra todas las consultas de la BD que correspondan a una fecha_hora y una sucursal
      */
     async findConsultsByRangeDateAndSucursal(startDateS, endDateS, sucursalId): Promise<ConsultaI[]> {

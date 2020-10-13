@@ -61,6 +61,14 @@ export class ConsultaController {
         return this.consultaService.findConsultsByPayOfDoctorTurno(anio, mes , dia, sucursalId, medicoId, atendidoId, turno);
     }
 
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/turno/:turno/frecuencia/:frecuenciaId')
+    findConsultsByPayOfDoctorTurnoFrecuencia(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
+    @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,
+    @Param('turno') turno: string, @Param('frecuenciaId') frecuenciaId: string) : Promise<ConsultaI[]> {
+        console.log(new Date(), this.TAG, "findConsultsByPayOfDoctorTurnoFrecuencia");
+        return this.consultaService.findConsultsByPayOfDoctorTurnoFrecuencia(anio, mes , dia, sucursalId, medicoId, atendidoId, turno, frecuenciaId);
+    }
+
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')
     findConsultsByRangeDateAndSucursal(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,

@@ -16,8 +16,6 @@ export interface PagoI {
     tratamientos: TratamientoI[];
     quien_recibe_pago: EmpleadoI;
     cantidad: String;
-    porcentaje_comision: String;
-    comision: String;
     total: String;
     metodo_pago: MetodoPagoI;
     banco: BancoI;
@@ -31,4 +29,5 @@ export interface PagoI {
     descuento: String;
     tipo_servicio: ServicioI;
     servicio: String;
+    pago_anticipado: Boolean;
 }

@@ -283,6 +283,7 @@ export class CitaService {
             }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
+            .populate('areas')
             .populate('pagos');
     }
 
@@ -311,6 +312,7 @@ export class CitaService {
             }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
+            .populate('areas')
             .populate('pagos');
     }
 

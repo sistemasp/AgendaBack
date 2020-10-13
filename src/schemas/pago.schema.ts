@@ -10,8 +10,6 @@ export const PagoSchema = new Schema({
     tratamientos: [{ type: Schema.ObjectId, ref: 'Tratamiento' }],
     quien_recibe_pago: { type: Schema.ObjectId, ref: 'Empleado' },
     cantidad: String,
-    porcentaje_comision: String,
-    comision: String,
     total: String,
     metodo_pago: { type: Schema.ObjectId, ref: 'MetodoPago' },
     banco: { type: Schema.ObjectId, ref: 'Banco' },
@@ -25,4 +23,5 @@ export const PagoSchema = new Schema({
     descuento: String,
     tipo_servicio: { type: Schema.ObjectId, ref: 'Servicio' },
     servicio: String,
+    pago_anticipado: { type: Boolean, default: false },
 });

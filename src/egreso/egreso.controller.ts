@@ -1,0 +1,43 @@
+import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
+import { EgresoService } from './egreso.service';
+import { EgresoI } from 'src/interfaces/egreso.interface';
+import { EgresoDto } from 'src/dto/egreso-dto';
+
+@Controller('egreso')
+export class EgresoController {
+
+    TAG = "EgresoController";
+
+    constructor(private readonly egresoService: EgresoService) {}
+
+    @Get()
+    showAllEgresos() : Promise<EgresoI[]> {
+        console.log(new Date(), this.TAG, "showAllEgresos");
+        return this.egresoService.showAllEgresos();
+    }
+
+    @Get(':id')
+    findEgresoById(@Param('id') idEgreso: string): Promise<EgresoI> {
+        console.log(new Date(), this.TAG, "findEgresoById");
+        return this.egresoService.findEgresoById(idEgreso);
+    }
+
+    @Post()
+    createEgreso(@Body() egresoDto: EgresoDto): Promise<EgresoI> {
+        console.log(new Date(), this.TAG, "createEgreso");
+        return this.egresoService.createEgreso(egresoDto);
+    }
+
+    @Put(':id') 
+    updateEgreso(@Param('id') idEgreso: string, @Body() egresoDto: EgresoDto): Promise<EgresoI> {
+        console.log(new Date(), this.TAG, "updateEgreso");
+        return this.egresoService.updateEgreso(idEgreso, egresoDto);
+    }
+
+    @Delete(':id')
+    deleteEgreso(@Param('id') idEgreso: string): Promise<EgresoI> {
+        console.log(new Date(), this.TAG, "deleteEgreso");
+        return this.egresoService.deleteEgreso(idEgreso);
+    }
+
+}

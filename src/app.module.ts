@@ -118,6 +118,18 @@ import { MaterialEsteticaService } from './material-estetica/material-estetica.s
 import { SalaCirugiaSchema } from './schemas/sala-cirugia.schema';
 import { SalaCirugiaController } from './sala-cirugia/sala-cirugia.controller';
 import { SalaCirugiaService } from './sala-cirugia/sala-cirugia.service';
+import { TipoIngresoSchema } from './schemas/tipo-ingreso.schema';
+import { TipoEgresoSchema } from './schemas/tipo-egreso.schema';
+import { TipoIngresoController } from './tipo_ingreso/tipo-ingreso.controller';
+import { TipoEgresoController } from './tipo_egreso/tipo-egreso.controller';
+import { TipoIngresoService } from './tipo_ingreso/tipo-ingreso.service';
+import { TipoEgresoService } from './tipo_egreso/tipo-egreso.service';
+import { IngresoSchema } from './schemas/ingreso.schema';
+import { EgresoSchema } from './schemas/egreso.schema';
+import { IngresoController } from './ingreso/ingreso.controller';
+import { EgresoController } from './egreso/egreso.controller';
+import { IngresoService } from './ingreso/ingreso.service';
+import { EgresoService } from './egreso/egreso.service';
 
 @Module({
   imports: [
@@ -161,6 +173,10 @@ import { SalaCirugiaService } from './sala-cirugia/sala-cirugia.service';
       { name: 'TipoEstetica', schema: TipoEsteticaSchema },
       { name: 'MaterialEstetica', schema: MaterialEsteticaSchema },
       { name: 'SalaCirugia', schema: SalaCirugiaSchema },
+      { name: 'TipoIngreso', schema: TipoIngresoSchema },
+      { name: 'TipoEgreso', schema: TipoEgresoSchema },
+      { name: 'Ingreso', schema: IngresoSchema },
+      { name: 'Egreso', schema: EgresoSchema },
     ])
   ],
   controllers: [
@@ -204,6 +220,10 @@ import { SalaCirugiaService } from './sala-cirugia/sala-cirugia.service';
     TipoEsteticaController,
     MaterialEsteticaController,
     SalaCirugiaController,
+    TipoIngresoController,
+    TipoEgresoController,
+    IngresoController,
+    EgresoController,
   ],
   providers: [
     AppService,
@@ -246,6 +266,10 @@ import { SalaCirugiaService } from './sala-cirugia/sala-cirugia.service';
     TipoEsteticaService,
     MaterialEsteticaService,
     SalaCirugiaService,
+    TipoIngresoService,
+    TipoEgresoService,
+    IngresoService,
+    EgresoService,
   ],
 })
 
