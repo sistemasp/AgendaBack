@@ -12,7 +12,8 @@ export class PacienteService {
      * Muestra todos los pacientes de la BD
      */
     async showAllPatients(): Promise<PacienteI[]> {
-        return await this.pacienteModel.find();
+        return await this.pacienteModel.find()
+            .select('nombres apellidos telefono');
     }
 
     /**
