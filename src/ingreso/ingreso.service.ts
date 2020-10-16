@@ -12,7 +12,13 @@ export class IngresoService {
      * Muestra todos los ingresos de la BD
      */
     async showAllIngresos(): Promise<IngresoI[]> {
-        return await this.ingresoModel.find().sort('concepto');
+        return await this.ingresoModel.find()
+        .sort('create_date')
+        .populate('recepcionista')
+        .populate('tipo_ingreso')
+        .populate('sucursal')
+        .populate('metodo_pago')
+        ;
     }
 
     /**
