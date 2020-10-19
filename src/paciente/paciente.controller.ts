@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body, Req, Headers, Query } from '@nestjs/common';
 import { PacienteService } from './paciente.service';
 import { PacienteI } from 'src/interfaces/paciente.interface';
 import { PacienteDto } from 'src/dto/paciente-dto';
@@ -14,6 +14,12 @@ export class PacienteController {
     showAllPatients() : Promise<PacienteI[]> {
         console.log(new Date(), this.TAG, "showAllPatients");
         return this.pacienteService.showAllPatients();
+    }
+
+    @Get('remote')
+    remotePatients(@Query('per_page') per_page: String, @Query('page') page: String, @Query('search') search: String) : Promise<{}> {
+        console.log(new Date(), this.TAG, "remotePatients");
+        return this.pacienteService.remotePatients(per_page, page, search);
     }
 
     @Get(':id')
