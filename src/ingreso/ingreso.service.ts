@@ -30,6 +30,29 @@ export class IngresoService {
     }
 
     /**
+     * Muestra todos los ingresos de la BD
+     */
+    async showIngresosTodayBySucursalAndTurno(sucursalId, turno): Promise<IngresoI[]> {
+        let startDate = new Date();
+        startDate.setHours(turno === 'm' ? -5 : (startDate.getDay() === 6 ? 8 : 9));
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date();
+        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+        return await this.ingresoModel.find({
+            create_date: { $gte: startDate, $lte: endDate },
+            sucursal: sucursalId,
+        })
+        .sort('create_date')
+        .populate('recepcionista')
+        .populate('tipo_ingreso')
+        .populate('sucursal')
+        .populate('metodo_pago');
+    }
+
+    /**
      * Busca solo un ingreso mediante su numero de empleado en la BD
      * @param idIngreso 
      */

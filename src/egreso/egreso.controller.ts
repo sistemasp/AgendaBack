@@ -22,6 +22,12 @@ export class EgresoController {
         return this.egresoService.findEgresoById(idEgreso);
     }
 
+    @Get('sucursal/:sucursalId/today/turno/:turno')
+    showEgresosTodayBySucursalAndTurno(@Param('turno') turno: string, @Param('sucursalId') sucursalId: string) : Promise<EgresoI[]> {
+        console.log(new Date(), this.TAG, "showEgresosTodayBySucursalAndTurno");
+        return this.egresoService.showEgresosTodayBySucursalAndTurno(sucursalId, turno);
+    }
+
     @Post()
     createEgreso(@Body() egresoDto: EgresoDto): Promise<EgresoI> {
         console.log(new Date(), this.TAG, "createEgreso");

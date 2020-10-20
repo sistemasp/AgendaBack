@@ -22,6 +22,12 @@ export class IngresoController {
         return this.ingresoService.findIngresoById(idIngreso);
     }
 
+    @Get('sucursal/:sucursalId/today/turno/:turno')
+    showIngresosTodayBySucursalAndTurno(@Param('turno') turno: string, @Param('sucursalId') sucursalId: string) : Promise<IngresoI[]> {
+        console.log(new Date(), this.TAG, "showIngresosTodayBySucursalAndTurno");
+        return this.ingresoService.showIngresosTodayBySucursalAndTurno(sucursalId, turno);
+    }
+
     @Post()
     createIngreso(@Body() ingresoDto: IngresoDto): Promise<IngresoI> {
         console.log(new Date(), this.TAG, "createIngreso");
