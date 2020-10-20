@@ -133,6 +133,9 @@ import { EgresoService } from './egreso/egreso.service';
 import { PagoMedicoSchema } from './schemas/pago-medico.schema';
 import { PagoMedicoController } from './pago-medico/pago-medico.controller';
 import { PagoMedicoService } from './pago-medico/pago-medico.service';
+import { CorteSchema } from './schemas/corte.schema';
+import { CorteController } from './corte/corte.controller';
+import { CorteService } from './corte/corte.service';
 
 @Module({
   imports: [
@@ -181,6 +184,7 @@ import { PagoMedicoService } from './pago-medico/pago-medico.service';
       { name: 'Ingreso', schema: IngresoSchema },
       { name: 'Egreso', schema: EgresoSchema },
       { name: 'PagoMedico', schema: PagoMedicoSchema },
+      { name: 'Corte', schema: CorteSchema },
     ])
   ],
   controllers: [
@@ -229,6 +233,7 @@ import { PagoMedicoService } from './pago-medico/pago-medico.service';
     IngresoController,
     EgresoController,
     PagoMedicoController,
+    CorteController,
   ],
   providers: [
     AppService,
@@ -276,6 +281,7 @@ import { PagoMedicoService } from './pago-medico/pago-medico.service';
     IngresoService,
     EgresoService,
     PagoMedicoService,
+    CorteService,
   ],
 })
 
