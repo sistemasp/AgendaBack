@@ -32,7 +32,16 @@ export class CorteService {
      * Muestra todos los cortes del turno de la BD
      */
     async showCorteTodayBySucursalAndTurno(sucursalId, turno): Promise<CorteI> {
+        let startDate = new Date();
+        startDate.setHours(turno === 'm' ? -5 : (startDate.getDay() === 6 ? 8 : 9));
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date();
+        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 18);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
         return await this.corteModel.findOne({
+            create_date: { $gte: startDate, $lte: endDate },
             turno: turno,
             sucursal: sucursalId,
         })
