@@ -24,4 +24,5 @@ export const PagoSchema = new Schema({
     tipo_servicio: { type: Schema.ObjectId, ref: 'Servicio' },
     servicio: String,
     pago_anticipado: { type: Boolean, default: false },
+    ingreso: { type: Schema.ObjectId, ref: 'Ingreso' },
 });

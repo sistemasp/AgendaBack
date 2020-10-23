@@ -12,4 +12,7 @@ export interface AreaI {
     comision_derivado: String;
     comision_revisado: String;
     comision_realizado: String;
+    comision_derivado_ma: String;
+    comision_revisado_ma: String;
+    comision_realizado_ma: String;
 }

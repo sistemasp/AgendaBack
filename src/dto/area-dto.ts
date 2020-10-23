@@ -12,4 +12,7 @@ export class AreaDto {
     readonly comision_derivado : String;
     readonly comision_revisado : String;
     readonly comision_realizado : String;
+    readonly comision_derivado_ma : String;
+    readonly comision_revisado_ma : String;
+    readonly comision_realizado_ma : String;
 }

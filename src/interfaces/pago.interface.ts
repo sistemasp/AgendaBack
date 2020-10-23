@@ -7,6 +7,7 @@ import { BancoI } from "./banco.interface";
 import { TipoTarjetaI } from "./tipo-tarjeta.interface";
 import { MetodoPagoI } from "./metodo-pago.interface";
 import { CitaI } from "./cita.interface";
+import { IngresoI } from "./ingreso.interface";
 
 export interface PagoI {
     fecha_pago: Date;
@@ -30,4 +31,5 @@ export interface PagoI {
     tipo_servicio: ServicioI;
     servicio: String;
     pago_anticipado: Boolean;
+    ingreso: IngresoI;
 }

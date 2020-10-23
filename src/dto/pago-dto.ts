@@ -7,6 +7,7 @@ import { BancoDto } from "./banco-dto";
 import { TipoTarjetaDto } from "./tipo-tarjeta-dto";
 import { MetodoPagoDto } from "./metodo-pago-dto";
 import { CitaDto } from "./cita-dto";
+import { IngresoDto } from "./ingreso-dto";
 
 export class PagoDto {
     readonly fecha_pago: Date;
@@ -30,4 +31,5 @@ export class PagoDto {
     readonly tipo_servicio: ServicioDto;
     readonly servicio: String;
     readonly pago_anticipado: Boolean;
+    readonly ingreso: IngresoDto;
 }
