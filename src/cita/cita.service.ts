@@ -79,12 +79,11 @@ export class CitaService {
      * Muestra todas las citas de la BD que correspondan a una fecha
      */
     async findDatesByDate(anio, mes, dia): Promise<CitaI[]> {
-        let startDate = new Date(anio, mes - 1, dia);
-        startDate.setHours(-5);
+        let startDate = new Date(anio, mes, dia);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(anio, mes - 1, dia);
-        endDate.setHours(18);
+        let endDate = new Date(anio, mes, dia);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.citaModel.find({ fecha_hora: { $gte: startDate, $lte: endDate } }).sort('fecha_hora')
@@ -108,12 +107,11 @@ export class CitaService {
      * Muestra todas las citas de la BD que correspondan a una fecha y una sucursal
      */
     async findDatesByDateAndSucursal(anio, mes, dia, sucursalId): Promise<CitaI[]> {
-        let startDate = new Date(anio, mes - 1, dia);
-        startDate.setHours(-5);
+        let startDate = new Date(anio, mes, dia);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(anio, mes - 1, dia);
-        endDate.setHours(17);
+        let endDate = new Date(anio, mes, dia);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.citaModel.find({ fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId }).sort('fecha_hora')
@@ -136,13 +134,12 @@ export class CitaService {
     /**
      * Muestra todas las citas de la BD que correspondan a una fecha y una sucursal
      */
-    async findDatesByRangeDateAndSucursal(startDateS, endDateS, sucursalId): Promise<CitaI[]> {
-        let startDate = new Date(startDateS);
-        startDate.setHours(-5);
+    async findDatesByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId): Promise<CitaI[]> {
+        let startDate = new Date(anioi, mesi, diai);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(endDateS);
-        endDate.setHours(18);
+        let endDate = new Date(aniof, mesf, diaf);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.citaModel.find({ fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId }).sort('fecha_hora')
@@ -166,12 +163,11 @@ export class CitaService {
      * Muestra todas las citas de la BD que correspondan a una fecha y una sucursal
      */
     async findDatesByDateAndSucursalAndService(anio, mes, dia, sucursalId, servicio): Promise<CitaI[]> {
-        let startDate = new Date(anio, mes - 1, dia);
-        startDate.setHours(-5);
+        let startDate = new Date(anio, mes, dia);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(anio, mes - 1, dia);
-        endDate.setHours(18);
+        let endDate = new Date(anio, mes, dia);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.citaModel.find({ fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId, servicio: servicio }).sort('fecha_hora')
@@ -250,11 +246,10 @@ export class CitaService {
      */
     async waitingList(sucursalId, statusAsistioId): Promise<CitaI[]> {
         let startDate = new Date();
-        startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date();
-        endDate.setHours(18);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.citaModel.find(
@@ -275,12 +270,11 @@ export class CitaService {
      * Muestra todas las citas de la BD que correspondan a un pagos de un medico de algun dia 
      */
     async findDatesByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId): Promise<CitaI[]> {
-        let startDate = new Date(anio, mes - 1, dia);
-        startDate.setHours(-5);
+        let startDate = new Date(anio, mes, dia);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(anio, mes - 1, dia);
-        endDate.setHours(18);
+        let endDate = new Date(anio, mes, dia);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.citaModel.find(
@@ -303,12 +297,12 @@ export class CitaService {
      *  2 = VESPERTINO
      */
     async findDatesByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno): Promise<CitaI[]> {
-        let startDate = new Date(anio, mes - 1, dia);
-        startDate.setHours(turno === 'm' ? -5 : (startDate.getDay() === 6 ? 8 : 9));
+        let startDate = new Date(anio, mes, dia);
+        startDate.setHours(turno === 'm' ? 0 : (startDate.getDay() === 6 ? 13 : 14));
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(anio, mes - 1, dia);
-        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 18);
+        let endDate = new Date(anio, mes, dia);
+        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 12 : 13) : 23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
 
@@ -331,11 +325,10 @@ export class CitaService {
      */
     async createDate(cita: CitaI): Promise<CitaI> {
         /*let startDate = new Date();
-        startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date();
-        endDate.setHours(18);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);*/
         const consecutivo = await this.consecutivoModel.find({

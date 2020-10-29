@@ -74,7 +74,7 @@ export class ConsultaController {
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
         @Param('sucursalId') sucursalId: string) : Promise<ConsultaI[]> {
         console.log(new Date(), this.TAG, "findConsultsByRangeDateAndSucursal");
-        return this.consultaService.findConsultsByRangeDateAndSucursal(`${anioi}-${mesi}-${diai}`, `${aniof}-${mesf}-${diaf}`, sucursalId);
+        return this.consultaService.findConsultsByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId);
     }
 
     @Get('/histotic/:pacienteId')

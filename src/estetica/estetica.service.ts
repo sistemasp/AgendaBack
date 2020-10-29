@@ -55,12 +55,11 @@ export class EsteticaService {
      * Muestra todas las consultas de la BD que correspondan a un pagos de un medico de algun dia 
      */
     async findEsteticasByPayOfDoctor(anio, mes, dia, sucursalId, medicoId): Promise<EsteticaI[]> {
-        let startDate = new Date(anio, mes - 1, dia);
-        startDate.setHours(-5);
+        let startDate = new Date(anio, mes, dia);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(anio, mes - 1, dia);
-        endDate.setHours(18);
+        let endDate = new Date(anio, mes, dia);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
 
@@ -85,12 +84,12 @@ export class EsteticaService {
      *  2 = VESPERTINO
      */
     async findEsteticasByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, turno): Promise<EsteticaI[]> {
-        let startDate = new Date(anio, mes - 1, dia);
-        startDate.setHours(turno === 'm' ? -5 : (startDate.getDay() === 6 ? 8 : 9));
+        let startDate = new Date(anio, mes, dia);
+        startDate.setHours(turno === 'm' ? 0 : (startDate.getDay() === 6 ? 13 : 14));
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(anio, mes - 1, dia);
-        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 18);
+        let endDate = new Date(anio, mes, dia);
+        endDate.setHours(turno === 'm' ? (endDate.getDay() === 6 ? 12 : 13) : 23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
 
@@ -111,11 +110,10 @@ export class EsteticaService {
      */
     async findEsteticasByRangeDateAndSucursal(startDateS, endDateS, sucursalId): Promise<EsteticaI[]> {
         let startDate = new Date(startDateS);
-        startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(endDateS);
-        endDate.setHours(18);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.esteticaModel.find({ fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId }).sort('consecutivo')
@@ -144,11 +142,10 @@ export class EsteticaService {
      */
     async waitingList(sucursalId, statusAsistioId): Promise<EsteticaI[]> {
         let startDate = new Date();
-        startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date();
-        endDate.setHours(18);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.esteticaModel.find(

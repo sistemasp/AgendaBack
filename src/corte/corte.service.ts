@@ -33,11 +33,10 @@ export class CorteService {
      */
     async showCorteTodayBySucursalAndTurno(sucursalId, turno): Promise<CorteI> {
         let startDate = new Date();
-        startDate.setHours(turno === 'm' ? -5 : (startDate.getDay() === 6 ? 8 : 9));
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date();
-        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 18);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.corteModel.findOne({

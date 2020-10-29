@@ -37,11 +37,10 @@ export class BiopsiaService {
      */
     async findBiopsiasByRangeDateAndSucursal(startDateS, endDateS, sucursalId): Promise<BiopsiaI[]> {
         let startDate = new Date(startDateS);
-        startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(endDateS);
-        endDate.setHours(18);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.biopsiaModel.find({ fecha_realizacion: { $gte: startDate, $lte: endDate }, sucursal: sucursalId }).sort('consecutivo')

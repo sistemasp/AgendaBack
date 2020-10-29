@@ -129,7 +129,7 @@ export class HorarioService {
      * @param date 
      */
     async findScheduleByDate(anio, mes, dia): Promise<HorarioI[]> {
-        const citas = await this.citaService.findDatesByDate(anio, mes - 1, dia);
+        const citas = await this.citaService.findDatesByDate(anio, mes, dia);
         const horarios = await this.horarioModel.find().sort('hora');
         const response = await this.filterSchedules(horarios, citas); 
         return response;
@@ -147,7 +147,7 @@ export class HorarioService {
      * @param sucursalId
      * @param service
      */
-    async findScheduleByDateAndSucursalAndService(anio, mes, dia: string, sucursalId: string, service: string): Promise<HorarioI[]> {        
+    async findScheduleByDateAndSucursalAndService(anio, mes, dia: string, sucursalId: string, service: string): Promise<HorarioI[]> {
         const citas = await this.citaService.findDatesByDateAndSucursalAndService(anio, mes, dia, sucursalId, service);
         let horarios = await this.horarioModel.find({
             servicio: service,
@@ -156,7 +156,7 @@ export class HorarioService {
         const today =  new Date();
         const todayString = `${today.getFullYear()}-${Number(today.getMonth()) + 1}-${today.getDate()}`;
         if (todayString === `${anio}-${mes}-${dia}`) {
-            horarios = await this.schedulesToday(horarios, today.getHours().toString());
+            //horarios = await this.schedulesToday(horarios, today.getHours().toString());
         }
         const response = await this.filterSchedulesAndService(horarios, citas, service);
         return response;
@@ -177,7 +177,7 @@ export class HorarioService {
         const today =  new Date();
         const todayString = `${today.getDate()}/${Number(today.getMonth()) + 1}/${today.getFullYear()}`;
         if (todayString === `${anio}-${mes}-${dia}`) {
-            horarios = await this.schedulesToday(horarios, today.getHours().toString());
+            //horarios = await this.schedulesToday(horarios, today.getHours().toString());
         }
         const response = await this.filterSchedulesAndService(horarios, citas, service);
         return response;
@@ -198,7 +198,7 @@ export class HorarioService {
         const today =  new Date();
         const todayString = `${today.getDate()}/${Number(today.getMonth()) + 1}/${today.getFullYear()}`;
         if (todayString === `${anio}-${mes}-${dia}`) {
-            horarios = await this.schedulesToday(horarios, today.getHours().toString());
+            //horarios = await this.schedulesToday(horarios, today.getHours().toString());
         }
         const response = await this.filterSchedulesInConsult(horarios, consultas);
         return response;

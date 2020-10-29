@@ -70,11 +70,10 @@ export class PagoMedicoService {
      */
     async showTodayPagoMedicoBySucursalTurno(medicoId, sucursalId, turno): Promise<PagoMedicoI> {
         let startDate = new Date();
-        startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date();
-        endDate.setHours(18);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.pagoMedicoModel.findOne({
@@ -95,7 +94,7 @@ export class PagoMedicoService {
      * Muestra todas las pagoMedicos de la BD que correspondan a una fecha_hora
      */
     async findPagoMedicosByDate(anio, mes, dia): Promise<PagoMedicoI[]> {
-        const date = new Date(anio, mes - 1, dia);
+        const date = new Date(anio, mes, dia);
         return await this.pagoMedicoModel.find({ fecha_hora: date }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
@@ -115,12 +114,11 @@ export class PagoMedicoService {
      * Muestra todas las pagoMedicos de la BD que correspondan a una fecha_hora y una sucursal
      */
     async findPagoMedicosByDateAndSucursal(anio, mes, dia, sucursalId): Promise<PagoMedicoI[]> {
-        let startDate = new Date(anio, mes - 1, dia);
-        startDate.setHours(-5);
+        let startDate = new Date(anio, mes, dia);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(anio, mes - 1, dia);
-        endDate.setHours(18);
+        let endDate = new Date(anio, mes, dia);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.pagoMedicoModel.find(
@@ -147,12 +145,11 @@ export class PagoMedicoService {
      * Muestra todas las pagoMedicos de la BD que correspondan a un pagos de un medico de algun dia 
      */
     async findPagoMedicosByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId): Promise<PagoMedicoI[]> {
-        let startDate = new Date(anio, mes - 1, dia);
-        startDate.setHours(-5);
+        let startDate = new Date(anio, mes, dia);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(anio, mes - 1, dia);
-        endDate.setHours(18);
+        let endDate = new Date(anio, mes, dia);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.pagoMedicoModel.find(
@@ -174,12 +171,12 @@ export class PagoMedicoService {
      *  2 = VESPERTINO
      */
     async findPagoMedicosByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno): Promise<PagoMedicoI[]> {
-        let startDate = new Date(anio, mes - 1, dia);
-        startDate.setHours(turno === 'm' ? -5 : (startDate.getDay() === 6 ? 8 : 9));
+        let startDate = new Date(anio, mes, dia);
+        startDate.setHours(turno === 'm' ? 0 : (startDate.getDay() === 6 ? 13 : 14));
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(anio, mes - 1, dia);
-        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 18);
+        let endDate = new Date(anio, mes, dia);
+        endDate.setHours(turno === 'm' ? (endDate.getDay() === 6 ? 12 : 13) : 23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
 
@@ -205,12 +202,12 @@ export class PagoMedicoService {
      *  2 = RECONSULTA
      */
     async findPagoMedicosByPayOfDoctorTurnoFrecuencia(anio, mes, dia, sucursalId, medicoId, atendidoId, turno, frecuenciaId): Promise<PagoMedicoI[]> {
-        let startDate = new Date(anio, mes - 1, dia);
-        startDate.setHours(turno === 'm' ? -5 : (startDate.getDay() === 6 ? 8 : 9));
+        let startDate = new Date(anio, mes, dia);
+        startDate.setHours(turno === 'm' ? 0 : (startDate.getDay() === 6 ? 13 : 14));
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(anio, mes - 1, dia);
-        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 18);
+        let endDate = new Date(anio, mes, dia);
+        endDate.setHours(turno === 'm' ? (endDate.getDay() === 6 ? 12 : 13) : 23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
 
@@ -232,11 +229,10 @@ export class PagoMedicoService {
      */
     async findPagoMedicosByRangeDateAndSucursal(startDateS, endDateS, sucursalId): Promise<PagoMedicoI[]> {
         let startDate = new Date(startDateS);
-        startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(endDateS);
-        endDate.setHours(18);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.pagoMedicoModel.find({ fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId }).sort('consecutivo')
@@ -259,11 +255,10 @@ export class PagoMedicoService {
      */
     async waitingList(sucursalId, statusAsistioId): Promise<PagoMedicoI[]> {
         let startDate = new Date();
-        startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date();
-        endDate.setHours(18);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.pagoMedicoModel.find(

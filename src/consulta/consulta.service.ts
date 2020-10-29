@@ -70,7 +70,7 @@ export class ConsultaService {
      * Muestra todas las consultas de la BD que correspondan a una fecha_hora
      */
     async findConsultsByDate(anio, mes, dia): Promise<ConsultaI[]> {
-        const date = new Date(anio, mes - 1, dia);
+        const date = new Date(anio, mes, dia);
         return await this.consultaModel.find({ fecha_hora: date }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
@@ -90,12 +90,11 @@ export class ConsultaService {
      * Muestra todas las consultas de la BD que correspondan a una fecha_hora y una sucursal
      */
     async findConsultsByDateAndSucursal(anio, mes, dia, sucursalId): Promise<ConsultaI[]> {
-        let startDate = new Date(anio, mes - 1, dia);
-        startDate.setHours(-5);
+        let startDate = new Date(anio, mes, dia);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(anio, mes - 1, dia);
-        endDate.setHours(18);
+        let endDate = new Date(anio, mes, dia);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.consultaModel.find(
@@ -122,12 +121,11 @@ export class ConsultaService {
      * Muestra todas las consultas de la BD que correspondan a un pagos de un medico de algun dia 
      */
     async findConsultsByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId): Promise<ConsultaI[]> {
-        let startDate = new Date(anio, mes - 1, dia);
-        startDate.setHours(-5);
+        let startDate = new Date(anio, mes, dia);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(anio, mes - 1, dia);
-        endDate.setHours(18);
+        let endDate = new Date(anio, mes, dia);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.consultaModel.find(
@@ -149,12 +147,12 @@ export class ConsultaService {
      *  2 = VESPERTINO
      */
     async findConsultsByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno): Promise<ConsultaI[]> {
-        let startDate = new Date(anio, mes - 1, dia);
-        startDate.setHours(turno === 'm' ? -5 : (startDate.getDay() === 6 ? 8 : 9));
+        let startDate = new Date(anio, mes, dia);
+        startDate.setHours(turno === 'm' ? 0 : (startDate.getDay() === 6 ? 13 : 14));
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(anio, mes - 1, dia);
-        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 18);
+        let endDate = new Date(anio, mes, dia);
+        endDate.setHours(turno === 'm' ? (endDate.getDay() === 6 ? 12 : 13) : 23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
 
@@ -180,12 +178,12 @@ export class ConsultaService {
      *  2 = RECONSULTA
      */
     async findConsultsByPayOfDoctorTurnoFrecuencia(anio, mes, dia, sucursalId, medicoId, atendidoId, turno, frecuenciaId): Promise<ConsultaI[]> {
-        let startDate = new Date(anio, mes - 1, dia);
-        startDate.setHours(turno === 'm' ? -5 : (startDate.getDay() === 6 ? 8 : 9));
+        let startDate = new Date(anio, mes, dia);
+        startDate.setHours(turno === 'm' ? 0 : (startDate.getDay() === 6 ? 13 : 14));
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(anio, mes - 1, dia);
-        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 18);
+        let endDate = new Date(anio, mes, dia);
+        endDate.setHours(turno === 'm' ? (endDate.getDay() === 6 ? 12 : 13) : 23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
 
@@ -205,13 +203,12 @@ export class ConsultaService {
     /**
      * Muestra todas las consultas de la BD que correspondan a una fecha_hora y una sucursal
      */
-    async findConsultsByRangeDateAndSucursal(startDateS, endDateS, sucursalId): Promise<ConsultaI[]> {
-        let startDate = new Date(startDateS);
-        startDate.setHours(-5);
+    async findConsultsByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId): Promise<ConsultaI[]> {
+        let startDate = new Date(anioi, mesi, diai);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(endDateS);
-        endDate.setHours(18);
+        let endDate = new Date(aniof, mesf, diaf);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.consultaModel.find({ fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId }).sort('consecutivo')
@@ -234,11 +231,10 @@ export class ConsultaService {
      */
     async waitingList(sucursalId, statusAsistioId): Promise<ConsultaI[]> {
         let startDate = new Date();
-        startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date();
-        endDate.setHours(18);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.consultaModel.find(
@@ -318,20 +314,13 @@ export class ConsultaService {
      * @param consulta 
      */
     async createConsult(consulta: ConsultaI): Promise<ConsultaI> {
-        /*let startDate = new Date(consulta.fecha_hora);
-        startDate.setHours(-5);
-        startDate.setMinutes(0);
-        startDate.setSeconds(0);
-        let endDate = new Date(consulta.fecha_hora);
-        endDate.setHours(18);
-        endDate.setMinutes(59);
-        endDate.setSeconds(59);*/
+        const currentDate = new Date();
         const consecutivo = await this.consecutivoModel.find({
             sucursal: consulta.sucursal,
-            // fecha_hora: { $gte: startDate, $lte: endDate }
         });
         consulta.consecutivo = consecutivo.length;
-        consulta.create_date = new Date();
+        consulta.create_date = new Date(Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(),
+            currentDate.getHours(), currentDate.getMinutes(), currentDate.getSeconds()));
         const newConsult = new this.consultaModel(consulta);
         return await newConsult.save();
     }

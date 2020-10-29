@@ -34,11 +34,11 @@ export class IngresoService {
      */
     async showIngresosTodayBySucursalAndTurno(sucursalId, turno): Promise<IngresoI[]> {
         let startDate = new Date();
-        startDate.setHours(turno === 'm' ? -5 : (startDate.getDay() === 6 ? 8 : 9));
+        startDate.setHours(turno === 'm' ? 0 : (startDate.getDay() === 6 ? 13 : 14));
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date();
-        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 18);
+        endDate.setHours(turno === 'm' ? (endDate.getDay() === 6 ? 12 : 13) : 23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.ingresoModel.find({

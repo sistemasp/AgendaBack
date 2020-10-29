@@ -48,11 +48,10 @@ export class FacturaService {
      */
     async findFacturasByRangeDateAndSucursal(startDateS, endDateS, sucursalId): Promise<FacturaI[]> {
         let startDate = new Date(startDateS);
-        startDate.setHours(-5);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(endDateS);
-        endDate.setHours(18);
+        endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
 
