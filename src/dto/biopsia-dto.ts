@@ -7,7 +7,7 @@ import { PagoDto } from "./pago-dto";
 
 export class BiopsiaDto {
     readonly create_date: Date;
-    readonly consecutivo: String;
+    readonly consecutivo: Number;
     readonly fecha_realizacion: Date;
     readonly consulta: ConsultaDto;
     readonly medico: EmpleadoDto;

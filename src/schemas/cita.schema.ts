@@ -30,5 +30,5 @@ export const CitaSchema = new Schema({
     hora_salida: String,
     pagado: { type: Boolean, default: false },
     pagos: [{ type: Schema.ObjectId, ref: 'Pago' }],
-    consecutivo: String,
+    consecutivo: { type: Number },
 });

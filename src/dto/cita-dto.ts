@@ -35,5 +35,5 @@ export class CitaDto {
     readonly hora_salida: String;
     readonly pagado: Boolean;
     readonly pagos: PagoDto[];
-    readonly consecutivo : String;    
+    readonly consecutivo : Number;    
 }

@@ -9,7 +9,7 @@ export const EsteticaSchema = new Schema({
     paciente: { type: Schema.ObjectId, ref: 'Paciente' },
     medico: { type: Schema.ObjectId, ref: 'Empleado' },
     sucursal: { type: Schema.ObjectId, ref: 'Sucursal' },
-    consecutivo: String,
+    consecutivo: { type: Number },
     pagado: { type: Boolean, default: false },
     precio: String,
     total: String,

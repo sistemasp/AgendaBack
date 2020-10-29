@@ -13,7 +13,7 @@ export interface EsteticaI {
     paciente : PacienteI;
     medico : EmpleadoI;
     sucursal : SucursalI;
-    consecutivo: String;
+    consecutivo: Number;
     pagado : Boolean;
     precio: String;
     total: String;

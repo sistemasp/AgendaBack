@@ -3,7 +3,7 @@ import { StatusDto } from "./status-dto";
 import { SucursalDto } from "./sucursal-dto";
 
 export class ConsecutivoDto {
-    readonly consecutivo : String;
+    readonly consecutivo : Number;
     readonly tipo_servicio : ServicioDto;
     readonly servicio : String;
     readonly sucursal : SucursalDto;

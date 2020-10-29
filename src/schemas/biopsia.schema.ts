@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 export const BiopsiaSchema = new Schema({
     create_date: { type : Date },
-    consecutivo: String,
+    consecutivo: { type: Number },
     fecha_realizacion: { type : Date },
     consulta: { type: Schema.ObjectId, ref: 'Consulta'},
     medico: { type: Schema.ObjectId, ref: 'Empleado'},

@@ -152,7 +152,7 @@ export class ConsultaService {
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(anio, mes, dia);
-        endDate.setHours(turno === 'm' ? (endDate.getDay() === 6 ? 12 : 13) : 23);
+        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
 
@@ -183,7 +183,7 @@ export class ConsultaService {
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(anio, mes, dia);
-        endDate.setHours(turno === 'm' ? (endDate.getDay() === 6 ? 12 : 13) : 23);
+        endDate.setHours(turno === 'm' ? (startDate.getDay() === 6 ? 7 : 8) : 23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
 

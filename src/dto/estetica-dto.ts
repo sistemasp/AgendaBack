@@ -14,7 +14,7 @@ export class EsteticaDto {
     readonly paciente: PacienteDto;
     readonly medico: EmpleadoDto;
     readonly sucursal: SucursalDto;
-    readonly consecutivo: String;
+    readonly consecutivo: Number;
     readonly precio: String;
     readonly total: String;
     readonly materiales: [];

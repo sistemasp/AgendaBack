@@ -18,7 +18,7 @@ export class CirugiaDto {
     readonly medico: EmpleadoDto;
     readonly patologo: EmpleadoDto;
     readonly sucursal: SucursalDto;
-    readonly consecutivo: String;
+    readonly consecutivo: Number;
     readonly precio: String;
     readonly total: String;
     readonly materiales: [];

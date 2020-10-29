@@ -3,7 +3,7 @@ import { StatusI } from "./status.interface";
 import { SucursalI } from "./sucursal.interface";
 
 export interface ConsecutivoI {
-    consecutivo: String;
+    consecutivo: Number;
     tipo_servicio: ServicioI;
     servicio: String;
     sucursal : SucursalI;

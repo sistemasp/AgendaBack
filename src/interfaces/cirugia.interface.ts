@@ -16,7 +16,7 @@ export interface CirugiaI {
     status: StatusI;
     patologo: EmpleadoI;
     sucursal: SucursalI;
-    consecutivo: String;
+    consecutivo: Number;
     pagado: Boolean;
     precio: String;
     total: String;

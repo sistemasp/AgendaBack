@@ -35,5 +35,5 @@ export interface CitaI {
     hora_salida: String;
     pagado: Boolean;
     pagos: PagoI[];
-    consecutivo: String;
+    consecutivo: Number;
 }

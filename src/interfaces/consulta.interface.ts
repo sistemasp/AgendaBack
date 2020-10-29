@@ -31,7 +31,7 @@ export interface ConsultaI {
     promovendedor : EmpleadoI;
     pagado : Boolean;
     pagos : PagoI[];
-    consecutivo : String;
+    consecutivo : Number;
     frecuencia : FrecuenciaI;
     servicio : ServicioI;
 }

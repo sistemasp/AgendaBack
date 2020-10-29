@@ -31,7 +31,7 @@ export class ConsultaDto {
     readonly promovendedor : EmpleadoDto;
     readonly pagado : Boolean;
     readonly pagos : PagoDto[];
-    readonly consecutivo : String;
+    readonly consecutivo : Number;
     readonly frecuencia : FrecuenciaDto;
     readonly servicio : ServicioDto;
 }

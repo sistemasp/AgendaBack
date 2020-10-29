@@ -11,7 +11,7 @@ export const CirugiaSchema = new Schema({
     patologo : { type: Schema.ObjectId, ref: 'Empleado'},
     sucursal : { type: Schema.ObjectId, ref: 'Sucursal'},
     status : { type: Schema.ObjectId, ref: 'Status'},
-    consecutivo: String,
+    consecutivo: { type: Number },
     pagado : { type: Boolean, default: false },
     precio: String,
     total: String,
