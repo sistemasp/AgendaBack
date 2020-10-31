@@ -30,6 +30,12 @@ export class BiopsiaController {
         return this.biopsiaService.findBiopsiasByRangeDateAndSucursal(`${anioi}-${mesi}-${diai}`, `${aniof}-${mesf}-${diaf}`, sucursalId);
     }
 
+    @Get('/historic/:pacienteId')
+    findBiopsiasHistoricByPaciente(@Param('pacienteId') pacienteId: string): Promise<BiopsiaI[]> {
+        console.log(new Date(), this.TAG, "findBiopsiasHistoricByPaciente");
+        return this.biopsiaService.findBiopsiasHistoricByPaciente(pacienteId);
+    }
+
     @Post()
     createBiopsia(@Body() biopsiasDto: BiopsiaDto[]): Promise<BiopsiaI[]> {
         console.log(new Date(), this.TAG, "createBiopsia");

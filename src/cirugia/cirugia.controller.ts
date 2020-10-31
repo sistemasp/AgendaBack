@@ -56,6 +56,12 @@ export class CirugiaController {
         return this.cirugiaService.waitingList(sucursalId, statusAsistioId);
     }
 
+    @Get('/historic/:pacienteId')
+    findCirugiasHistoricByPaciente(@Param('pacienteId') pacienteId: string): Promise<CirugiaI[]> {
+        console.log(new Date(), this.TAG, "findCirugiasHistoricByPaciente");
+        return this.cirugiaService.findCirugiasHistoricByPaciente(pacienteId);
+    }
+
     @Post()
     createCirugia(@Body() cirugiaDto: CirugiaDto): Promise<CirugiaI> {
         console.log(new Date(), this.TAG, "createCirugia");

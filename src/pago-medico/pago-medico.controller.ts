@@ -37,7 +37,7 @@ export class PagoMedicoController {
         return this.pagoMedicoService.showTodayPagoMedicoBySucursalTurno(medicoId, sucursalId, turno);
     }
 
-    @Get('histotico/medicos/:medicoId')
+    @Get('historico/medicos/:medicoId')
     findHistoricByMedicId(@Param('medicoId') medicoId: string): Promise<PagoMedicoI[]> {
         console.log(new Date(), this.TAG, "findHistoricByMedicId");
         return this.pagoMedicoService.findHistoricByMedicId(medicoId);
@@ -86,7 +86,7 @@ export class PagoMedicoController {
         return this.pagoMedicoService.findPagoMedicosByRangeDateAndSucursal(`${anioi}-${mesi}-${diai}`, `${aniof}-${mesf}-${diaf}`, sucursalId);
     }
 
-    @Get('/histotic/:pacienteId')
+    @Get('/historic/:pacienteId')
     findHistoricByPaciente(@Param('pacienteId') pacienteId: string): Promise<PagoMedicoI[]> {
         console.log(new Date(), this.TAG, "findHistoricByPaciente");
         return this.pagoMedicoService.findHistoricByPaciente(pacienteId);

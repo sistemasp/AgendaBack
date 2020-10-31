@@ -28,7 +28,7 @@ export class ConsultaController {
         return this.consultaService.showAllConsultsBySucursalAsistio(sucursalId);
     }
 
-    @Get('histotico/medicos/:medicoId')
+    @Get('historico/medicos/:medicoId')
     findHistoricByMedicId(@Param('medicoId') medicoId: string): Promise<ConsultaI[]> {
         console.log(new Date(), this.TAG, "findHistoricByMedicId");
         return this.consultaService.findHistoricByMedicId(medicoId);
@@ -77,7 +77,7 @@ export class ConsultaController {
         return this.consultaService.findConsultsByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId);
     }
 
-    @Get('/histotic/:pacienteId')
+    @Get('/historic/:pacienteId')
     findHistoricByPaciente(@Param('pacienteId') pacienteId: string): Promise<ConsultaI[]> {
         console.log(new Date(), this.TAG, "findHistoricByPaciente");
         return this.consultaService.findHistoricByPaciente(pacienteId);

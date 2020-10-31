@@ -48,6 +48,14 @@ export class CitaController {
         return this.citaService.findDatesByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId);
     }
 
+    @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId/service/:serviceId')
+    findDatesByRangeDateAndSucursalAndService(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
+        @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
+        @Param('sucursalId') sucursalId: string, @Param('serviceId') serviceId: string) : Promise<CitaI[]> {
+        console.log(new Date(), this.TAG, "findDatesByRangeDateAndSucursalAndService", sucursalId, serviceId);
+        return this.citaService.findDatesByRangeDateAndSucursalAndService(anioi, mesi, diai, aniof, mesf, diaf, sucursalId, serviceId);
+    }
+
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/:servicio')
     findDatesByDateAndSucursalAndService(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
         @Param('sucursalId') sucursalId: string, @Param('servicio') servicio: string) : Promise<CitaI[]> {
@@ -55,13 +63,13 @@ export class CitaController {
         return this.citaService.findDatesByDateAndSucursalAndService(anio, mes, dia, sucursalId, servicio);
     }
 
-    @Get('/histotic/:pacienteId')
+    @Get('/historic/:pacienteId')
     findHistoricByPaciente(@Param('pacienteId') pacienteId: string): Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "findHistoricByPaciente");
         return this.citaService.findHistoricByPaciente(pacienteId);
     }
 
-    @Get('/histotic/:pacienteId/servicio/:serviceId')
+    @Get('/historic/:pacienteId/servicio/:serviceId')
     findHistoricByPacienteAndService(@Param('pacienteId') pacienteId: string, @Param('serviceId') serviceId: string): Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "findHistoricByPacienteAndService");
         return this.citaService.findHistoricByPacienteAndService(pacienteId, serviceId);

@@ -52,6 +52,24 @@ export class BiopsiaService {
     }
 
     /**
+     * Muestra todo el historico de biopsias de una persona buscando por su numero de telefono
+     */
+    async findBiopsiasHistoricByPaciente(pacienteId: string): Promise<BiopsiaI[]> {
+        return await this.biopsiaModel.find({ paciente: pacienteId }).sort('create_date')
+            .populate('paciente')
+            .populate('consulta')
+            .populate('patologo')
+            .populate('sucursal')
+            .populate('quien_entrega')
+            .populate('quien_recibe')
+            .populate('a_quien_se_entrega')
+            .populate('quien_lo_entrega')
+            .populate('medico')
+            .populate('pagos')
+            .populate('status');
+    }
+
+    /**
      * Genera un nuevo biopsia en la BD
      * @param biopsias 
      */

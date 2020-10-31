@@ -9,7 +9,7 @@ export class MedicosService {
     constructor(@InjectModel('Consulta') private readonly consultaModel : Model<ConsultaI>) {}
 
     /**
-     * Muestra todo el histotico de una persona buscando por su numero de telefono
+     * Muestra todo el historico de una persona buscando por su numero de telefono
      */
     async findHistoricByMedicId(medicoId: string): Promise<ConsultaI[]> {
         return await this.consultaModel.find( {medico: medicoId} ).sort('fecha_hora')

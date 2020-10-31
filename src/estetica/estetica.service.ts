@@ -124,6 +124,24 @@ export class EsteticaService {
     }
 
     /**
+     * Muestra todo el historico de biopsias de una persona buscando por su numero de telefono
+     */
+    async findEsteticasHistoricByPaciente(pacienteId: string): Promise<EsteticaI[]> {
+        return await this.esteticaModel.find({ paciente: pacienteId }).sort('create_date')
+            .populate('paciente')
+            .populate('consulta')
+            .populate('patologo')
+            .populate('sucursal')
+            .populate('quien_entrega')
+            .populate('quien_recibe')
+            .populate('a_quien_se_entrega')
+            .populate('quien_lo_entrega')
+            .populate('medico')
+            .populate('pagos')
+            .populate('status');
+    }
+
+    /**
      * Genera un nuevo estetica en la BD
      * @param estetica 
      */

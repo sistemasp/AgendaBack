@@ -162,6 +162,38 @@ export class CitaService {
     /**
      * Muestra todas las citas de la BD que correspondan a una fecha y una sucursal
      */
+    async findDatesByRangeDateAndSucursalAndService(anioi, mesi, diai, aniof, mesf, diaf, sucursalId, serviceId): Promise<CitaI[]> {
+        let startDate = new Date(anioi, mesi, diai);
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date(aniof, mesf, diaf);
+        endDate.setHours(23);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+        return await this.citaModel.find({ 
+            fecha_hora: { $gte: startDate, $lte: endDate }, 
+            sucursal: sucursalId,
+            servicio: serviceId,
+        }).sort('create_date')
+            .populate('paciente')
+            .populate('servicio')
+            .populate('areas')
+            .populate('sucursal')
+            .populate('quien_agenda')
+            .populate('promovendedor')
+            .populate('cosmetologa')
+            .populate('medico')
+            .populate('quien_confirma_asistencia')
+            .populate('quien_confirma_llamada')
+            .populate('tipo_cita')
+            .populate('pagos')
+            .populate('medio')
+            .populate('status');
+    }
+
+    /**
+     * Muestra todas las citas de la BD que correspondan a una fecha y una sucursal
+     */
     async findDatesByDateAndSucursalAndService(anio, mes, dia, sucursalId, servicio): Promise<CitaI[]> {
         let startDate = new Date(anio, mes, dia);
         startDate.setMinutes(0);
@@ -198,7 +230,7 @@ export class CitaService {
     }
 
     /**
-     * Muestra todo el histotico de una persona buscando por su numero de telefono
+     * Muestra todo el historico de una persona buscando por su numero de telefono
      */
     async findHistoricByPaciente(pacienteId: string): Promise<CitaI[]> {
         return await this.citaModel.find({ paciente: pacienteId }).sort('fecha_hora')
@@ -219,11 +251,9 @@ export class CitaService {
     }
 
     /**
-     * Muestra todo el histotico de una persona buscando por su numero de telefono
+     * Muestra todo el historico de una persona buscando por su numero de telefono
      */
     async findHistoricByPacienteAndService(pacienteId: string, serviceId: string): Promise<CitaI[]> {
-        console.log();
-
         return await this.citaModel.find({ paciente: pacienteId, servicio: serviceId }).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
@@ -324,20 +354,13 @@ export class CitaService {
      * @param cita 
      */
     async createDate(cita: CitaI): Promise<CitaI> {
-        /*let startDate = new Date();
-        startDate.setMinutes(0);
-        startDate.setSeconds(0);
-        let endDate = new Date();
-        endDate.setHours(23);
-        endDate.setMinutes(59);
-        endDate.setSeconds(59);*/
+        const currentDate = new Date();
         const consecutivo = await this.consecutivoModel.find({
             sucursal: cita.sucursal,
-            //servicio: cita.servicio,
-            //fecha_hora: { $gte: startDate, $lte: endDate }
         });
         cita.consecutivo = consecutivo.length;
-        cita.create_date = new Date();
+        cita.create_date = new Date(Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(),
+        currentDate.getHours(), currentDate.getMinutes(), currentDate.getSeconds()));
         const newDate = new this.citaModel(cita);
         return await newDate.save();
 

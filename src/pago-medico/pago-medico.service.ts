@@ -296,7 +296,7 @@ export class PagoMedicoService {
     }
 
     /**
-     * Muestra todo el histotico de una persona buscando por su numero de telefono
+     * Muestra todo el historico de una persona buscando por su numero de telefono
      */
     async findHistoricByPaciente(pacienteId: string): Promise<PagoMedicoI[]> {
         return await this.pagoMedicoModel.find({ paciente: pacienteId }).sort('consecutivo')
@@ -315,7 +315,7 @@ export class PagoMedicoService {
     }
 
     /**
-     * Muestra todo el histotico de una persona buscando por su numero de telefono
+     * Muestra todo el historico de una persona buscando por su numero de telefono
      */
     async findHistoricByMedicId(medicoId: string): Promise<PagoMedicoI[]> {
         return await this.pagoMedicoModel.find({ medico: medicoId }).sort('consecutivo')

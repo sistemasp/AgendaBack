@@ -10,7 +10,7 @@ export class MedicosController {
 
     constructor(private readonly consultaService: MedicosService) {}
 
-    @Get('/histotico/:medicoId')
+    @Get('/historico/:medicoId')
     findHistoricByMedicId(@Param('medicoId') medicoId: string): Promise<ConsultaI[]> {
         console.log(new Date(), this.TAG, "findHistoricByMedicId");
         return this.consultaService.findHistoricByMedicId(medicoId);

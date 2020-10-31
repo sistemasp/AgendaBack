@@ -56,6 +56,12 @@ export class EsteticaController {
         return this.esteticaService.waitingList(sucursalId, statusAsistioId);
     }
 
+    @Get('/historic/:pacienteId')
+    findEsteticasHistoricByPaciente(@Param('pacienteId') pacienteId: string): Promise<EsteticaI[]> {
+        console.log(new Date(), this.TAG, "findEsteticasHistoricByPaciente");
+        return this.esteticaService.findEsteticasHistoricByPaciente(pacienteId);
+    }
+
     @Post()
     createEstetica(@Body() esteticaDto: EsteticaDto): Promise<EsteticaI> {
         console.log(new Date(), this.TAG, "createEstetica");
