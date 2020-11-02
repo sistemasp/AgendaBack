@@ -136,6 +136,15 @@ import { PagoMedicoService } from './pago-medico/pago-medico.service';
 import { CorteSchema } from './schemas/corte.schema';
 import { CorteController } from './corte/corte.controller';
 import { CorteService } from './corte/corte.service';
+import { FacialSchema } from './schemas/facial.schema';
+import { LaserSchema } from './schemas/laser.schema';
+import { AparatologiaSchema } from './schemas/aparatologia.schema';
+import { AparatologiaController } from './aparatologia/aparatolgia.controller';
+import { FacialController } from './facial/facial.controller';
+import { LaserController } from './laser/laser.controller';
+import { FacialService } from './facial/facial.service';
+import { LaserService } from './laser/laser.service';
+import { AparatologiaService } from './aparatologia/aparatologia.service';
 
 @Module({
   imports: [
@@ -185,6 +194,9 @@ import { CorteService } from './corte/corte.service';
       { name: 'Egreso', schema: EgresoSchema },
       { name: 'PagoMedico', schema: PagoMedicoSchema },
       { name: 'Corte', schema: CorteSchema },
+      { name: 'Facial', schema: FacialSchema },
+      { name: 'Laser', schema: LaserSchema },
+      { name: 'Aparatologia', schema: AparatologiaSchema },
     ])
   ],
   controllers: [
@@ -234,6 +246,9 @@ import { CorteService } from './corte/corte.service';
     EgresoController,
     PagoMedicoController,
     CorteController,
+    FacialController,
+    LaserController,
+    AparatologiaController,
   ],
   providers: [
     AppService,
@@ -282,6 +297,9 @@ import { CorteService } from './corte/corte.service';
     EgresoService,
     PagoMedicoService,
     CorteService,
+    FacialService,
+    LaserService,
+    AparatologiaService,
   ],
 })
 
