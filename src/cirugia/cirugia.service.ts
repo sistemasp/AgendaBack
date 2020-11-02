@@ -52,6 +52,7 @@ export class CirugiaService {
      */
     async findCirugiasByPayOfDoctor(anio, mes, dia, sucursalId, medicoId): Promise<CirugiaI[]> {
         let startDate = new Date(anio, mes, dia);
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(anio, mes, dia);
@@ -102,17 +103,21 @@ export class CirugiaService {
     /**
      * Muestra todas las cirugias de la BD que correspondan a una fecha_hora y una sucursal
      */
-    async findCirugiasByRangeDateAndSucursal(startDateS, endDateS, sucursalId): Promise<CirugiaI[]> {
-        let startDate = new Date(startDateS);
+    async findCirugiasByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId): Promise<CirugiaI[]> {
+        let startDate = new Date(anioi, mesi, diai);
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(endDateS);
+        let endDate = new Date(aniof, mesf, diaf);
         endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
         return await this.cirugiaModel.find({ fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
+            .populate('medico')
+            .populate('servicio')
+            .populate('status')
             .populate('patologo')
             .populate('consulta')
             .populate('pagos');
@@ -123,6 +128,7 @@ export class CirugiaService {
      */
     async waitingList(sucursalId, statusAsistioId): Promise<CirugiaI[]> {
         let startDate = new Date();
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date();

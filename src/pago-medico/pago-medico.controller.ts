@@ -83,7 +83,7 @@ export class PagoMedicoController {
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
         @Param('sucursalId') sucursalId: string) : Promise<PagoMedicoI[]> {
         console.log(new Date(), this.TAG, "findPagoMedicosByRangeDateAndSucursal");
-        return this.pagoMedicoService.findPagoMedicosByRangeDateAndSucursal(`${anioi}-${mesi}-${diai}`, `${aniof}-${mesf}-${diaf}`, sucursalId);
+        return this.pagoMedicoService.findPagoMedicosByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId);
     }
 
     @Get('/historic/:pacienteId')

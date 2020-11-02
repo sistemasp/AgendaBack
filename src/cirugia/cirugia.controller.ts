@@ -47,7 +47,7 @@ export class CirugiaController {
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
         @Param('sucursalId') sucursalId: string) : Promise<CirugiaI[]> {
         console.log(new Date(), this.TAG, "findCirugiasByRangeDateAndSucursal");
-        return this.cirugiaService.findCirugiasByRangeDateAndSucursal(`${anioi}-${mesi}-${diai}`, `${aniof}-${mesf}-${diaf}`, sucursalId);
+        return this.cirugiaService.findCirugiasByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId);
     }
 
     @Get('waitingList/sucursal/:sucursalId/asistio/:statusAsistioId')

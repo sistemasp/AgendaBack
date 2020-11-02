@@ -42,11 +42,12 @@ export class PagoService {
     /**
      * Muestra todas las consultas de la BD que correspondan a una fecha_hora y una sucursal
      */
-    async findPaysByRangeDateAndSucursal(startDateS, endDateS, sucursalId): Promise<PagoI[]> {
-        let startDate = new Date(startDateS);
+    async findPaysByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId): Promise<PagoI[]> {
+        let startDate = new Date(anioi, mesi, diai);
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(endDateS);
+        let endDate = new Date(aniof, mesf, diaf);
         endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);

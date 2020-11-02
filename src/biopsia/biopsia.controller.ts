@@ -27,7 +27,7 @@ export class BiopsiaController {
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
         @Param('sucursalId') sucursalId: string) : Promise<BiopsiaI[]> {
         console.log(new Date(), this.TAG, "findBiopsiasByRangeDateAndSucursal");
-        return this.biopsiaService.findBiopsiasByRangeDateAndSucursal(`${anioi}-${mesi}-${diai}`, `${aniof}-${mesf}-${diaf}`, sucursalId);
+        return this.biopsiaService.findBiopsiasByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId);
     }
 
     @Get('/historic/:pacienteId')

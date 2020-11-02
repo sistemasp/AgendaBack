@@ -56,6 +56,7 @@ export class EsteticaService {
      */
     async findEsteticasByPayOfDoctor(anio, mes, dia, sucursalId, medicoId): Promise<EsteticaI[]> {
         let startDate = new Date(anio, mes, dia);
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(anio, mes, dia);
@@ -108,11 +109,12 @@ export class EsteticaService {
     /**
      * Muestra todas las esteticas de la BD que correspondan a una fecha_hora y una sucursal
      */
-    async findEsteticasByRangeDateAndSucursal(startDateS, endDateS, sucursalId): Promise<EsteticaI[]> {
-        let startDate = new Date(startDateS);
+    async findEsteticasByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId): Promise<EsteticaI[]> {
+        let startDate = new Date(anioi, mesi, diai);
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(endDateS);
+        let endDate = new Date(aniof, mesf, diaf);
         endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
@@ -160,6 +162,7 @@ export class EsteticaService {
      */
     async waitingList(sucursalId, statusAsistioId): Promise<EsteticaI[]> {
         let startDate = new Date();
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date();

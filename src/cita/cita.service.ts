@@ -80,6 +80,7 @@ export class CitaService {
      */
     async findDatesByDate(anio, mes, dia): Promise<CitaI[]> {
         let startDate = new Date(anio, mes, dia);
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(anio, mes, dia);
@@ -108,6 +109,7 @@ export class CitaService {
      */
     async findDatesByDateAndSucursal(anio, mes, dia, sucursalId): Promise<CitaI[]> {
         let startDate = new Date(anio, mes, dia);
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(anio, mes, dia);
@@ -136,6 +138,7 @@ export class CitaService {
      */
     async findDatesByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId): Promise<CitaI[]> {
         let startDate = new Date(anioi, mesi, diai);
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(aniof, mesf, diaf);
@@ -164,6 +167,7 @@ export class CitaService {
      */
     async findDatesByRangeDateAndSucursalAndService(anioi, mesi, diai, aniof, mesf, diaf, sucursalId, serviceId): Promise<CitaI[]> {
         let startDate = new Date(anioi, mesi, diai);
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(aniof, mesf, diaf);
@@ -196,6 +200,7 @@ export class CitaService {
      */
     async findDatesByDateAndSucursalAndService(anio, mes, dia, sucursalId, servicio): Promise<CitaI[]> {
         let startDate = new Date(anio, mes, dia);
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(anio, mes, dia);
@@ -276,6 +281,7 @@ export class CitaService {
      */
     async waitingList(sucursalId, statusAsistioId): Promise<CitaI[]> {
         let startDate = new Date();
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date();
@@ -301,6 +307,7 @@ export class CitaService {
      */
     async findDatesByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId): Promise<CitaI[]> {
         let startDate = new Date(anio, mes, dia);
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(anio, mes, dia);

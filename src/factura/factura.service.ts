@@ -46,11 +46,12 @@ export class FacturaService {
     /**
      * Muestra todas las facturas de la BD que correspondan a una fecha y una sucursal
      */
-    async findFacturasByRangeDateAndSucursal(startDateS, endDateS, sucursalId): Promise<FacturaI[]> {
-        let startDate = new Date(startDateS);
+    async findFacturasByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId): Promise<FacturaI[]> {
+        let startDate = new Date(anioi, mesi, diai);
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
-        let endDate = new Date(endDateS);
+        let endDate = new Date(aniof, mesf, diaf);
         endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);

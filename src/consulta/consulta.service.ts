@@ -91,6 +91,7 @@ export class ConsultaService {
      */
     async findConsultsByDateAndSucursal(anio, mes, dia, sucursalId): Promise<ConsultaI[]> {
         let startDate = new Date(anio, mes, dia);
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(anio, mes, dia);
@@ -122,6 +123,7 @@ export class ConsultaService {
      */
     async findConsultsByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId): Promise<ConsultaI[]> {
         let startDate = new Date(anio, mes, dia);
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(anio, mes, dia);
@@ -205,6 +207,7 @@ export class ConsultaService {
      */
     async findConsultsByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId): Promise<ConsultaI[]> {
         let startDate = new Date(anioi, mesi, diai);
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date(aniof, mesf, diaf);
@@ -231,6 +234,7 @@ export class ConsultaService {
      */
     async waitingList(sucursalId, statusAsistioId): Promise<ConsultaI[]> {
         let startDate = new Date();
+        startDate.setHours(0);
         startDate.setMinutes(0);
         startDate.setSeconds(0);
         let endDate = new Date();

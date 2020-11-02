@@ -47,7 +47,7 @@ export class EsteticaController {
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
         @Param('sucursalId') sucursalId: string) : Promise<EsteticaI[]> {
         console.log(new Date(), this.TAG, "findEsteticasByRangeDateAndSucursal");
-        return this.esteticaService.findEsteticasByRangeDateAndSucursal(`${anioi}-${mesi}-${diai}`, `${aniof}-${mesf}-${diaf}`, sucursalId);
+        return this.esteticaService.findEsteticasByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId);
     }
 
     @Get('sucursal/:sucursalId/asistio/:statusAsistioId')

@@ -47,7 +47,7 @@ export class PagoController {
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
         @Param('sucursalId') sucursalId: string) : Promise<PagoI[]> {
         console.log(new Date(), this.TAG, "findConsultsByRangeDateAndSucursal");
-        return this.pagoService.findPaysByRangeDateAndSucursal(`${anioi}-${mesi}-${diai}`, `${aniof}-${mesf}-${diaf}`, sucursalId);
+        return this.pagoService.findPaysByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId);
     }
 
     @Post()
