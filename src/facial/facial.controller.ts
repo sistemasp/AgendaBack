@@ -64,27 +64,27 @@ export class FacialController {
     }
 
     @Get('/historic/:pacienteId')
-    findHistoricByPaciente(@Param('pacienteId') pacienteId: string): Promise<FacialI[]> {
-        console.log(new Date(), this.TAG, "findHistoricByPaciente");
-        return this.facialService.findHistoricByPaciente(pacienteId);
+    findHistoricFacialByPaciente(@Param('pacienteId') pacienteId: string): Promise<FacialI[]> {
+        console.log(new Date(), this.TAG, "findHistoricFacialByPaciente");
+        return this.facialService.findHistoricFacialByPaciente(pacienteId);
     }
 
     @Get('/historic/:pacienteId/servicio/:serviceId')
-    findHistoricByPacienteAndService(@Param('pacienteId') pacienteId: string, @Param('serviceId') serviceId: string): Promise<FacialI[]> {
-        console.log(new Date(), this.TAG, "findHistoricByPacienteAndService");
-        return this.facialService.findHistoricByPacienteAndService(pacienteId, serviceId);
+    findHistoricFacialByPacienteAndService(@Param('pacienteId') pacienteId: string, @Param('serviceId') serviceId: string): Promise<FacialI[]> {
+        console.log(new Date(), this.TAG, "findHistoricFacialByPacienteAndService");
+        return this.facialService.findHistoricFacialByPacienteAndService(pacienteId, serviceId);
     }
 
     @Get(':id')
-    findDateById(@Param('id') idFacial: string): Promise<FacialI> {
-        console.log(new Date(), this.TAG, "findDateById");
-        return this.facialService.findDateById(idFacial);
+    findFacialById(@Param('id') idFacial: string): Promise<FacialI> {
+        console.log(new Date(), this.TAG, "findFacialById");
+        return this.facialService.findFacialById(idFacial);
     }
 
     @Get('sucursal/:sucursalId/asistio/:statusAsistioId')
-    waitingList(@Param('sucursalId') sucursalId: string, @Param('statusAsistioId') statusAsistioId: string) : Promise<FacialI[]> {
-        console.log(new Date(), this.TAG, "waitingList");
-        return this.facialService.waitingList(sucursalId, statusAsistioId);
+    waitingFacialList(@Param('sucursalId') sucursalId: string, @Param('statusAsistioId') statusAsistioId: string) : Promise<FacialI[]> {
+        console.log(new Date(), this.TAG, "waitingFacialList");
+        return this.facialService.waitingFacialList(sucursalId, statusAsistioId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId')
@@ -103,15 +103,15 @@ export class FacialController {
     }
 
     @Post()
-    createDate(@Body() facialDto: FacialDto): Promise<FacialI> {
-        console.log(new Date(), this.TAG, "createDate");
-        return this.facialService.createDate(facialDto);
+    createFacial(@Body() facialDto: FacialDto): Promise<FacialI> {
+        console.log(new Date(), this.TAG, "createFacial");
+        return this.facialService.createFacial(facialDto);
     }
 
     @Put(':id') 
-    updateDate(@Param('id') idFacial: string, @Body() facialDto: FacialDto): Promise<FacialI> {
-        console.log(new Date(), this.TAG, "updateDate");
-        return this.facialService.updateDate(idFacial, facialDto);
+    updateFacial(@Param('id') idFacial: string, @Body() facialDto: FacialDto): Promise<FacialI> {
+        console.log(new Date(), this.TAG, "updateFacial");
+        return this.facialService.updateFacial(idFacial, facialDto);
     }
 
     @Delete(':id')

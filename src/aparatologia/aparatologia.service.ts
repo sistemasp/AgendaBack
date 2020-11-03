@@ -27,7 +27,7 @@ export class AparatologiaService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_aparatologia')
+            .populate('tipo_cita')
             .populate('medio')
             .populate('pagos')
             .populate('status');
@@ -48,7 +48,7 @@ export class AparatologiaService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_aparatologia')
+            .populate('tipo_cita')
             .populate('medio')
             .populate('pagos')
             .populate('status');
@@ -69,7 +69,7 @@ export class AparatologiaService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_aparatologia')
+            .populate('tipo_cita')
             .populate('medio')
             .populate('pagos')
             .populate('status');
@@ -98,7 +98,7 @@ export class AparatologiaService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_aparatologia')
+            .populate('tipo_cita')
             .populate('medio')
             .populate('pagos')
             .populate('status');
@@ -127,7 +127,7 @@ export class AparatologiaService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_aparatologia')
+            .populate('tipo_cita')
             .populate('medio')
             .populate('pagos')
             .populate('status');
@@ -156,7 +156,7 @@ export class AparatologiaService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_aparatologia')
+            .populate('tipo_cita')
             .populate('pagos')
             .populate('medio')
             .populate('status');
@@ -189,7 +189,7 @@ export class AparatologiaService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_aparatologia')
+            .populate('tipo_cita')
             .populate('pagos')
             .populate('medio')
             .populate('status');
@@ -228,7 +228,7 @@ export class AparatologiaService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_aparatologia')
+            .populate('tipo_cita')
             .populate('pagos')
             .populate('medio')
             .populate('status');
@@ -249,7 +249,7 @@ export class AparatologiaService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_aparatologia')
+            .populate('tipo_cita')
             .populate('medio')
             .populate('pagos')
             .populate('status');
@@ -270,7 +270,7 @@ export class AparatologiaService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_aparatologia')
+            .populate('tipo_cita')
             .populate('medio')
             .populate('pagos')
             .populate('status');

@@ -27,7 +27,7 @@ export class FacialService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_facial')
+            .populate('tipo_cita')
             .populate('medio')
             .populate('pagos')
             .populate('status');
@@ -48,7 +48,7 @@ export class FacialService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_facial')
+            .populate('tipo_cita')
             .populate('medio')
             .populate('pagos')
             .populate('status');
@@ -69,7 +69,7 @@ export class FacialService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_facial')
+            .populate('tipo_cita')
             .populate('medio')
             .populate('pagos')
             .populate('status');
@@ -98,7 +98,7 @@ export class FacialService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_facial')
+            .populate('tipo_cita')
             .populate('medio')
             .populate('pagos')
             .populate('status');
@@ -127,7 +127,7 @@ export class FacialService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_facial')
+            .populate('tipo_cita')
             .populate('medio')
             .populate('pagos')
             .populate('status');
@@ -156,7 +156,7 @@ export class FacialService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_facial')
+            .populate('tipo_cita')
             .populate('pagos')
             .populate('medio')
             .populate('status');
@@ -189,7 +189,7 @@ export class FacialService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_facial')
+            .populate('tipo_cita')
             .populate('pagos')
             .populate('medio')
             .populate('status');
@@ -216,7 +216,7 @@ export class FacialService {
      * Busca solo un facial mediante su ID en la BD
      * @param idFacial
      */
-    async findDateById(idFacial: string): Promise<FacialI> {
+    async findFacialById(idFacial: string): Promise<FacialI> {
         return await this.facialModel.findOne({ _id: idFacial })
             .populate('paciente')
             .populate('servicio')
@@ -228,7 +228,7 @@ export class FacialService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_facial')
+            .populate('tipo_cita')
             .populate('pagos')
             .populate('medio')
             .populate('status');
@@ -237,7 +237,7 @@ export class FacialService {
     /**
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
-    async findHistoricByPaciente(pacienteId: string): Promise<FacialI[]> {
+    async findHistoricFacialByPaciente(pacienteId: string): Promise<FacialI[]> {
         return await this.facialModel.find({ paciente: pacienteId }).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
@@ -249,7 +249,7 @@ export class FacialService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_facial')
+            .populate('tipo_cita')
             .populate('medio')
             .populate('pagos')
             .populate('status');
@@ -258,7 +258,7 @@ export class FacialService {
     /**
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
-    async findHistoricByPacienteAndService(pacienteId: string, serviceId: string): Promise<FacialI[]> {
+    async findHistoricFacialByPacienteAndService(pacienteId: string, serviceId: string): Promise<FacialI[]> {
         return await this.facialModel.find({ paciente: pacienteId, servicio: serviceId }).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
@@ -270,7 +270,7 @@ export class FacialService {
             .populate('medico')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
-            .populate('tipo_facial')
+            .populate('tipo_cita')
             .populate('medio')
             .populate('pagos')
             .populate('status');
@@ -279,7 +279,7 @@ export class FacialService {
     /**
      * Muestra todas las consultas de la BD de una sucursal
      */
-    async waitingList(sucursalId, statusAsistioId): Promise<FacialI[]> {
+    async waitingFacialList(sucursalId, statusAsistioId): Promise<FacialI[]> {
         let startDate = new Date();
         startDate.setHours(0);
         startDate.setMinutes(0);
@@ -360,7 +360,7 @@ export class FacialService {
      * Genera un nuevo facial en la BD
      * @param facial 
      */
-    async createDate(facial: FacialI): Promise<FacialI> {
+    async createFacial(facial: FacialI): Promise<FacialI> {
         const currentDate = new Date();
         const consecutivo = await this.consecutivoModel.find({
             sucursal: facial.sucursal,
@@ -378,7 +378,7 @@ export class FacialService {
      * @param idFacial 
      * @param facial 
      */
-    async updateDate(idFacial: string, facial: FacialI): Promise<FacialI> {
+    async updateFacial(idFacial: string, facial: FacialI): Promise<FacialI> {
         return await this.facialModel.updateOne({ _id: idFacial }, facial);
     }
 

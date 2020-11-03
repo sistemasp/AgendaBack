@@ -14,7 +14,6 @@ export interface LaserI {
     paciente: PacienteI;
     medico: EmpleadoI;
     servicio: ServicioI;
-    tratamientos: [];
     areas: AreaI[];
     numero_sesion: String;
     quien_agenda: EmpleadoI;

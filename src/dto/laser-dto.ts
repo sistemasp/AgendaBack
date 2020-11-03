@@ -14,7 +14,6 @@ export class LaserDto {
     readonly paciente: PacienteDto;
     readonly medico: EmpleadoDto;
     readonly servicio: ServicioDto;
-    readonly tratamientos : [];
     readonly areas : AreaDto[];
     readonly numero_sesion: String;
     readonly quien_agenda: EmpleadoDto;
