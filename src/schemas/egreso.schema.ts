@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 export const EgresoSchema = new Schema({
     create_date: { type: Date },
-    hora_aplicacion: { type: Date },
+    hora_aplicacion: { type: Date, default: new Date() },
     recepcionista: { type: Schema.ObjectId, ref: 'Empleado' },
     concepto: String,
     cantidad: String,

@@ -171,6 +171,25 @@ export class ConsultaService {
     }
 
     /**
+     * Muestra todas las consultas de la BD que correspondan a un pagos de un medico por horas
+     */
+    async findConsultsByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre): Promise<ConsultaI[]> {
+        let startDate = new Date(hora_apertura);
+        let endDate = new Date(hora_cierre);
+
+        return await this.consultaModel.find(
+            {
+                hora_aplicacion: { $gte: startDate, $lte: endDate },
+                sucursal: sucursalId,
+                medico: medicoId,
+                status: atendidoId,
+            }).sort('consecutivo')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('pagos');
+    }
+
+    /**
      * Muestra todas las consultas de la BD que correspondan a un pagos de un medico de algun dia y turno
      * turno:
      *  1 = MATUTINO
@@ -192,6 +211,26 @@ export class ConsultaService {
         return await this.consultaModel.find(
             {
                 fecha_hora: { $gte: startDate, $lte: endDate },
+                sucursal: sucursalId,
+                medico: medicoId,
+                status: atendidoId,
+                frecuencia: frecuenciaId,
+            }).sort('consecutivo')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('pagos');
+    }
+
+    /**
+     * Muestra todas las consultas de la BD que correspondan a un pagos de un medico por horas y frecuencia
+     */
+    async findConsultsByPayOfDoctorHoraAplicacionFrecuencia(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre, frecuenciaId): Promise<ConsultaI[]> {
+        let startDate = new Date(hora_apertura);
+        let endDate = new Date(hora_cierre);
+
+        return await this.consultaModel.find(
+            {
+                hora_aplicacion: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
                 medico: medicoId,
                 status: atendidoId,
