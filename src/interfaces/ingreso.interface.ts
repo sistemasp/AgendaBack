@@ -5,6 +5,7 @@ import { MetodoPagoI } from "./metodo-pago.interface";
 
 export interface IngresoI {
     create_date: Date;
+    hora_aplicacion: Date;
     recepcionista: EmpleadoI;
     concepto: String;
     cantidad: String;

@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 export const ConsultaSchema = new Schema({
     create_date: { type : Date },
+    hora_aplicacion: { type: Date },
     folio : String,
     fecha_hora : { type : Date },
     paciente : { type: Schema.ObjectId, ref: 'Paciente'},

@@ -10,6 +10,7 @@ import { MedioDto } from "./medio-dto";
 
 export class LaserDto {
     readonly create_date: Date;
+    readonly hora_aplicacion: Date;
     readonly fecha_hora: Date;
     readonly paciente: PacienteDto;
     readonly medico: EmpleadoDto;

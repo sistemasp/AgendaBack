@@ -10,6 +10,7 @@ import { PagoDto } from "./pago-dto";
 
 export class CirugiaDto {
     readonly create_date: Date;
+    readonly hora_aplicacion: Date;
     readonly fecha_hora: Date;
     readonly pagado: Boolean;
     readonly status: StatusDto;

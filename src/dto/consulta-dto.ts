@@ -10,6 +10,7 @@ import { MedioDto } from "./medio-dto";
 
 export class ConsultaDto {
     readonly create_date: Date;
+    readonly hora_aplicacion: Date;
     readonly folio : String;
     readonly fecha_hora : Date;
     readonly paciente : PacienteDto;

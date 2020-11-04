@@ -11,6 +11,7 @@ import { IngresoI } from "./ingreso.interface";
 
 export interface PagoI {
     fecha_pago: Date;
+    hora_aplicacion: Date;
     paciente: PacienteI;
     cita: CitaI;
     medico: EmpleadoI;

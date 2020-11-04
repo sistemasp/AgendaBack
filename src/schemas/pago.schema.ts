@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 export const PagoSchema = new Schema({
     fecha_pago: { type: Date },
+    hora_aplicacion: { type: Date },
     paciente: { type: Schema.ObjectId, ref: 'Paciente' },
     cita: { type: Schema.ObjectId, ref: 'Cita' },
     medico: { type: Schema.ObjectId, ref: 'Empleado' },

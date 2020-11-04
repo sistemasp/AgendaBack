@@ -8,10 +8,10 @@ export class CorteController {
 
     TAG = "CorteController";
 
-    constructor(private readonly corteService: CorteService) {}
+    constructor(private readonly corteService: CorteService) { }
 
     @Get()
-    showAllCortes() : Promise<CorteI[]> {
+    showAllCortes(): Promise<CorteI[]> {
         console.log(new Date(), this.TAG, "showAllCortes");
         return this.corteService.showAllCortes();
     }
@@ -23,8 +23,8 @@ export class CorteController {
     }
 
     @Get('sucursal/:sucursalId/today/turno/:turno')
-    showCorteTodayBySucursalAndTurno(@Param('turno') turno: string, @Param('sucursalId') sucursalId: string) : Promise<CorteI> {
-        console.log(new Date(), this.TAG, "showCorteTodayBySucursalAndTurno", sucursalId, turno);
+    showCorteTodayBySucursalAndTurno(@Param('turno') turno: string, @Param('sucursalId') sucursalId: string): Promise<CorteI> {
+        console.log(new Date(), this.TAG, "showCorteTodayBySucursalAndTurno");
         return this.corteService.showCorteTodayBySucursalAndTurno(sucursalId, turno);
     }
 
@@ -34,7 +34,7 @@ export class CorteController {
         return this.corteService.createCorte(corteDto);
     }
 
-    @Put(':id') 
+    @Put(':id')
     updateCorte(@Param('id') idCorte: string, @Body() corteDto: CorteDto): Promise<CorteI> {
         console.log(new Date(), this.TAG, "updateCorte");
         return this.corteService.updateCorte(idCorte, corteDto);

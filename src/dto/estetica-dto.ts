@@ -8,6 +8,7 @@ import { PagoDto } from "./pago-dto";
 
 export class EsteticaDto {
     readonly create_date: Date;
+    readonly hora_aplicacion: Date;
     readonly fecha_hora: Date;
     readonly pagado: Boolean;
     readonly consulta: ConsultaDto;

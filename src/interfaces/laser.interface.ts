@@ -10,6 +10,7 @@ import { MedioI } from "./medio.interface";
 
 export interface LaserI {
     create_date: Date;
+    hora_aplicacion: Date;
     fecha_hora: Date;
     paciente: PacienteI;
     medico: EmpleadoI;

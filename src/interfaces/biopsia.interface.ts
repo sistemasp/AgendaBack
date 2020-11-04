@@ -7,6 +7,7 @@ import { PagoI } from "./pago.interface";
 
 export interface BiopsiaI {
     create_date: Date;
+    hora_aplicacion: Date;
     consecutivo: Number;
     fecha_realizacion: Date;
     consulta: ConsultaI

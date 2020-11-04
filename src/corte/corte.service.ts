@@ -51,7 +51,7 @@ export class CorteService {
             .populate('sucursal')
             .populate('recepcionista');
     }
-
+    
     /**
      * Busca solo un corte mediante su numero de empleado en la BD
      * @param idCorte 

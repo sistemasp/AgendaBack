@@ -6,6 +6,7 @@ import { TipoEgresoDto } from "./tipo-egreso-dto";
 
 export class EgresoDto {
     readonly create_date: Date;
+    readonly hora_aplicacion: Date;
     readonly recepcionista: EmpleadoDto;
     readonly concepto: String;
     readonly cantidad: String;

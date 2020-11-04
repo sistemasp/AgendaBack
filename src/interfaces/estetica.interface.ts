@@ -8,6 +8,7 @@ import { PagoI } from "./pago.interface";
 
 export interface EsteticaI {
     create_date: Date;
+    hora_aplicacion: Date;
     fecha_hora: Date;
     consulta: ConsultaI;
     paciente : PacienteI;

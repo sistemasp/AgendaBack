@@ -10,6 +10,7 @@ import { MedioI } from "./medio.interface";
 
 export interface ConsultaI {
     create_date: Date;
+    hora_aplicacion: Date;
     folio : String;
     fecha_hora : Date;
     paciente : PacienteI;

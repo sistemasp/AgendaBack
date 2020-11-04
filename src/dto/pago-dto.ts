@@ -11,6 +11,7 @@ import { IngresoDto } from "./ingreso-dto";
 
 export class PagoDto {
     readonly fecha_pago: Date;
+    readonly hora_aplicacion: Date;
     readonly paciente: PacienteDto;
     readonly cita: CitaDto;
     readonly medico: EmpleadoDto;

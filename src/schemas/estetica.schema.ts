@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 export const EsteticaSchema = new Schema({
     create_date: { type: Date },
+    hora_aplicacion: { type: Date },
     fecha_hora: { type: Date },
     consulta: { type: Schema.ObjectId, ref: 'Consulta' },
     paciente: { type: Schema.ObjectId, ref: 'Paciente' },

@@ -5,6 +5,8 @@ import { SucursalI } from "./sucursal.interface";
 
 export interface CorteI {
     create_date: Date;
+    hora_apertura: Date;
+    hora_cierre: Date;
     turno: String;
     ingresos: IngresoI[];
     egresos: EgresoI[];

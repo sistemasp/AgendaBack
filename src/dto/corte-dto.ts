@@ -5,6 +5,8 @@ import { SucursalDto } from "./sucursal-dto";
 
 export class CorteDto {
     readonly create_date: Date;
+    readonly hora_apertura: Date;
+    readonly hora_cierre: Date;
     readonly turno: String;
     readonly ingresos: IngresoDto[];
     readonly egresos: EgresoDto[];
