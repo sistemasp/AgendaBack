@@ -62,6 +62,14 @@ export class CirugiaController {
         return this.cirugiaService.findCirugiasHistoricByPaciente(pacienteId);
     }
 
+    @Get('sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
+    findCirugiasByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string,
+        @Param('atendidoId') atendidoId: string, @Param('hora_apertura') hora_apertura: string,
+        @Param('hora_cierre') hora_cierre: string): Promise<CirugiaI[]> {
+        console.log(new Date(), this.TAG, "findCirugiasByPayOfDoctorHoraAplicacion");
+        return this.cirugiaService.findCirugiasByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre);
+    }
+
     @Post()
     createCirugia(@Body() cirugiaDto: CirugiaDto): Promise<CirugiaI> {
         console.log(new Date(), this.TAG, "createCirugia");

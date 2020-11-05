@@ -102,6 +102,14 @@ export class LaserController {
         return this.laserService.findLaserByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno);
     }
 
+    @Get('sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
+    findLasersByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string,
+        @Param('atendidoId') atendidoId: string, @Param('hora_apertura') hora_apertura: string,
+        @Param('hora_cierre') hora_cierre: string): Promise<LaserI[]> {
+        console.log(new Date(), this.TAG, "findLasersByPayOfDoctorHoraAplicacion");
+        return this.laserService.findLasersByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre);
+    }
+
     @Post()
     createDate(@Body() laserDto: LaserDto): Promise<LaserI> {
         console.log(new Date(), this.TAG, "createDate");

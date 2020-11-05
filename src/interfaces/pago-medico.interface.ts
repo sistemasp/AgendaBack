@@ -3,6 +3,9 @@ import { ConsultaI } from "./consulta.interface";
 import { CirugiaI } from "./cirugia.interface";
 import { AreaI } from "./area.interface";
 import { EsteticaI } from "./estetica.interface";
+import { FacialI } from "./facial.interface";
+import { LaserI } from "./laser.interface";
+import { AparatologiaI } from "./aparatologia.interface";
 
 export interface PagoMedicoI {
     create_date: Date;
@@ -10,7 +13,9 @@ export interface PagoMedicoI {
     medico: EmpleadoI;
     consultas: ConsultaI[];
     cirugias: CirugiaI[];
-    tratamientos: AreaI[];
+    faciales: FacialI[];
+    lasers: LaserI[];
+    aparatologias: AparatologiaI[];
     esteticas: EsteticaI[];
     turno: String;
     retencion: String;

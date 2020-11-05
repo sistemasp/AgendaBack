@@ -62,6 +62,14 @@ export class EsteticaController {
         return this.esteticaService.findEsteticasHistoricByPaciente(pacienteId);
     }
 
+    @Get('sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
+    findEsteticasByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string,
+        @Param('atendidoId') atendidoId: string, @Param('hora_apertura') hora_apertura: string,
+        @Param('hora_cierre') hora_cierre: string): Promise<EsteticaI[]> {
+        console.log(new Date(), this.TAG, "findEsteticasByPayOfDoctorHoraAplicacion");
+        return this.esteticaService.findEsteticasByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre);
+    }
+
     @Post()
     createEstetica(@Body() esteticaDto: EsteticaDto): Promise<EsteticaI> {
         console.log(new Date(), this.TAG, "createEstetica");

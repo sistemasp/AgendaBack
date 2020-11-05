@@ -102,6 +102,14 @@ export class FacialController {
         return this.facialService.findFacialByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno);
     }
 
+    @Get('sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
+    findFacialesByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string,
+        @Param('atendidoId') atendidoId: string, @Param('hora_apertura') hora_apertura: string,
+        @Param('hora_cierre') hora_cierre: string): Promise<FacialI[]> {
+        console.log(new Date(), this.TAG, "findFacialesByPayOfDoctorHoraAplicacion");
+        return this.facialService.findFacialesByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre);
+    }
+    
     @Post()
     createFacial(@Body() facialDto: FacialDto): Promise<FacialI> {
         console.log(new Date(), this.TAG, "createFacial");

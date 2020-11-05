@@ -102,6 +102,14 @@ export class AparatologiaController {
         return this.aparatologiaService.findAparatologiaByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno);
     }
 
+    @Get('sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
+    findAparatologiasByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string,
+        @Param('atendidoId') atendidoId: string, @Param('hora_apertura') hora_apertura: string,
+        @Param('hora_cierre') hora_cierre: string): Promise<AparatologiaI[]> {
+        console.log(new Date(), this.TAG, "findAparatologiasByPayOfDoctorHoraAplicacion");
+        return this.aparatologiaService.findAparatologiasByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre);
+    }
+
     @Post()
     createDate(@Body() aparatologiaDto: AparatologiaDto): Promise<AparatologiaI> {
         console.log(new Date(), this.TAG, "createDate");

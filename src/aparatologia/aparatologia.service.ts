@@ -357,6 +357,27 @@ export class AparatologiaService {
     }
 
     /**
+     * Muestra todos los aparatologias de la BD que correspondan a un pagos de un medico por horas
+     */
+    async findAparatologiasByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre): Promise<AparatologiaI[]> {
+        let startDate = new Date(hora_apertura);
+        let endDate = new Date(hora_cierre);
+
+        return await this.aparatologiaModel.find(
+            {
+                hora_aplicacion: { $gte: startDate, $lte: endDate },
+                sucursal: sucursalId,
+                medico: medicoId,
+                status: atendidoId,
+            }).sort('consecutivo')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('areas')
+            .populate('tipo_cita')
+            .populate('pagos');
+    }
+
+    /**
      * Genera un nuevo aparatologia en la BD
      * @param aparatologia 
      */
