@@ -28,6 +28,13 @@ export class IngresoController {
         return this.ingresoService.showIngresosTodayBySucursalAndTurno(sucursalId, turno);
     }
 
+    @Get('sucursal/:sucursalId/apertura/:hora_apertura/cierre/:hora_cierre')
+    showIngresosTodayBySucursalAndHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('hora_apertura') hora_apertura: string,
+    @Param('hora_cierre') hora_cierre: string) : Promise<IngresoI[]> {
+        console.log(new Date(), this.TAG, "showIngresosTodayBySucursalAndHoraAplicacion");
+        return this.ingresoService.showIngresosTodayBySucursalAndHoraAplicacion(sucursalId, hora_apertura, hora_cierre);
+    }
+
     @Post()
     createIngreso(@Body() ingresoDto: IngresoDto): Promise<IngresoI> {
         console.log(new Date(), this.TAG, "createIngreso");

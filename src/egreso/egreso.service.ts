@@ -47,6 +47,24 @@ export class EgresoService {
     }
 
     /**
+     * Muestra todos los egresos del turno de la BD
+     */
+    async showEgresosTodayBySucursalAndHoraAplicacion(sucursalId, hora_apertura, hora_cierre): Promise<EgresoI[]> {
+        let startDate = new Date(hora_apertura);
+        let endDate = new Date(hora_cierre);
+        return await this.egresoModel.find({
+            hora_aplicacion: { $gte: startDate, $lt: endDate },
+            sucursal: sucursalId,
+        })
+        .sort('hora_aplicacion')
+        .populate('recepcionista')
+        .populate('tipo_egreso')
+        .populate('sucursal')
+        .populate('metodo_pago');
+    }
+
+
+    /**
      * Busca solo un egreso mediante su numero de empleado en la BD
      * @param idEgreso 
      */

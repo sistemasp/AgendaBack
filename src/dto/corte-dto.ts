@@ -12,4 +12,5 @@ export class CorteDto {
     readonly egresos: EgresoDto[];
     readonly recepcionista: EmpleadoDto;
     readonly sucursal: SucursalDto;
+    readonly generado: Boolean;
 }

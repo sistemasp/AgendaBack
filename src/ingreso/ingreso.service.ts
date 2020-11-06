@@ -53,6 +53,23 @@ export class IngresoService {
     }
 
     /**
+     * Muestra todos los ingresos de la BD
+     */
+    async showIngresosTodayBySucursalAndHoraAplicacion(sucursalId, hora_apertura, hora_cierre): Promise<IngresoI[]> {
+        let startDate = new Date(hora_apertura);
+        let endDate = new Date(hora_cierre);
+        return await this.ingresoModel.find({
+            hora_aplicacion: { $gte: startDate, $lt: endDate },
+            sucursal: sucursalId,
+        })
+        .sort('hora_aplicacion')
+        .populate('recepcionista')
+        .populate('tipo_ingreso')
+        .populate('sucursal')
+        .populate('metodo_pago');
+    }
+
+    /**
      * Busca solo un ingreso mediante su numero de empleado en la BD
      * @param idIngreso 
      */

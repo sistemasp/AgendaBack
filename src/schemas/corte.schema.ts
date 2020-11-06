@@ -11,4 +11,5 @@ export const CorteSchema = new Schema({
     egresos: [{ type: Schema.ObjectId, ref: 'Egreso' }],
     recepcionista: { type: Schema.ObjectId, ref: 'Empleado' },
     sucursal: { type: Schema.ObjectId, ref: 'Sucursal' },
+    generado: { type: Boolean, default: false },
 });

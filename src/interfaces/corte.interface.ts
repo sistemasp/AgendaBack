@@ -12,4 +12,5 @@ export interface CorteI {
     egresos: EgresoI[];
     recepcionista: EmpleadoI;
     sucursal: SucursalI;
+    generado: Boolean;
 }

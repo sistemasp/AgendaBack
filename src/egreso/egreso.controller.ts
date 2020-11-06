@@ -28,6 +28,13 @@ export class EgresoController {
         return this.egresoService.showEgresosTodayBySucursalAndTurno(sucursalId, turno);
     }
 
+    @Get('sucursal/:sucursalId/apertura/:hora_apertura/cierre/:hora_cierre')
+    showEgresosTodayBySucursalAndHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('hora_apertura') hora_apertura: string,
+    @Param('hora_cierre') hora_cierre: string) : Promise<EgresoI[]> {
+        console.log(new Date(), this.TAG, "showEgresosTodayBySucursalAndHoraAplicacion");
+        return this.egresoService.showEgresosTodayBySucursalAndHoraAplicacion(sucursalId, hora_apertura, hora_cierre);
+    }
+
     @Post()
     createEgreso(@Body() egresoDto: EgresoDto): Promise<EgresoI> {
         console.log(new Date(), this.TAG, "createEgreso");
