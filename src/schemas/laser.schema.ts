@@ -10,6 +10,7 @@ export const LaserSchema = new Schema({
     cita: { type: Schema.ObjectId, ref: 'Cta' },
     medico: { type: Schema.ObjectId, ref: 'Empleado' },
     servicio: { type: Schema.ObjectId, ref: 'Servicio' },
+    tratamientos: [{}],
     areas: [{ type: Schema.ObjectId, ref: 'Area' }],
     numero_sesion: String,
     quien_agenda: { type: Schema.ObjectId, ref: 'Empleado' },

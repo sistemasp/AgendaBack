@@ -35,5 +35,6 @@ export class LaserDto {
     readonly hora_salida: String;
     readonly pagado: Boolean;
     readonly pagos: PagoDto[];
-    readonly consecutivo : Number;    
+    readonly consecutivo : Number;
+    readonly tratamientos : [];
 }
