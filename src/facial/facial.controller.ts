@@ -109,6 +109,13 @@ export class FacialController {
         console.log(new Date(), this.TAG, "findFacialesByPayOfDoctorHoraAplicacion");
         return this.facialService.findFacialesByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre);
     }
+
+    @Get('sucursal/:sucursalId/pendiente/:pendienteId')
+    showAllFacialBySucursalPendiente(@Param('sucursalId') sucursalId: string,
+        @Param('pendienteId') pendienteId: string): Promise<FacialI[]> {
+        console.log(new Date(), this.TAG, "showAllFacialBySucursalPendiente");
+        return this.facialService.showAllFacialBySucursalPendiente(sucursalId, pendienteId);
+    }
     
     @Post()
     createFacial(@Body() facialDto: FacialDto): Promise<FacialI> {

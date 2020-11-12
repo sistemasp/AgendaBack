@@ -58,7 +58,11 @@ export class FacialService {
      * Muestra todas las facials de la BD
      */
     async showAllFacialBySucursalAsistio(sucursalId): Promise<FacialI[]> {
-        return await this.facialModel.find({ sucursal: sucursalId, $or: [{ status: '5eceb37a5da339304c86c993' }, { status: '5eceb3e75da339304c86c996' }] }).sort('fecha_hora')
+        return await this.facialModel.find({
+            sucursal: sucursalId, $or: [
+                { status: '5eceb37a5da339304c86c993' },
+                { status: '5eceb3e75da339304c86c996' }]
+        }).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
             .populate('areas')
@@ -72,6 +76,20 @@ export class FacialService {
             .populate('tipo_cita')
             .populate('medio')
             .populate('pagos')
+            .populate('status');
+    }
+
+    /**
+     * Muestra todos los faciales de la BD con estatus pendiente
+     */
+    async showAllFacialBySucursalPendiente(sucursalId, pendienteId): Promise<FacialI[]> {
+        return await this.facialModel.find({
+            sucursal: sucursalId, $or: [
+                { status: pendienteId },
+            ]
+        }).sort('consecutivo')
+            .populate('areas')
+            .populate('servicio')
             .populate('status');
     }
 
@@ -174,8 +192,8 @@ export class FacialService {
         endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
-        return await this.facialModel.find({ 
-            fecha_hora: { $gte: startDate, $lte: endDate }, 
+        return await this.facialModel.find({
+            fecha_hora: { $gte: startDate, $lte: endDate },
             sucursal: sucursalId,
             servicio: serviceId,
         }).sort('create_date')
@@ -302,9 +320,9 @@ export class FacialService {
             .populate('medico');
     }
 
-     /**
-     * Muestra todas las facials de la BD que correspondan a un pagos de un medico de algun dia 
-     */
+    /**
+    * Muestra todas las facials de la BD que correspondan a un pagos de un medico de algun dia 
+    */
     async findFacialByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId): Promise<FacialI[]> {
         let startDate = new Date(anio, mes, dia);
         startDate.setHours(0);
@@ -388,7 +406,7 @@ export class FacialService {
         });
         facial.consecutivo = consecutivo.length;
         facial.create_date = new Date(Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(),
-        currentDate.getHours(), currentDate.getMinutes(), currentDate.getSeconds()));
+            currentDate.getHours(), currentDate.getMinutes(), currentDate.getSeconds()));
         const newDate = new this.facialModel(facial);
         return await newDate.save();
 

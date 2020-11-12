@@ -67,6 +67,19 @@ export class ConsultaService {
     }
 
     /**
+     * Muestra todas las consultas de la BD con estatus pendiente
+     */
+    async showAllConsultsBySucursalPendiente(sucursalId, pendienteId): Promise<ConsultaI[]> {
+        return await this.consultaModel.find({
+            sucursal: sucursalId, $or: [
+                { status: pendienteId },
+            ]
+        }).sort('consecutivo')
+            .populate('sucursal')
+            .populate('medico')
+    }
+
+    /**
      * Muestra todas las consultas de la BD que correspondan a una fecha_hora
      */
     async findConsultsByDate(anio, mes, dia): Promise<ConsultaI[]> {

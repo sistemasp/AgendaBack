@@ -28,6 +28,13 @@ export class ConsultaController {
         return this.consultaService.showAllConsultsBySucursalAsistio(sucursalId);
     }
 
+    @Get('sucursal/:sucursalId/pendiente/:pendienteId')
+    showAllConsultsBySucursalPendiente(@Param('sucursalId') sucursalId: string,
+        @Param('pendienteId') pendienteId: string): Promise<ConsultaI[]> {
+        console.log(new Date(), this.TAG, "showAllConsultsBySucursalPendiente");
+        return this.consultaService.showAllConsultsBySucursalPendiente(sucursalId, pendienteId);
+    }
+
     @Get('historico/medicos/:medicoId')
     findHistoricByMedicId(@Param('medicoId') medicoId: string): Promise<ConsultaI[]> {
         console.log(new Date(), this.TAG, "findHistoricByMedicId");

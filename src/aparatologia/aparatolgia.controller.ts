@@ -8,34 +8,34 @@ export class AparatologiaController {
 
     TAG = "AparatologiaController";
 
-    constructor(private readonly aparatologiaService: AparatologiaService) {}
+    constructor(private readonly aparatologiaService: AparatologiaService) { }
 
     @Get()
-    showAllAparatologia() : Promise<AparatologiaI[]> {
+    showAllAparatologia(): Promise<AparatologiaI[]> {
         console.log(new Date(), this.TAG, "showAllAparatologia");
         return this.aparatologiaService.showAllAparatologia();
     }
 
     @Get('sucursal/:sucursalId')
-    showAllAparatologiaBySucursal(@Param('sucursalId') sucursalId: string) : Promise<AparatologiaI[]> {
+    showAllAparatologiaBySucursal(@Param('sucursalId') sucursalId: string): Promise<AparatologiaI[]> {
         console.log(new Date(), this.TAG, "showAllAparatologiaBySucursal");
         return this.aparatologiaService.showAllAparatologiaBySucursal(sucursalId);
     }
 
     @Get('sucursal/:sucursalId/asistio')
-    showAllAparatologiaBySucursalAsistio(@Param('sucursalId') sucursalId: string) : Promise<AparatologiaI[]> {
+    showAllAparatologiaBySucursalAsistio(@Param('sucursalId') sucursalId: string): Promise<AparatologiaI[]> {
         console.log(new Date(), this.TAG, "showAllAparatologiaBySucursalAsistio");
         return this.aparatologiaService.showAllAparatologiaBySucursalAsistio(sucursalId);
     }
 
     @Get(':dia/:mes/:anio')
-    findAparatologiaByDate(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string) : Promise<AparatologiaI[]> {
+    findAparatologiaByDate(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string): Promise<AparatologiaI[]> {
         console.log(new Date(), this.TAG, "findAparatologiaByDate");
         return this.aparatologiaService.findAparatologiaByDate(anio, mes, dia);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId')
-    findAparatologiaByDateAndSucursal(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursalId') sucursalId: string) : Promise<AparatologiaI[]> {
+    findAparatologiaByDateAndSucursal(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursalId') sucursalId: string): Promise<AparatologiaI[]> {
         console.log(new Date(), this.TAG, "findAparatologiaByDateAndSucursal");
         return this.aparatologiaService.findAparatologiaByDateAndSucursal(anio, mes, dia, sucursalId);
     }
@@ -43,7 +43,7 @@ export class AparatologiaController {
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')
     findAparatologiaByRangeDateAndSucursal(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
-        @Param('sucursalId') sucursalId: string) : Promise<AparatologiaI[]> {
+        @Param('sucursalId') sucursalId: string): Promise<AparatologiaI[]> {
         console.log(new Date(), this.TAG, "findAparatologiaByRangeDateAndSucursal");
         return this.aparatologiaService.findAparatologiaByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId);
     }
@@ -51,14 +51,14 @@ export class AparatologiaController {
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId/service/:serviceId')
     findAparatologiaByRangeDateAndSucursalAndService(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
-        @Param('sucursalId') sucursalId: string, @Param('serviceId') serviceId: string) : Promise<AparatologiaI[]> {
+        @Param('sucursalId') sucursalId: string, @Param('serviceId') serviceId: string): Promise<AparatologiaI[]> {
         console.log(new Date(), this.TAG, "findAparatologiaByRangeDateAndSucursalAndService", sucursalId, serviceId);
         return this.aparatologiaService.findAparatologiaByRangeDateAndSucursalAndService(anioi, mesi, diai, aniof, mesf, diaf, sucursalId, serviceId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/:servicio')
-    findAparatologiaByDateAndSucursalAndService(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
-        @Param('sucursalId') sucursalId: string, @Param('servicio') servicio: string) : Promise<AparatologiaI[]> {
+    findAparatologiaByDateAndSucursalAndService(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
+        @Param('sucursalId') sucursalId: string, @Param('servicio') servicio: string): Promise<AparatologiaI[]> {
         console.log(new Date(), this.TAG, "findAparatologiaByDateAndSucursalAndService");
         return this.aparatologiaService.findAparatologiaByDateAndSucursalAndService(anio, mes, dia, sucursalId, servicio);
     }
@@ -82,22 +82,22 @@ export class AparatologiaController {
     }
 
     @Get('sucursal/:sucursalId/asistio/:statusAsistioId')
-    waitingList(@Param('sucursalId') sucursalId: string, @Param('statusAsistioId') statusAsistioId: string) : Promise<AparatologiaI[]> {
+    waitingList(@Param('sucursalId') sucursalId: string, @Param('statusAsistioId') statusAsistioId: string): Promise<AparatologiaI[]> {
         console.log(new Date(), this.TAG, "waitingList");
         return this.aparatologiaService.waitingList(sucursalId, statusAsistioId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId')
-    findAparatologiaByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
-    @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,) : Promise<AparatologiaI[]> {
+    findAparatologiaByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
+        @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,): Promise<AparatologiaI[]> {
         console.log(new Date(), this.TAG, "findAparatologiaByPayOfDoctor");
         return this.aparatologiaService.findAparatologiaByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/turno/:turno')
-    findAparatologiaByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
-    @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,
-    @Param('turno') turno: string) : Promise<AparatologiaI[]> {
+    findAparatologiaByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
+        @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,
+        @Param('turno') turno: string): Promise<AparatologiaI[]> {
         console.log(new Date(), this.TAG, "findAparatologiaByPayOfDoctorTurno");
         return this.aparatologiaService.findAparatologiaByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno);
     }
@@ -110,13 +110,20 @@ export class AparatologiaController {
         return this.aparatologiaService.findAparatologiasByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre);
     }
 
+    @Get('sucursal/:sucursalId/pendiente/:pendienteId')
+    showAllAparatologiasBySucursalPendiente(@Param('sucursalId') sucursalId: string,
+        @Param('pendienteId') pendienteId: string): Promise<AparatologiaI[]> {
+        console.log(new Date(), this.TAG, "showAllAparatologiasBySucursalPendiente");
+        return this.aparatologiaService.showAllAparatologiasBySucursalPendiente(sucursalId, pendienteId);
+    }
+
     @Post()
     createDate(@Body() aparatologiaDto: AparatologiaDto): Promise<AparatologiaI> {
         console.log(new Date(), this.TAG, "createDate");
         return this.aparatologiaService.createDate(aparatologiaDto);
     }
 
-    @Put(':id') 
+    @Put(':id')
     updateDate(@Param('id') idAparatologia: string, @Body() aparatologiaDto: AparatologiaDto): Promise<AparatologiaI> {
         console.log(new Date(), this.TAG, "updateDate");
         return this.aparatologiaService.updateDate(idAparatologia, aparatologiaDto);

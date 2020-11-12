@@ -174,8 +174,8 @@ export class AparatologiaService {
         endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
-        return await this.aparatologiaModel.find({ 
-            fecha_hora: { $gte: startDate, $lte: endDate }, 
+        return await this.aparatologiaModel.find({
+            fecha_hora: { $gte: startDate, $lte: endDate },
             sucursal: sucursalId,
             servicio: serviceId,
         }).sort('create_date')
@@ -302,9 +302,9 @@ export class AparatologiaService {
             .populate('medico');
     }
 
-     /**
-     * Muestra todas las aparatologias de la BD que correspondan a un pagos de un medico de algun dia 
-     */
+    /**
+    * Muestra todas las aparatologias de la BD que correspondan a un pagos de un medico de algun dia 
+    */
     async findAparatologiaByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId): Promise<AparatologiaI[]> {
         let startDate = new Date(anio, mes, dia);
         startDate.setHours(0);
@@ -378,6 +378,20 @@ export class AparatologiaService {
     }
 
     /**
+     * Muestra todas las aparatologia de la BD con estatus pendiente
+     */
+    async showAllAparatologiasBySucursalPendiente(sucursalId, pendienteId): Promise<AparatologiaI[]> {
+        return await this.aparatologiaModel.find({
+            sucursal: sucursalId, $or: [
+                { status: pendienteId },
+            ]
+        }).sort('consecutivo')
+            .populate('areas')
+            .populate('servicio')
+            .populate('status');
+    }
+
+    /**
      * Genera un nuevo aparatologia en la BD
      * @param aparatologia 
      */
@@ -388,7 +402,7 @@ export class AparatologiaService {
         });
         aparatologia.consecutivo = consecutivo.length;
         aparatologia.create_date = new Date(Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(),
-        currentDate.getHours(), currentDate.getMinutes(), currentDate.getSeconds()));
+            currentDate.getHours(), currentDate.getMinutes(), currentDate.getSeconds()));
         const newDate = new this.aparatologiaModel(aparatologia);
         return await newDate.save();
 

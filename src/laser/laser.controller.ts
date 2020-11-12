@@ -8,34 +8,34 @@ export class LaserController {
 
     TAG = "LaserController";
 
-    constructor(private readonly laserService: LaserService) {}
+    constructor(private readonly laserService: LaserService) { }
 
     @Get()
-    showAllLaser() : Promise<LaserI[]> {
+    showAllLaser(): Promise<LaserI[]> {
         console.log(new Date(), this.TAG, "showAllLaser");
         return this.laserService.showAllLaser();
     }
 
     @Get('sucursal/:sucursalId')
-    showAllLaserBySucursal(@Param('sucursalId') sucursalId: string) : Promise<LaserI[]> {
+    showAllLaserBySucursal(@Param('sucursalId') sucursalId: string): Promise<LaserI[]> {
         console.log(new Date(), this.TAG, "showAllLaserBySucursal");
         return this.laserService.showAllLaserBySucursal(sucursalId);
     }
 
     @Get('sucursal/:sucursalId/asistio')
-    showAllLaserBySucursalAsistio(@Param('sucursalId') sucursalId: string) : Promise<LaserI[]> {
+    showAllLaserBySucursalAsistio(@Param('sucursalId') sucursalId: string): Promise<LaserI[]> {
         console.log(new Date(), this.TAG, "showAllLaserBySucursalAsistio");
         return this.laserService.showAllLaserBySucursalAsistio(sucursalId);
     }
 
     @Get(':dia/:mes/:anio')
-    findLaserByDate(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string) : Promise<LaserI[]> {
+    findLaserByDate(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string): Promise<LaserI[]> {
         console.log(new Date(), this.TAG, "findLaserByDate");
         return this.laserService.findLaserByDate(anio, mes, dia);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId')
-    findLaserByDateAndSucursal(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursalId') sucursalId: string) : Promise<LaserI[]> {
+    findLaserByDateAndSucursal(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursalId') sucursalId: string): Promise<LaserI[]> {
         console.log(new Date(), this.TAG, "findLaserByDateAndSucursal");
         return this.laserService.findLaserByDateAndSucursal(anio, mes, dia, sucursalId);
     }
@@ -43,7 +43,7 @@ export class LaserController {
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')
     findLaserByRangeDateAndSucursal(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
-        @Param('sucursalId') sucursalId: string) : Promise<LaserI[]> {
+        @Param('sucursalId') sucursalId: string): Promise<LaserI[]> {
         console.log(new Date(), this.TAG, "findLaserByRangeDateAndSucursal");
         return this.laserService.findLaserByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId);
     }
@@ -51,14 +51,14 @@ export class LaserController {
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId/service/:serviceId')
     findLaserByRangeDateAndSucursalAndService(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
-        @Param('sucursalId') sucursalId: string, @Param('serviceId') serviceId: string) : Promise<LaserI[]> {
+        @Param('sucursalId') sucursalId: string, @Param('serviceId') serviceId: string): Promise<LaserI[]> {
         console.log(new Date(), this.TAG, "findLaserByRangeDateAndSucursalAndService", sucursalId, serviceId);
         return this.laserService.findLaserByRangeDateAndSucursalAndService(anioi, mesi, diai, aniof, mesf, diaf, sucursalId, serviceId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/:servicio')
-    findLaserByDateAndSucursalAndService(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
-        @Param('sucursalId') sucursalId: string, @Param('servicio') servicio: string) : Promise<LaserI[]> {
+    findLaserByDateAndSucursalAndService(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
+        @Param('sucursalId') sucursalId: string, @Param('servicio') servicio: string): Promise<LaserI[]> {
         console.log(new Date(), this.TAG, "findLaserByDateAndSucursalAndService");
         return this.laserService.findLaserByDateAndSucursalAndService(anio, mes, dia, sucursalId, servicio);
     }
@@ -82,22 +82,22 @@ export class LaserController {
     }
 
     @Get('sucursal/:sucursalId/asistio/:statusAsistioId')
-    waitingList(@Param('sucursalId') sucursalId: string, @Param('statusAsistioId') statusAsistioId: string) : Promise<LaserI[]> {
+    waitingList(@Param('sucursalId') sucursalId: string, @Param('statusAsistioId') statusAsistioId: string): Promise<LaserI[]> {
         console.log(new Date(), this.TAG, "waitingList");
         return this.laserService.waitingList(sucursalId, statusAsistioId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId')
-    findLaserByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
-    @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,) : Promise<LaserI[]> {
+    findLaserByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
+        @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,): Promise<LaserI[]> {
         console.log(new Date(), this.TAG, "findLaserByPayOfDoctor");
         return this.laserService.findLaserByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/turno/:turno')
-    findLaserByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
-    @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,
-    @Param('turno') turno: string) : Promise<LaserI[]> {
+    findLaserByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
+        @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,
+        @Param('turno') turno: string): Promise<LaserI[]> {
         console.log(new Date(), this.TAG, "findLaserByPayOfDoctorTurno");
         return this.laserService.findLaserByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno);
     }
@@ -110,13 +110,20 @@ export class LaserController {
         return this.laserService.findLasersByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre);
     }
 
+    @Get('sucursal/:sucursalId/pendiente/:pendienteId')
+    showAllLaserBySucursalPendiente(@Param('sucursalId') sucursalId: string,
+        @Param('pendienteId') pendienteId: string): Promise<LaserI[]> {
+        console.log(new Date(), this.TAG, "showAllLaserBySucursalPendiente");
+        return this.laserService.showAllLaserBySucursalPendiente(sucursalId, pendienteId);
+    }
+
     @Post()
     createDate(@Body() laserDto: LaserDto): Promise<LaserI> {
         console.log(new Date(), this.TAG, "createDate");
         return this.laserService.createDate(laserDto);
     }
 
-    @Put(':id') 
+    @Put(':id')
     updateDate(@Param('id') idLaser: string, @Body() laserDto: LaserDto): Promise<LaserI> {
         console.log(new Date(), this.TAG, "updateDate");
         return this.laserService.updateDate(idLaser, laserDto);
