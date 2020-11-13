@@ -145,6 +145,9 @@ import { LaserController } from './laser/laser.controller';
 import { FacialService } from './facial/facial.service';
 import { LaserService } from './laser/laser.service';
 import { AparatologiaService } from './aparatologia/aparatologia.service';
+import { DermapenSchema } from './schemas/dermapen.schema';
+import { DermapenController } from './dermapen/dermapen.controller';
+import { DermapenService } from './dermapen/dermapen.service';
 
 @Module({
   imports: [
@@ -197,6 +200,7 @@ import { AparatologiaService } from './aparatologia/aparatologia.service';
       { name: 'Facial', schema: FacialSchema },
       { name: 'Laser', schema: LaserSchema },
       { name: 'Aparatologia', schema: AparatologiaSchema },
+      { name: 'Dermapen', schema: DermapenSchema },
     ])
   ],
   controllers: [
@@ -249,6 +253,7 @@ import { AparatologiaService } from './aparatologia/aparatologia.service';
     FacialController,
     LaserController,
     AparatologiaController,
+    DermapenController,
   ],
   providers: [
     AppService,
@@ -300,6 +305,7 @@ import { AparatologiaService } from './aparatologia/aparatologia.service';
     FacialService,
     LaserService,
     AparatologiaService,
+    DermapenService,
   ],
 })
 
