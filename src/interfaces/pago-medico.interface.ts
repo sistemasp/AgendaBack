@@ -6,6 +6,7 @@ import { EsteticaI } from "./estetica.interface";
 import { FacialI } from "./facial.interface";
 import { LaserI } from "./laser.interface";
 import { AparatologiaI } from "./aparatologia.interface";
+import { DermapenI } from "./dermapen.interface";
 
 export interface PagoMedicoI {
     create_date: Date;
@@ -14,6 +15,7 @@ export interface PagoMedicoI {
     consultas: ConsultaI[];
     cirugias: CirugiaI[];
     faciales: FacialI[];
+    dermapens: DermapenI[];
     lasers: LaserI[];
     aparatologias: AparatologiaI[];
     esteticas: EsteticaI[];

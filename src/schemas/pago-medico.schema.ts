@@ -9,6 +9,7 @@ export const PagoMedicoSchema = new Schema({
     consultas: [{ type: Schema.ObjectId, ref: 'Consulta' }],
     cirugias: [{ type: Schema.ObjectId, ref: 'Cirugia' }],
     faciales: [{ type: Schema.ObjectId, ref: 'Facial' }],
+    dermapens: [{ type: Schema.ObjectId, ref: 'Dermapens' }],
     lasers: [{ type: Schema.ObjectId, ref: 'Laser' }],
     aparatologias: [{ type: Schema.ObjectId, ref: 'Aparatologia' }],
     esteticas: [{ type: Schema.ObjectId, ref: 'Estetica' }],
