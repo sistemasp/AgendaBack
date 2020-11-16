@@ -19,6 +19,7 @@ export const DermapenSchema = new Schema({
     status: { type: Schema.ObjectId, ref: 'Status' },
     motivos: String,
     precio: String,
+    total: String,
     tiempo: String,
     observaciones: String,
     sucursal: { type: Schema.ObjectId, ref: 'Sucursal' },

@@ -25,6 +25,7 @@ export class DermapenDto {
     readonly status: StatusDto;
     readonly motivos: String;
     readonly precio: String;
+    readonly total: String;
     readonly tiempo: String;
     readonly observaciones: String;
     readonly sucursal: SucursalDto;
