@@ -11,4 +11,6 @@ export const IngresoSchema = new Schema({
     tipo_ingreso: { type: Schema.ObjectId, ref: 'TipoIngreso' },
     sucursal: { type: Schema.ObjectId, ref: 'Sucursal' },
     metodo_pago: { type: Schema.ObjectId, ref: 'MetodoPago' },
+    pago: { type: Schema.ObjectId, ref: 'Pago' },
+    pago_anticipado: { type: Boolean, default: false },
 });

@@ -16,6 +16,7 @@ export class IngresoService {
         .sort('create_date')
         .populate('recepcionista')
         .populate('tipo_ingreso')
+        .populate('pago')
         .populate('sucursal')
         .populate('metodo_pago')
         ;
@@ -27,6 +28,15 @@ export class IngresoService {
      */
     async findIngresoById(idIngreso: string): Promise<IngresoI> {
         return await this.ingresoModel.findOne( { _id: idIngreso } );
+    }
+
+    /**
+     * Busca solo un ingreso mediante su ID en la BD
+     * @param idPago 
+     */
+    async findIngresoByPago(idPago: string): Promise<IngresoI> {
+        const response = idPago !== 'undefined' ? await this.ingresoModel.findOne( { pago: idPago } ) : '';
+        return response;
     }
 
     /**
@@ -49,6 +59,7 @@ export class IngresoService {
         .populate('recepcionista')
         .populate('tipo_ingreso')
         .populate('sucursal')
+        .populate('pago')
         .populate('metodo_pago');
     }
 
@@ -58,14 +69,37 @@ export class IngresoService {
     async showIngresosTodayBySucursalAndHoraAplicacion(sucursalId, hora_apertura, hora_cierre): Promise<IngresoI[]> {
         let startDate = new Date(hora_apertura);
         let endDate = new Date(hora_cierre);
+        console.log(sucursalId, hora_apertura, hora_cierre);
         return await this.ingresoModel.find({
             hora_aplicacion: { $gte: startDate, $lt: endDate },
             sucursal: sucursalId,
+            pago_anticipado: false,
         })
         .sort('hora_aplicacion')
         .populate('recepcionista')
         .populate('tipo_ingreso')
         .populate('sucursal')
+        .populate('pago')
+        .populate('metodo_pago');
+    }
+
+    /**
+     * Muestra todos los ingresos de la BD
+     */
+    async showIngresosTodayBySucursalAndHoraAplicacionPA(sucursalId, hora_apertura, hora_cierre): Promise<IngresoI[]> {
+        let startDate = new Date(hora_apertura);
+        let endDate = new Date(hora_cierre);
+        console.log(sucursalId, hora_apertura, hora_cierre);
+        return await this.ingresoModel.find({
+            hora_aplicacion: { $gte: startDate, $lt: endDate },
+            sucursal: sucursalId,
+            pago_anticipado: true,
+        })
+        .sort('hora_aplicacion')
+        .populate('recepcionista')
+        .populate('tipo_ingreso')
+        .populate('sucursal')
+        .populate('pago')
         .populate('metodo_pago');
     }
 

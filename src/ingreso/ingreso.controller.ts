@@ -22,6 +22,12 @@ export class IngresoController {
         return this.ingresoService.findIngresoById(idIngreso);
     }
 
+    @Get('pago/:pagoId')
+    findIngresoByPago(@Param('pagoId') pagoId: string): Promise<IngresoI> {
+        console.log(new Date(), this.TAG, "findIngresoByPago");
+        return this.ingresoService.findIngresoByPago(pagoId);
+    }
+
     @Get('sucursal/:sucursalId/today/turno/:turno')
     showIngresosTodayBySucursalAndTurno(@Param('turno') turno: string, @Param('sucursalId') sucursalId: string) : Promise<IngresoI[]> {
         console.log(new Date(), this.TAG, "showIngresosTodayBySucursalAndTurno");
@@ -33,6 +39,13 @@ export class IngresoController {
     @Param('hora_cierre') hora_cierre: string) : Promise<IngresoI[]> {
         console.log(new Date(), this.TAG, "showIngresosTodayBySucursalAndHoraAplicacion");
         return this.ingresoService.showIngresosTodayBySucursalAndHoraAplicacion(sucursalId, hora_apertura, hora_cierre);
+    }
+
+    @Get('sucursal/:sucursalId/apertura/:hora_apertura/cierre/:hora_cierre/pa')
+    showIngresosTodayBySucursalAndHoraAplicacionPA(@Param('sucursalId') sucursalId: string, @Param('hora_apertura') hora_apertura: string,
+    @Param('hora_cierre') hora_cierre: string) : Promise<IngresoI[]> {
+        console.log(new Date(), this.TAG, "showIngresosTodayBySucursalAndHoraAplicacionPA");
+        return this.ingresoService.showIngresosTodayBySucursalAndHoraAplicacionPA(sucursalId, hora_apertura, hora_cierre);
     }
 
     @Post()
