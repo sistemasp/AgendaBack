@@ -9,6 +9,7 @@ export class CorteDto {
     readonly hora_cierre: Date;
     readonly turno: String;
     readonly ingresos: IngresoDto[];
+    readonly pagos_anticipados: IngresoDto[];
     readonly egresos: EgresoDto[];
     readonly recepcionista: EmpleadoDto;
     readonly sucursal: SucursalDto;

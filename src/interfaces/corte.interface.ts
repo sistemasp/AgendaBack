@@ -9,6 +9,7 @@ export interface CorteI {
     hora_cierre: Date;
     turno: String;
     ingresos: IngresoI[];
+    pagos_anticipados: IngresoI[];
     egresos: EgresoI[];
     recepcionista: EmpleadoI;
     sucursal: SucursalI;
