@@ -30,7 +30,7 @@ export class FacturaService {
     async findFacturaByRazonSocialId(razonSocialId: string): Promise<FacturaI> {
         return await this.facturaModel.find({ razon_social: razonSocialId })
             .populate('paciente')
-            .populate('metodo_pago')
+            .populate('forma_pago')
             .populate('sucursal')
             .populate('uso_cfdi');;
     }
@@ -60,7 +60,7 @@ export class FacturaService {
             .populate('paciente')
             .populate('razon_social')
             .populate('pago')
-            .populate('metodo_pago')
+            .populate('forma_pago')
             .populate('sucursal')
             .populate('uso_cfdi');
     }

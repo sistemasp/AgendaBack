@@ -1,6 +1,6 @@
 import { EmpleadoI } from "./empleado.interface";
 import { SucursalI } from "./sucursal.interface";
-import { MetodoPagoI } from "./metodo-pago.interface";
+import { FormaPagoI } from "./forma-pago.interface";
 import { TipoEgresoI } from "./tipo-egreso.interface";
 
 export interface EgresoI {
@@ -11,5 +11,5 @@ export interface EgresoI {
     cantidad: String;
     tipo_egreso: TipoEgresoI;
     sucursal: SucursalI;
-    metodo_pago: MetodoPagoI;
+    forma_pago: FormaPagoI;
 }

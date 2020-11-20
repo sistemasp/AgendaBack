@@ -43,7 +43,7 @@ export class EgresoService {
         .populate('recepcionista')
         .populate('tipo_egreso')
         .populate('sucursal')
-        .populate('metodo_pago');
+        .populate('forma_pago');
     }
 
     /**
@@ -60,7 +60,7 @@ export class EgresoService {
         .populate('recepcionista')
         .populate('tipo_egreso')
         .populate('sucursal')
-        .populate('metodo_pago');
+        .populate('forma_pago');
     }
 
 

@@ -5,7 +5,7 @@ import { EmpleadoDto } from "./empleado-dto";
 import { ServicioDto } from "./servicio-dto";
 import { BancoDto } from "./banco-dto";
 import { TipoTarjetaDto } from "./tipo-tarjeta-dto";
-import { MetodoPagoDto } from "./metodo-pago-dto";
+import { FormaPagoDto } from "./forma-pago-dto";
 import { CitaDto } from "./cita-dto";
 import { IngresoDto } from "./ingreso-dto";
 
@@ -19,7 +19,7 @@ export class PagoDto {
     readonly quien_recibe_pago: EmpleadoDto;
     readonly cantidad: String;
     readonly total: String;
-    readonly metodo_pago: MetodoPagoDto;
+    readonly forma_pago: FormaPagoDto;
     readonly banco: BancoDto;
     readonly tipo_tarjeta: TipoTarjetaDto;
     readonly digitos: String;

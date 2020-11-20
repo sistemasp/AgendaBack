@@ -2,7 +2,7 @@ import { PacienteI } from "./paciente.interface";
 import { RazonSocialI } from "./razon-social.interface";
 import { UsoCfdiI } from "./uso-cfdi.interface";
 import { PagoI } from "./pago.interface";
-import { MetodoPagoI } from "./metodo-pago.interface";
+import { FormaPagoI } from "./forma-pago.interface";
 import { SucursalI } from "./sucursal.interface";
 
 export interface FacturaI {
@@ -11,7 +11,7 @@ export interface FacturaI {
     razon_social: RazonSocialI;
     uso_cfdi: UsoCfdiI;
     pago: PagoI;
-    metodo_pago: MetodoPagoI;
+    forma_pago: FormaPagoI;
     ultimos_4_digitos: String;
     cantidad: String;
     sucursal : SucursalI;

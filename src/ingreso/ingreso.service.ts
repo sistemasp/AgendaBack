@@ -18,7 +18,7 @@ export class IngresoService {
         .populate('tipo_ingreso')
         .populate('pago')
         .populate('sucursal')
-        .populate('metodo_pago')
+        .populate('forma_pago')
         ;
     }
 
@@ -60,7 +60,7 @@ export class IngresoService {
         .populate('tipo_ingreso')
         .populate('sucursal')
         .populate('pago')
-        .populate('metodo_pago');
+        .populate('forma_pago');
     }
 
     /**
@@ -80,7 +80,7 @@ export class IngresoService {
         .populate('tipo_ingreso')
         .populate('sucursal')
         .populate('pago')
-        .populate('metodo_pago');
+        .populate('forma_pago');
     }
 
     /**
@@ -99,7 +99,7 @@ export class IngresoService {
         .populate('tipo_ingreso')
         .populate('sucursal')
         .populate('pago')
-        .populate('metodo_pago');
+        .populate('forma_pago');
     }
 
     /**

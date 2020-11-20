@@ -10,5 +10,5 @@ export const EgresoSchema = new Schema({
     cantidad: String,
     tipo_egreso: { type: Schema.ObjectId, ref: 'TipoEgreso' },
     sucursal: { type: Schema.ObjectId, ref: 'Sucursal' },
-    metodo_pago: { type: Schema.ObjectId, ref: 'MetodoPago' },
+    forma_pago: { type: Schema.ObjectId, ref: 'FormaPago' },
 });

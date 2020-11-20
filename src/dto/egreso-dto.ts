@@ -1,7 +1,7 @@
 import { EmpleadoDto } from "./empleado-dto";
 import { TipoIngresoDto } from "./tipo-ingreso-dto";
 import { SucursalDto } from "./sucursal-dto";
-import { MetodoPagoDto } from "./metodo-pago-dto";
+import { FormaPagoDto } from "./forma-pago-dto";
 import { TipoEgresoDto } from "./tipo-egreso-dto";
 
 export class EgresoDto {
@@ -12,5 +12,5 @@ export class EgresoDto {
     readonly cantidad: String;
     readonly tipo_egreso: TipoEgresoDto;
     readonly sucursal: SucursalDto;
-    readonly metodo_pago: MetodoPagoDto;
+    readonly forma_pago: FormaPagoDto;
 }

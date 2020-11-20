@@ -12,7 +12,7 @@ export const PagoSchema = new Schema({
     quien_recibe_pago: { type: Schema.ObjectId, ref: 'Empleado' },
     cantidad: String,
     total: String,
-    metodo_pago: { type: Schema.ObjectId, ref: 'MetodoPago' },
+    forma_pago: { type: Schema.ObjectId, ref: 'FormaPago' },
     banco: { type: Schema.ObjectId, ref: 'Banco' },
     tipo_tarjeta: { type: Schema.ObjectId, ref: 'TipoTarjeta' },
     digitos: String,

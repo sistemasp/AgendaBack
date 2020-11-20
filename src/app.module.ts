@@ -44,9 +44,9 @@ import { TipoCitaService } from './tipo_cita/tipo-cita.service';
 import { StatusSchema } from './schemas/status.schema';
 import { StatusController } from './status/status.controller';
 import { StatusService } from './status/status.service';
-import { MetodoPagoController } from './metodo_pago/metodo-pago.controller';
-import { MetodoPagoService } from './metodo_pago/metodo-pago.service';
-import { MetodoPagoSchema } from './schemas/metodo-pago.schema';
+import { FormaPagoController } from './forma_pago/forma-pago.controller';
+import { FormaPagoService } from './forma_pago/forma-pago.service';
+import { FormaPagoSchema } from './schemas/forma-pago.schema';
 import { BancoSchema } from './schemas/banco.schema';
 import { PagoSchema } from './schemas/pago.schema';
 import { BancoController } from './banco/banco.controller';
@@ -161,7 +161,7 @@ import { DermapenService } from './dermapen/dermapen.service';
       { name: 'Consulta', schema: ConsultaSchema },
       { name: 'TipoCita', schema: TipoCitaSchema },
       { name: 'Status', schema: StatusSchema },
-      { name: 'MetodoPago', schema: MetodoPagoSchema },
+      { name: 'FormaPago', schema: FormaPagoSchema },
       { name: 'Banco', schema: BancoSchema },
       { name: 'Pago', schema: PagoSchema },
       { name: 'TipoTarjeta', schema: TipoTarjetaSchema },
@@ -210,7 +210,7 @@ import { DermapenService } from './dermapen/dermapen.service';
     ConsultaController,
     TipoCitaController,
     StatusController,
-    MetodoPagoController,
+    FormaPagoController,
     BancoController,
     PagoController,
     TipoTarjetaController,
@@ -258,7 +258,7 @@ import { DermapenService } from './dermapen/dermapen.service';
     ConsultaService,
     TipoCitaService,
     StatusService,
-    MetodoPagoService,
+    FormaPagoService,
     BancoService,
     PagoService,
     TipoTarjetaService,

@@ -5,7 +5,7 @@ import { EmpleadoI } from "./empleado.interface";
 import { ServicioI } from "./servicio.interface";
 import { BancoI } from "./banco.interface";
 import { TipoTarjetaI } from "./tipo-tarjeta.interface";
-import { MetodoPagoI } from "./metodo-pago.interface";
+import { FormaPagoI } from "./forma-pago.interface";
 import { CitaI } from "./cita.interface";
 import { IngresoI } from "./ingreso.interface";
 
@@ -19,7 +19,7 @@ export interface PagoI {
     quien_recibe_pago: EmpleadoI;
     cantidad: String;
     total: String;
-    metodo_pago: MetodoPagoI;
+    forma_pago: FormaPagoI;
     banco: BancoI;
     tipo_tarjeta: TipoTarjetaI;
     digitos: String;

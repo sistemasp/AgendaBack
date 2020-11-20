@@ -1,3 +1,3 @@
-export class MetodoPagoDto {
+export class FormaPagoDto {
     readonly nombre : String;
 }

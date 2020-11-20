@@ -10,7 +10,7 @@ export const IngresoSchema = new Schema({
     cantidad: String,
     tipo_ingreso: { type: Schema.ObjectId, ref: 'TipoIngreso' },
     sucursal: { type: Schema.ObjectId, ref: 'Sucursal' },
-    metodo_pago: { type: Schema.ObjectId, ref: 'MetodoPago' },
+    forma_pago: { type: Schema.ObjectId, ref: 'FormaPago' },
     pago: { type: Schema.ObjectId, ref: 'Pago' },
     pago_anticipado: { type: Boolean, default: false },
 });
