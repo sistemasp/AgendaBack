@@ -35,10 +35,10 @@ export class ConsultaController {
         return this.consultaService.showAllConsultsBySucursalPendiente(sucursalId, pendienteId);
     }
 
-    @Get('historico/medicos/:medicoId')
-    findHistoricByMedicId(@Param('medicoId') medicoId: string): Promise<ConsultaI[]> {
+    @Get('historico/dermatologos/:dermatologoId')
+    findHistoricByMedicId(@Param('dermatologoId') dermatologoId: string): Promise<ConsultaI[]> {
         console.log(new Date(), this.TAG, "findHistoricByMedicId");
-        return this.consultaService.findHistoricByMedicId(medicoId);
+        return this.consultaService.findHistoricByMedicId(dermatologoId);
     }
 
     @Get(':dia/:mes/:anio')
@@ -54,44 +54,44 @@ export class ConsultaController {
         return this.consultaService.findConsultsByDateAndSucursal(anio, mes, dia, sucursalId);
     }
 
-    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId')
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId')
     findConsultsByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
-        @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string,
+        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string,
         @Param('atendidoId') atendidoId: string,): Promise<ConsultaI[]> {
         console.log(new Date(), this.TAG, "findConsultsByPayOfDoctor");
-        return this.consultaService.findConsultsByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId);
+        return this.consultaService.findConsultsByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId, atendidoId);
     }
 
-    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/turno/:turno')
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId/turno/:turno')
     findConsultsByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
-        @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,
+        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,
         @Param('turno') turno: string): Promise<ConsultaI[]> {
         console.log(new Date(), this.TAG, "findConsultsByPayOfDoctorTurno");
-        return this.consultaService.findConsultsByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno);
+        return this.consultaService.findConsultsByPayOfDoctorTurno(anio, mes, dia, sucursalId, dermatologoId, atendidoId, turno);
     }
 
-    @Get('sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
-    findConsultsByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string,
+    @Get('sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
+    findConsultsByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string,
         @Param('atendidoId') atendidoId: string, @Param('hora_apertura') hora_apertura: string,
         @Param('hora_cierre') hora_cierre: string): Promise<ConsultaI[]> {
         console.log(new Date(), this.TAG, "findConsultsByPayOfDoctorHoraAplicacion");
-        return this.consultaService.findConsultsByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre);
+        return this.consultaService.findConsultsByPayOfDoctorHoraAplicacion(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre);
     }
 
-    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/turno/:turno/frecuencia/:frecuenciaId')
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId/turno/:turno/frecuencia/:frecuenciaId')
     findConsultsByPayOfDoctorTurnoFrecuencia(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
-        @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,
+        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,
         @Param('turno') turno: string, @Param('frecuenciaId') frecuenciaId: string): Promise<ConsultaI[]> {
         console.log(new Date(), this.TAG, "findConsultsByPayOfDoctorTurnoFrecuencia");
-        return this.consultaService.findConsultsByPayOfDoctorTurnoFrecuencia(anio, mes, dia, sucursalId, medicoId, atendidoId, turno, frecuenciaId);
+        return this.consultaService.findConsultsByPayOfDoctorTurnoFrecuencia(anio, mes, dia, sucursalId, dermatologoId, atendidoId, turno, frecuenciaId);
     }
 
-    @Get('sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre/frecuencia/:frecuenciaId')
-    findConsultsByPayOfDoctorHoraAplicacionFrecuencia(@Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string,
+    @Get('sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre/frecuencia/:frecuenciaId')
+    findConsultsByPayOfDoctorHoraAplicacionFrecuencia(@Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string,
         @Param('atendidoId') atendidoId: string, @Param('hora_apertura') hora_apertura: string, @Param('hora_cierre') hora_cierre: string,
         @Param('frecuenciaId') frecuenciaId: string): Promise<ConsultaI[]> {
         console.log(new Date(), this.TAG, "findConsultsByPayOfDoctorHoraAplicacionFrecuencia");
-        return this.consultaService.findConsultsByPayOfDoctorHoraAplicacionFrecuencia(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre, frecuenciaId);
+        return this.consultaService.findConsultsByPayOfDoctorHoraAplicacionFrecuencia(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre, frecuenciaId);
     }
 
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')

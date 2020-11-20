@@ -11,7 +11,7 @@ export class BiopsiaDto {
     readonly consecutivo: Number;
     readonly fecha_realizacion: Date;
     readonly consulta: ConsultaDto;
-    readonly medico: EmpleadoDto;
+    readonly dermatologo: EmpleadoDto;
     readonly paciente: PacienteDto;
     readonly sucursal: SucursalDto;
     readonly patologo: EmpleadoDto;

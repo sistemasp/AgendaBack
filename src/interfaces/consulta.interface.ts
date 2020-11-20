@@ -14,7 +14,7 @@ export interface ConsultaI {
     folio : String;
     fecha_hora : Date;
     paciente : PacienteI;
-    medico : EmpleadoI;
+    dermatologo : EmpleadoI;
     quien_agenda : EmpleadoI;
     tipo_cita : TipoCitaI;
     medio: MedioI;

@@ -8,7 +8,7 @@ export const BiopsiaSchema = new Schema({
     consecutivo: { type: Number },
     fecha_realizacion: { type : Date },
     consulta: { type: Schema.ObjectId, ref: 'Consulta'},
-    medico: { type: Schema.ObjectId, ref: 'Empleado'},
+    dermatologo: { type: Schema.ObjectId, ref: 'Empleado'},
     paciente: { type: Schema.ObjectId, ref: 'Paciente'},
     sucursal: { type: Schema.ObjectId, ref: 'Sucursal'},
     patologo: { type: Schema.ObjectId, ref: 'Empleado'},

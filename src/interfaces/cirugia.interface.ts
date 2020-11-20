@@ -13,7 +13,7 @@ export interface CirugiaI {
     fecha_hora: Date;
     consulta: ConsultaI;
     paciente: PacienteI;
-    medico: EmpleadoI;
+    dermatologo: EmpleadoI;
     status: StatusI;
     patologo: EmpleadoI;
     sucursal: SucursalI;

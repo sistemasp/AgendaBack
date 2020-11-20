@@ -7,10 +7,10 @@ import { LaserDto } from "./laser-dto";
 import { AparatologiaDto } from "./aparatologia-dto";
 import { DermapenDto } from "./dermapen-dto";
 
-export class PagoMedicoDto {
+export class PagoDermatologoDto {
     readonly create_date: Date;
     readonly fecha_pago: Date;
-    readonly medico: EmpleadoDto;
+    readonly dermatologo: EmpleadoDto;
     readonly consultas: ConsultaDto[];
     readonly cirugias: CirugiaDto[];
     readonly faciales: FacialDto[];

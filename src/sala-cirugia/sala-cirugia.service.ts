@@ -13,7 +13,7 @@ export class SalaCirugiaService {
      */
     async showAllSalaCirugias(): Promise<SalaCirugiaI[]> {
         return await this.salaCirugiaModel.find()
-            .populate('medico')
+            .populate('dermatologo')
             .populate('consulta')
             .populate('paciente');
     }
@@ -24,7 +24,7 @@ export class SalaCirugiaService {
      */
     async findSalaCirugiaById(idSalaCirugia: string): Promise<SalaCirugiaI> {
         return await this.salaCirugiaModel.findOne({ _id: idSalaCirugia })
-            .populate('medico')
+            .populate('dermatologo')
             .populate('consulta')
             .populate('paciente');
     }
@@ -38,7 +38,7 @@ export class SalaCirugiaService {
             {
                 sucursal: sucursalId
             })
-            .populate('medico')
+            .populate('dermatologo')
             .populate('consulta')
             .populate('paciente');
     }
@@ -51,9 +51,9 @@ export class SalaCirugiaService {
         return await this.salaCirugiaModel.find(
             {
                 sucursal: sucursalId,
-                medico: { $ne: undefined }
+                dermatologo: { $ne: undefined }
             })
-            .populate('medico')
+            .populate('dermatologo')
             .populate('consulta')
             .populate('paciente');
     }
@@ -85,7 +85,7 @@ export class SalaCirugiaService {
                     cirugia: undefined,
                     tipo_servicio: undefined,
                     servicio: undefined,
-                    medico: undefined,
+                    dermatologo: undefined,
                 },
                 $set: {
                     disponible: true,
@@ -98,8 +98,8 @@ export class SalaCirugiaService {
      * Busca solo un salaCirugia mediante su ID de la sucursal en la BD
      * @param sucursalId 
      */
-    async breakFreeSalaCirugiaByIdMedico(salaCirugiaId: string): Promise<SalaCirugiaI[]> {
-        return await this.salaCirugiaModel.updateOne({ _id: salaCirugiaId }, { $unset: { medico: undefined } });
+    async breakFreeSalaCirugiaByIdDermatologo(salaCirugiaId: string): Promise<SalaCirugiaI[]> {
+        return await this.salaCirugiaModel.updateOne({ _id: salaCirugiaId }, { $unset: { dermatologo: undefined } });
     }
 
     /**

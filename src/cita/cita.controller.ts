@@ -87,19 +87,19 @@ export class CitaController {
         return this.citaService.waitingList(sucursalId, statusAsistioId);
     }
 
-    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId')
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId')
     findDatesByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
-    @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,) : Promise<CitaI[]> {
+    @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,) : Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "findDatesByPayOfDoctor");
-        return this.citaService.findDatesByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId);
+        return this.citaService.findDatesByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId, atendidoId);
     }
 
-    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/turno/:turno')
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId/turno/:turno')
     findDatesByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
-    @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,
+    @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,
     @Param('turno') turno: string) : Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "findDatesByPayOfDoctorTurno");
-        return this.citaService.findDatesByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno);
+        return this.citaService.findDatesByPayOfDoctorTurno(anio, mes, dia, sucursalId, dermatologoId, atendidoId, turno);
     }
 
     @Post()

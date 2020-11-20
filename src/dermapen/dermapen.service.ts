@@ -24,7 +24,7 @@ export class DermapenService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -45,7 +45,7 @@ export class DermapenService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -70,7 +70,7 @@ export class DermapenService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -113,7 +113,7 @@ export class DermapenService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -142,7 +142,7 @@ export class DermapenService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -171,7 +171,7 @@ export class DermapenService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -204,7 +204,7 @@ export class DermapenService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -243,7 +243,7 @@ export class DermapenService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -264,7 +264,7 @@ export class DermapenService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -285,7 +285,7 @@ export class DermapenService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -317,13 +317,13 @@ export class DermapenService {
             .populate('paciente')
             .populate('sucursal')
             .populate('servicio')
-            .populate('medico');
+            .populate('dermatologo');
     }
 
     /**
-    * Muestra todas las dermapens de la BD que correspondan a un pagos de un medico de algun dia 
+    * Muestra todas las dermapens de la BD que correspondan a un pagos de un dermatologo de algun dia 
     */
-    async findDermapenByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId): Promise<DermapenI[]> {
+    async findDermapenByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId, atendidoId): Promise<DermapenI[]> {
         let startDate = new Date(anio, mes, dia);
         startDate.setHours(0);
         startDate.setMinutes(0);
@@ -336,7 +336,7 @@ export class DermapenService {
             {
                 fecha_hora: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 status: atendidoId,
             }).sort('consecutivo')
             .populate('paciente')
@@ -346,12 +346,12 @@ export class DermapenService {
     }
 
     /**
-     * Muestra todas las dermapens de la BD que correspondan a un pagos de un medico de algun dia y turno
+     * Muestra todas las dermapens de la BD que correspondan a un pagos de un dermatologo de algun dia y turno
      * turno:
      *  1 = MATUTINO
      *  2 = VESPERTINO
      */
-    async findDermapenByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno): Promise<DermapenI[]> {
+    async findDermapenByPayOfDoctorTurno(anio, mes, dia, sucursalId, dermatologoId, atendidoId, turno): Promise<DermapenI[]> {
         let startDate = new Date(anio, mes, dia);
         startDate.setHours(turno === 'm' ? 0 : (startDate.getDay() === 6 ? 13 : 14));
         startDate.setMinutes(0);
@@ -365,7 +365,7 @@ export class DermapenService {
             {
                 fecha_hora: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 status: atendidoId,
             }).sort('consecutivo')
             .populate('paciente')
@@ -375,9 +375,9 @@ export class DermapenService {
     }
 
     /**
-     * Muestra todos los dermapenes de la BD que correspondan a un pagos de un medico por horas
+     * Muestra todos los dermapenes de la BD que correspondan a un pagos de un dermatologo por horas
      */
-    async findDermapenesByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre): Promise<DermapenI[]> {
+    async findDermapenesByPayOfDoctorHoraAplicacion(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre): Promise<DermapenI[]> {
         let startDate = new Date(hora_apertura);
         let endDate = new Date(hora_cierre);
 
@@ -385,7 +385,7 @@ export class DermapenService {
             {
                 hora_aplicacion: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 status: atendidoId,
             }).sort('consecutivo')
             .populate('paciente')

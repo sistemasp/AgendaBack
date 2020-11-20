@@ -57,7 +57,7 @@ export class PagoService {
             .populate('banco')
             .populate('tipo_tarjeta')
             .populate('metodo_pago')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('servicio')
             .populate('tratamientos')
             .populate('quien_recibe_pago');
@@ -74,7 +74,7 @@ export class PagoService {
         .populate('banco')
         .populate('tipo_tarjeta')
         .populate('metodo_pago')
-        .populate('medico')
+        .populate('dermatologo')
         .populate('servicio')
         .populate('tratamientos')
         .populate('quien_recibe_pago');;
@@ -91,7 +91,7 @@ export class PagoService {
         .populate('banco')
         .populate('tipo_tarjeta')
         .populate('metodo_pago')
-        .populate('medico')
+        .populate('dermatologo')
         .populate('servicio')
         .populate('tratamientos')
         .populate('quien_recibe_pago');;

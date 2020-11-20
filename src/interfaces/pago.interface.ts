@@ -14,7 +14,7 @@ export interface PagoI {
     hora_aplicacion: Date;
     paciente: PacienteI;
     cita: CitaI;
-    medico: EmpleadoI;
+    dermatologo: EmpleadoI;
     tratamientos: TratamientoI[];
     quien_recibe_pago: EmpleadoI;
     cantidad: String;

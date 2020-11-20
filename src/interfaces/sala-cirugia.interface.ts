@@ -7,7 +7,7 @@ import { CirugiaI } from "./cirugia.interface";
 
 export interface SalaCirugiaI {
     nombre: String;
-    medico: EmpleadoI;
+    dermatologo: EmpleadoI;
     paciente: PacienteI;
     tipo_servicio: ServicioI;
     servicio: String;

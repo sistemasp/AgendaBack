@@ -13,7 +13,7 @@ export class EsteticaDto {
     readonly pagado: Boolean;
     readonly consulta: ConsultaDto;
     readonly paciente: PacienteDto;
-    readonly medico: EmpleadoDto;
+    readonly dermatologo: EmpleadoDto;
     readonly sucursal: SucursalDto;
     readonly consecutivo: Number;
     readonly precio: String;

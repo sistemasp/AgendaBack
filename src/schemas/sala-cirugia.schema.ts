@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 export const SalaCirugiaSchema = new Schema({
     nombre: String,
-    medico: { type: Schema.ObjectId, ref: 'Empleado' },
+    dermatologo: { type: Schema.ObjectId, ref: 'Empleado' },
     paciente: { type: Schema.ObjectId, ref: 'Paciente' },
     tipo_servicio: { type: Schema.ObjectId, ref: 'Servicio' },
     servicio: String,

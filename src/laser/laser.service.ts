@@ -24,7 +24,7 @@ export class LaserService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -45,7 +45,7 @@ export class LaserService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -66,7 +66,7 @@ export class LaserService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -95,7 +95,7 @@ export class LaserService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -124,7 +124,7 @@ export class LaserService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -153,7 +153,7 @@ export class LaserService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -186,7 +186,7 @@ export class LaserService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -225,7 +225,7 @@ export class LaserService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -246,7 +246,7 @@ export class LaserService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -267,7 +267,7 @@ export class LaserService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -299,13 +299,13 @@ export class LaserService {
             .populate('paciente')
             .populate('sucursal')
             .populate('servicio')
-            .populate('medico');
+            .populate('dermatologo');
     }
 
     /**
-    * Muestra todas las lasers de la BD que correspondan a un pagos de un medico de algun dia 
+    * Muestra todas las lasers de la BD que correspondan a un pagos de un dermatologo de algun dia 
     */
-    async findLaserByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId): Promise<LaserI[]> {
+    async findLaserByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId, atendidoId): Promise<LaserI[]> {
         let startDate = new Date(anio, mes, dia);
         startDate.setHours(0);
         startDate.setMinutes(0);
@@ -318,7 +318,7 @@ export class LaserService {
             {
                 fecha_hora: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 status: atendidoId,
             }).sort('consecutivo')
             .populate('paciente')
@@ -328,12 +328,12 @@ export class LaserService {
     }
 
     /**
-     * Muestra todas las lasers de la BD que correspondan a un pagos de un medico de algun dia y turno
+     * Muestra todas las lasers de la BD que correspondan a un pagos de un dermatologo de algun dia y turno
      * turno:
      *  1 = MATUTINO
      *  2 = VESPERTINO
      */
-    async findLaserByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno): Promise<LaserI[]> {
+    async findLaserByPayOfDoctorTurno(anio, mes, dia, sucursalId, dermatologoId, atendidoId, turno): Promise<LaserI[]> {
         let startDate = new Date(anio, mes, dia);
         startDate.setHours(turno === 'm' ? 0 : (startDate.getDay() === 6 ? 13 : 14));
         startDate.setMinutes(0);
@@ -347,7 +347,7 @@ export class LaserService {
             {
                 fecha_hora: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 status: atendidoId,
             }).sort('consecutivo')
             .populate('paciente')
@@ -357,9 +357,9 @@ export class LaserService {
     }
 
     /**
-     * Muestra todos los faciales de la BD que correspondan a un pagos de un medico por horas
+     * Muestra todos los faciales de la BD que correspondan a un pagos de un dermatologo por horas
      */
-    async findLasersByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre): Promise<LaserI[]> {
+    async findLasersByPayOfDoctorHoraAplicacion(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre): Promise<LaserI[]> {
         let startDate = new Date(hora_apertura);
         let endDate = new Date(hora_cierre);
 
@@ -367,7 +367,7 @@ export class LaserService {
             {
                 hora_aplicacion: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 status: atendidoId,
             }).sort('consecutivo')
             .populate('paciente')

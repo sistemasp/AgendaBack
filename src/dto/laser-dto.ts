@@ -13,7 +13,7 @@ export class LaserDto {
     readonly hora_aplicacion: Date;
     readonly fecha_hora: Date;
     readonly paciente: PacienteDto;
-    readonly medico: EmpleadoDto;
+    readonly dermatologo: EmpleadoDto;
     readonly servicio: ServicioDto;
     readonly areas : AreaDto[];
     readonly numero_sesion: String;

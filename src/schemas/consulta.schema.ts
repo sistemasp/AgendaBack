@@ -8,7 +8,7 @@ export const ConsultaSchema = new Schema({
     folio : String,
     fecha_hora : { type : Date },
     paciente : { type: Schema.ObjectId, ref: 'Paciente'},
-    medico : { type: Schema.ObjectId, ref: 'Empleado'},
+    dermatologo : { type: Schema.ObjectId, ref: 'Empleado'},
     quien_agenda : { type: Schema.ObjectId, ref: 'Empleado'},
     tipo_cita : { type: Schema.ObjectId, ref: 'TipoCita'},
     medio: { type: Schema.ObjectId, ref: 'Medio' },

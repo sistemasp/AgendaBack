@@ -12,7 +12,7 @@ export interface EsteticaI {
     fecha_hora: Date;
     consulta: ConsultaI;
     paciente : PacienteI;
-    medico : EmpleadoI;
+    dermatologo : EmpleadoI;
     sucursal : SucursalI;
     consecutivo: Number;
     pagado : Boolean;

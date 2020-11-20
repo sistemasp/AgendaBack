@@ -11,7 +11,7 @@ export interface BiopsiaI {
     consecutivo: Number;
     fecha_realizacion: Date;
     consulta: ConsultaI
-    medico: EmpleadoI;
+    dermatologo: EmpleadoI;
     paciente: PacienteI;
     sucursal: SucursalI;
     patologo: EmpleadoI;

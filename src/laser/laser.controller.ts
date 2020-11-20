@@ -87,27 +87,27 @@ export class LaserController {
         return this.laserService.waitingList(sucursalId, statusAsistioId);
     }
 
-    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId')
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId')
     findLaserByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
-        @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,): Promise<LaserI[]> {
+        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,): Promise<LaserI[]> {
         console.log(new Date(), this.TAG, "findLaserByPayOfDoctor");
-        return this.laserService.findLaserByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId);
+        return this.laserService.findLaserByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId, atendidoId);
     }
 
-    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/turno/:turno')
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId/turno/:turno')
     findLaserByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
-        @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,
+        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,
         @Param('turno') turno: string): Promise<LaserI[]> {
         console.log(new Date(), this.TAG, "findLaserByPayOfDoctorTurno");
-        return this.laserService.findLaserByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno);
+        return this.laserService.findLaserByPayOfDoctorTurno(anio, mes, dia, sucursalId, dermatologoId, atendidoId, turno);
     }
 
-    @Get('sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
-    findLasersByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string,
+    @Get('sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
+    findLasersByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string,
         @Param('atendidoId') atendidoId: string, @Param('hora_apertura') hora_apertura: string,
         @Param('hora_cierre') hora_cierre: string): Promise<LaserI[]> {
         console.log(new Date(), this.TAG, "findLasersByPayOfDoctorHoraAplicacion");
-        return this.laserService.findLasersByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre);
+        return this.laserService.findLasersByPayOfDoctorHoraAplicacion(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre);
     }
 
     @Get('sucursal/:sucursalId/pendiente/:pendienteId')

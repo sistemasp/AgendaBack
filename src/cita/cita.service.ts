@@ -24,7 +24,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -45,7 +45,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -66,7 +66,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -95,7 +95,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -124,7 +124,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -153,7 +153,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -186,7 +186,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -225,7 +225,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -246,7 +246,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -267,7 +267,7 @@ export class CitaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -299,13 +299,13 @@ export class CitaService {
             .populate('paciente')
             .populate('sucursal')
             .populate('servicio')
-            .populate('medico');
+            .populate('dermatologo');
     }
 
      /**
-     * Muestra todas las citas de la BD que correspondan a un pagos de un medico de algun dia 
+     * Muestra todas las citas de la BD que correspondan a un pagos de un dermatologo de algun dia 
      */
-    async findDatesByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId): Promise<CitaI[]> {
+    async findDatesByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId, atendidoId): Promise<CitaI[]> {
         let startDate = new Date(anio, mes, dia);
         startDate.setHours(0);
         startDate.setMinutes(0);
@@ -318,7 +318,7 @@ export class CitaService {
             {
                 fecha_hora: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 status: atendidoId,
             }).sort('consecutivo')
             .populate('paciente')
@@ -328,12 +328,12 @@ export class CitaService {
     }
 
     /**
-     * Muestra todas las citas de la BD que correspondan a un pagos de un medico de algun dia y turno
+     * Muestra todas las citas de la BD que correspondan a un pagos de un dermatologo de algun dia y turno
      * turno:
      *  1 = MATUTINO
      *  2 = VESPERTINO
      */
-    async findDatesByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno): Promise<CitaI[]> {
+    async findDatesByPayOfDoctorTurno(anio, mes, dia, sucursalId, dermatologoId, atendidoId, turno): Promise<CitaI[]> {
         let startDate = new Date(anio, mes, dia);
         startDate.setHours(turno === 'm' ? 0 : (startDate.getDay() === 6 ? 13 : 14));
         startDate.setMinutes(0);
@@ -347,7 +347,7 @@ export class CitaService {
             {
                 fecha_hora: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 status: atendidoId,
             }).sort('consecutivo')
             .populate('paciente')

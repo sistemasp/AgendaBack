@@ -7,7 +7,7 @@ import { CitaI } from "./cita.interface";
 export interface CabinaI {
     nombre: String;
     cosmetologa: EmpleadoI;
-    medico: EmpleadoI;
+    dermatologo: EmpleadoI;
     paciente: PacienteI;
     tipo_servicio: ServicioI;
     servicio: String;

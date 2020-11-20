@@ -13,7 +13,7 @@ export interface AparatologiaI {
     hora_aplicacion: Date;
     fecha_hora: Date;
     paciente: PacienteI;
-    medico: EmpleadoI;
+    dermatologo: EmpleadoI;
     servicio: ServicioI;
     tratamientos: [];
     areas: AreaI[];

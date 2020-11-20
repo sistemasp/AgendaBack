@@ -8,18 +8,12 @@ import { SucursalController } from './sucursal/sucursal.controller';
 import { ServicioController } from './servicio/servicio.controller';
 import { TratamientoController } from './tratamiento/tratamiento.controller';
 import { PaqueteController } from './paquete/paquete.controller';
-import { RecepcionistaController } from './recepcionista/recepcionista.controller';
-import { DermatologoController } from './dermatologo/dermatologo.controller';
 import { CitaController } from './cita/cita.controller';
 import { SucursalService } from './sucursal/sucursal.service';
 import { ServicioService } from './servicio/servicio.service';
 import { TratamientoService } from './tratamiento/tratamiento.service';
 import { PaqueteService } from './paquete/paquete.service';
-import { RecepcionistaService } from './recepcionista/recepcionista.service';
-import { DermatologoService } from './dermatologo/dermatologo.service';
 import { CitaService } from './cita/cita.service';
-import { CosmetologaController } from './cosmetologa/cosmetologa.controller';
-import { CosmetologaService } from './cosmetologa/cosmetologa.service';
 import { PacienteSchema } from './schemas/paciente.schema';
 import { SucursalSchema } from './schemas/sucursal.schema';
 import { ServicioSchema } from './schemas/servicio.schema';
@@ -50,8 +44,6 @@ import { TipoCitaService } from './tipo_cita/tipo-cita.service';
 import { StatusSchema } from './schemas/status.schema';
 import { StatusController } from './status/status.controller';
 import { StatusService } from './status/status.service';
-import { MedicosController } from './medicos/medicos.controller';
-import { MedicosService } from './medicos/medicos.service';
 import { MetodoPagoController } from './metodo_pago/metodo-pago.controller';
 import { MetodoPagoService } from './metodo_pago/metodo-pago.service';
 import { MetodoPagoSchema } from './schemas/metodo-pago.schema';
@@ -130,9 +122,9 @@ import { IngresoController } from './ingreso/ingreso.controller';
 import { EgresoController } from './egreso/egreso.controller';
 import { IngresoService } from './ingreso/ingreso.service';
 import { EgresoService } from './egreso/egreso.service';
-import { PagoMedicoSchema } from './schemas/pago-medico.schema';
-import { PagoMedicoController } from './pago-medico/pago-medico.controller';
-import { PagoMedicoService } from './pago-medico/pago-medico.service';
+import { PagoDermatologoSchema } from './schemas/pago-dermatologo.schema';
+import { PagoDermatologoController } from './pago-dermatologo/pago-dermatologo.controller';
+import { PagoDermatologoService } from './pago-dermatologo/pago-dermatologo.service';
 import { CorteSchema } from './schemas/corte.schema';
 import { CorteController } from './corte/corte.controller';
 import { CorteService } from './corte/corte.service';
@@ -195,7 +187,7 @@ import { DermapenService } from './dermapen/dermapen.service';
       { name: 'TipoEgreso', schema: TipoEgresoSchema },
       { name: 'Ingreso', schema: IngresoSchema },
       { name: 'Egreso', schema: EgresoSchema },
-      { name: 'PagoMedico', schema: PagoMedicoSchema },
+      { name: 'PagoDermatologo', schema: PagoDermatologoSchema },
       { name: 'Corte', schema: CorteSchema },
       { name: 'Facial', schema: FacialSchema },
       { name: 'Laser', schema: LaserSchema },
@@ -210,10 +202,7 @@ import { DermapenService } from './dermapen/dermapen.service';
     ServicioController,
     TratamientoController,
     PaqueteController,
-    RecepcionistaController,
-    DermatologoController,
     CitaController,
-    CosmetologaController,
     HorarioController,
     RolController,
     EmpleadoController,
@@ -221,7 +210,6 @@ import { DermapenService } from './dermapen/dermapen.service';
     ConsultaController,
     TipoCitaController,
     StatusController,
-    MedicosController,
     MetodoPagoController,
     BancoController,
     PagoController,
@@ -248,7 +236,7 @@ import { DermapenService } from './dermapen/dermapen.service';
     TipoEgresoController,
     IngresoController,
     EgresoController,
-    PagoMedicoController,
+    PagoDermatologoController,
     CorteController,
     FacialController,
     LaserController,
@@ -262,10 +250,7 @@ import { DermapenService } from './dermapen/dermapen.service';
     ServicioService,
     TratamientoService,
     PaqueteService,
-    RecepcionistaService,
-    DermatologoService,
     CitaService,
-    CosmetologaService,
     HorarioService,
     RolService,
     EmpleadoService,
@@ -273,7 +258,6 @@ import { DermapenService } from './dermapen/dermapen.service';
     ConsultaService,
     TipoCitaService,
     StatusService,
-    MedicosService,
     MetodoPagoService,
     BancoService,
     PagoService,
@@ -300,7 +284,7 @@ import { DermapenService } from './dermapen/dermapen.service';
     TipoEgresoService,
     IngresoService,
     EgresoService,
-    PagoMedicoService,
+    PagoDermatologoService,
     CorteService,
     FacialService,
     LaserService,

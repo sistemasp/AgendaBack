@@ -2,10 +2,10 @@ import * as mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-export const PagoMedicoSchema = new Schema({
+export const PagoDermatologoSchema = new Schema({
     create_date: { type: Date },
     fecha_pago: { type: Date },
-    medico: { type: Schema.ObjectId, ref: 'Empleado' },
+    dermatologo: { type: Schema.ObjectId, ref: 'Empleado' },
     consultas: [{ type: Schema.ObjectId, ref: 'Consulta' }],
     cirugias: [{ type: Schema.ObjectId, ref: 'Cirugia' }],
     faciales: [{ type: Schema.ObjectId, ref: 'Facial' }],

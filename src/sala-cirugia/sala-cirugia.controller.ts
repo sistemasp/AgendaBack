@@ -40,10 +40,10 @@ export class SalaCirugiaController {
         return this.salaCirugiaService.findSalaCirugiaBySucursalIdAndFree(sucursalId);
     }
 
-    @Put('/liberar/medico/:salaCirugiaId')
-    breakFreeSalaCirugiaByIdMedico(@Param('salaCirugiaId') salaCirugiaId: string): Promise<SalaCirugiaI[]> {
-        console.log(new Date(), this.TAG, "breakFreeSalaCirugiaByIdMedico");
-        return this.salaCirugiaService.breakFreeSalaCirugiaByIdMedico(salaCirugiaId);
+    @Put('/liberar/dermatologo/:salaCirugiaId')
+    breakFreeSalaCirugiaByIdDermatologo(@Param('salaCirugiaId') salaCirugiaId: string): Promise<SalaCirugiaI[]> {
+        console.log(new Date(), this.TAG, "breakFreeSalaCirugiaByIdDermatologo");
+        return this.salaCirugiaService.breakFreeSalaCirugiaByIdDermatologo(salaCirugiaId);
     }
 
     @Put('/liberar/paciente/:salaCirugiaId')

@@ -6,7 +6,7 @@ import { ServicioI } from "./servicio.interface";
 
 export interface ConsultorioI {
     nombre: String;
-    medico: EmpleadoI;
+    dermatologo: EmpleadoI;
     paciente: PacienteI;
     tipo_servicio: ServicioI;
     servicio: String;

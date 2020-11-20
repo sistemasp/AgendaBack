@@ -40,10 +40,10 @@ export class ConsultorioController {
         return this.consultorioService.findSurgeryBySucursalIdAndFree(sucursalId);
     }
 
-    @Put('/liberar/medico/:consultorioId')
-    breakFreeSurgeryByIdMedico(@Param('consultorioId') consultorioId: string): Promise<ConsultorioI[]> {
-        console.log(new Date(), this.TAG, "breakFreeSurgeryByIdMedico");
-        return this.consultorioService.breakFreeSurgeryByIdMedico(consultorioId);
+    @Put('/liberar/dermatologo/:consultorioId')
+    breakFreeSurgeryByIdDermatologo(@Param('consultorioId') consultorioId: string): Promise<ConsultorioI[]> {
+        console.log(new Date(), this.TAG, "breakFreeSurgeryByIdDermatologo");
+        return this.consultorioService.breakFreeSurgeryByIdDermatologo(consultorioId);
     }
 
     @Put('/liberar/paciente/:consultorioId')

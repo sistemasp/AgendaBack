@@ -87,27 +87,27 @@ export class DermapenController {
         return this.dermapenService.waitingDermapenList(sucursalId, statusAsistioId);
     }
 
-    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId')
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId')
     findDermapenByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
-    @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,) : Promise<DermapenI[]> {
+    @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,) : Promise<DermapenI[]> {
         console.log(new Date(), this.TAG, "findDermapenByPayOfDoctor");
-        return this.dermapenService.findDermapenByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId);
+        return this.dermapenService.findDermapenByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId, atendidoId);
     }
 
-    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/turno/:turno')
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId/turno/:turno')
     findDermapenByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
-    @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,
+    @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,
     @Param('turno') turno: string) : Promise<DermapenI[]> {
         console.log(new Date(), this.TAG, "findDermapenByPayOfDoctorTurno");
-        return this.dermapenService.findDermapenByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno);
+        return this.dermapenService.findDermapenByPayOfDoctorTurno(anio, mes, dia, sucursalId, dermatologoId, atendidoId, turno);
     }
 
-    @Get('sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
-    findDermapenesByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string,
+    @Get('sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
+    findDermapenesByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string,
         @Param('atendidoId') atendidoId: string, @Param('hora_apertura') hora_apertura: string,
         @Param('hora_cierre') hora_cierre: string): Promise<DermapenI[]> {
         console.log(new Date(), this.TAG, "findDermapenesByPayOfDoctorHoraAplicacion");
-        return this.dermapenService.findDermapenesByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre);
+        return this.dermapenService.findDermapenesByPayOfDoctorHoraAplicacion(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre);
     }
 
     @Get('sucursal/:sucursalId/pendiente/:pendienteId')

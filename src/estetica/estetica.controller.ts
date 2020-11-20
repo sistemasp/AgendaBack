@@ -28,18 +28,18 @@ export class EsteticaController {
         return this.esteticaService.findEsteticaByConsultaId(consultaId);
     }
 
-    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId')
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId')
     findEsteticasByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
-        @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,): Promise<EsteticaI[]> {
+        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,): Promise<EsteticaI[]> {
         console.log(new Date(), this.TAG, "findEsteticasByPayOfDoctor");
-        return this.esteticaService.findEsteticasByPayOfDoctor(anio, mes, dia, sucursalId, medicoId);
+        return this.esteticaService.findEsteticasByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId);
     }
 
-    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/turno/:turno')
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/turno/:turno')
     findEsteticasByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
-        @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('turno') turno: string,): Promise<EsteticaI[]> {
+        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('turno') turno: string,): Promise<EsteticaI[]> {
         console.log(new Date(), this.TAG, "findEsteticasByPayOfDoctorTurno");
-        return this.esteticaService.findEsteticasByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, turno);
+        return this.esteticaService.findEsteticasByPayOfDoctorTurno(anio, mes, dia, sucursalId, dermatologoId, turno);
     }
 
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')
@@ -62,12 +62,12 @@ export class EsteticaController {
         return this.esteticaService.findEsteticasHistoricByPaciente(pacienteId);
     }
 
-    @Get('sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
-    findEsteticasByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string,
+    @Get('sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
+    findEsteticasByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string,
         @Param('atendidoId') atendidoId: string, @Param('hora_apertura') hora_apertura: string,
         @Param('hora_cierre') hora_cierre: string): Promise<EsteticaI[]> {
         console.log(new Date(), this.TAG, "findEsteticasByPayOfDoctorHoraAplicacion");
-        return this.esteticaService.findEsteticasByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre);
+        return this.esteticaService.findEsteticasByPayOfDoctorHoraAplicacion(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre);
     }
 
     @Post()

@@ -40,10 +40,10 @@ export class CabinaController {
         return this.cabinaService.findCabinaBySucursalIdAndFree(sucursalId);
     }
 
-    @Put('/liberar/medico/:cabinaId')
-    breakFreeCabinaByIdMedico(@Param('cabinaId') cabinaId: string): Promise<CabinaI[]> {
-        console.log(new Date(), this.TAG, "breakFreeCabinaByIdMedico");
-        return this.cabinaService.breakFreeCabinaByIdMedico(cabinaId);
+    @Put('/liberar/dermatologo/:cabinaId')
+    breakFreeCabinaByIdDermatologo(@Param('cabinaId') cabinaId: string): Promise<CabinaI[]> {
+        console.log(new Date(), this.TAG, "breakFreeCabinaByIdDermatologo");
+        return this.cabinaService.breakFreeCabinaByIdDermatologo(cabinaId);
     }
 
     @Put('/liberar/paciente/:cabinaId')

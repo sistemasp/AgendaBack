@@ -47,7 +47,7 @@ export class BiopsiaService {
         return await this.biopsiaModel.find({ fecha_realizacion: { $gte: startDate, $lte: endDate }, sucursal: sucursalId }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('patologo')
             .populate('consulta');
     }
@@ -65,7 +65,7 @@ export class BiopsiaService {
             .populate('quien_recibe')
             .populate('a_quien_se_entrega')
             .populate('quien_lo_entrega')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('pagos')
             .populate('status');
     }

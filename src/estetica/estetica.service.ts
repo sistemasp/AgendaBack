@@ -52,9 +52,9 @@ export class EsteticaService {
     }
 
     /**
-     * Muestra todas las consultas de la BD que correspondan a un pagos de un medico de algun dia 
+     * Muestra todas las consultas de la BD que correspondan a un pagos de un dermatologo de algun dia 
      */
-    async findEsteticasByPayOfDoctor(anio, mes, dia, sucursalId, medicoId): Promise<EsteticaI[]> {
+    async findEsteticasByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId): Promise<EsteticaI[]> {
         let startDate = new Date(anio, mes, dia);
         startDate.setHours(0);
         startDate.setMinutes(0);
@@ -68,7 +68,7 @@ export class EsteticaService {
             {
                 fecha_hora: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 pagado: true,
             }).sort('consecutivo')
             .populate('paciente')
@@ -79,12 +79,12 @@ export class EsteticaService {
     }
 
     /**
-     * Muestra todas las esteticas de la BD que correspondan a un pagos de un medico de algun dia y turno
+     * Muestra todas las esteticas de la BD que correspondan a un pagos de un dermatologo de algun dia y turno
      * turno:
      *  1 = MATUTINO
      *  2 = VESPERTINO
      */
-    async findEsteticasByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, turno): Promise<EsteticaI[]> {
+    async findEsteticasByPayOfDoctorTurno(anio, mes, dia, sucursalId, dermatologoId, turno): Promise<EsteticaI[]> {
         let startDate = new Date(anio, mes, dia);
         startDate.setHours(turno === 'm' ? 0 : (startDate.getDay() === 6 ? 13 : 14));
         startDate.setMinutes(0);
@@ -98,7 +98,7 @@ export class EsteticaService {
             {
                 fecha_hora: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
             }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
@@ -138,7 +138,7 @@ export class EsteticaService {
             .populate('quien_recibe')
             .populate('a_quien_se_entrega')
             .populate('quien_lo_entrega')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('pagos')
             .populate('status');
     }
@@ -181,13 +181,13 @@ export class EsteticaService {
             .populate('consulta')
             .populate('servicio')
             .populate('status')
-            .populate('medico');
+            .populate('dermatologo');
     }
 
     /**
-     * Muestra todas las cirugias de la BD que correspondan a un pagos de un medico por horas
+     * Muestra todas las cirugias de la BD que correspondan a un pagos de un dermatologo por horas
      */
-    async findEsteticasByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre): Promise<EsteticaI[]> {
+    async findEsteticasByPayOfDoctorHoraAplicacion(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre): Promise<EsteticaI[]> {
         let startDate = new Date(hora_apertura);
         let endDate = new Date(hora_cierre);
 
@@ -195,7 +195,7 @@ export class EsteticaService {
             {
                 hora_aplicacion: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 status: atendidoId,
             }).sort('consecutivo')
             .populate('paciente')

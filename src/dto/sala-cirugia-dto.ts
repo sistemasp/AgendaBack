@@ -7,7 +7,7 @@ import { CirugiaDto } from "./cirugia-dto";
 
 export class SalaCirugiaDto {
     readonly nombre: String;
-    readonly medico: EmpleadoDto;
+    readonly dermatologo: EmpleadoDto;
     readonly paciente: PacienteDto;
     readonly tipo_servicio: ServicioDto;
     readonly servicio: String;

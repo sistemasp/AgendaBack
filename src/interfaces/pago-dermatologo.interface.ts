@@ -8,10 +8,10 @@ import { LaserI } from "./laser.interface";
 import { AparatologiaI } from "./aparatologia.interface";
 import { DermapenI } from "./dermapen.interface";
 
-export interface PagoMedicoI {
+export interface PagoDermatologoI {
     create_date: Date;
     fecha_pago: Date;
-    medico: EmpleadoI;
+    dermatologo: EmpleadoI;
     consultas: ConsultaI[];
     cirugias: CirugiaI[];
     faciales: FacialI[];

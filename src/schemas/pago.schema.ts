@@ -7,7 +7,7 @@ export const PagoSchema = new Schema({
     hora_aplicacion: { type: Date, default: new Date() },
     paciente: { type: Schema.ObjectId, ref: 'Paciente' },
     cita: { type: Schema.ObjectId, ref: 'Cita' },
-    medico: { type: Schema.ObjectId, ref: 'Empleado' },
+    dermatologo: { type: Schema.ObjectId, ref: 'Empleado' },
     tratamientos: [{ type: Schema.ObjectId, ref: 'Tratamiento' }],
     quien_recibe_pago: { type: Schema.ObjectId, ref: 'Empleado' },
     cantidad: String,

@@ -13,7 +13,7 @@ export class FacialDto {
     readonly hora_aplicacion: Date;
     readonly fecha_hora: Date;
     readonly paciente: PacienteDto;
-    readonly medico: EmpleadoDto;
+    readonly dermatologo: EmpleadoDto;
     readonly servicio: ServicioDto;
     readonly tratamientos : [];
     readonly areas : AreaDto[];

@@ -48,9 +48,9 @@ export class CirugiaService {
     }
 
     /**
-     * Muestra todas las consultas de la BD que correspondan a un pagos de un medico de algun dia 
+     * Muestra todas las consultas de la BD que correspondan a un pagos de un dermatologo de algun dia 
      */
-    async findCirugiasByPayOfDoctor(anio, mes, dia, sucursalId, medicoId): Promise<CirugiaI[]> {
+    async findCirugiasByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId): Promise<CirugiaI[]> {
         let startDate = new Date(anio, mes, dia);
         startDate.setHours(0);
         startDate.setMinutes(0);
@@ -64,7 +64,7 @@ export class CirugiaService {
             {
                 fecha_hora: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 pagado: true,
             }).sort('consecutivo')
             .populate('paciente')
@@ -73,12 +73,12 @@ export class CirugiaService {
     }
 
     /**
-     * Muestra todas las cirugias de la BD que correspondan a un pagos de un medico de algun dia y turno
+     * Muestra todas las cirugias de la BD que correspondan a un pagos de un dermatologo de algun dia y turno
      * turno:
      *  1 = MATUTINO
      *  2 = VESPERTINO
      */
-    async findCirugiasByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, turno): Promise<CirugiaI[]> {
+    async findCirugiasByPayOfDoctorTurno(anio, mes, dia, sucursalId, dermatologoId, turno): Promise<CirugiaI[]> {
         let startDate = new Date(anio, mes, dia);
         startDate.setHours(turno === 'm' ? 0 : (startDate.getDay() === 6 ? 13 : 14));
         startDate.setMinutes(0);
@@ -92,7 +92,7 @@ export class CirugiaService {
             {
                 fecha_hora: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 pagado: true,
             }).sort('consecutivo')
             .populate('paciente')
@@ -115,7 +115,7 @@ export class CirugiaService {
         return await this.cirugiaModel.find({ fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('servicio')
             .populate('status')
             .populate('patologo')
@@ -145,7 +145,7 @@ export class CirugiaService {
             .populate('paciente')
             .populate('sucursal')
             .populate('servicio')
-            .populate('medico');
+            .populate('dermatologo');
     }
 
     /**
@@ -161,15 +161,15 @@ export class CirugiaService {
             .populate('quien_recibe')
             .populate('a_quien_se_entrega')
             .populate('quien_lo_entrega')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('pagos')
             .populate('status');
     }
 
     /**
-     * Muestra todas las cirugias de la BD que correspondan a un pagos de un medico por horas
+     * Muestra todas las cirugias de la BD que correspondan a un pagos de un dermatologo por horas
      */
-    async findCirugiasByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre): Promise<CirugiaI[]> {
+    async findCirugiasByPayOfDoctorHoraAplicacion(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre): Promise<CirugiaI[]> {
         let startDate = new Date(hora_apertura);
         let endDate = new Date(hora_cierre);
 
@@ -177,7 +177,7 @@ export class CirugiaService {
             {
                 hora_aplicacion: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 status: atendidoId,
             }).sort('consecutivo')
             .populate('paciente')

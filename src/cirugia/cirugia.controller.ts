@@ -28,18 +28,18 @@ export class CirugiaController {
         return this.cirugiaService.findCirugiaByConsultaId(consultaId);
     }
 
-    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId')
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId')
     findCirugiasByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
-        @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string): Promise<CirugiaI[]> {
+        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string): Promise<CirugiaI[]> {
         console.log(new Date(), this.TAG, "findCirugiasByPayOfDoctor");
-        return this.cirugiaService.findCirugiasByPayOfDoctor(anio, mes, dia, sucursalId, medicoId);
+        return this.cirugiaService.findCirugiasByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId);
     }
 
-    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/turno/:turno')
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/turno/:turno')
     findCirugiasByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
-        @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('turno') turno: string,): Promise<CirugiaI[]> {
+        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('turno') turno: string,): Promise<CirugiaI[]> {
         console.log(new Date(), this.TAG, "findCirugiasByPayOfDoctorTurno");
-        return this.cirugiaService.findCirugiasByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, turno);
+        return this.cirugiaService.findCirugiasByPayOfDoctorTurno(anio, mes, dia, sucursalId, dermatologoId, turno);
     }
 
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')
@@ -62,12 +62,12 @@ export class CirugiaController {
         return this.cirugiaService.findCirugiasHistoricByPaciente(pacienteId);
     }
 
-    @Get('sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
-    findCirugiasByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string,
+    @Get('sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
+    findCirugiasByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string,
         @Param('atendidoId') atendidoId: string, @Param('hora_apertura') hora_apertura: string,
         @Param('hora_cierre') hora_cierre: string): Promise<CirugiaI[]> {
         console.log(new Date(), this.TAG, "findCirugiasByPayOfDoctorHoraAplicacion");
-        return this.cirugiaService.findCirugiasByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre);
+        return this.cirugiaService.findCirugiasByPayOfDoctorHoraAplicacion(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre);
     }
 
     @Post()

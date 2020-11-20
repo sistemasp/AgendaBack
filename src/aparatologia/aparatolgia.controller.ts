@@ -87,27 +87,27 @@ export class AparatologiaController {
         return this.aparatologiaService.waitingList(sucursalId, statusAsistioId);
     }
 
-    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId')
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId')
     findAparatologiaByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
-        @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,): Promise<AparatologiaI[]> {
+        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,): Promise<AparatologiaI[]> {
         console.log(new Date(), this.TAG, "findAparatologiaByPayOfDoctor");
-        return this.aparatologiaService.findAparatologiaByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId);
+        return this.aparatologiaService.findAparatologiaByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId, atendidoId);
     }
 
-    @Get(':dia/:mes/:anio/sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/turno/:turno')
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId/turno/:turno')
     findAparatologiaByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
-        @Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string, @Param('atendidoId') atendidoId: string,
+        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,
         @Param('turno') turno: string): Promise<AparatologiaI[]> {
         console.log(new Date(), this.TAG, "findAparatologiaByPayOfDoctorTurno");
-        return this.aparatologiaService.findAparatologiaByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno);
+        return this.aparatologiaService.findAparatologiaByPayOfDoctorTurno(anio, mes, dia, sucursalId, dermatologoId, atendidoId, turno);
     }
 
-    @Get('sucursal/:sucursalId/medico/:medicoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
-    findAparatologiasByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('medicoId') medicoId: string,
+    @Get('sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId/apertura/:hora_apertura/cierre/:hora_cierre')
+    findAparatologiasByPayOfDoctorHoraAplicacion(@Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string,
         @Param('atendidoId') atendidoId: string, @Param('hora_apertura') hora_apertura: string,
         @Param('hora_cierre') hora_cierre: string): Promise<AparatologiaI[]> {
         console.log(new Date(), this.TAG, "findAparatologiasByPayOfDoctorHoraAplicacion");
-        return this.aparatologiaService.findAparatologiasByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre);
+        return this.aparatologiaService.findAparatologiasByPayOfDoctorHoraAplicacion(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre);
     }
 
     @Get('sucursal/:sucursalId/pendiente/:pendienteId')

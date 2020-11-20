@@ -16,7 +16,7 @@ export class CirugiaDto {
     readonly status: StatusDto;
     readonly consulta: ConsultaDto;
     readonly paciente: PacienteDto;
-    readonly medico: EmpleadoDto;
+    readonly dermatologo: EmpleadoDto;
     readonly patologo: EmpleadoDto;
     readonly sucursal: SucursalDto;
     readonly consecutivo: Number;

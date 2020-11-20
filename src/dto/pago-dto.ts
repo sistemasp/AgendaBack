@@ -14,7 +14,7 @@ export class PagoDto {
     readonly hora_aplicacion: Date;
     readonly paciente: PacienteDto;
     readonly cita: CitaDto;
-    readonly medico: EmpleadoDto;
+    readonly dermatologo: EmpleadoDto;
     readonly tratamientos: TratamientoDto[];
     readonly quien_recibe_pago: EmpleadoDto;
     readonly cantidad: String;

@@ -13,7 +13,7 @@ export class ConsultorioService {
      */
     async showAllSurgeries(): Promise<ConsultorioI[]> {
         return await this.consultorioModel.find()
-            .populate('medico')
+            .populate('dermatologo')
             .populate('consulta')
             .populate('paciente');
     }
@@ -24,7 +24,7 @@ export class ConsultorioService {
      */
     async findSurgeryById(idConsultorio: string): Promise<ConsultorioI> {
         return await this.consultorioModel.findOne({ _id: idConsultorio })
-            .populate('medico')
+            .populate('dermatologo')
             .populate('consulta')
             .populate('paciente');
     }
@@ -38,7 +38,7 @@ export class ConsultorioService {
             {
                 sucursal: sucursalId
             })
-            .populate('medico')
+            .populate('dermatologo')
             .populate('consulta')
             .populate('paciente');
     }
@@ -51,9 +51,9 @@ export class ConsultorioService {
         return await this.consultorioModel.find(
             {
                 sucursal: sucursalId,
-                medico: { $ne: undefined }
+                dermatologo: { $ne: undefined }
             })
-            .populate('medico')
+            .populate('dermatologo')
             .populate('consulta')
             .populate('paciente');
     }
@@ -66,10 +66,10 @@ export class ConsultorioService {
         return await this.consultorioModel.find(
             {
                 sucursal: sucursalId,
-                medico: { $ne: undefined },
+                dermatologo: { $ne: undefined },
                 disponible: true
             })
-            .populate('medico')
+            .populate('dermatologo')
             .populate('consulta')
             .populate('paciente');
     }
@@ -92,8 +92,8 @@ export class ConsultorioService {
      * Busca solo un consultorio mediante su ID de la sucursal en la BD
      * @param sucursalId 
      */
-    async breakFreeSurgeryByIdMedico(consultorioId: string): Promise<ConsultorioI[]> {
-        return await this.consultorioModel.updateOne({ _id: consultorioId }, {$unset: {medico: undefined}});
+    async breakFreeSurgeryByIdDermatologo(consultorioId: string): Promise<ConsultorioI[]> {
+        return await this.consultorioModel.updateOne({ _id: consultorioId }, {$unset: {dermatologo: undefined}});
     }
 
     /**

@@ -14,7 +14,7 @@ export class ConsultaDto {
     readonly folio : String;
     readonly fecha_hora : Date;
     readonly paciente : PacienteDto;
-    readonly medico : EmpleadoDto;
+    readonly dermatologo : EmpleadoDto;
     readonly quien_agenda : EmpleadoDto;
     readonly tipo_cita : TipoCitaDto;
     readonly medio: MedioDto;

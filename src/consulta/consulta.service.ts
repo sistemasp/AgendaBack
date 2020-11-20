@@ -21,7 +21,7 @@ export class ConsultaService {
             .populate('sucursal')
             .populate('quien_agenda')
             .populate('promovendedor')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -40,7 +40,7 @@ export class ConsultaService {
             .populate('sucursal')
             .populate('quien_agenda')
             .populate('promovendedor')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -63,7 +63,7 @@ export class ConsultaService {
             ]
         }).sort('consecutivo')
             .populate('sucursal')
-            .populate('medico')
+            .populate('dermatologo')
     }
 
     /**
@@ -76,7 +76,7 @@ export class ConsultaService {
             ]
         }).sort('consecutivo')
             .populate('sucursal')
-            .populate('medico')
+            .populate('dermatologo')
     }
 
     /**
@@ -89,7 +89,7 @@ export class ConsultaService {
             .populate('sucursal')
             .populate('quien_agenda')
             .populate('promovendedor')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -121,7 +121,7 @@ export class ConsultaService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('servicio')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -132,9 +132,9 @@ export class ConsultaService {
     }
 
     /**
-     * Muestra todas las consultas de la BD que correspondan a un pagos de un medico de algun dia 
+     * Muestra todas las consultas de la BD que correspondan a un pagos de un dermatologo de algun dia 
      */
-    async findConsultsByPayOfDoctor(anio, mes, dia, sucursalId, medicoId, atendidoId): Promise<ConsultaI[]> {
+    async findConsultsByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId, atendidoId): Promise<ConsultaI[]> {
         let startDate = new Date(anio, mes, dia);
         startDate.setHours(0);
         startDate.setMinutes(0);
@@ -147,7 +147,7 @@ export class ConsultaService {
             {
                 fecha_hora: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 status: atendidoId,
             }).sort('consecutivo')
             .populate('paciente')
@@ -156,12 +156,12 @@ export class ConsultaService {
     }
 
     /**
-     * Muestra todas las consultas de la BD que correspondan a un pagos de un medico de algun dia y turno
+     * Muestra todas las consultas de la BD que correspondan a un pagos de un dermatologo de algun dia y turno
      * turno:
      *  1 = MATUTINO
      *  2 = VESPERTINO
      */
-    async findConsultsByPayOfDoctorTurno(anio, mes, dia, sucursalId, medicoId, atendidoId, turno): Promise<ConsultaI[]> {
+    async findConsultsByPayOfDoctorTurno(anio, mes, dia, sucursalId, dermatologoId, atendidoId, turno): Promise<ConsultaI[]> {
         let startDate = new Date(anio, mes, dia);
         startDate.setHours(turno === 'm' ? 0 : (startDate.getDay() === 6 ? 13 : 14));
         startDate.setMinutes(0);
@@ -175,7 +175,7 @@ export class ConsultaService {
             {
                 fecha_hora: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 status: atendidoId,
             }).sort('consecutivo')
             .populate('paciente')
@@ -184,9 +184,9 @@ export class ConsultaService {
     }
 
     /**
-     * Muestra todas las consultas de la BD que correspondan a un pagos de un medico por horas
+     * Muestra todas las consultas de la BD que correspondan a un pagos de un dermatologo por horas
      */
-    async findConsultsByPayOfDoctorHoraAplicacion(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre): Promise<ConsultaI[]> {
+    async findConsultsByPayOfDoctorHoraAplicacion(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre): Promise<ConsultaI[]> {
         let startDate = new Date(hora_apertura);
         let endDate = new Date(hora_cierre);
 
@@ -194,7 +194,7 @@ export class ConsultaService {
             {
                 hora_aplicacion: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 status: atendidoId,
             }).sort('consecutivo')
             .populate('paciente')
@@ -203,7 +203,7 @@ export class ConsultaService {
     }
 
     /**
-     * Muestra todas las consultas de la BD que correspondan a un pagos de un medico de algun dia y turno
+     * Muestra todas las consultas de la BD que correspondan a un pagos de un dermatologo de algun dia y turno
      * turno:
      *  1 = MATUTINO
      *  2 = VESPERTINO
@@ -211,7 +211,7 @@ export class ConsultaService {
      *  1 = PRIMERA VEZ
      *  2 = RECONSULTA
      */
-    async findConsultsByPayOfDoctorTurnoFrecuencia(anio, mes, dia, sucursalId, medicoId, atendidoId, turno, frecuenciaId): Promise<ConsultaI[]> {
+    async findConsultsByPayOfDoctorTurnoFrecuencia(anio, mes, dia, sucursalId, dermatologoId, atendidoId, turno, frecuenciaId): Promise<ConsultaI[]> {
         let startDate = new Date(anio, mes, dia);
         startDate.setHours(turno === 'm' ? 0 : (startDate.getDay() === 6 ? 13 : 14));
         startDate.setMinutes(0);
@@ -225,7 +225,7 @@ export class ConsultaService {
             {
                 fecha_hora: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 status: atendidoId,
                 frecuencia: frecuenciaId,
             }).sort('consecutivo')
@@ -235,9 +235,9 @@ export class ConsultaService {
     }
 
     /**
-     * Muestra todas las consultas de la BD que correspondan a un pagos de un medico por horas y frecuencia
+     * Muestra todas las consultas de la BD que correspondan a un pagos de un dermatologo por horas y frecuencia
      */
-    async findConsultsByPayOfDoctorHoraAplicacionFrecuencia(sucursalId, medicoId, atendidoId, hora_apertura, hora_cierre, frecuenciaId): Promise<ConsultaI[]> {
+    async findConsultsByPayOfDoctorHoraAplicacionFrecuencia(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre, frecuenciaId): Promise<ConsultaI[]> {
         let startDate = new Date(hora_apertura);
         let endDate = new Date(hora_cierre);
 
@@ -245,7 +245,7 @@ export class ConsultaService {
             {
                 hora_aplicacion: { $gte: startDate, $lte: endDate },
                 sucursal: sucursalId,
-                medico: medicoId,
+                dermatologo: dermatologoId,
                 status: atendidoId,
                 frecuencia: frecuenciaId,
             }).sort('consecutivo')
@@ -271,7 +271,7 @@ export class ConsultaService {
             .populate('sucursal')
             .populate('quien_agenda')
             .populate('promovendedor')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -304,7 +304,7 @@ export class ConsultaService {
             .populate('paciente')
             .populate('sucursal')
             .populate('servicio')
-            .populate('medico');
+            .populate('dermatologo');
     }
 
     /**
@@ -317,7 +317,7 @@ export class ConsultaService {
             .populate('sucursal')
             .populate('quien_agenda')
             .populate('promovendedor')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -336,7 +336,7 @@ export class ConsultaService {
             .populate('sucursal')
             .populate('quien_agenda')
             .populate('promovendedor')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
@@ -349,13 +349,13 @@ export class ConsultaService {
     /**
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
-    async findHistoricByMedicId(medicoId: string): Promise<ConsultaI[]> {
-        return await this.consultaModel.find({ medico: medicoId }).sort('consecutivo')
+    async findHistoricByMedicId(dermatologoId: string): Promise<ConsultaI[]> {
+        return await this.consultaModel.find({ dermatologo: dermatologoId }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
             .populate('quien_agenda')
             .populate('promovendedor')
-            .populate('medico')
+            .populate('dermatologo')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')

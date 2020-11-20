@@ -8,7 +8,7 @@ export const CirugiaSchema = new Schema({
     fecha_hora: { type: Date },
     consulta: { type: Schema.ObjectId, ref: 'Consulta' },
     paciente : { type: Schema.ObjectId, ref: 'Paciente'},
-    medico : { type: Schema.ObjectId, ref: 'Empleado'},
+    dermatologo : { type: Schema.ObjectId, ref: 'Empleado'},
     patologo : { type: Schema.ObjectId, ref: 'Empleado'},
     sucursal : { type: Schema.ObjectId, ref: 'Sucursal'},
     status : { type: Schema.ObjectId, ref: 'Status'},

@@ -13,7 +13,7 @@ export class CabinaService {
      */
     async showAllCabinas(): Promise<CabinaI[]> {
         return await this.cabinaModel.find()
-            .populate('medico')
+            .populate('dermatologo')
             .populate('cosmetologa')
             .populate('cita')
             .populate('paciente');
@@ -25,7 +25,7 @@ export class CabinaService {
      */
     async findCabinaById(idCabina: string): Promise<CabinaI> {
         return await this.cabinaModel.findOne({ _id: idCabina })
-            .populate('medico')
+            .populate('dermatologo')
             .populate('cosmetologa')
             .populate('cita')
             .populate('paciente');
@@ -40,7 +40,7 @@ export class CabinaService {
             {
                 sucursal: sucursalId
             })
-            .populate('medico')
+            .populate('dermatologo')
             .populate('cosmetologa')
             .populate('cita')
             .populate('paciente');
@@ -54,9 +54,9 @@ export class CabinaService {
         return await this.cabinaModel.find(
             {
                 sucursal: sucursalId,
-                medico: { $ne: undefined }
+                dermatologo: { $ne: undefined }
             })
-            .populate('medico')
+            .populate('dermatologo')
             .populate('cosmetologa')
             .populate('cita')
             .populate('paciente');
@@ -88,7 +88,7 @@ export class CabinaService {
                     tipo_servicio: undefined,
                     servicio: undefined,
                     cosmetologa: undefined,
-                    medico: undefined,
+                    dermatologo: undefined,
                 },
                 $set:{
                     disponible: true,
@@ -100,8 +100,8 @@ export class CabinaService {
      * Busca solo un cabina mediante su ID de la sucursal en la BD
      * @param sucursalId 
      */
-    async breakFreeCabinaByIdMedico(cabinaId: string): Promise<CabinaI[]> {
-        return await this.cabinaModel.updateOne({ _id: cabinaId }, {$unset: {medico: undefined}});
+    async breakFreeCabinaByIdDermatologo(cabinaId: string): Promise<CabinaI[]> {
+        return await this.cabinaModel.updateOne({ _id: cabinaId }, {$unset: {dermatologo: undefined}});
     }
 
     /**
