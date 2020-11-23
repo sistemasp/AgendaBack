@@ -11,6 +11,7 @@ export class EmpleadoDto {
     readonly fecha_ingreso : Date;
     readonly fecha_baja : Date;
     readonly disponible : Boolean;
+    readonly pago_completo : Boolean;
     readonly porcentaje : String;
     readonly porcentaje_estetica : String;
 }

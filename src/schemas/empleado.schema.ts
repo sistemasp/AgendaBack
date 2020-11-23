@@ -13,6 +13,7 @@ export const EmpleadoSchema = new Schema({
     fecha_ingreso: { type: Date },
     fecha_baja: { type: Date },
     disponible: { type: Boolean, default: true },
+    pago_completo: { type: Boolean, default: false },
     porcentaje: String,
     porcentaje_estetica: String,
 });

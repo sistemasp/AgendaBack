@@ -11,6 +11,7 @@ export interface EmpleadoI {
     fecha_ingreso : Date;
     fecha_baja : Date;
     disponible : Boolean;
+    pago_completo : Boolean;
     porcentaje : String;
     porcentaje_estetica : String;
 }
