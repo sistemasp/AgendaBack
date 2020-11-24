@@ -28,9 +28,16 @@ export class EsteticaController {
         return this.esteticaService.findEsteticaByConsultaId(consultaId);
     }
 
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId')
+    findEsteticaByDateAndSucursal(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
+        @Param('sucursalId') sucursalId: string): Promise<EsteticaI[]> {
+        console.log(new Date(), this.TAG, "findEsteticaByDateAndSucursal");
+        return this.esteticaService.findEsteticaByDateAndSucursal(anio, mes, dia, sucursalId);
+    }
+
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId')
     findEsteticasByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
-        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,): Promise<EsteticaI[]> {
+        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string): Promise<EsteticaI[]> {
         console.log(new Date(), this.TAG, "findEsteticasByPayOfDoctor");
         return this.esteticaService.findEsteticasByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId);
     }

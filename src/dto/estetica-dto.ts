@@ -14,6 +14,8 @@ export class EsteticaDto {
     readonly consulta: ConsultaDto;
     readonly paciente: PacienteDto;
     readonly dermatologo: EmpleadoDto;
+    readonly quien_agenda : EmpleadoDto;
+    readonly quien_confirma: EmpleadoDto;
     readonly sucursal: SucursalDto;
     readonly consecutivo: Number;
     readonly precio: String;
@@ -23,4 +25,7 @@ export class EsteticaDto {
     readonly status: StatusDto;
     readonly servicio: ServicioDto;
     readonly pagos : PagoDto[];
+    readonly hora_llegada : String;
+    readonly hora_atencion : String;
+    readonly hora_salida : String;
 }

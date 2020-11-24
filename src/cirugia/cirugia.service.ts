@@ -39,7 +39,7 @@ export class CirugiaService {
     }
 
     /**
-     * Muestra todas las consultas de la BD que correspondan a una fecha_hora y una sucursal
+     * Muestra todas las cirugias de la BD que correspondan a una fecha_hora y una sucursal
      */
     async findCirugiaByDateAndSucursal(anio, mes, dia, sucursalId): Promise<CirugiaI[]> {
         let startDate = new Date(anio, mes, dia);

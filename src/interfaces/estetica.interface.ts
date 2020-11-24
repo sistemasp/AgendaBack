@@ -13,6 +13,8 @@ export interface EsteticaI {
     consulta: ConsultaI;
     paciente : PacienteI;
     dermatologo : EmpleadoI;
+    quien_agenda: EmpleadoI;
+    quien_confirma: EmpleadoI;
     sucursal : SucursalI;
     consecutivo: Number;
     pagado : Boolean;
@@ -23,4 +25,7 @@ export interface EsteticaI {
     status: StatusI;
     servicio: ServicioI;
     pagos : PagoI[];
+    hora_llegada: String;
+    hora_atencion: String;
+    hora_salida: String;
 }

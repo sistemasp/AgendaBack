@@ -185,6 +185,39 @@ export class EsteticaService {
     }
 
     /**
+     * Muestra todas las esteticas de la BD que correspondan a una fecha_hora y una sucursal
+     */
+    async findEsteticaByDateAndSucursal(anio, mes, dia, sucursalId): Promise<EsteticaI[]> {
+        let startDate = new Date(anio, mes, dia);
+        startDate.setHours(0);
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date(anio, mes, dia);
+        endDate.setHours(23);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+        return await this.esteticaModel.find(
+            {
+                fecha_hora: { $gte: startDate, $lte: endDate },
+                sucursal: sucursalId
+            }).sort('consecutivo')
+            .populate('paciente')
+            .populate('consulta')
+            .populate('sucursal')
+            .populate('quien_agenda')
+            .populate('promovendedor')
+            .populate('servicio')
+            .populate('dermatologo')
+            .populate('quien_confirma_asistencia')
+            .populate('quien_confirma_llamada')
+            .populate('tipo_cita')
+            .populate('medio')
+            .populate('pagos')
+            .populate('frecuencia')
+            .populate('status');
+    }
+
+    /**
      * Muestra todas las cirugias de la BD que correspondan a un pagos de un dermatologo por horas
      */
     async findEsteticasByPayOfDoctorHoraAplicacion(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre): Promise<EsteticaI[]> {
