@@ -20,6 +20,8 @@ export class CirugiaDto {
     readonly patologo: EmpleadoDto;
     readonly sucursal: SucursalDto;
     readonly consecutivo: Number;
+    readonly quien_agenda : EmpleadoDto;
+    readonly quien_confirma: EmpleadoDto;
     readonly precio: String;
     readonly total: String;
     readonly materiales: [];
@@ -28,4 +30,7 @@ export class CirugiaDto {
     readonly costo_biopsias: String;
     readonly servicio: ServicioDto;
     readonly pagos : PagoDto[];
+    readonly hora_llegada : String;
+    readonly hora_atencion : String;
+    readonly hora_salida : String;
 }

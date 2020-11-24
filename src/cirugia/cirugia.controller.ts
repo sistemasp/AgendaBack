@@ -35,6 +35,13 @@ export class CirugiaController {
         return this.cirugiaService.findCirugiasByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId);
     }
 
+    @Get(':dia/:mes/:anio/sucursal/:sucursalId')
+    findCirugiaByDateAndSucursal(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
+        @Param('sucursalId') sucursalId: string): Promise<CirugiaI[]> {
+        console.log(new Date(), this.TAG, "findCirugiaByDateAndSucursal");
+        return this.cirugiaService.findCirugiaByDateAndSucursal(anio, mes, dia, sucursalId);
+    }
+
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/turno/:turno')
     findCirugiasByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
         @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('turno') turno: string,): Promise<CirugiaI[]> {

@@ -14,6 +14,8 @@ export interface CirugiaI {
     consulta: ConsultaI;
     paciente: PacienteI;
     dermatologo: EmpleadoI;
+    quien_agenda: EmpleadoI;
+    quien_confirma: EmpleadoI;
     status: StatusI;
     patologo: EmpleadoI;
     sucursal: SucursalI;
@@ -26,5 +28,8 @@ export interface CirugiaI {
     hasBiopsia: Boolean;
     costo_biopsias: String;
     servicio: ServicioI;
-    pagos : PagoI[];
+    pagos: PagoI[];
+    hora_llegada: String;
+    hora_atencion: String;
+    hora_salida: String;
 }
