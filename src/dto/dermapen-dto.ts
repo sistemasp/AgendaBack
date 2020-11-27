@@ -7,11 +7,13 @@ import { ServicioDto } from "./servicio-dto";
 import { PagoDto } from "./pago-dto";
 import { AreaDto } from "./area-dto";
 import { MedioDto } from "./medio-dto";
+import { ConsultaDto } from "./consulta-dto";
 
 export class DermapenDto {
     readonly create_date: Date;
     readonly hora_aplicacion: Date;
     readonly fecha_hora: Date;
+    readonly consulta: ConsultaDto;
     readonly paciente: PacienteDto;
     readonly dermatologo: EmpleadoDto;
     readonly servicio: ServicioDto;

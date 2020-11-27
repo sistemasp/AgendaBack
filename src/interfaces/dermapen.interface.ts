@@ -7,12 +7,14 @@ import { ServicioI } from "./servicio.interface";
 import { PagoI } from "./pago.interface";
 import { AreaI } from "./area.interface";
 import { MedioI } from "./medio.interface";
+import { ConsultaI } from "./consulta.interface";
 
 export interface DermapenI {
     create_date: Date;
     hora_aplicacion: Date;
     fecha_hora: Date;
     paciente: PacienteI;
+    consulta: ConsultaI;
     dermatologo: EmpleadoI;
     servicio: ServicioI;
     tratamientos: [];

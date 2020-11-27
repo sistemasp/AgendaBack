@@ -6,6 +6,7 @@ export const DermapenSchema = new Schema({
     create_date: { type: Date },
     hora_aplicacion: { type: Date },
     fecha_hora: { type: Date },
+    consulta: { type: Schema.ObjectId, ref: 'Consulta' },
     paciente: { type: Schema.ObjectId, ref: 'Paciente' },
     dermatologo: { type: Schema.ObjectId, ref: 'Empleado' },
     servicio: { type: Schema.ObjectId, ref: 'Servicio' },
