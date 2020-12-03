@@ -27,6 +27,7 @@ export interface DermapenI {
     status: StatusI;
     motivos: String;
     precio: String;
+    costo: String;
     total: String;
     tiempo: String;
     observaciones: String;

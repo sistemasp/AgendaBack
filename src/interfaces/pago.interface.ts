@@ -27,8 +27,9 @@ export interface PagoI {
     factura: Boolean;
     deposito_confirmado: Boolean;
     observaciones: String;
-    porcentaje_descuento: String;
-    descuento: String;
+    porcentaje_descuento_clinica: String;
+    descuento_clinica: String;
+    descuento_dermatologo: String;
     tipo_servicio: ServicioI;
     servicio: String;
     pago_anticipado: Boolean;

@@ -27,8 +27,9 @@ export class PagoDto {
     readonly factura: Boolean;
     readonly deposito_confirmado: Boolean;
     readonly observaciones: String;
-    readonly porcentaje_descuento: String;
-    readonly descuento: String;
+    readonly porcentaje_descuento_clinica: String;
+    readonly descuento_clinica: String;
+    readonly descuento_dermatologo: String;
     readonly tipo_servicio: ServicioDto;
     readonly servicio: String;
     readonly pago_anticipado: Boolean;
