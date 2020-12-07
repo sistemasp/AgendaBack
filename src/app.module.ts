@@ -140,6 +140,12 @@ import { AparatologiaService } from './aparatologia/aparatologia.service';
 import { DermapenSchema } from './schemas/dermapen.schema';
 import { DermapenController } from './dermapen/dermapen.controller';
 import { DermapenService } from './dermapen/dermapen.service';
+import { ClaveSupervisorSchema } from './schemas/clave-supervisor.schema';
+import { ClaveSupervisorController } from './clave_supervisor/clave-supervisor.controller';
+import { ClaveSupervisorService } from './clave_supervisor/clave-supervisor.service';
+import { CancelacionSchema } from './schemas/cancelacion.schema';
+import { CancelacionController } from './cancelacion/cancelacion.controller';
+import { CancelacionService } from './cancelacion/cancelacion.service';
 
 @Module({
   imports: [
@@ -193,6 +199,8 @@ import { DermapenService } from './dermapen/dermapen.service';
       { name: 'Laser', schema: LaserSchema },
       { name: 'Aparatologia', schema: AparatologiaSchema },
       { name: 'Dermapen', schema: DermapenSchema },
+      { name: 'ClaveSupervisor', schema: ClaveSupervisorSchema },
+      { name: 'Cancelacion', schema: CancelacionSchema },
     ])
   ],
   controllers: [
@@ -242,6 +250,8 @@ import { DermapenService } from './dermapen/dermapen.service';
     LaserController,
     AparatologiaController,
     DermapenController,
+    ClaveSupervisorController,
+    CancelacionController,
   ],
   providers: [
     AppService,
@@ -290,6 +300,8 @@ import { DermapenService } from './dermapen/dermapen.service';
     LaserService,
     AparatologiaService,
     DermapenService,
+    ClaveSupervisorService,
+    CancelacionService,
   ],
 })
 
