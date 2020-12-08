@@ -7,6 +7,7 @@ import { ServicioDto } from "./servicio-dto";
 import { PagoDto } from "./pago-dto";
 import { AreaDto } from "./area-dto";
 import { MedioDto } from "./medio-dto";
+import { ConsultaDto } from "./consulta-dto";
 
 export class FacialDto {
     readonly create_date: Date;
@@ -36,5 +37,6 @@ export class FacialDto {
     readonly hora_salida: String;
     readonly pagado: Boolean;
     readonly pagos: PagoDto[];
-    readonly consecutivo : Number;    
+    readonly consecutivo : Number;
+    readonly consulta: ConsultaDto;
 }

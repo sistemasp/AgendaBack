@@ -6,7 +6,7 @@ import { InjectModel } from '@nestjs/mongoose';
 @Injectable()
 export class EmpleadoService {
 
-    constructor(@InjectModel('Empleado') private readonly empleadoModel : Model<EmpleadoI>) {}
+    constructor(@InjectModel('Empleado') private readonly empleadoModel: Model<EmpleadoI>) { }
 
     /**
      * Muestra todos los empleados de la BD
@@ -21,7 +21,7 @@ export class EmpleadoService {
      * @param idEmpleado 
      */
     async findEmployeeById(idEmpleado: string): Promise<EmpleadoI> {
-        return await this.empleadoModel.findOne( { _id: idEmpleado } )
+        return await this.empleadoModel.findOne({ _id: idEmpleado })
             .populate('rol');
     }
 
@@ -30,7 +30,7 @@ export class EmpleadoService {
      * @param idEmpleado 
      */
     async findEmployeeByEmployeeNumber(employeeNumber: string): Promise<EmpleadoI> {
-        return await this.empleadoModel.findOne( { numero_empleado: employeeNumber } )
+        return await this.empleadoModel.findOne({ numero_empleado: employeeNumber })
             .populate('rol');
     }
 
@@ -39,7 +39,8 @@ export class EmpleadoService {
      * @param idRol 
      */
     async findEmployeesByRolId(idRol: string): Promise<EmpleadoI[]> {
-        return await this.empleadoModel.find( { rol: idRol } )
+        return await this.empleadoModel.find({ rol: idRol })
+            .sort('nombre')
             .populate('rol');
     }
 
@@ -48,10 +49,11 @@ export class EmpleadoService {
      * @param idRol 
      */
     async findEmployeesByRolIdAvailable(idRol: string): Promise<EmpleadoI[]> {
-        return await this.empleadoModel.find( { 
+        return await this.empleadoModel.find({
             rol: idRol,
             disponible: true,
-        } )
+        })
+            .sort('nombre')
             .populate('rol');
     }
 
@@ -77,7 +79,7 @@ export class EmpleadoService {
      * Busca un empleado por su ID y lo elimina de la BD
      * @param idEmpleado 
      */
-    async deleteEmployee(idEmpleado: string ): Promise<EmpleadoI> {
+    async deleteEmployee(idEmpleado: string): Promise<EmpleadoI> {
         return await this.empleadoModel.findOneAndDelete({ _id: idEmpleado });
     }
 
@@ -86,7 +88,7 @@ export class EmpleadoService {
      * @param idEmpleado 
      */
     async loginEmployee(employeeNumber: string, password: string): Promise<EmpleadoI> {
-        return await this.empleadoModel.findOne( { numero_empleado: employeeNumber, password: password } )
+        return await this.empleadoModel.findOne({ numero_empleado: employeeNumber, password: password })
             .populate('rol');
     }
 

@@ -7,7 +7,7 @@ export const CitaSchema = new Schema({
     hora_aplicacion: { type: Date },
     fecha_hora: { type: Date },
     paciente: { type: Schema.ObjectId, ref: 'Paciente' },
-    cita: { type: Schema.ObjectId, ref: 'Cta' },
+    cita: { type: Schema.ObjectId, ref: 'Cita' },
     dermatologo: { type: Schema.ObjectId, ref: 'Empleado' },
     servicio: { type: Schema.ObjectId, ref: 'Servicio' },
     tratamientos: [{}],

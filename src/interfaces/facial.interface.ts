@@ -7,6 +7,7 @@ import { ServicioI } from "./servicio.interface";
 import { PagoI } from "./pago.interface";
 import { AreaI } from "./area.interface";
 import { MedioI } from "./medio.interface";
+import { ConsultaI } from "./consulta.interface";
 
 export interface FacialI {
     create_date: Date;
@@ -37,4 +38,5 @@ export interface FacialI {
     pagado: Boolean;
     pagos: PagoI[];
     consecutivo: Number;
+    consulta: ConsultaI;
 }
