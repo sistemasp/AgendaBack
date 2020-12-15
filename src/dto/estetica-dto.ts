@@ -5,6 +5,7 @@ import { SucursalDto } from "./sucursal-dto";
 import { StatusDto } from "./status-dto";
 import { ServicioDto } from "./servicio-dto";
 import { PagoDto } from "./pago-dto";
+import { ProductoDto } from "./producto-dto";
 
 export class EsteticaDto {
     readonly create_date: Date;
@@ -28,4 +29,5 @@ export class EsteticaDto {
     readonly hora_llegada : String;
     readonly hora_atencion : String;
     readonly hora_salida : String;
+    readonly producto: ProductoDto;
 }

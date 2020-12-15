@@ -8,6 +8,7 @@ import { PagoDto } from "./pago-dto";
 import { AreaDto } from "./area-dto";
 import { MedioDto } from "./medio-dto";
 import { ConsultaDto } from "./consulta-dto";
+import { ProductoDto } from "./producto-dto";
 
 export class AparatologiaDto {
     readonly create_date: Date;
@@ -39,4 +40,5 @@ export class AparatologiaDto {
     readonly pagos: PagoDto[];
     readonly consecutivo : Number;
     readonly consulta: ConsultaDto;
+    readonly producto: ProductoDto;
 }

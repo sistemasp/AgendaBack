@@ -24,4 +24,5 @@ export const EsteticaSchema = new Schema({
     status: { type: Schema.ObjectId, ref: 'Status' },
     servicio: { type: Schema.ObjectId, ref: 'Servicio' },
     pagos: [{ type: Schema.ObjectId, ref: 'Pago' }],
+    producto: { type: Schema.ObjectId, ref: 'Producto' },
 });

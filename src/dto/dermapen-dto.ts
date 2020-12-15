@@ -8,6 +8,7 @@ import { PagoDto } from "./pago-dto";
 import { AreaDto } from "./area-dto";
 import { MedioDto } from "./medio-dto";
 import { ConsultaDto } from "./consulta-dto";
+import { ProductoDto } from "./producto-dto";
 
 export class DermapenDto {
     readonly create_date: Date;
@@ -40,4 +41,5 @@ export class DermapenDto {
     readonly pagos: PagoDto[];
     readonly consecutivo : Number;
     readonly materiales: [];
+    readonly producto: ProductoDto;
 }

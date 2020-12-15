@@ -32,4 +32,5 @@ export const DermapenSchema = new Schema({
     pagos: [{ type: Schema.ObjectId, ref: 'Pago' }],
     materiales: [],
     consecutivo: { type: Number },
+    producto: { type: Schema.ObjectId, ref: 'Producto' },
 });

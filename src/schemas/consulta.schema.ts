@@ -29,4 +29,5 @@ export const ConsultaSchema = new Schema({
     consecutivo : { type: Number },
     frecuencia : { type: Schema.ObjectId, ref: 'Frecuencia'},
     servicio: { type: Schema.ObjectId, ref: 'Servicio' },
+    producto: { type: Schema.ObjectId, ref: 'Producto' },
 });

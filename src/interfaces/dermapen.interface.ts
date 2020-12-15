@@ -8,6 +8,7 @@ import { PagoI } from "./pago.interface";
 import { AreaI } from "./area.interface";
 import { MedioI } from "./medio.interface";
 import { ConsultaI } from "./consulta.interface";
+import { ProductoI } from "./producto.interface";
 
 export interface DermapenI {
     create_date: Date;
@@ -40,4 +41,5 @@ export interface DermapenI {
     pagos: PagoI[];
     materiales: [];
     consecutivo: Number;
+    producto: ProductoI;
 }

@@ -5,6 +5,7 @@ import { SucursalI } from "./sucursal.interface";
 import { StatusI } from "./status.interface";
 import { ServicioI } from "./servicio.interface";
 import { PagoI } from "./pago.interface";
+import { ProductoI } from "./producto.interface";
 
 export interface EsteticaI {
     create_date: Date;
@@ -28,4 +29,5 @@ export interface EsteticaI {
     hora_llegada: String;
     hora_atencion: String;
     hora_salida: String;
+    producto: ProductoI;
 }

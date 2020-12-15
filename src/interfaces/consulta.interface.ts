@@ -7,6 +7,7 @@ import { PagoI } from "./pago.interface";
 import { FrecuenciaI } from "./frecuencia.interface";
 import { ServicioI } from "./servicio.interface";
 import { MedioI } from "./medio.interface";
+import { ProductoI } from "./producto.interface";
 
 export interface ConsultaI {
     create_date: Date;
@@ -35,4 +36,5 @@ export interface ConsultaI {
     consecutivo : Number;
     frecuencia : FrecuenciaI;
     servicio : ServicioI;
+    producto: ProductoI;
 }

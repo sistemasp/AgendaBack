@@ -146,6 +146,9 @@ import { ClaveSupervisorService } from './clave_supervisor/clave-supervisor.serv
 import { CancelacionSchema } from './schemas/cancelacion.schema';
 import { CancelacionController } from './cancelacion/cancelacion.controller';
 import { CancelacionService } from './cancelacion/cancelacion.service';
+import { ProductoSchema } from './schemas/producto.schema';
+import { ProductoController } from './producto/producto.controller';
+import { ProductoService } from './producto/producto.service';
 
 @Module({
   imports: [
@@ -201,6 +204,7 @@ import { CancelacionService } from './cancelacion/cancelacion.service';
       { name: 'Dermapen', schema: DermapenSchema },
       { name: 'ClaveSupervisor', schema: ClaveSupervisorSchema },
       { name: 'Cancelacion', schema: CancelacionSchema },
+      { name: 'Producto', schema: ProductoSchema },
     ])
   ],
   controllers: [
@@ -252,6 +256,7 @@ import { CancelacionService } from './cancelacion/cancelacion.service';
     DermapenController,
     ClaveSupervisorController,
     CancelacionController,
+    ProductoController,
   ],
   providers: [
     AppService,
@@ -302,6 +307,7 @@ import { CancelacionService } from './cancelacion/cancelacion.service';
     DermapenService,
     ClaveSupervisorService,
     CancelacionService,
+    ProductoService,
   ],
 })
 

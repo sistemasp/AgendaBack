@@ -33,4 +33,5 @@ export const AparatologiaSchema = new Schema({
     pagos: [{ type: Schema.ObjectId, ref: 'Pago' }],
     consecutivo: { type: Number },
     consulta: { type: Schema.ObjectId, ref: 'Consulta' },
+    producto: { type: Schema.ObjectId, ref: 'Producto' },
 });
