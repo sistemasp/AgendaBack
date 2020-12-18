@@ -9,7 +9,7 @@ export const FacturaSchema = new Schema({
     uso_cfdi : { type: Schema.ObjectId, ref: 'UsoCfdi'},
     pago : { type: Schema.ObjectId, ref: 'Pago'},
     forma_pago : { type: Schema.ObjectId, ref: 'FormaPago'},
-    ultimos_4_digitos : String,
-    cantidad : String,
+    ultimos_4_digitos : { type: String },
+    cantidad : { type: String },
     sucursal : { type: Schema.ObjectId, ref: 'Sucursal'},
 });

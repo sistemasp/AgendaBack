@@ -8,6 +8,7 @@ export interface EgresoI {
     hora_aplicacion: Date;
     recepcionista: EmpleadoI;
     concepto: String;
+    descripcion: String;
     cantidad: String;
     tipo_egreso: TipoEgresoI;
     sucursal: SucursalI;

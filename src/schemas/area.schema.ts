@@ -3,17 +3,17 @@ import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const AreaSchema = new Schema({
-    nombre: String,
+    nombre: { type: String },
     servicio: { type: Schema.ObjectId, ref: 'Servicio' },
     tratamiento: { type: Schema.ObjectId, ref: 'Tratamiento' },
-    tiempo: String,
-    precio_ma: String,
-    precio_oc: String,
-    precio_fe: String,
-    comision_derivado: String,
-    comision_revisado: String,
-    comision_realizado: String,
-    comision_derivado_ma: String,
-    comision_revisado_ma: String,
-    comision_realizado_ma: String,
+    tiempo: { type: String },
+    precio_ma: { type: String },
+    precio_oc: { type: String },
+    precio_fe: { type: String },
+    comision_derivado: { type: String },
+    comision_revisado: { type: String },
+    comision_realizado: { type: String },
+    comision_derivado_ma: { type: String },
+    comision_revisado_ma: { type: String },
+    comision_realizado_ma: { type: String },
 });

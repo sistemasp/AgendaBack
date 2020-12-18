@@ -3,15 +3,16 @@ import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const RazonSocialSchema = new Schema({
-    rfc : String,
-    nombre_completo : String,
-    domicilio : String,
-    numero : String,
-    colonia : String,
-    ciudad : String,
-    municipio : String,
-    estado : String,
-    codigo_postal : String,
-    telefono : String,
-    email : String,
+    rfc : { type: String },
+    nombre_completo : { type: String },
+    domicilio : { type: String },
+    numero_exterior : { type: String },
+    numero_interior : { type: String },
+    colonia : { type: String },
+    ciudad : { type: String },
+    municipio : { type: String },
+    estado : { type: String },
+    codigo_postal : { type: String },
+    telefono : { type: String },
+    email : { type: String },
 });

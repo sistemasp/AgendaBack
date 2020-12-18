@@ -9,6 +9,7 @@ import { AreaDto } from "./area-dto";
 import { MedioDto } from "./medio-dto";
 import { ConsultaDto } from "./consulta-dto";
 import { ProductoDto } from "./producto-dto";
+import { FrecuenciaDto } from "./frecuencia-dto";
 
 export class FacialDto {
     readonly create_date: Date;
@@ -41,4 +42,5 @@ export class FacialDto {
     readonly consecutivo : Number;
     readonly consulta: ConsultaDto;
     readonly producto: ProductoDto;
+    readonly frecuencia: FrecuenciaDto;
 }

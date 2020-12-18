@@ -3,17 +3,17 @@ import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const EmpleadoSchema = new Schema({
-    nombre: String,
-    numero_empleado: String,
-    telefono: String,
-    password: String,
+    nombre: { type: String },
+    numero_empleado: { type: String },
+    telefono: { type: String },
+    password: { type: String },
     rol: { type: Schema.ObjectId, ref: 'Rol' },
-    color: String,
-    cedula: String,
+    color: { type: String },
+    cedula: { type: String },
     fecha_ingreso: { type: Date },
     fecha_baja: { type: Date },
     disponible: { type: Boolean, default: true },
     pago_completo: { type: Boolean, default: false },
-    porcentaje: String,
-    porcentaje_estetica: String,
+    porcentaje: { type: String },
+    porcentaje_estetica: { type: String },
 });

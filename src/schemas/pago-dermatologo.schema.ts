@@ -14,8 +14,8 @@ export const PagoDermatologoSchema = new Schema({
     aparatologias: [{ type: Schema.ObjectId, ref: 'Aparatologia' }],
     esteticas: [{ type: Schema.ObjectId, ref: 'Estetica' }],
     sucursal: { type: Schema.ObjectId, ref: 'Sucursal' },
-    turno: String,
-    retencion: String,
-    total: String,
+    turno: { type: String },
+    retencion: { type: String },
+    total: { type: String },
     pagado: Boolean,
 });

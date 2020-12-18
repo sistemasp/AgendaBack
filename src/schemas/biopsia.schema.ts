@@ -17,7 +17,7 @@ export const BiopsiaSchema = new Schema({
     quien_entrega: { type: Schema.ObjectId, ref: 'Empleado'},
     fecha_entrega_resultado: { type : Date },
     quien_recibe: { type: Schema.ObjectId, ref: 'Empleado'},
-    diagnostico: String,
+    diagnostico: { type: String },
     status: { type: Schema.ObjectId, ref: 'Status'},
     a_quien_se_entrega: { type: Schema.ObjectId, ref: 'Empleado'},
     fecha_entrega: { type : Date },

@@ -34,4 +34,5 @@ export const FacialSchema = new Schema({
     consecutivo: { type: Number },
     consulta: { type: Schema.ObjectId, ref: 'Consulta' },
     producto: { type: Schema.ObjectId, ref: 'Producto' },
+    frecuencia : { type: Schema.ObjectId, ref: 'Frecuencia'},
 });

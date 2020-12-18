@@ -9,6 +9,7 @@ export class EgresoDto {
     readonly hora_aplicacion: Date;
     readonly recepcionista: EmpleadoDto;
     readonly concepto: String;
+    readonly descripcion: String;
     readonly cantidad: String;
     readonly tipo_egreso: TipoEgresoDto;
     readonly sucursal: SucursalDto;

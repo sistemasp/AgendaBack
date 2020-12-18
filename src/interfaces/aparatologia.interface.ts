@@ -9,6 +9,7 @@ import { AreaI } from "./area.interface";
 import { MedioI } from "./medio.interface";
 import { ConsultaI } from "./consulta.interface";
 import { ProductoI } from "./producto.interface";
+import { FrecuenciaI } from "./frecuencia.interface";
 
 export interface AparatologiaI {
     create_date: Date;
@@ -41,4 +42,5 @@ export interface AparatologiaI {
     consecutivo: Number;
     consulta: ConsultaI;
     producto: ProductoI;
+    frecuencia : FrecuenciaI;
 }

@@ -6,6 +6,7 @@ import { StatusI } from "./status.interface";
 import { ServicioI } from "./servicio.interface";
 import { PagoI } from "./pago.interface";
 import { ProductoI } from "./producto.interface";
+import { FrecuenciaI } from "./frecuencia.interface";
 
 export interface EsteticaI {
     create_date: Date;
@@ -30,4 +31,5 @@ export interface EsteticaI {
     hora_atencion: String;
     hora_salida: String;
     producto: ProductoI;
+    frecuencia : FrecuenciaI;
 }

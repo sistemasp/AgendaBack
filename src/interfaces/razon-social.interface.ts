@@ -2,7 +2,8 @@ export interface RazonSocialI {
     rfc: String;
     nombre_completo: String;
     domicilio: String;
-    numero: String;
+    numero_exterior: String;
+    numero_interior: String;
     colonia: String;
     ciudad: String;
     municipio: String;

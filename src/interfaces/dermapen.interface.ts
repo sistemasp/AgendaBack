@@ -9,6 +9,7 @@ import { AreaI } from "./area.interface";
 import { MedioI } from "./medio.interface";
 import { ConsultaI } from "./consulta.interface";
 import { ProductoI } from "./producto.interface";
+import { FrecuenciaI } from "./frecuencia.interface";
 
 export interface DermapenI {
     create_date: Date;
@@ -42,4 +43,5 @@ export interface DermapenI {
     materiales: [];
     consecutivo: Number;
     producto: ProductoI;
+    frecuencia : FrecuenciaI;
 }

@@ -8,6 +8,7 @@ import { StatusDto } from "./status-dto";
 import { ServicioDto } from "./servicio-dto";
 import { PagoDto } from "./pago-dto";
 import { ProductoDto } from "./producto-dto";
+import { FrecuenciaDto } from "./frecuencia-dto";
 
 export class CirugiaDto {
     readonly create_date: Date;
@@ -35,4 +36,5 @@ export class CirugiaDto {
     readonly hora_atencion : String;
     readonly hora_salida : String;
     readonly producto: ProductoDto;
+    readonly frecuencia: FrecuenciaDto;
 }

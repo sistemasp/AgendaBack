@@ -6,7 +6,7 @@ export const CorteSchema = new Schema({
     create_date: { type: Date },
     hora_apertura: { type: Date },
     hora_cierre: { type: Date },
-    turno: String,
+    turno: { type: String },
     ingresos: [{ type: Schema.ObjectId, ref: 'Ingreso' }],
     pagos_anticipados: [{ type: Schema.ObjectId, ref: 'Ingreso' }],
     egresos: [{ type: Schema.ObjectId, ref: 'Egreso' }],
