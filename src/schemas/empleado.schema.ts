@@ -16,4 +16,5 @@ export const EmpleadoSchema = new Schema({
     pago_completo: { type: Boolean, default: false },
     porcentaje: { type: String },
     porcentaje_estetica: { type: String },
+    porcentaje_reconsulta: { type: String },
 });

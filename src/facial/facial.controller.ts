@@ -110,6 +110,14 @@ export class FacialController {
         return this.facialService.findFacialesByPayOfDoctorHoraAplicacion(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre);
     }
 
+    @Get('sucursal/:sucursalId/dermatologo/:dermatologoId/canceladocp/:canceladoCPId/apertura/:hora_apertura/cierre/:hora_cierre')
+    findFacialesByPayOfDoctorHoraAplicacionPA(@Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string,
+        @Param('canceladoCPId') canceladoCPId: string, @Param('hora_apertura') hora_apertura: string,
+        @Param('hora_cierre') hora_cierre: string): Promise<FacialI[]> {
+        console.log(new Date(), this.TAG, "findFacialesByPayOfDoctorHoraAplicacionPA");
+        return this.facialService.findFacialesByPayOfDoctorHoraAplicacionPA(sucursalId, dermatologoId, canceladoCPId, hora_apertura, hora_cierre);
+    }
+
     @Get('sucursal/:sucursalId/pendiente/:pendienteId')
     showAllFacialBySucursalPendiente(@Param('sucursalId') sucursalId: string,
         @Param('pendienteId') pendienteId: string): Promise<FacialI[]> {

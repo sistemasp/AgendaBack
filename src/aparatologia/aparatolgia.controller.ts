@@ -110,6 +110,14 @@ export class AparatologiaController {
         return this.aparatologiaService.findAparatologiasByPayOfDoctorHoraAplicacion(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre);
     }
 
+    @Get('sucursal/:sucursalId/dermatologo/:dermatologoId/canceladocp/:canceladoCPId/apertura/:hora_apertura/cierre/:hora_cierre')
+    findAparatologiasByPayOfDoctorHoraAplicacionPA(@Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string,
+        @Param('canceladoCPId') canceladoCPId: string, @Param('hora_apertura') hora_apertura: string,
+        @Param('hora_cierre') hora_cierre: string): Promise<AparatologiaI[]> {
+        console.log(new Date(), this.TAG, "findAparatologiasByPayOfDoctorHoraAplicacionPA");
+        return this.aparatologiaService.findAparatologiasByPayOfDoctorHoraAplicacionPA(sucursalId, dermatologoId, canceladoCPId, hora_apertura, hora_cierre);
+    }
+
     @Get('sucursal/:sucursalId/pendiente/:pendienteId')
     showAllAparatologiasBySucursalPendiente(@Param('sucursalId') sucursalId: string,
         @Param('pendienteId') pendienteId: string): Promise<AparatologiaI[]> {
