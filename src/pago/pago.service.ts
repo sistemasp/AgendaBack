@@ -92,7 +92,6 @@ export class PagoService {
         .populate('tipo_tarjeta')
         .populate('forma_pago')
         .populate('dermatologo')
-        .populate('servicio')
         .populate('tratamientos')
         .populate('quien_recibe_pago');;
     }
