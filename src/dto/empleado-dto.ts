@@ -1,3 +1,4 @@
+import { EsquemaDto } from "./esquema-dto";
 import { RolDto } from "./rol-dto";
 
 export class EmpleadoDto {
@@ -15,4 +16,6 @@ export class EmpleadoDto {
     readonly porcentaje: String;
     readonly porcentaje_estetica: String;
     readonly porcentaje_reconsulta: String;
+    readonly esquema: EsquemaDto;
+    readonly is_active: Boolean;
 }

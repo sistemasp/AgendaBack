@@ -17,4 +17,6 @@ export const EmpleadoSchema = new Schema({
     porcentaje: { type: String },
     porcentaje_estetica: { type: String },
     porcentaje_reconsulta: { type: String },
+    esquema: { type: Schema.ObjectId, ref: 'Esquema' },
+    is_active: { type: Boolean, default: true },
 });

@@ -31,7 +31,7 @@ export class ClaveSupervisorService {
         return await this.claveSupervisorModel.findOne( 
             { 
                 clave: clave,
-                isActive: true
+                is_active: true
             }
         );
     }

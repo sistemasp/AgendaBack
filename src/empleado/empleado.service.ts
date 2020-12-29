@@ -13,7 +13,8 @@ export class EmpleadoService {
      */
     async showAllEmployees(): Promise<EmpleadoI[]> {
         return await this.empleadoModel.find()
-            .populate('rol');
+            .populate('rol')
+            .populate('esquema');
     }
 
     /**
@@ -22,7 +23,8 @@ export class EmpleadoService {
      */
     async findEmployeeById(idEmpleado: string): Promise<EmpleadoI> {
         return await this.empleadoModel.findOne({ _id: idEmpleado })
-            .populate('rol');
+            .populate('rol')
+            .populate('esquema');
     }
 
     /**
@@ -31,7 +33,8 @@ export class EmpleadoService {
      */
     async findEmployeeByEmployeeNumber(employeeNumber: string): Promise<EmpleadoI> {
         return await this.empleadoModel.findOne({ numero_empleado: employeeNumber })
-            .populate('rol');
+            .populate('rol')
+            .populate('esquema');
     }
 
     /**
@@ -41,7 +44,8 @@ export class EmpleadoService {
     async findEmployeesByRolId(idRol: string): Promise<EmpleadoI[]> {
         return await this.empleadoModel.find({ rol: idRol })
             .sort('nombre')
-            .populate('rol');
+            .populate('rol')
+            .populate('esquema');
     }
 
     /**
@@ -54,7 +58,8 @@ export class EmpleadoService {
             disponible: true,
         })
             .sort('nombre')
-            .populate('rol');
+            .populate('rol')
+            .populate('esquema');
     }
 
     /**

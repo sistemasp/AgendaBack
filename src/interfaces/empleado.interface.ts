@@ -1,3 +1,4 @@
+import { EsquemaI } from "./esquema.interface";
 import { RolI } from "./rol.interface";
 
 export interface EmpleadoI {
@@ -15,4 +16,6 @@ export interface EmpleadoI {
     porcentaje: String;
     porcentaje_estetica: String;
     porcentaje_reconsulta: String;
+    esquema: EsquemaI;
+    is_active: Boolean;
 }

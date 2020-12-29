@@ -149,6 +149,9 @@ import { CancelacionService } from './cancelacion/cancelacion.service';
 import { ProductoSchema } from './schemas/producto.schema';
 import { ProductoController } from './producto/producto.controller';
 import { ProductoService } from './producto/producto.service';
+import { EsquemaSchema } from './schemas/esquema.schema';
+import { EsquemaController } from './esquema/esquema.controller';
+import { EsquemaService } from './esquema/esquema.service';
 
 @Module({
   imports: [
@@ -205,6 +208,7 @@ import { ProductoService } from './producto/producto.service';
       { name: 'ClaveSupervisor', schema: ClaveSupervisorSchema },
       { name: 'Cancelacion', schema: CancelacionSchema },
       { name: 'Producto', schema: ProductoSchema },
+      { name: 'Esquema', schema: EsquemaSchema },
     ])
   ],
   controllers: [
@@ -257,6 +261,7 @@ import { ProductoService } from './producto/producto.service';
     ClaveSupervisorController,
     CancelacionController,
     ProductoController,
+    EsquemaController,
   ],
   providers: [
     AppService,
@@ -308,6 +313,7 @@ import { ProductoService } from './producto/producto.service';
     ClaveSupervisorService,
     CancelacionService,
     ProductoService,
+    EsquemaService,
   ],
 })
 
