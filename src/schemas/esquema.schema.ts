@@ -9,6 +9,7 @@ export const EsquemaSchema = new Schema({
     porcentaje_cirugias: { type: String },
     porcentaje_dermocosmetica: { type: String },
     porcentaje_reconsulta: { type: String },
+    porcentaje_laser: { type: String },
     create_date: { type: Date },
     is_active: { type: Boolean, default: true },
 });
