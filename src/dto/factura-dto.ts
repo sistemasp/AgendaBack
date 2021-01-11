@@ -4,6 +4,7 @@ import { UsoCfdiDto } from "./uso-cfdi-dto";
 import { PagoDto } from "./pago-dto";
 import { FormaPagoDto } from "./forma-pago-dto";
 import { SucursalDto } from "./sucursal-dto";
+import { ServicioDto } from "./servicio-dto";
 
 export class FacturaDto {
     readonly fecha_hora : Date;
@@ -15,4 +16,6 @@ export class FacturaDto {
     readonly ultimos_4_digitos : String;
     readonly cantidad : String;
     readonly sucursal : SucursalDto;
+    readonly tipo_servicio: ServicioDto;
+    readonly servicio: String;
 }

@@ -4,6 +4,7 @@ import { UsoCfdiI } from "./uso-cfdi.interface";
 import { PagoI } from "./pago.interface";
 import { FormaPagoI } from "./forma-pago.interface";
 import { SucursalI } from "./sucursal.interface";
+import { ServicioI } from "./servicio.interface";
 
 export interface FacturaI {
     fecha_hora : Date;
@@ -15,4 +16,6 @@ export interface FacturaI {
     ultimos_4_digitos: String;
     cantidad: String;
     sucursal : SucursalI;
+    tipo_servicio: ServicioI;
+    servicio: String;
 }

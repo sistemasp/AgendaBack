@@ -32,6 +32,7 @@ export class FacturaService {
             .populate('paciente')
             .populate('forma_pago')
             .populate('sucursal')
+            .populate('tipo_servicio')
             .populate('uso_cfdi');;
     }
 
@@ -62,6 +63,7 @@ export class FacturaService {
             .populate('pago')
             .populate('forma_pago')
             .populate('sucursal')
+            .populate('tipo_servicio')
             .populate('uso_cfdi');
     }
 
