@@ -255,6 +255,26 @@ export class ConsultaService {
     }
 
     /**
+     * Muestra todas las consultas de la BD que correspondan a un pagos de un dermatologo por horas y frecuencia PAGO ANTICIPADO
+     */
+    async findConsultsByPayOfDoctorHoraAplicacionFrecuenciaPA(sucursalId, dermatologoId, canceladoCPId, hora_apertura, hora_cierre, frecuenciaId): Promise<ConsultaI[]> {
+        let startDate = new Date(hora_apertura);
+        let endDate = new Date(hora_cierre);
+
+        return await this.consultaModel.find(
+            {
+                hora_aplicacion: { $gte: startDate, $lte: endDate },
+                sucursal: sucursalId,
+                dermatologo: dermatologoId,
+                status: canceladoCPId,
+                frecuencia: frecuenciaId,
+            }).sort('consecutivo')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('pagos');
+    }
+
+    /**
      * Muestra todas las consultas de la BD que correspondan a una fecha_hora y una sucursal
      */
     async findConsultsByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId): Promise<ConsultaI[]> {

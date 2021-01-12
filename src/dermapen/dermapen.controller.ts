@@ -110,6 +110,14 @@ export class DermapenController {
         return this.dermapenService.findDermapenesByPayOfDoctorHoraAplicacion(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre);
     }
 
+    @Get('sucursal/:sucursalId/dermatologo/:dermatologoId/canceladocp/:canceladoCPId/apertura/:hora_apertura/cierre/:hora_cierre')
+    findDermapenesByPayOfDoctorHoraAplicacionPA(@Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string,
+        @Param('canceladoCPId') canceladoCPId: string, @Param('hora_apertura') hora_apertura: string,
+        @Param('hora_cierre') hora_cierre: string): Promise<DermapenI[]> {
+        console.log(new Date(), this.TAG, "findDermapenesByPayOfDoctorHoraAplicacionPA");
+        return this.dermapenService.findDermapenesByPayOfDoctorHoraAplicacionPA(sucursalId, dermatologoId, canceladoCPId, hora_apertura, hora_cierre);
+    }
+
     @Get('sucursal/:sucursalId/pendiente/:pendienteId')
     showAllDermapenBySucursalPendiente(@Param('sucursalId') sucursalId: string,
         @Param('pendienteId') pendienteId: string): Promise<DermapenI[]> {

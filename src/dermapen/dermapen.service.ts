@@ -83,7 +83,7 @@ export class DermapenService {
     }
 
     /**
-     * Muestra todos los dermapenes de la BD con estatus pendiente
+     * Muestra todos los dermapens de la BD con estatus pendiente
      */
     async showAllDermapenBySucursalPendiente(sucursalId, pendienteId): Promise<DermapenI[]> {
         return await this.dermapenModel.find({
@@ -385,7 +385,7 @@ export class DermapenService {
     }
 
     /**
-     * Muestra todos los dermapenes de la BD que correspondan a un pagos de un dermatologo por horas
+     * Muestra todos los dermapens de la BD que correspondan a un pagos de un dermatologo por horas
      */
     async findDermapenesByPayOfDoctorHoraAplicacion(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre): Promise<DermapenI[]> {
         let startDate = new Date(hora_apertura);
@@ -397,6 +397,27 @@ export class DermapenService {
                 sucursal: sucursalId,
                 dermatologo: dermatologoId,
                 status: atendidoId,
+            }).sort('consecutivo')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('areas')
+            .populate('tipo_cita')
+            .populate('pagos');
+    }
+
+    /**
+     * Muestra todos los dermapens de la BD que correspondan a un pagos de un dermatologo por horas pago anticipado
+     */
+    async findDermapenesByPayOfDoctorHoraAplicacionPA(sucursalId, dermatologoId, canceladoCPId, hora_apertura, hora_cierre): Promise<DermapenI[]> {
+        let startDate = new Date(hora_apertura);
+        let endDate = new Date(hora_cierre);
+
+        return await this.dermapenModel.find(
+            {
+                hora_aplicacion: { $gte: startDate, $lte: endDate },
+                sucursal: sucursalId,
+                dermatologo: dermatologoId,
+                status: canceladoCPId,
             }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')

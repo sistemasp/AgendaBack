@@ -219,6 +219,26 @@ export class CirugiaService {
     }
 
     /**
+     * Muestra todas las cirugias de la BD que correspondan a un pagos de un dermatologo por horas
+     */
+    async findCirugiasByPayOfDoctorHoraAplicacionPA(sucursalId, dermatologoId, canceladoCPId, hora_apertura, hora_cierre): Promise<CirugiaI[]> {
+        let startDate = new Date(hora_apertura);
+        let endDate = new Date(hora_cierre);
+
+        return await this.cirugiaModel.find(
+            {
+                hora_aplicacion: { $gte: startDate, $lte: endDate },
+                sucursal: sucursalId,
+                dermatologo: dermatologoId,
+                status: canceladoCPId,
+            }).sort('consecutivo')
+            .populate('paciente')
+            .populate('sucursal')
+            .populate('tipo_cita')
+            .populate('pagos');
+    }
+
+    /**
      * Genera un nuevo cirugia en la BD
      * @param cirugia 
      */

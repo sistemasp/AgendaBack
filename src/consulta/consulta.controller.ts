@@ -94,6 +94,14 @@ export class ConsultaController {
         return this.consultaService.findConsultsByPayOfDoctorHoraAplicacionFrecuencia(sucursalId, dermatologoId, atendidoId, hora_apertura, hora_cierre, frecuenciaId);
     }
 
+    @Get('sucursal/:sucursalId/dermatologo/:dermatologoId/canceladocp/:canceladoCPId/apertura/:hora_apertura/cierre/:hora_cierre/frecuencia/:frecuenciaId')
+    findConsultsByPayOfDoctorHoraAplicacionFrecuenciaPA(@Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string,
+        @Param('canceladoCPId') canceladoCPId: string, @Param('hora_apertura') hora_apertura: string, @Param('hora_cierre') hora_cierre: string,
+        @Param('frecuenciaId') frecuenciaId: string): Promise<ConsultaI[]> {
+        console.log(new Date(), this.TAG, "findConsultsByPayOfDoctorHoraAplicacionFrecuenciaPA");
+        return this.consultaService.findConsultsByPayOfDoctorHoraAplicacionFrecuenciaPA(sucursalId, dermatologoId, canceladoCPId, hora_apertura, hora_cierre, frecuenciaId);
+    }
+
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')
     findConsultsByRangeDateAndSucursal(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
