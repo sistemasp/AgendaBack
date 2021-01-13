@@ -1,5 +1,6 @@
 export class ServicioDto {
-    readonly nombre : string;
-    readonly clave : string;
-    readonly color : string;
+    readonly nombre : String;
+    readonly clave : String;
+    readonly color : String;
+    readonly is_active : Boolean;
 }

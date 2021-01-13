@@ -6,13 +6,13 @@ import { InjectModel } from '@nestjs/mongoose';
 @Injectable()
 export class ServicioService {
 
-    constructor(@InjectModel('Servicio') private readonly servicioModel : Model<ServicioI>) {}
+    constructor(@InjectModel('Servicio') private readonly servicioModel: Model<ServicioI>) { }
 
     /**
      * Muestra todos los servicios de la BD
      */
     async showAllServices(): Promise<ServicioI[]> {
-        return await this.servicioModel.find().sort('nombre');
+        return await this.servicioModel.find({ is_active: true }).sort('nombre');
     }
 
     /**
@@ -20,7 +20,7 @@ export class ServicioService {
      * @param idServicio 
      */
     async findServiceById(idServicio: string): Promise<ServicioI> {
-        return await this.servicioModel.findOne( { _id: idServicio } );
+        return await this.servicioModel.findOne({ _id: idServicio });
     }
 
     /**
@@ -45,7 +45,7 @@ export class ServicioService {
      * Busca un servicio por su ID y lo elimina de la BD
      * @param idServicio 
      */
-    async deleteService(idServicio: string ): Promise<ServicioI> {
+    async deleteService(idServicio: string): Promise<ServicioI> {
         return await this.servicioModel.findOneAndDelete({ _id: idServicio });
     }
 

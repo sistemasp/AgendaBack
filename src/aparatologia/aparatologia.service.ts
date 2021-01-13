@@ -238,7 +238,7 @@ export class AparatologiaService {
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
     async findHistoricByPaciente(pacienteId: string): Promise<AparatologiaI[]> {
-        return await this.aparatologiaModel.find({ paciente: pacienteId }).sort('fecha_hora')
+        return await this.aparatologiaModel.find({ paciente: pacienteId }).sort({ 'fecha_hora': -1 })
             .populate('paciente')
             .populate('servicio')
             .populate('areas')

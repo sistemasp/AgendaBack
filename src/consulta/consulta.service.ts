@@ -351,7 +351,7 @@ export class ConsultaService {
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
     async findHistoricByPaciente(pacienteId: string): Promise<ConsultaI[]> {
-        return await this.consultaModel.find({ paciente: pacienteId }).sort('consecutivo')
+        return await this.consultaModel.find({ paciente: pacienteId }).sort({ 'fecha_hora': -1 })
             .populate('paciente')
             .populate('sucursal')
             .populate('quien_agenda')
