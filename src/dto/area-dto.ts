@@ -7,6 +7,7 @@ export class AreaDto {
     readonly tratamiento : TratamientoDto;
     readonly tiempo : String;
     readonly precio_ma : String;
+    readonly precio_rd : String;
     readonly precio_oc : String;
     readonly precio_fe : String;
     readonly comision_derivado : String;
@@ -15,4 +16,7 @@ export class AreaDto {
     readonly comision_derivado_ma : String;
     readonly comision_revisado_ma : String;
     readonly comision_realizado_ma : String;
+    readonly comision_derivado_rd : String;
+    readonly comision_revisado_rd : String;
+    readonly comision_realizado_rd : String;
 }

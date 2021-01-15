@@ -8,6 +8,7 @@ export const AreaSchema = new Schema({
     tratamiento: { type: Schema.ObjectId, ref: 'Tratamiento' },
     tiempo: { type: String },
     precio_ma: { type: String },
+    precio_rd: { type: String },
     precio_oc: { type: String },
     precio_fe: { type: String },
     comision_derivado: { type: String },
@@ -16,4 +17,8 @@ export const AreaSchema = new Schema({
     comision_derivado_ma: { type: String },
     comision_revisado_ma: { type: String },
     comision_realizado_ma: { type: String },
+    comision_derivado_rd: { type: String },
+    comision_revisado_rd: { type: String },
+    comision_realizado_rd: { type: String },
+
 });
