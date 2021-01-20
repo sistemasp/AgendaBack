@@ -9,6 +9,7 @@ import { ServicioDto } from "./servicio-dto";
 import { PagoDto } from "./pago-dto";
 import { ProductoDto } from "./producto-dto";
 import { FrecuenciaDto } from "./frecuencia-dto";
+import { TipoCitaDto } from "./tipo-cita-dto";
 
 export class CirugiaDto {
     readonly create_date: Date;
@@ -24,7 +25,9 @@ export class CirugiaDto {
     readonly consecutivo: Number;
     readonly quien_agenda : EmpleadoDto;
     readonly quien_confirma: EmpleadoDto;
+    readonly tipo_cita: TipoCitaDto;
     readonly precio: String;
+    readonly pago_dermatologo: String;
     readonly total: String;
     readonly materiales: [];
     readonly biopsias: BiopsiaDto[];
@@ -32,6 +35,7 @@ export class CirugiaDto {
     readonly costo_biopsias: String;
     readonly servicio: ServicioDto;
     readonly pagos : PagoDto[];
+    readonly factura: Boolean;
     readonly hora_llegada : String;
     readonly hora_atencion : String;
     readonly hora_salida : String;

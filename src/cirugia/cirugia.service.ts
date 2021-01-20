@@ -148,10 +148,14 @@ export class CirugiaService {
             .populate('paciente')
             .populate('sucursal')
             .populate('dermatologo')
+            .populate('frecuencia')
+            .populate('quien_agenda')
+            .populate('tipo_cita')
             .populate('servicio')
             .populate('status')
             .populate('patologo')
             .populate('consulta')
+            .populate('producto')
             .populate('pagos');
     }
 

@@ -122,6 +122,12 @@ export class EsteticaService {
             .populate('paciente')
             .populate('sucursal')
             .populate('consulta')
+            .populate('servicio')
+            .populate('frecuencia')
+            .populate('quien_agenda')
+            .populate('dermatologo')
+            .populate('tipo_cita')
+            .populate('producto')
             .populate('pagos');
     }
 

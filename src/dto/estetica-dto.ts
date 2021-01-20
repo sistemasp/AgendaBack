@@ -7,6 +7,7 @@ import { ServicioDto } from "./servicio-dto";
 import { PagoDto } from "./pago-dto";
 import { ProductoDto } from "./producto-dto";
 import { FrecuenciaDto } from "./frecuencia-dto";
+import { TipoCitaDto } from "./tipo-cita-dto";
 
 export class EsteticaDto {
     readonly create_date: Date;
@@ -18,15 +19,18 @@ export class EsteticaDto {
     readonly dermatologo: EmpleadoDto;
     readonly quien_agenda : EmpleadoDto;
     readonly quien_confirma: EmpleadoDto;
+    readonly tipo_cita: TipoCitaDto;
     readonly sucursal: SucursalDto;
     readonly consecutivo: Number;
     readonly precio: String;
     readonly total: String;
+    readonly pago_dermatologo: String;
     readonly materiales: [];
     readonly toxinas_rellenos: [];
     readonly status: StatusDto;
     readonly servicio: ServicioDto;
     readonly pagos : PagoDto[];
+    readonly factura: Boolean;
     readonly hora_llegada : String;
     readonly hora_atencion : String;
     readonly hora_salida : String;

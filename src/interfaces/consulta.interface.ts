@@ -24,6 +24,7 @@ export interface ConsultaI {
     status : StatusI;
     motivos : String;
     precio : String;
+    pago_dermatologo: String;
     hora_llegada : String;
     hora_atencion : String;
     hora_salida : String;
@@ -32,6 +33,7 @@ export interface ConsultaI {
     sucursal : SucursalI;
     promovendedor : EmpleadoI;
     pagado : Boolean;
+    factura: Boolean;
     pagos : PagoI[];
     consecutivo : Number;
     frecuencia : FrecuenciaI;

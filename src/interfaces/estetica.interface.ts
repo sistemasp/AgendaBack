@@ -7,6 +7,7 @@ import { ServicioI } from "./servicio.interface";
 import { PagoI } from "./pago.interface";
 import { ProductoI } from "./producto.interface";
 import { FrecuenciaI } from "./frecuencia.interface";
+import { TipoCitaI } from "./tipo-cita.interface";
 
 export interface EsteticaI {
     create_date: Date;
@@ -17,6 +18,8 @@ export interface EsteticaI {
     dermatologo : EmpleadoI;
     quien_agenda: EmpleadoI;
     quien_confirma: EmpleadoI;
+    tipo_cita: TipoCitaI;
+    pago_dermatologo: String;
     sucursal : SucursalI;
     consecutivo: Number;
     pagado : Boolean;
@@ -27,6 +30,7 @@ export interface EsteticaI {
     status: StatusI;
     servicio: ServicioI;
     pagos : PagoI[];
+    factura: Boolean;
     hora_llegada: String;
     hora_atencion: String;
     hora_salida: String;

@@ -8,6 +8,7 @@ import { ServicioI } from "./servicio.interface";
 import { PagoI } from "./pago.interface";
 import { ProductoI } from "./producto.interface";
 import { FrecuenciaI } from "./frecuencia.interface";
+import { TipoCitaI } from "./tipo-cita.interface";
 
 export interface CirugiaI {
     create_date: Date;
@@ -18,18 +19,21 @@ export interface CirugiaI {
     dermatologo: EmpleadoI;
     quien_agenda: EmpleadoI;
     quien_confirma: EmpleadoI;
+    tipo_cita: TipoCitaI;
     status: StatusI;
     patologo: EmpleadoI;
     sucursal: SucursalI;
     consecutivo: Number;
     pagado: Boolean;
     precio: String;
+    pago_dermatologo: String;
     total: String;
     materiales: [];
     biopsias: BiopsiaI[];
     hasBiopsia: Boolean;
     costo_biopsias: String;
     servicio: ServicioI;
+    factura: Boolean;
     pagos: PagoI[];
     hora_llegada: String;
     hora_atencion: String;

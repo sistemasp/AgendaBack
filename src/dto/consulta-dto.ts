@@ -24,6 +24,7 @@ export class ConsultaDto {
     readonly status: StatusDto;
     readonly motivos: String;
     readonly precio: String;
+    readonly pago_dermatologo: String;
     readonly hora_llegada: String;
     readonly hora_atencion: String;
     readonly hora_salida: String;
@@ -32,6 +33,7 @@ export class ConsultaDto {
     readonly sucursal: SucursalDto;
     readonly promovendedor: EmpleadoDto;
     readonly pagado: Boolean;
+    readonly factura: Boolean;
     readonly pagos: PagoDto[];
     readonly consecutivo: Number;
     readonly frecuencia: FrecuenciaDto;

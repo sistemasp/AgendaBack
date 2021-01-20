@@ -154,9 +154,11 @@ export class AparatologiaService {
             .populate('promovendedor')
             .populate('cosmetologa')
             .populate('dermatologo')
+            .populate('frecuencia')
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate('producto')
             .populate('pagos')
             .populate('medio')
             .populate('status');

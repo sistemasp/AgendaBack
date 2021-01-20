@@ -31,6 +31,7 @@ export class DermapenDto {
     readonly precio: String;
     readonly costo: String;
     readonly total: String;
+    readonly pago_dermatologo: String;
     readonly tiempo: String;
     readonly observaciones: String;
     readonly sucursal: SucursalDto;
@@ -39,6 +40,7 @@ export class DermapenDto {
     readonly hora_atencion: String;
     readonly hora_salida: String;
     readonly pagado: Boolean;
+    readonly factura: Boolean;
     readonly pagos: PagoDto[];
     readonly consecutivo : Number;
     readonly materiales: [];

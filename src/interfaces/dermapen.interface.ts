@@ -29,6 +29,7 @@ export interface DermapenI {
     status: StatusI;
     motivos: String;
     precio: String;
+    pago_dermatologo: String;
     costo: String;
     total: String;
     tiempo: String;
@@ -39,6 +40,7 @@ export interface DermapenI {
     hora_atencion: String;
     hora_salida: String;
     pagado: Boolean;
+    factura: Boolean;
     pagos: PagoI[];
     materiales: [];
     consecutivo: Number;

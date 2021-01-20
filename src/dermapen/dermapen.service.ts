@@ -183,6 +183,8 @@ export class DermapenService {
             .populate('tipo_cita')
             .populate('pagos')
             .populate('medio')
+            .populate('frecuencia')
+            .populate('producto')
             .populate('status');
     }
 

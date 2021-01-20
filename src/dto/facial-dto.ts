@@ -29,6 +29,7 @@ export class FacialDto {
     readonly status: StatusDto;
     readonly motivos: String;
     readonly precio: String;
+    readonly pago_dermatologo: String;
     readonly tiempo: String;
     readonly observaciones: String;
     readonly sucursal: SucursalDto;
@@ -38,6 +39,7 @@ export class FacialDto {
     readonly hora_atencion: String;
     readonly hora_salida: String;
     readonly pagado: Boolean;
+    readonly factura: Boolean;
     readonly pagos: PagoDto[];
     readonly consecutivo : Number;
     readonly consulta: ConsultaDto;
