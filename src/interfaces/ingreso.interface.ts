@@ -7,6 +7,7 @@ import { PagoI } from "./pago.interface";
 export interface IngresoI {
     create_date: Date;
     hora_aplicacion: Date;
+    turno: String;
     recepcionista: EmpleadoI;
     concepto: String;
     cantidad: String;

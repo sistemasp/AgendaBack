@@ -35,6 +35,14 @@ export class EgresoController {
         return this.egresoService.showEgresosTodayBySucursalAndHoraAplicacion(sucursalId, hora_apertura, hora_cierre);
     }
 
+    @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')
+    findEgresosByRangeDateAndSucursal(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
+        @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
+        @Param('sucursalId') sucursalId: string) : Promise<EgresoI[]> {
+        console.log(new Date(), this.TAG, "findEgresosByRangeDateAndSucursal");
+        return this.egresoService.findEgresosByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId);
+    }
+
     @Post()
     createEgreso(@Body() egresoDto: EgresoDto): Promise<EgresoI> {
         console.log(new Date(), this.TAG, "createEgreso");

@@ -6,6 +6,7 @@ import { TipoEgresoI } from "./tipo-egreso.interface";
 export interface EgresoI {
     create_date: Date;
     hora_aplicacion: Date;
+    turno: String;
     recepcionista: EmpleadoI;
     concepto: String;
     descripcion: String;

@@ -6,7 +6,7 @@ import { InjectModel } from '@nestjs/mongoose';
 @Injectable()
 export class EgresoService {
 
-    constructor(@InjectModel('Egreso') private readonly egresoModel : Model<EgresoI>) {}
+    constructor(@InjectModel('Egreso') private readonly egresoModel: Model<EgresoI>) { }
 
     /**
      * Muestra todos los egresos de la BD
@@ -20,7 +20,7 @@ export class EgresoService {
      * @param idEgreso 
      */
     async findEgresoById(idEgreso: string): Promise<EgresoI> {
-        return await this.egresoModel.findOne( { _id: idEgreso } );
+        return await this.egresoModel.findOne({ _id: idEgreso });
     }
 
     /**
@@ -39,11 +39,11 @@ export class EgresoService {
             create_date: { $gte: startDate, $lte: endDate },
             sucursal: sucursalId,
         })
-        .sort('create_date')
-        .populate('recepcionista')
-        .populate('tipo_egreso')
-        .populate('sucursal')
-        .populate('forma_pago');
+            .sort('create_date')
+            .populate('recepcionista')
+            .populate('tipo_egreso')
+            .populate('sucursal')
+            .populate('forma_pago');
     }
 
     /**
@@ -56,11 +56,31 @@ export class EgresoService {
             hora_aplicacion: { $gte: startDate, $lt: endDate },
             sucursal: sucursalId,
         })
-        .sort('hora_aplicacion')
-        .populate('recepcionista')
-        .populate('tipo_egreso')
-        .populate('sucursal')
-        .populate('forma_pago');
+            .sort('hora_aplicacion')
+            .populate('recepcionista')
+            .populate('tipo_egreso')
+            .populate('sucursal')
+            .populate('forma_pago');
+    }
+
+    /**
+     * Muestra todas las dermapens de la BD que correspondan a una fecha y una sucursal
+     */
+    async findEgresosByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId): Promise<EgresoI[]> {
+        let startDate = new Date(anioi, mesi, diai);
+        startDate.setHours(0);
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date(aniof, mesf, diaf);
+        endDate.setHours(23);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+        return await this.egresoModel.find({ hora_aplicacion: { $gte: startDate, $lte: endDate }, sucursal: sucursalId })
+            .sort('hora_aplicacion')
+            .populate('recepcionista')
+            .populate('tipo_egreso')
+            .populate('sucursal')
+            .populate('forma_pago');
     }
 
 
@@ -69,7 +89,7 @@ export class EgresoService {
      * @param idEgreso 
      */
     async findEgresoByEmployeeNumber(employeeNumber: string): Promise<EgresoI> {
-        return await this.egresoModel.findOne( { numero_empleado: employeeNumber } );
+        return await this.egresoModel.findOne({ numero_empleado: employeeNumber });
     }
 
     /**
@@ -94,7 +114,7 @@ export class EgresoService {
      * Busca un egreso por su ID y lo elimina de la BD
      * @param idEgreso 
      */
-    async deleteEgreso(idEgreso: string ): Promise<EgresoI> {
+    async deleteEgreso(idEgreso: string): Promise<EgresoI> {
         return await this.egresoModel.findOneAndDelete({ _id: idEgreso });
     }
 

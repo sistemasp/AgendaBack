@@ -7,6 +7,7 @@ import { PagoDto } from "./pago-dto";
 export class IngresoDto {
     readonly create_date: Date;
     readonly hora_aplicacion: Date;
+    readonly turno: String;
     readonly recepcionista: EmpleadoDto;
     readonly concepto: String;
     readonly cantidad: String;
