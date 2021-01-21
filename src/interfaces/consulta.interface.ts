@@ -8,6 +8,7 @@ import { FrecuenciaI } from "./frecuencia.interface";
 import { ServicioI } from "./servicio.interface";
 import { MedioI } from "./medio.interface";
 import { ProductoI } from "./producto.interface";
+import { FacturaI } from "./factura.interface";
 
 export interface ConsultaI {
     create_date: Date;
@@ -33,7 +34,7 @@ export interface ConsultaI {
     sucursal : SucursalI;
     promovendedor : EmpleadoI;
     pagado : Boolean;
-    factura: Boolean;
+    factura: FacturaI;
     pagos : PagoI[];
     consecutivo : Number;
     frecuencia : FrecuenciaI;

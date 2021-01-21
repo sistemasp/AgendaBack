@@ -25,7 +25,7 @@ export const ConsultaSchema = new Schema({
     observaciones : { type: String },
     sucursal : { type: Schema.ObjectId, ref: 'Sucursal'},
     promovendedor : { type: Schema.ObjectId, ref: 'Empleado'},
-    factura: { type: Boolean, default: false },
+    factura: { type: Schema.ObjectId, ref: 'Factura' },
     pagado : { type: Boolean, default: false },
     pagos : [{ type: Schema.ObjectId, ref: 'Pago'}],
     consecutivo : { type: Number },

@@ -171,6 +171,13 @@ export class FacialService {
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')
+            .populate(
+                {
+                    path: "factura",
+                    populate: {
+                        path: "razon_social"
+                    }
+                })
             .populate('dermatologo')
             .populate('frecuencia')
             .populate('quien_confirma_asistencia')

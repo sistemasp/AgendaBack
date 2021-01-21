@@ -124,6 +124,13 @@ export class EsteticaService {
             .populate('consulta')
             .populate('servicio')
             .populate('frecuencia')
+            .populate(
+                {
+                    path: "factura",
+                    populate: {
+                        path: "razon_social"
+                    }
+                })
             .populate('quien_agenda')
             .populate('dermatologo')
             .populate('tipo_cita')

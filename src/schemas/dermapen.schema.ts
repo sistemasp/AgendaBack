@@ -29,7 +29,7 @@ export const DermapenSchema = new Schema({
     hora_llegada: { type: String },
     hora_atencion: { type: String },
     hora_salida: { type: String },
-    factura: { type: Boolean, default: false },
+    factura: { type: Schema.ObjectId, ref: 'Factura' },
     pagado: { type: Boolean, default: false },
     pagos: [{ type: Schema.ObjectId, ref: 'Pago' }],
     materiales: [],

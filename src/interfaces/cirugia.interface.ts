@@ -9,6 +9,7 @@ import { PagoI } from "./pago.interface";
 import { ProductoI } from "./producto.interface";
 import { FrecuenciaI } from "./frecuencia.interface";
 import { TipoCitaI } from "./tipo-cita.interface";
+import { FacturaI } from "./factura.interface";
 
 export interface CirugiaI {
     create_date: Date;
@@ -33,7 +34,7 @@ export interface CirugiaI {
     hasBiopsia: Boolean;
     costo_biopsias: String;
     servicio: ServicioI;
-    factura: Boolean;
+    factura: FacturaI;
     pagos: PagoI[];
     hora_llegada: String;
     hora_atencion: String;

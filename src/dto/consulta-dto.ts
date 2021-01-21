@@ -8,6 +8,7 @@ import { FrecuenciaDto } from "./frecuencia-dto";
 import { ServicioDto } from "./servicio-dto";
 import { MedioDto } from "./medio-dto";
 import { ProductoDto } from "./producto-dto";
+import { FacturaDto } from "./factura-dto";
 
 export class ConsultaDto {
     readonly create_date: Date;
@@ -33,7 +34,7 @@ export class ConsultaDto {
     readonly sucursal: SucursalDto;
     readonly promovendedor: EmpleadoDto;
     readonly pagado: Boolean;
-    readonly factura: Boolean;
+    readonly factura: FacturaDto;
     readonly pagos: PagoDto[];
     readonly consecutivo: Number;
     readonly frecuencia: FrecuenciaDto;

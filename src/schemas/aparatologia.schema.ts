@@ -31,7 +31,7 @@ export const AparatologiaSchema = new Schema({
     hora_atencion: { type: String },
     hora_salida: { type: String },
     pagado: { type: Boolean, default: false },
-    factura: { type: Boolean, default: false },
+    factura: { type: Schema.ObjectId, ref: 'Factura' },
     pagos: [{ type: Schema.ObjectId, ref: 'Pago' }],
     consecutivo: { type: Number },
     consulta: { type: Schema.ObjectId, ref: 'Consulta' },

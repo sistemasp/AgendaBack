@@ -10,6 +10,7 @@ import { MedioI } from "./medio.interface";
 import { ConsultaI } from "./consulta.interface";
 import { ProductoI } from "./producto.interface";
 import { FrecuenciaI } from "./frecuencia.interface";
+import { FacturaI } from "./factura.interface";
 
 export interface AparatologiaI {
     create_date: Date;
@@ -39,7 +40,7 @@ export interface AparatologiaI {
     hora_atencion: String;
     hora_salida: String;
     pagado: Boolean;
-    factura: Boolean;
+    factura: FacturaI;
     pagos: PagoI[];
     consecutivo: Number;
     consulta: ConsultaI;

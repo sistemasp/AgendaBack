@@ -10,6 +10,7 @@ import { MedioDto } from "./medio-dto";
 import { ConsultaDto } from "./consulta-dto";
 import { ProductoDto } from "./producto-dto";
 import { FrecuenciaDto } from "./frecuencia-dto";
+import { FacturaDto } from "./factura-dto";
 
 export class DermapenDto {
     readonly create_date: Date;
@@ -40,7 +41,7 @@ export class DermapenDto {
     readonly hora_atencion: String;
     readonly hora_salida: String;
     readonly pagado: Boolean;
-    readonly factura: Boolean;
+    readonly factura: FacturaDto;
     readonly pagos: PagoDto[];
     readonly consecutivo : Number;
     readonly materiales: [];

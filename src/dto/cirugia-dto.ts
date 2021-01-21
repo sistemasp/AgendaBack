@@ -10,6 +10,7 @@ import { PagoDto } from "./pago-dto";
 import { ProductoDto } from "./producto-dto";
 import { FrecuenciaDto } from "./frecuencia-dto";
 import { TipoCitaDto } from "./tipo-cita-dto";
+import { FacturaDto } from "./factura-dto";
 
 export class CirugiaDto {
     readonly create_date: Date;
@@ -35,7 +36,7 @@ export class CirugiaDto {
     readonly costo_biopsias: String;
     readonly servicio: ServicioDto;
     readonly pagos : PagoDto[];
-    readonly factura: Boolean;
+    readonly factura: FacturaDto;
     readonly hora_llegada : String;
     readonly hora_atencion : String;
     readonly hora_salida : String;

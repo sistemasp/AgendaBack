@@ -150,6 +150,13 @@ export class AparatologiaService {
             .populate('servicio')
             .populate('areas')
             .populate('sucursal')
+            .populate(
+                {
+                    path: "factura",
+                    populate: {
+                        path: "razon_social"
+                    }
+                })
             .populate('quien_agenda')
             .populate('promovendedor')
             .populate('cosmetologa')

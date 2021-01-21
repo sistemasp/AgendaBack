@@ -25,7 +25,7 @@ export const EsteticaSchema = new Schema({
     toxinas_rellenos: [],
     status: { type: Schema.ObjectId, ref: 'Status' },
     servicio: { type: Schema.ObjectId, ref: 'Servicio' },
-    factura: { type: Boolean, default: false },
+    factura: { type: Schema.ObjectId, ref: 'Factura' },
     pagos: [{ type: Schema.ObjectId, ref: 'Pago' }],
     producto: { type: Schema.ObjectId, ref: 'Producto' },
     frecuencia : { type: Schema.ObjectId, ref: 'Frecuencia'},

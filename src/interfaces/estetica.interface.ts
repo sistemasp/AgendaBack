@@ -8,6 +8,7 @@ import { PagoI } from "./pago.interface";
 import { ProductoI } from "./producto.interface";
 import { FrecuenciaI } from "./frecuencia.interface";
 import { TipoCitaI } from "./tipo-cita.interface";
+import { FacturaI } from "./factura.interface";
 
 export interface EsteticaI {
     create_date: Date;
@@ -30,7 +31,7 @@ export interface EsteticaI {
     status: StatusI;
     servicio: ServicioI;
     pagos : PagoI[];
-    factura: Boolean;
+    factura: FacturaI;
     hora_llegada: String;
     hora_atencion: String;
     hora_salida: String;

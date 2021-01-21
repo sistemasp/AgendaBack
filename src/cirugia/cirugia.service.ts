@@ -151,6 +151,13 @@ export class CirugiaService {
             .populate('frecuencia')
             .populate('quien_agenda')
             .populate('tipo_cita')
+            .populate(
+                {
+                    path: "factura",
+                    populate: {
+                        path: "razon_social"
+                    }
+                })
             .populate('servicio')
             .populate('status')
             .populate('patologo')

@@ -3,13 +3,16 @@ import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { ConsultaI } from 'src/interfaces/consulta.interface';
 import { ConsecutivoI } from 'src/interfaces/consecutivo.interface';
+import { RazonSocialI } from 'src/interfaces/razon-social.interface';
+import { async } from 'rxjs/internal/scheduler/async';
 
 @Injectable()
 export class ConsultaService {
 
     constructor(
         @InjectModel('Consulta') private readonly consultaModel: Model<ConsultaI>,
-        @InjectModel('Consecutivo') private readonly consecutivoModel: Model<ConsecutivoI>
+        @InjectModel('Consecutivo') private readonly consecutivoModel: Model<ConsecutivoI>,
+        @InjectModel('RazonSocial') private readonly razonSocialModel: Model<RazonSocialI>
     ) { }
 
     /**
@@ -286,7 +289,7 @@ export class ConsultaService {
         endDate.setHours(23);
         endDate.setMinutes(59);
         endDate.setSeconds(59);
-        return await this.consultaModel.find({ fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId }).sort('consecutivo')
+        const consultas = await this.consultaModel.find({ fecha_hora: { $gte: startDate, $lte: endDate }, sucursal: sucursalId }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
             .populate('quien_agenda')
@@ -295,12 +298,21 @@ export class ConsultaService {
             .populate('quien_confirma_asistencia')
             .populate('quien_confirma_llamada')
             .populate('tipo_cita')
+            .populate(
+                {
+                    path: "factura",
+                    populate: {
+                        path: "razon_social"
+                    }
+                })
             .populate('medio')
             .populate('pagos')
             .populate('servicio')
             .populate('frecuencia')
             .populate('producto')
             .populate('status');
+
+        return consultas;
     }
 
     /**
