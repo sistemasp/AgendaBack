@@ -51,6 +51,29 @@ export class CorteService {
             .populate('sucursal')
             .populate('recepcionista');
     }
+
+    /**
+     * Muestra todas las dermapens de la BD que correspondan a una fecha y una sucursal
+     */
+    async findCortesByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId): Promise<CorteI[]> {
+        let startDate = new Date(anioi, mesi, diai);
+        startDate.setHours(0);
+        startDate.setMinutes(0);
+        startDate.setSeconds(0);
+        let endDate = new Date(aniof, mesf, diaf);
+        endDate.setHours(23);
+        endDate.setMinutes(59);
+        endDate.setSeconds(59);
+        return await this.corteModel.find({
+            create_date: { $gte: startDate, $lte: endDate },
+            sucursal: sucursalId
+        })
+        .sort('create_date')
+        .populate('ingresos')
+        .populate('egresos')
+        .populate('sucursal')
+        .populate('recepcionista');
+    }
     
     /**
      * Busca solo un corte mediante su numero de empleado en la BD

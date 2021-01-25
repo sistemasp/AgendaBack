@@ -12,6 +12,7 @@ export class EgresoDto {
     readonly concepto: String;
     readonly descripcion: String;
     readonly cantidad: String;
+    readonly retencion: String;
     readonly tipo_egreso: TipoEgresoDto;
     readonly sucursal: SucursalDto;
     readonly forma_pago: FormaPagoDto;

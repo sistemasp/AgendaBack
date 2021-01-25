@@ -11,6 +11,7 @@ export interface EgresoI {
     concepto: String;
     descripcion: String;
     cantidad: String;
+    retencion: String;
     tipo_egreso: TipoEgresoI;
     sucursal: SucursalI;
     forma_pago: FormaPagoI;
