@@ -19,4 +19,5 @@ export class AreaDto {
     readonly comision_derivado_rd : String;
     readonly comision_revisado_rd : String;
     readonly comision_realizado_rd : String;
+    readonly iva : Boolean;
 }

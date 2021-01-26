@@ -19,4 +19,5 @@ export interface AreaI {
     comision_derivado_rd: String;
     comision_revisado_rd: String;
     comision_realizado_rd: String;
+    iva : Boolean;
 }

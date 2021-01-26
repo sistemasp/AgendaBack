@@ -20,5 +20,5 @@ export const AreaSchema = new Schema({
     comision_derivado_rd: { type: String },
     comision_revisado_rd: { type: String },
     comision_realizado_rd: { type: String },
-
+    iva: { type: Boolean, default: false },
 });
