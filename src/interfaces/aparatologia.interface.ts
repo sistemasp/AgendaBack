@@ -30,6 +30,7 @@ export interface AparatologiaI {
     status: StatusI;
     motivos: String;
     precio: String;
+    total: String;
     pago_dermatologo: String;
     tiempo: String;
     observaciones: String;
@@ -45,5 +46,9 @@ export interface AparatologiaI {
     consecutivo: Number;
     consulta: ConsultaI;
     producto: ProductoI;
-    frecuencia : FrecuenciaI;
+    frecuencia: FrecuenciaI;
+    porcentaje_descuento_clinica: String;
+    has_descuento_dermatologo: Boolean;
+    descuento_clinica: String;
+    descuento_dermatologo: String;
 }
