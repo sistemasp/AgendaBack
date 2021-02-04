@@ -46,5 +46,10 @@ export interface DermapenI {
     materiales: [];
     consecutivo: Number;
     producto: ProductoI;
-    frecuencia : FrecuenciaI;
+    frecuencia: FrecuenciaI;
+    total_aplicacion: String;
+    porcentaje_descuento_clinica: String;
+    has_descuento_dermatologo: Boolean;
+    descuento_clinica: String;
+    descuento_dermatologo: String;
 }

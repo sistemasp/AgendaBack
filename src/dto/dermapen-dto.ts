@@ -20,8 +20,8 @@ export class DermapenDto {
     readonly paciente: PacienteDto;
     readonly dermatologo: EmpleadoDto;
     readonly servicio: ServicioDto;
-    readonly tratamientos : [];
-    readonly areas : AreaDto[];
+    readonly tratamientos: [];
+    readonly areas: AreaDto[];
     readonly quien_agenda: EmpleadoDto;
     readonly tipo_cita: TipoCitaDto;
     readonly medio: MedioDto;
@@ -43,8 +43,13 @@ export class DermapenDto {
     readonly pagado: Boolean;
     readonly factura: FacturaDto;
     readonly pagos: PagoDto[];
-    readonly consecutivo : Number;
+    readonly consecutivo: Number;
     readonly materiales: [];
     readonly frecuencia: FrecuenciaDto;
     readonly producto: ProductoDto;
+    readonly total_aplicacion: String;
+    readonly porcentaje_descuento_clinica: String;
+    readonly has_descuento_dermatologo: Boolean;
+    readonly descuento_clinica: String;
+    readonly descuento_dermatologo: String;
 }

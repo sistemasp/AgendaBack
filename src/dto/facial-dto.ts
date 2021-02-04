@@ -19,8 +19,8 @@ export class FacialDto {
     readonly paciente: PacienteDto;
     readonly dermatologo: EmpleadoDto;
     readonly servicio: ServicioDto;
-    readonly tratamientos : [];
-    readonly areas : AreaDto[];
+    readonly tratamientos: [];
+    readonly areas: AreaDto[];
     readonly numero_sesion: String;
     readonly quien_agenda: EmpleadoDto;
     readonly tipo_cita: TipoCitaDto;
@@ -30,6 +30,7 @@ export class FacialDto {
     readonly status: StatusDto;
     readonly motivos: String;
     readonly precio: String;
+    readonly total: String;
     readonly pago_dermatologo: String;
     readonly tiempo: String;
     readonly observaciones: String;
@@ -42,8 +43,12 @@ export class FacialDto {
     readonly pagado: Boolean;
     readonly factura: FacturaDto;
     readonly pagos: PagoDto[];
-    readonly consecutivo : Number;
+    readonly consecutivo: Number;
     readonly consulta: ConsultaDto;
     readonly producto: ProductoDto;
     readonly frecuencia: FrecuenciaDto;
+    readonly porcentaje_descuento_clinica: String;
+    readonly has_descuento_dermatologo: Boolean;
+    readonly descuento_clinica: String;
+    readonly descuento_dermatologo: String;
 }

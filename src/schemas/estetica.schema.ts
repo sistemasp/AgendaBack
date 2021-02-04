@@ -28,5 +28,10 @@ export const EsteticaSchema = new Schema({
     factura: { type: Schema.ObjectId, ref: 'Factura' },
     pagos: [{ type: Schema.ObjectId, ref: 'Pago' }],
     producto: { type: Schema.ObjectId, ref: 'Producto' },
-    frecuencia : { type: Schema.ObjectId, ref: 'Frecuencia'},
+    frecuencia: { type: Schema.ObjectId, ref: 'Frecuencia' },
+    total_aplicacion: { type: String },
+    porcentaje_descuento_clinica: { type: String },
+    has_descuento_dermatologo: { type: Boolean, default: false },
+    descuento_clinica: { type: String },
+    descuento_dermatologo: { type: String },
 });

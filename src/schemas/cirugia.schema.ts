@@ -20,6 +20,7 @@ export const CirugiaSchema = new Schema({
     precio: { type: String },
     pago_dermatologo: { type: String },
     total: { type: String },
+    total_aplicacion: { type: String },
     hora_llegada: { type: String },
     hora_atencion: { type: String },
     hora_salida: { type: String },
@@ -31,5 +32,9 @@ export const CirugiaSchema = new Schema({
     factura: { type: Schema.ObjectId, ref: 'Factura' },
     pagos: [{ type: Schema.ObjectId, ref: 'Pago' }],
     producto: { type: Schema.ObjectId, ref: 'Producto' },
-    frecuencia : { type: Schema.ObjectId, ref: 'Frecuencia'},
+    frecuencia: { type: Schema.ObjectId, ref: 'Frecuencia' },
+    porcentaje_descuento_clinica: { type: String },
+    has_descuento_dermatologo: { type: Boolean, default: false },
+    descuento_clinica: { type: String },
+    descuento_dermatologo: { type: String },
 });

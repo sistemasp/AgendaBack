@@ -25,6 +25,7 @@ export class ConsultaDto {
     readonly status: StatusDto;
     readonly motivos: String;
     readonly precio: String;
+    readonly total: String;
     readonly pago_dermatologo: String;
     readonly hora_llegada: String;
     readonly hora_atencion: String;
@@ -40,4 +41,8 @@ export class ConsultaDto {
     readonly frecuencia: FrecuenciaDto;
     readonly servicio: ServicioDto;
     readonly producto: ProductoDto;
+    readonly porcentaje_descuento_clinica: String;
+    readonly has_descuento_dermatologo: Boolean;
+    readonly descuento_clinica: String;
+    readonly descuento_dermatologo: String;
 }

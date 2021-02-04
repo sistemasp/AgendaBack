@@ -30,6 +30,7 @@ export class CirugiaDto {
     readonly precio: String;
     readonly pago_dermatologo: String;
     readonly total: String;
+    readonly total_aplicacion: String;
     readonly materiales: [];
     readonly biopsias: BiopsiaDto[];
     readonly hasBiopsia: Boolean;
@@ -42,4 +43,8 @@ export class CirugiaDto {
     readonly hora_salida : String;
     readonly producto: ProductoDto;
     readonly frecuencia: FrecuenciaDto;
+    readonly porcentaje_descuento_clinica: String;
+    readonly has_descuento_dermatologo: Boolean;
+    readonly descuento_clinica: String;
+    readonly descuento_dermatologo: String;
 }

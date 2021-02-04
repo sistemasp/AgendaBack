@@ -29,6 +29,7 @@ export interface CirugiaI {
     precio: String;
     pago_dermatologo: String;
     total: String;
+    total_aplicacion: String;
     materiales: [];
     biopsias: BiopsiaI[];
     hasBiopsia: Boolean;
@@ -40,5 +41,9 @@ export interface CirugiaI {
     hora_atencion: String;
     hora_salida: String;
     producto: ProductoI;
-    frecuencia : FrecuenciaI;
+    frecuencia: FrecuenciaI;
+    porcentaje_descuento_clinica: String;
+    has_descuento_dermatologo: Boolean;
+    descuento_clinica: String;
+    descuento_dermatologo: String;
 }

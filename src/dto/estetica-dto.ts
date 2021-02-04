@@ -18,7 +18,7 @@ export class EsteticaDto {
     readonly consulta: ConsultaDto;
     readonly paciente: PacienteDto;
     readonly dermatologo: EmpleadoDto;
-    readonly quien_agenda : EmpleadoDto;
+    readonly quien_agenda: EmpleadoDto;
     readonly quien_confirma: EmpleadoDto;
     readonly tipo_cita: TipoCitaDto;
     readonly sucursal: SucursalDto;
@@ -30,11 +30,16 @@ export class EsteticaDto {
     readonly toxinas_rellenos: [];
     readonly status: StatusDto;
     readonly servicio: ServicioDto;
-    readonly pagos : PagoDto[];
+    readonly pagos: PagoDto[];
     readonly factura: FacturaDto;
-    readonly hora_llegada : String;
-    readonly hora_atencion : String;
-    readonly hora_salida : String;
+    readonly hora_llegada: String;
+    readonly hora_atencion: String;
+    readonly hora_salida: String;
     readonly producto: ProductoDto;
     readonly frecuencia: FrecuenciaDto;
+    readonly total_aplicacion: String;
+    readonly porcentaje_descuento_clinica: String;
+    readonly has_descuento_dermatologo: Boolean;
+    readonly descuento_clinica: String;
+    readonly descuento_dermatologo: String;
 }

@@ -21,6 +21,7 @@ export const FacialSchema = new Schema({
     status: { type: Schema.ObjectId, ref: 'Status' },
     motivos: { type: String },
     precio: { type: String },
+    total: { type: String },
     pago_dermatologo: { type: String },
     tiempo: { type: String },
     observaciones: { type: String },
@@ -36,5 +37,9 @@ export const FacialSchema = new Schema({
     consecutivo: { type: Number },
     consulta: { type: Schema.ObjectId, ref: 'Consulta' },
     producto: { type: Schema.ObjectId, ref: 'Producto' },
-    frecuencia : { type: Schema.ObjectId, ref: 'Frecuencia'},
+    frecuencia: { type: Schema.ObjectId, ref: 'Frecuencia' },
+    porcentaje_descuento_clinica: { type: String },
+    has_descuento_dermatologo: { type: Boolean, default: false },
+    descuento_clinica: { type: String },
+    descuento_dermatologo: { type: String },
 });
