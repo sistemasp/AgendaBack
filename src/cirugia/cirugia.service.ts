@@ -163,6 +163,7 @@ export class CirugiaService {
             .populate('patologo')
             .populate('consulta')
             .populate('producto')
+            .populate('biopsias')
             .populate('pagos');
     }
 
