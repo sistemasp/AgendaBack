@@ -25,5 +25,4 @@ export interface BiopsiaI {
     a_quien_se_entrega: EmpleadoI;
     fecha_entrega: Date;
     quien_lo_entrega: EmpleadoI;
-    pagos : PagoI[];
 }

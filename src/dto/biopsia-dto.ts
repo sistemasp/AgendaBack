@@ -25,5 +25,4 @@ export class BiopsiaDto {
     readonly a_quien_se_entrega: EmpleadoDto;
     readonly fecha_entrega: Date;
     readonly quien_lo_entrega: EmpleadoDto;
-    readonly pagos : PagoDto[];
 }
