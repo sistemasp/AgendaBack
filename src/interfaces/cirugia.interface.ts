@@ -28,6 +28,7 @@ export interface CirugiaI {
     pagado: Boolean;
     precio: String;
     pago_dermatologo: String;
+    pago_patologo: String;
     total: String;
     total_aplicacion: String;
     materiales: [];

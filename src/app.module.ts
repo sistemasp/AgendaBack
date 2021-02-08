@@ -152,6 +152,9 @@ import { ProductoService } from './producto/producto.service';
 import { EsquemaSchema } from './schemas/esquema.schema';
 import { EsquemaController } from './esquema/esquema.controller';
 import { EsquemaService } from './esquema/esquema.service';
+import { PagoPatologoSchema } from './schemas/pago-patologo.schema';
+import { PagoPatologoController } from './pago-patologo/pago-patologo.controller';
+import { PagoPatologoService } from './pago-patologo/pago-patologo.service';
 
 @Module({
   imports: [
@@ -209,6 +212,7 @@ import { EsquemaService } from './esquema/esquema.service';
       { name: 'Cancelacion', schema: CancelacionSchema },
       { name: 'Producto', schema: ProductoSchema },
       { name: 'Esquema', schema: EsquemaSchema },
+      { name: 'PagoPatologo', schema: PagoPatologoSchema },
     ])
   ],
   controllers: [
@@ -262,6 +266,7 @@ import { EsquemaService } from './esquema/esquema.service';
     CancelacionController,
     ProductoController,
     EsquemaController,
+    PagoPatologoController,
   ],
   providers: [
     AppService,
@@ -314,6 +319,7 @@ import { EsquemaService } from './esquema/esquema.service';
     CancelacionService,
     ProductoService,
     EsquemaService,
+    PagoPatologoService,
   ],
 })
 

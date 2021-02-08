@@ -29,6 +29,7 @@ export class CirugiaDto {
     readonly tipo_cita: TipoCitaDto;
     readonly precio: String;
     readonly pago_dermatologo: String;
+    readonly pago_patologo: String;
     readonly total: String;
     readonly total_aplicacion: String;
     readonly materiales: [];

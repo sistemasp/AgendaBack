@@ -19,6 +19,7 @@ export const CirugiaSchema = new Schema({
     pagado: { type: Boolean, default: false },
     precio: { type: String },
     pago_dermatologo: { type: String },
+    pago_patologo: { type: String },
     total: { type: String },
     total_aplicacion: { type: String },
     hora_llegada: { type: String },
