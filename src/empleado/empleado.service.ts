@@ -93,8 +93,12 @@ export class EmpleadoService {
      * @param idEmpleado 
      */
     async loginEmployee(employeeNumber: string, password: string): Promise<EmpleadoI> {
-        return await this.empleadoModel.findOne({ numero_empleado: employeeNumber, password: password })
-            .populate('rol');
+        return await this.empleadoModel.findOne({ 
+            numero_empleado: employeeNumber,
+            password: password,
+            is_active: true,
+        })
+        .populate('rol');
     }
 
 }

@@ -8,10 +8,10 @@ export class ConsultorioController {
 
     TAG = "ConsultorioController";
 
-    constructor(private readonly consultorioService: ConsultorioService) {}
+    constructor(private readonly consultorioService: ConsultorioService) { }
 
     @Get()
-    showAllSurgeries() : Promise<ConsultorioI[]> {
+    showAllSurgeries(): Promise<ConsultorioI[]> {
         console.log(new Date(), this.TAG, "showAllSurgeries");
         return this.consultorioService.showAllSurgeries();
     }
@@ -26,6 +26,13 @@ export class ConsultorioController {
     findSurgeryBySucursalId(@Param('sucursalId') sucursalId: string): Promise<ConsultorioI[]> {
         console.log(new Date(), this.TAG, "findSurgeryBySucursalId");
         return this.consultorioService.findSurgeryBySucursalId(sucursalId);
+    }
+
+    @Get('/sucursal/:sucursalId/dermatologo/:dermatologoId')
+    findSurgeryBySucursalAndDermatologoId(@Param('sucursalId') sucursalId: string, 
+        @Param('dermatologoId') dermatologoId: string): Promise<ConsultorioI[]> {
+        console.log(new Date(), this.TAG, "findSurgeryBySucursalAndDermatologoId");
+        return this.consultorioService.findSurgeryBySucursalAndDermatologoId(sucursalId, dermatologoId);
     }
 
     @Get('/waitinglist/sucursal/:sucursalId')
@@ -58,7 +65,7 @@ export class ConsultorioController {
         return this.consultorioService.createSurgery(consultorioDto);
     }
 
-    @Put(':id') 
+    @Put(':id')
     updateSurgery(@Param('id') idConsultorio: string, @Body() consultorioDto: ConsultorioDto): Promise<ConsultorioI> {
         console.log(new Date(), this.TAG, "updateSurgery");
         return this.consultorioService.updateSurgery(idConsultorio, consultorioDto);

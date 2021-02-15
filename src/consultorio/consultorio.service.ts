@@ -44,6 +44,21 @@ export class ConsultorioService {
     }
 
     /**
+     * Busca solo un consultorio mediante su ID de la sucursal y el dermatólogo en la BD
+     * @param sucursalId 
+     */
+    async findSurgeryBySucursalAndDermatologoId(sucursalId: string, dermatologoId: string): Promise<ConsultorioI[]> {
+        return await this.consultorioModel.findOne(
+            {
+                sucursal: sucursalId,
+                dermatologo: dermatologoId
+            })
+            .populate('dermatologo')
+            .populate('consulta')
+            .populate('paciente');
+    }
+
+    /**
      * Busca solo un consultorio mediante su ID de la sucursal en la BD
      * @param sucursalId 
      */
