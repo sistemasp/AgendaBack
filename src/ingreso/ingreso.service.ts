@@ -34,10 +34,10 @@ export class IngresoService {
      * Busca solo un ingreso mediante su ID en la BD
      * @param idPago 
      */
-    async findIngresoByPago(idPago: string): Promise<IngresoI> {
+    /*async findIngresoByPago(idPago: string): Promise<IngresoI> {
         const response = idPago !== 'undefined' ? await this.ingresoModel.findOne( { pago: idPago } ) : '';
         return response;
-    }
+    }*/
 
     /**
      * Muestra todos los ingresos de la BD

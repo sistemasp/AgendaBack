@@ -27,13 +27,13 @@ export class FacturaService {
      * Busca solo un factura mediante su ID en la BD
      * @param razonSocialId 
      */
-    async findFacturaByRazonSocialId(razonSocialId: string): Promise<FacturaI> {
+    async findFacturaByRazonSocialId(razonSocialId): Promise<FacturaI[]> {
         return await this.facturaModel.find({ razon_social: razonSocialId })
             .populate('paciente')
             .populate('forma_pago')
             .populate('sucursal')
             .populate('tipo_servicio')
-            .populate('uso_cfdi');;
+            .populate('uso_cfdi');
     }
 
     /**

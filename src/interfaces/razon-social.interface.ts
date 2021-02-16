@@ -1,4 +1,6 @@
-export interface RazonSocialI {
+import { Document } from "mongoose";
+
+export interface RazonSocialI extends Document {
     rfc: String;
     nombre_completo: String;
     domicilio: String;

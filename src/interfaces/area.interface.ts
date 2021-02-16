@@ -1,7 +1,8 @@
+import { Document } from "mongoose";
 import { ServicioI } from "./servicio.interface";
 import { TratamientoI } from "./tratamiento.interface";
 
-export interface AreaI {
+export interface AreaI extends Document {
     nombre: String;
     servicio: ServicioI;
     tratamiento: TratamientoI;

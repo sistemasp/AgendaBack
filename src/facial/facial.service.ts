@@ -57,6 +57,7 @@ export class FacialService {
     /**
      * Muestra todas las facials de la BD
      */
+    /*
     async showAllFacialBySucursalAsistio(sucursalId): Promise<FacialI[]> {
         return await this.facialModel.find({
             sucursal: sucursalId, $or: [
@@ -78,6 +79,7 @@ export class FacialService {
             .populate('pagos')
             .populate('status');
     }
+    */
 
     /**
      * Muestra todos los faciales de la BD con estatus pendiente
@@ -264,7 +266,7 @@ export class FacialService {
     /**
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
-    async findHistoricFacialByPaciente(pacienteId: string): Promise<FacialI[]> {
+    async findHistoricFacialByPaciente(pacienteId): Promise<FacialI[]> {
         return await this.facialModel.find({ paciente: pacienteId }).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
@@ -285,7 +287,7 @@ export class FacialService {
     /**
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
-    async findHistoricFacialByPacienteAndService(pacienteId: string, serviceId: string): Promise<FacialI[]> {
+    async findHistoricFacialByPacienteAndService(pacienteId, serviceId): Promise<FacialI[]> {
         return await this.facialModel.find({ paciente: pacienteId, servicio: serviceId }).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')

@@ -30,7 +30,7 @@ export class ConsultorioController {
 
     @Get('/sucursal/:sucursalId/dermatologo/:dermatologoId')
     findSurgeryBySucursalAndDermatologoId(@Param('sucursalId') sucursalId: string, 
-        @Param('dermatologoId') dermatologoId: string): Promise<ConsultorioI[]> {
+        @Param('dermatologoId') dermatologoId: string): Promise<ConsultorioI> {
         console.log(new Date(), this.TAG, "findSurgeryBySucursalAndDermatologoId");
         return this.consultorioService.findSurgeryBySucursalAndDermatologoId(sucursalId, dermatologoId);
     }

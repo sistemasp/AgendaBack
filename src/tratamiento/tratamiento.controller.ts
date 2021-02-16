@@ -23,7 +23,7 @@ export class TratamientoController {
     }
 
     @Get('servicio/:servicioId')
-    findTreatmentByServicio(@Param('servicioId') servicioId: string): Promise<TratamientoI> {
+    findTreatmentByServicio(@Param('servicioId') servicioId: string): Promise<TratamientoI[]> {
         console.log(new Date(), this.TAG, "findTreatmentByServicio");
         return this.tratamientoService.findTreatmentByServicio(servicioId);
     }

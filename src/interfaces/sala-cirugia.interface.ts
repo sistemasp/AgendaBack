@@ -4,8 +4,9 @@ import { SucursalI } from "./sucursal.interface";
 import { ConsultaI } from "./consulta.interface";
 import { ServicioI } from "./servicio.interface";
 import { CirugiaI } from "./cirugia.interface";
+import { Document } from "mongoose";
 
-export interface SalaCirugiaI {
+export interface SalaCirugiaI extends Document {
     nombre: String;
     dermatologo: EmpleadoI;
     paciente: PacienteI;

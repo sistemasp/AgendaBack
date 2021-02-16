@@ -1,8 +1,9 @@
+import { Document } from "mongoose";
 import { EmpleadoDto } from "./empleado-dto";
 import { ServicioDto } from "./servicio-dto";
 import { StatusDto } from "./status-dto";
 
-export class CancelacionDto {
+export class CancelacionDto extends Document {
     readonly supervisor: EmpleadoDto;
     readonly recepcionista: EmpleadoDto;
     readonly create_date: Date;

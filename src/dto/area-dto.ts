@@ -1,7 +1,8 @@
+import { Document } from "mongoose";
 import { ServicioDto } from "./servicio-dto";
 import { TratamientoDto } from "./tratamiento-dto";
 
-export class AreaDto {
+export class AreaDto extends Document {
     readonly nombre : String;
     readonly servicio : ServicioDto;
     readonly tratamiento : TratamientoDto;

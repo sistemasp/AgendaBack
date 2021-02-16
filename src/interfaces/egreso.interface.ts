@@ -2,8 +2,9 @@ import { EmpleadoI } from "./empleado.interface";
 import { SucursalI } from "./sucursal.interface";
 import { FormaPagoI } from "./forma-pago.interface";
 import { TipoEgresoI } from "./tipo-egreso.interface";
+import { Document } from "mongoose";
 
-export interface EgresoI {
+export interface EgresoI extends Document {
     create_date: Date;
     hora_aplicacion: Date;
     turno: String;

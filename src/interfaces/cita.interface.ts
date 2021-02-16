@@ -7,8 +7,9 @@ import { ServicioI } from "./servicio.interface";
 import { PagoI } from "./pago.interface";
 import { AreaI } from "./area.interface";
 import { MedioI } from "./medio.interface";
+import { Document } from "mongoose";
 
-export interface CitaI {
+export interface CitaI extends Document {
     create_date: Date;
     hora_aplicacion: Date;
     fecha_hora: Date;

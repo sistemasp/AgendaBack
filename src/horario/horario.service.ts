@@ -36,7 +36,7 @@ export class HorarioService {
     /**
      * Muestra todos los horarios de la BD
      */
-    async findSchedulesByService(idService: string): Promise<HorarioI[]> {
+    async findSchedulesByService(idService): Promise<HorarioI[]> {
         return await this.horarioModel.find( {servicio: idService} ).sort('hora')
             .populate('servicio');
     }
@@ -44,7 +44,7 @@ export class HorarioService {
     /**
      * Muestra todos los horarios de la BD por sucursal y servicio
      */
-    async findSchedulesBySucursalAndServicio(idSucursal: string, idService: string): Promise<HorarioI[]> {
+    async findSchedulesBySucursalAndServicio(idSucursal, idService): Promise<HorarioI[]> {
         return await this.horarioModel.find( 
             {
                 servicio: idService,
@@ -147,7 +147,7 @@ export class HorarioService {
      * @param sucursalId
      * @param service
      */
-    async findScheduleByDateAndSucursalAndService(anio, mes, dia: string, sucursalId: string, service: string): Promise<HorarioI[]> {
+    async findScheduleByDateAndSucursalAndService(anio, mes, dia, sucursalId, service): Promise<HorarioI[]> {
         const citas = await this.citaService.findDatesByDateAndSucursalAndService(anio, mes, dia, sucursalId, service);
         let horarios = await this.horarioModel.find({
             servicio: service,
@@ -168,7 +168,7 @@ export class HorarioService {
      * @param sucursalId
      * @param service
      */
-    async findScheduleInDatesByDateAndSucursalAndService(anio, mes, dia: string, sucursalId: string, service: string): Promise<HorarioI[]> {
+    async findScheduleInDatesByDateAndSucursalAndService(anio, mes, dia, sucursalId, service): Promise<HorarioI[]> {
         const citas = await this.citaService.findDatesByDateAndSucursalAndService(anio, mes, dia, sucursalId, service);
         let horarios = await this.horarioModel.find({
             servicio: service,
@@ -189,7 +189,7 @@ export class HorarioService {
      * @param sucursalId
      * @param service
      */
-    async findScheduleInConsultByDateAndSucursal(consultaId: string, anio, mes, dia, sucursalId: string): Promise<HorarioI[]> {
+    async findScheduleInConsultByDateAndSucursal(consultaId, anio, mes, dia, sucursalId): Promise<HorarioI[]> {
         const consultas = await this.consultaService.findConsultsByDateAndSucursal(anio, mes, dia, sucursalId);
         let horarios = await this.horarioModel.find( {
             servicio: consultaId,

@@ -1,6 +1,7 @@
+import { Document } from "mongoose";
 import { SexoDto } from "./sexo-dto";
 
-export class PacienteDto {
+export class PacienteDto extends Document {
     readonly create_date: Date;
     readonly nombres : string;
     readonly apellidos : string;

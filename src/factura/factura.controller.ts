@@ -31,7 +31,7 @@ export class FacturaController {
     }
 
     @Get('razonsocial/:razonSocialId')
-    findFacturaByRazonSocialId(@Param('razonSocialId') razonSocialId: string): Promise<FacturaI> {
+    findFacturaByRazonSocialId(@Param('razonSocialId') razonSocialId: string): Promise<FacturaI[]> {
         console.log(new Date(), this.TAG, "findFacturaByRazonSocialId");
         return this.facturaService.findFacturaByRazonSocialId(razonSocialId);
     }

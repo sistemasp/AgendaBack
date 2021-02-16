@@ -41,7 +41,7 @@ export class EmpleadoService {
      * Busca empleados que tienen un ROL en la BD
      * @param idRol 
      */
-    async findEmployeesByRolId(idRol: string): Promise<EmpleadoI[]> {
+    async findEmployeesByRolId(idRol): Promise<EmpleadoI[]> {
         return await this.empleadoModel.find({ rol: idRol })
             .sort('nombre')
             .populate('rol')
@@ -52,7 +52,7 @@ export class EmpleadoService {
      * Busca empleados que tienen un ROL en la BD
      * @param idRol 
      */
-    async findEmployeesByRolIdAvailable(idRol: string): Promise<EmpleadoI[]> {
+    async findEmployeesByRolIdAvailable(idRol): Promise<EmpleadoI[]> {
         return await this.empleadoModel.find({
             rol: idRol,
             disponible: true,

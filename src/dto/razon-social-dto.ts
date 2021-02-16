@@ -1,4 +1,6 @@
-export class RazonSocialDto {
+import { Document } from "mongoose";
+
+export class RazonSocialDto extends Document {
     readonly rfc: String;
     readonly nombre_completo: String;
     readonly domicilio: String;

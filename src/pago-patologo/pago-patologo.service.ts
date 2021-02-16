@@ -322,7 +322,7 @@ export class PagoPatologoService {
     /**
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
-    async findHistoricByMedicId(patologoId: string): Promise<PagoPatologoI[]> {
+    async findHistoricByMedicId(patologoId): Promise<PagoPatologoI[]> {
         return await this.pagoPatologoModel.find({ patologo: patologoId }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')
@@ -353,7 +353,7 @@ export class PagoPatologoService {
      * @param idPagoPatologo 
      * @param pagoPatologo 
      */
-    async updatePagoPatologo(idPagoPatologo: string, pagoPatologo: PagoPatologoI): Promise<PagoPatologoI> {
+    async updatePagoPatologo(idPagoPatologo, pagoPatologo): Promise<PagoPatologoI> {
         return await this.pagoPatologoModel.updateOne({ _id: idPagoPatologo }, pagoPatologo);
     }
 

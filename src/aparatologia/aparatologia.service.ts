@@ -57,7 +57,7 @@ export class AparatologiaService {
     /**
      * Muestra todas las aparatologias de la BD
      */
-    async showAllAparatologiaBySucursalAsistio(sucursalId): Promise<AparatologiaI[]> {
+    /*async showAllAparatologiaBySucursalAsistio(sucursalId): Promise<AparatologiaI[]> {
         return await this.aparatologiaModel.find({ sucursal: sucursalId, $or: [{ status: '5eceb37a5da339304c86c993' }, { status: '5eceb3e75da339304c86c996' }] }).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
@@ -73,7 +73,7 @@ export class AparatologiaService {
             .populate('medio')
             .populate('pagos')
             .populate('status');
-    }
+    }*/
 
     /**
      * Muestra todas las aparatologias de la BD que correspondan a una fecha
@@ -246,7 +246,7 @@ export class AparatologiaService {
     /**
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
-    async findHistoricByPaciente(pacienteId: string): Promise<AparatologiaI[]> {
+    async findHistoricByPaciente(pacienteId): Promise<AparatologiaI[]> {
         return await this.aparatologiaModel.find({ paciente: pacienteId }).sort({ 'fecha_hora': -1 })
             .populate('paciente')
             .populate('servicio')
@@ -267,7 +267,7 @@ export class AparatologiaService {
     /**
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
-    async findHistoricByPacienteAndService(pacienteId: string, serviceId: string): Promise<AparatologiaI[]> {
+    async findHistoricByPacienteAndService(pacienteId, serviceId): Promise<AparatologiaI[]> {
         return await this.aparatologiaModel.find({ paciente: pacienteId, servicio: serviceId }).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')

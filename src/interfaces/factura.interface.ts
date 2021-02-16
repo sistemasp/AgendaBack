@@ -5,8 +5,9 @@ import { PagoI } from "./pago.interface";
 import { FormaPagoI } from "./forma-pago.interface";
 import { SucursalI } from "./sucursal.interface";
 import { ServicioI } from "./servicio.interface";
+import { Document } from "mongoose";
 
-export interface FacturaI {
+export interface FacturaI extends Document {
     fecha_hora : Date;
     paciente: PacienteI;
     razon_social: RazonSocialI;

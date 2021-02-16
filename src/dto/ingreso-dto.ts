@@ -2,9 +2,9 @@ import { EmpleadoDto } from "./empleado-dto";
 import { TipoIngresoDto } from "./tipo-ingreso-dto";
 import { SucursalDto } from "./sucursal-dto";
 import { FormaPagoDto } from "./forma-pago-dto";
-import { PagoDto } from "./pago-dto";
+import { Document } from "mongoose";
 
-export class IngresoDto {
+export class IngresoDto extends Document {
     readonly create_date: Date;
     readonly hora_aplicacion: Date;
     readonly turno: String;
@@ -14,6 +14,5 @@ export class IngresoDto {
     readonly tipo_ingreso: TipoIngresoDto;
     readonly sucursal: SucursalDto;
     readonly forma_pago: FormaPagoDto;
-    readonly pago: PagoDto;
     readonly pago_anticipado: Boolean;
 }

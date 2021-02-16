@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PacienteController } from './paciente/paciente.controller';
 import { PacienteService } from './paciente/paciente.service';
@@ -129,13 +127,10 @@ import { CorteSchema } from './schemas/corte.schema';
 import { CorteController } from './corte/corte.controller';
 import { CorteService } from './corte/corte.service';
 import { FacialSchema } from './schemas/facial.schema';
-import { LaserSchema } from './schemas/laser.schema';
 import { AparatologiaSchema } from './schemas/aparatologia.schema';
 import { AparatologiaController } from './aparatologia/aparatolgia.controller';
 import { FacialController } from './facial/facial.controller';
-import { LaserController } from './laser/laser.controller';
 import { FacialService } from './facial/facial.service';
-import { LaserService } from './laser/laser.service';
 import { AparatologiaService } from './aparatologia/aparatologia.service';
 import { DermapenSchema } from './schemas/dermapen.schema';
 import { DermapenController } from './dermapen/dermapen.controller';
@@ -155,10 +150,11 @@ import { EsquemaService } from './esquema/esquema.service';
 import { PagoPatologoSchema } from './schemas/pago-patologo.schema';
 import { PagoPatologoController } from './pago-patologo/pago-patologo.controller';
 import { PagoPatologoService } from './pago-patologo/pago-patologo.service';
+import { AppGateway } from './app.gateway';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/agenda'),
+    MongooseModule.forRoot('mongodb://localhost/agenda', { useNewUrlParser: true }),
     MongooseModule.forFeature([
       { name: 'Paciente', schema: PacienteSchema },
       { name: 'Sucursal', schema: SucursalSchema },
@@ -205,7 +201,6 @@ import { PagoPatologoService } from './pago-patologo/pago-patologo.service';
       { name: 'PagoDermatologo', schema: PagoDermatologoSchema },
       { name: 'Corte', schema: CorteSchema },
       { name: 'Facial', schema: FacialSchema },
-      { name: 'Laser', schema: LaserSchema },
       { name: 'Aparatologia', schema: AparatologiaSchema },
       { name: 'Dermapen', schema: DermapenSchema },
       { name: 'ClaveSupervisor', schema: ClaveSupervisorSchema },
@@ -216,7 +211,6 @@ import { PagoPatologoService } from './pago-patologo/pago-patologo.service';
     ])
   ],
   controllers: [
-    AppController,
     PacienteController,
     SucursalController,
     ServicioController,
@@ -259,7 +253,6 @@ import { PagoPatologoService } from './pago-patologo/pago-patologo.service';
     PagoDermatologoController,
     CorteController,
     FacialController,
-    LaserController,
     AparatologiaController,
     DermapenController,
     ClaveSupervisorController,
@@ -269,7 +262,6 @@ import { PagoPatologoService } from './pago-patologo/pago-patologo.service';
     PagoPatologoController,
   ],
   providers: [
-    AppService,
     PacienteService,
     SucursalService,
     ServicioService,
@@ -312,7 +304,6 @@ import { PagoPatologoService } from './pago-patologo/pago-patologo.service';
     PagoDermatologoService,
     CorteService,
     FacialService,
-    LaserService,
     AparatologiaService,
     DermapenService,
     ClaveSupervisorService,
@@ -320,6 +311,7 @@ import { PagoPatologoService } from './pago-patologo/pago-patologo.service';
     ProductoService,
     EsquemaService,
     PagoPatologoService,
+    AppGateway,
   ],
 })
 

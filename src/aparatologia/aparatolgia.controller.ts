@@ -22,11 +22,13 @@ export class AparatologiaController {
         return this.aparatologiaService.showAllAparatologiaBySucursal(sucursalId);
     }
 
+    /*
     @Get('sucursal/:sucursalId/asistio')
     showAllAparatologiaBySucursalAsistio(@Param('sucursalId') sucursalId: string): Promise<AparatologiaI[]> {
         console.log(new Date(), this.TAG, "showAllAparatologiaBySucursalAsistio");
         return this.aparatologiaService.showAllAparatologiaBySucursalAsistio(sucursalId);
     }
+    */
 
     @Get(':dia/:mes/:anio')
     findAparatologiaByDate(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string): Promise<AparatologiaI[]> {

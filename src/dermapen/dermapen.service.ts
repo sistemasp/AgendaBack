@@ -59,6 +59,7 @@ export class DermapenService {
     /**
      * Muestra todas las dermapens de la BD
      */
+    /*
     async showAllDermapenBySucursalAsistio(sucursalId): Promise<DermapenI[]> {
         return await this.dermapenModel.find({
             sucursal: sucursalId, $or: [
@@ -81,7 +82,7 @@ export class DermapenService {
             .populate('pagos')
             .populate('status');
     }
-
+*/
     /**
      * Muestra todos los dermapens de la BD con estatus pendiente
      */
@@ -272,7 +273,7 @@ export class DermapenService {
     /**
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
-    async findHistoricDermapenByPaciente(pacienteId: string): Promise<DermapenI[]> {
+    async findHistoricDermapenByPaciente(pacienteId): Promise<DermapenI[]> {
         return await this.dermapenModel.find({ paciente: pacienteId }).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
@@ -294,7 +295,7 @@ export class DermapenService {
     /**
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
-    async findHistoricDermapenByPacienteAndService(pacienteId: string, serviceId: string): Promise<DermapenI[]> {
+    async findHistoricDermapenByPacienteAndService(pacienteId, serviceId): Promise<DermapenI[]> {
         return await this.dermapenModel.find({ paciente: pacienteId, servicio: serviceId }).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')

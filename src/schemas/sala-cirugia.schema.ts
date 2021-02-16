@@ -1,15 +1,15 @@
 import * as mongoose from 'mongoose';
-import { CirugiaDto } from 'src/dto/cirugia-dto';
 
+const constMongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 export const SalaCirugiaSchema = new Schema({
     nombre: { type: String },
-    dermatologo: { type: Schema.ObjectId, ref: 'Empleado' },
-    paciente: { type: Schema.ObjectId, ref: 'Paciente' },
-    tipo_servicio: { type: Schema.ObjectId, ref: 'Servicio' },
+    dermatologo: { type: constMongoose.ObjectId, ref: 'Empleado' },
+    paciente: { type: constMongoose.ObjectId, ref: 'Paciente' },
+    tipo_servicio: { type: constMongoose.ObjectId, ref: 'Servicio' },
     servicio: { type: String },
-    sucursal: { type: Schema.ObjectId, ref: 'Sucursal' },
+    sucursal: { type: constMongoose.ObjectId, ref: 'Sucursal' },
     disponible: { type: Boolean, default: true },
-    cirugia: { type: Schema.ObjectId, ref: 'Cirugia' }
+    cirugia: { type: constMongoose.ObjectId, ref: 'Cirugia' }
 });

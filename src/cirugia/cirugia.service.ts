@@ -32,7 +32,7 @@ export class CirugiaService {
      * Busca solo un cirugia mediante su ID en la BD
      * @param consultaId 
      */
-    async findCirugiaByConsultaId(consultaId: string): Promise<CirugiaI> {
+    async findCirugiaByConsultaId(consultaId): Promise<CirugiaI> {
         return await this.cirugiaModel.findOne({ consulta: consultaId })
             .populate('patologo')
             .populate('consulta')
@@ -195,7 +195,7 @@ export class CirugiaService {
     /**
      * Muestra todo el historico de cirugias de una persona buscando por su numero de telefono
      */
-    async findCirugiasHistoricByPaciente(pacienteId: string): Promise<CirugiaI[]> {
+    async findCirugiasHistoricByPaciente(pacienteId): Promise<CirugiaI[]> {
         return await this.cirugiaModel.find({ paciente: pacienteId }).sort('create_date')
             .populate('paciente')
             .populate('consulta')

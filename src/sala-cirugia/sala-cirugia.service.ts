@@ -33,7 +33,7 @@ export class SalaCirugiaService {
      * Busca solo un salaCirugia mediante su ID de la sucursal en la BD
      * @param sucursalId 
      */
-    async findSalaCirugiaBySucursalId(sucursalId: string): Promise<SalaCirugiaI[]> {
+    async findSalaCirugiaBySucursalId(sucursalId): Promise<SalaCirugiaI[]> {
         return await this.salaCirugiaModel.find(
             {
                 sucursal: sucursalId
@@ -47,7 +47,7 @@ export class SalaCirugiaService {
      * Busca solo un salaCirugia mediante su ID de la sucursal en la BD
      * @param sucursalId 
      */
-    async findSalaCirugiaBySucursalIdWaitingList(sucursalId: string): Promise<SalaCirugiaI[]> {
+    async findSalaCirugiaBySucursalIdWaitingList(sucursalId): Promise<SalaCirugiaI[]> {
         return await this.salaCirugiaModel.find(
             {
                 sucursal: sucursalId,
@@ -62,7 +62,7 @@ export class SalaCirugiaService {
      * Busca solo un salaCirugia mediante su ID de la sucursal en la BD
      * @param sucursalId 
      */
-    async findSalaCirugiaBySucursalIdAndFree(sucursalId: string): Promise<SalaCirugiaI[]> {
+    async findSalaCirugiaBySucursalIdAndFree(sucursalId): Promise<SalaCirugiaI[]> {
         return await this.salaCirugiaModel.find(
             {
                 sucursal: sucursalId,
@@ -76,7 +76,7 @@ export class SalaCirugiaService {
      * Busca solo un salaCirugia mediante su ID de la sucursal en la BD
      * @param sucursalId 
      */
-    async breakFreeSalaCirugiaByIdPaciente(salaCirugiaId: string): Promise<SalaCirugiaI[]> {
+    async breakFreeSalaCirugiaByIdPaciente(salaCirugiaId): Promise<SalaCirugiaI[]> {
         return await this.salaCirugiaModel.updateOne(
             { _id: salaCirugiaId },
             {

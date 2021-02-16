@@ -5,8 +5,9 @@ import { PagoDto } from "./pago-dto";
 import { FormaPagoDto } from "./forma-pago-dto";
 import { SucursalDto } from "./sucursal-dto";
 import { ServicioDto } from "./servicio-dto";
+import { Document } from "mongoose";
 
-export class FacturaDto {
+export class FacturaDto extends Document {
     readonly fecha_hora : Date;
     readonly paciente : PacienteDto;
     readonly razon_social : RazonSocialDto;

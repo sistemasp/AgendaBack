@@ -1,12 +1,13 @@
 import * as mongoose from 'mongoose';
 
+const constMongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 export const ConsecutivoSchema = new Schema({
     consecutivo: { type: Number },
-    tipo_servicio: { type: Schema.ObjectId, ref: 'Servicio' },
+    tipo_servicio: { type: constMongoose.ObjectId, ref: 'Servicio' },
     servicio: { type: String },
-    sucursal: { type: Schema.ObjectId, ref: 'Sucursal' },
+    sucursal: { type: constMongoose.ObjectId, ref: 'Sucursal' },
     fecha_hora: { type: Date },
-    status: { type: Schema.ObjectId, ref: 'Status' },
+    status: { type: constMongoose.ObjectId, ref: 'Status' },
 });

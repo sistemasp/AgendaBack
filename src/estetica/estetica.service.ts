@@ -36,7 +36,7 @@ export class EsteticaService {
      * Busca solo un estetica mediante su ID en la BD
      * @param consultaId 
      */
-    async findEsteticaByConsultaId(consultaId: string): Promise<EsteticaI> {
+    async findEsteticaByConsultaId(consultaId): Promise<EsteticaI> {
         return await this.esteticaModel.findOne({ consulta: consultaId })
             .populate('consulta')
             .populate('status')
@@ -141,7 +141,7 @@ export class EsteticaService {
     /**
      * Muestra todo el historico de biopsias de una persona buscando por su numero de telefono
      */
-    async findEsteticasHistoricByPaciente(pacienteId: string): Promise<EsteticaI[]> {
+    async findEsteticasHistoricByPaciente(pacienteId): Promise<EsteticaI[]> {
         return await this.esteticaModel.find({ paciente: pacienteId }).sort('create_date')
             .populate('paciente')
             .populate('consulta')

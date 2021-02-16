@@ -1,8 +1,9 @@
+import { Document } from "mongoose";
 import { ServicioDto } from "./servicio-dto";
 import { StatusDto } from "./status-dto";
 import { SucursalDto } from "./sucursal-dto";
 
-export class ConsecutivoDto {
+export class ConsecutivoDto extends Document {
     readonly consecutivo : Number;
     readonly tipo_servicio : ServicioDto;
     readonly servicio : String;

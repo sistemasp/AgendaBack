@@ -7,8 +7,9 @@ import { ServicioDto } from "./servicio-dto";
 import { PagoDto } from "./pago-dto";
 import { AreaDto } from "./area-dto";
 import { MedioDto } from "./medio-dto";
+import { Document } from "mongoose";
 
-export class CitaDto {
+export class CitaDto extends Document {
     readonly create_date: Date;
     readonly hora_aplicacion: Date;
     readonly fecha_hora: Date;

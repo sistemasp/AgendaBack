@@ -1,8 +1,9 @@
+import { Document } from "mongoose";
 import { EmpleadoI } from "./empleado.interface";
 import { ServicioI } from "./servicio.interface";
 import { StatusI } from "./status.interface";
 
-export interface CancelacionI {
+export interface CancelacionI extends Document {
     supervisor: EmpleadoI;
     recepcionista: EmpleadoI;
     create_date: Date;

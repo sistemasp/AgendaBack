@@ -11,8 +11,9 @@ import { ConsultaDto } from "./consulta-dto";
 import { ProductoDto } from "./producto-dto";
 import { FrecuenciaDto } from "./frecuencia-dto";
 import { FacturaDto } from "./factura-dto";
+import { Document } from "mongoose";
 
-export class FacialDto {
+export class FacialDto extends Document {
     readonly create_date: Date;
     readonly hora_aplicacion: Date;
     readonly fecha_hora: Date;

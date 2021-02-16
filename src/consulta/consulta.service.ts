@@ -56,6 +56,7 @@ export class ConsultaService {
     /**
      * Muestra todas las consultas de la BD
      */
+    /*
     async showAllConsultsBySucursalAsistio(sucursalId): Promise<ConsultaI[]> {
         return await this.consultaModel.find({
             sucursal: sucursalId, $or: [
@@ -67,7 +68,7 @@ export class ConsultaService {
         }).sort('consecutivo')
             .populate('sucursal')
             .populate('dermatologo')
-    }
+    }*/
 
     /**
      * Muestra todas las consultas de la BD con estatus pendiente
@@ -364,7 +365,7 @@ export class ConsultaService {
     /**
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
-    async findHistoricByPaciente(pacienteId: string): Promise<ConsultaI[]> {
+    async findHistoricByPaciente(pacienteId): Promise<ConsultaI[]> {
         return await this.consultaModel.find({ paciente: pacienteId }).sort({ 'fecha_hora': -1 })
             .populate('paciente')
             .populate('sucursal')
@@ -383,7 +384,7 @@ export class ConsultaService {
     /**
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
-    async findHistoricByMedicId(dermatologoId: string): Promise<ConsultaI[]> {
+    async findHistoricByMedicId(dermatologoId): Promise<ConsultaI[]> {
         return await this.consultaModel.find({ dermatologo: dermatologoId }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')

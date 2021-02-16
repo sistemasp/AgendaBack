@@ -66,7 +66,7 @@ export class PagoService {
      * Busca solo un pago mediante su ID de la cita en la BD
      * @param idCita 
      */
-    async findPagosByCita(idCita: string): Promise<PagoI[]> {
+    async findPagosByCita(idCita): Promise<PagoI[]> {
         return await this.pagoModel.find( { cita: idCita } )
         .populate('paciente')
         .populate('sucursal')
@@ -75,14 +75,14 @@ export class PagoService {
         .populate('forma_pago')
         .populate('dermatologo')
         .populate('tratamientos')
-        .populate('quien_recibe_pago');;
+        .populate('quien_recibe_pago');
     }
 
     /**
      * Busca solo un pago mediante su tipo de servicio y su ID del servicio en la BD
      * @param idCita 
      */
-    async findPagosByTipoServicioAndServicio(idTipoServicio: string, idServicio: string ): Promise<PagoI[]> {
+    async findPagosByTipoServicioAndServicio(idTipoServicio, idServicio ): Promise<PagoI[]> {
         return await this.pagoModel.find( { tipo_servicio: idTipoServicio, servicio: idServicio } )
         .populate('paciente')
         .populate('sucursal')
@@ -91,7 +91,7 @@ export class PagoService {
         .populate('forma_pago')
         .populate('dermatologo')
         .populate('tratamientos')
-        .populate('quien_recibe_pago');;
+        .populate('quien_recibe_pago');
     }
 
     /**

@@ -27,7 +27,7 @@ export class ProductoService {
      * Busca solo un producto mediante su ID en la BD
      * @param idServicio 
      */
-    async findProductosByServiicioId(idServicio: string): Promise<ProductoI[]> {
+    async findProductosByServiicioId(idServicio): Promise<ProductoI[]> {
         return await this.productoModel.find( { servicio: idServicio } );
     }
 

@@ -6,8 +6,9 @@ import { FacialDto } from "./facial-dto";
 import { LaserDto } from "./laser-dto";
 import { AparatologiaDto } from "./aparatologia-dto";
 import { DermapenDto } from "./dermapen-dto";
+import { Document } from "mongoose";
 
-export class PagoDermatologoDto {
+export class PagoDermatologoDto extends Document {
     readonly create_date: Date;
     readonly fecha_pago: Date;
     readonly dermatologo: EmpleadoDto;

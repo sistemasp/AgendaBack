@@ -10,8 +10,9 @@ import { ProductoI } from "./producto.interface";
 import { FrecuenciaI } from "./frecuencia.interface";
 import { TipoCitaI } from "./tipo-cita.interface";
 import { FacturaI } from "./factura.interface";
+import { Document } from "mongoose";
 
-export interface CirugiaI {
+export interface CirugiaI extends Document {
     create_date: Date;
     hora_aplicacion: Date;
     fecha_hora: Date;

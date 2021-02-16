@@ -3,8 +3,9 @@ import { EmpleadoDto } from "./empleado-dto";
 import { SucursalDto } from "./sucursal-dto";
 import { ConsultaDto } from "./consulta-dto";
 import { ServicioDto } from "./servicio-dto";
+import { Document } from "mongoose";
 
-export class ConsultorioDto {
+export class ConsultorioDto extends Document {
     readonly nombre: String;
     readonly dermatologo: EmpleadoDto;
     readonly paciente: PacienteDto;

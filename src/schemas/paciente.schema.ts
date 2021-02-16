@@ -1,5 +1,6 @@
 import * as mongoose from 'mongoose';
 
+const constMongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 export const PacienteSchema = new Schema({
@@ -9,7 +10,7 @@ export const PacienteSchema = new Schema({
     fecha_nacimiento: { type: String },
     direccion: { type: String },
     telefono: { type: String },
-    sexo: { type: Schema.ObjectId, ref: 'Sexo' },
+    sexo: { type: constMongoose.ObjectId, ref: 'Sexo' },
     ocupacion: { type: String },
     alerta_medica: Boolean,
     estado: { type: String },

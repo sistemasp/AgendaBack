@@ -11,8 +11,9 @@ import { ConsultaI } from "./consulta.interface";
 import { ProductoI } from "./producto.interface";
 import { FrecuenciaI } from "./frecuencia.interface";
 import { FacturaI } from "./factura.interface";
+import { Document } from "mongoose";
 
-export interface AparatologiaI {
+export interface AparatologiaI extends Document {
     create_date: Date;
     hora_aplicacion: Date;
     fecha_hora: Date;

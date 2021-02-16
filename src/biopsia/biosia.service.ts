@@ -55,7 +55,7 @@ export class BiopsiaService {
     /**
      * Muestra todo el historico de biopsias de una persona buscando por su numero de telefono
      */
-    async findBiopsiasHistoricByPaciente(pacienteId: string): Promise<BiopsiaI[]> {
+    async findBiopsiasHistoricByPaciente(pacienteId): Promise<BiopsiaI[]> {
         return await this.biopsiaModel.find({ paciente: pacienteId }).sort('create_date')
             .populate('paciente')
             .populate('consulta')

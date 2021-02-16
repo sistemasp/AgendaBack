@@ -8,34 +8,36 @@ export class DermapenController {
 
     TAG = "DermapenController";
 
-    constructor(private readonly dermapenService: DermapenService) {}
+    constructor(private readonly dermapenService: DermapenService) { }
 
     @Get()
-    showAllDermapen() : Promise<DermapenI[]> {
+    showAllDermapen(): Promise<DermapenI[]> {
         console.log(new Date(), this.TAG, "showAllDermapen");
         return this.dermapenService.showAllDermapen();
     }
 
     @Get('sucursal/:sucursalId')
-    showAllDermapenBySucursal(@Param('sucursalId') sucursalId: string) : Promise<DermapenI[]> {
+    showAllDermapenBySucursal(@Param('sucursalId') sucursalId: string): Promise<DermapenI[]> {
         console.log(new Date(), this.TAG, "showAllDermapenBySucursal");
         return this.dermapenService.showAllDermapenBySucursal(sucursalId);
     }
 
+    /*
     @Get('sucursal/:sucursalId/asistio')
     showAllDermapenBySucursalAsistio(@Param('sucursalId') sucursalId: string) : Promise<DermapenI[]> {
         console.log(new Date(), this.TAG, "showAllDermapenBySucursalAsistio");
         return this.dermapenService.showAllDermapenBySucursalAsistio(sucursalId);
     }
+    */
 
     @Get(':dia/:mes/:anio')
-    findDermapenByDate(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string) : Promise<DermapenI[]> {
+    findDermapenByDate(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string): Promise<DermapenI[]> {
         console.log(new Date(), this.TAG, "findDermapenByDate");
         return this.dermapenService.findDermapenByDate(anio, mes, dia);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId')
-    findDermapenByDateAndSucursal(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursalId') sucursalId: string) : Promise<DermapenI[]> {
+    findDermapenByDateAndSucursal(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursalId') sucursalId: string): Promise<DermapenI[]> {
         console.log(new Date(), this.TAG, "findDermapenByDateAndSucursal");
         return this.dermapenService.findDermapenByDateAndSucursal(anio, mes, dia, sucursalId);
     }
@@ -43,7 +45,7 @@ export class DermapenController {
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')
     findDermapenByRangeDateAndSucursal(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
-        @Param('sucursalId') sucursalId: string) : Promise<DermapenI[]> {
+        @Param('sucursalId') sucursalId: string): Promise<DermapenI[]> {
         console.log(new Date(), this.TAG, "findDermapenByRangeDateAndSucursal");
         return this.dermapenService.findDermapenByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId);
     }
@@ -51,14 +53,14 @@ export class DermapenController {
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId/service/:serviceId')
     findDermapenByRangeDateAndSucursalAndService(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
-        @Param('sucursalId') sucursalId: string, @Param('serviceId') serviceId: string) : Promise<DermapenI[]> {
+        @Param('sucursalId') sucursalId: string, @Param('serviceId') serviceId: string): Promise<DermapenI[]> {
         console.log(new Date(), this.TAG, "findDermapenByRangeDateAndSucursalAndService", sucursalId, serviceId);
         return this.dermapenService.findDermapenByRangeDateAndSucursalAndService(anioi, mesi, diai, aniof, mesf, diaf, sucursalId, serviceId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/:servicio')
-    findDermapenByDateAndSucursalAndService(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
-        @Param('sucursalId') sucursalId: string, @Param('servicio') servicio: string) : Promise<DermapenI[]> {
+    findDermapenByDateAndSucursalAndService(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
+        @Param('sucursalId') sucursalId: string, @Param('servicio') servicio: string): Promise<DermapenI[]> {
         console.log(new Date(), this.TAG, "findDermapenByDateAndSucursalAndService");
         return this.dermapenService.findDermapenByDateAndSucursalAndService(anio, mes, dia, sucursalId, servicio);
     }
@@ -82,22 +84,22 @@ export class DermapenController {
     }
 
     @Get('sucursal/:sucursalId/asistio/:statusAsistioId')
-    waitingDermapenList(@Param('sucursalId') sucursalId: string, @Param('statusAsistioId') statusAsistioId: string) : Promise<DermapenI[]> {
+    waitingDermapenList(@Param('sucursalId') sucursalId: string, @Param('statusAsistioId') statusAsistioId: string): Promise<DermapenI[]> {
         console.log(new Date(), this.TAG, "waitingDermapenList");
         return this.dermapenService.waitingDermapenList(sucursalId, statusAsistioId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId')
-    findDermapenByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
-    @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,) : Promise<DermapenI[]> {
+    findDermapenByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
+        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,): Promise<DermapenI[]> {
         console.log(new Date(), this.TAG, "findDermapenByPayOfDoctor");
         return this.dermapenService.findDermapenByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId, atendidoId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId/turno/:turno')
-    findDermapenByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
-    @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,
-    @Param('turno') turno: string) : Promise<DermapenI[]> {
+    findDermapenByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
+        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,
+        @Param('turno') turno: string): Promise<DermapenI[]> {
         console.log(new Date(), this.TAG, "findDermapenByPayOfDoctorTurno");
         return this.dermapenService.findDermapenByPayOfDoctorTurno(anio, mes, dia, sucursalId, dermatologoId, atendidoId, turno);
     }
@@ -124,14 +126,14 @@ export class DermapenController {
         console.log(new Date(), this.TAG, "showAllDermapenBySucursalPendiente");
         return this.dermapenService.showAllDermapenBySucursalPendiente(sucursalId, pendienteId);
     }
-    
+
     @Post()
     createDermapen(@Body() dermapenDto: DermapenDto): Promise<DermapenI> {
         console.log(new Date(), this.TAG, "createDermapen");
         return this.dermapenService.createDermapen(dermapenDto);
     }
 
-    @Put(':id') 
+    @Put(':id')
     updateDermapen(@Param('id') idDermapen: string, @Body() dermapenDto: DermapenDto): Promise<DermapenI> {
         console.log(new Date(), this.TAG, "updateDermapen");
         return this.dermapenService.updateDermapen(idDermapen, dermapenDto);

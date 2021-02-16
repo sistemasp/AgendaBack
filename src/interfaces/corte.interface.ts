@@ -1,9 +1,10 @@
+import { Document } from "mongoose";
 import { EgresoI } from "./egreso.interface";
 import { EmpleadoI } from "./empleado.interface";
 import { IngresoI } from "./ingreso.interface";
 import { SucursalI } from "./sucursal.interface";
 
-export interface CorteI {
+export interface CorteI extends Document {
     create_date: Date;
     hora_apertura: Date;
     hora_cierre: Date;

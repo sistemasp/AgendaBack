@@ -1,3 +1,5 @@
-export class TipoEsteticaDto {
+import { Document } from "mongoose";
+
+export class TipoEsteticaDto extends Document {
     readonly nombre : String;
 }

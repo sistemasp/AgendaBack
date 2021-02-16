@@ -1,4 +1,6 @@
-export class EsquemaDto {
+import { Document } from "mongoose";
+
+export class EsquemaDto extends Document {
     readonly nombre : String;
     readonly descripcion : String;
     readonly porcentaje_consulta: String;

@@ -57,6 +57,7 @@ export class CitaService {
     /**
      * Muestra todas las citas de la BD
      */
+    /*
     async showAllDatesBySucursalAsistio(sucursalId): Promise<CitaI[]> {
         return await this.citaModel.find({ sucursal: sucursalId, $or: [{ status: '5eceb37a5da339304c86c993' }, { status: '5eceb3e75da339304c86c996' }] }).sort('fecha_hora')
             .populate('paciente')
@@ -74,6 +75,7 @@ export class CitaService {
             .populate('pagos')
             .populate('status');
     }
+    */
 
     /**
      * Muestra todas las citas de la BD que correspondan a una fecha
@@ -237,7 +239,7 @@ export class CitaService {
     /**
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
-    async findHistoricByPaciente(pacienteId: string): Promise<CitaI[]> {
+    async findHistoricByPaciente(pacienteId): Promise<CitaI[]> {
         return await this.citaModel.find({ paciente: pacienteId }).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')
@@ -258,7 +260,7 @@ export class CitaService {
     /**
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
-    async findHistoricByPacienteAndService(pacienteId: string, serviceId: string): Promise<CitaI[]> {
+    async findHistoricByPacienteAndService(pacienteId, serviceId): Promise<CitaI[]> {
         return await this.citaModel.find({ paciente: pacienteId, servicio: serviceId }).sort('fecha_hora')
             .populate('paciente')
             .populate('servicio')

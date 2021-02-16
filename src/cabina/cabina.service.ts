@@ -35,7 +35,7 @@ export class CabinaService {
      * Busca solo un cabina mediante su ID de la sucursal en la BD
      * @param sucursalId 
      */
-    async findCabinaBySucursalId(sucursalId: string): Promise<CabinaI[]> {
+    async findCabinaBySucursalId(sucursalId): Promise<CabinaI[]> {
         return await this.cabinaModel.find(
             {
                 sucursal: sucursalId
@@ -50,7 +50,7 @@ export class CabinaService {
      * Busca solo un cabina mediante su ID de la sucursal en la BD
      * @param sucursalId 
      */
-    async findCabinaBySucursalIdWaitingList(sucursalId: string): Promise<CabinaI[]> {
+    async findCabinaBySucursalIdWaitingList(sucursalId): Promise<CabinaI[]> {
         return await this.cabinaModel.find(
             {
                 sucursal: sucursalId,
@@ -66,7 +66,7 @@ export class CabinaService {
      * Busca solo un cabina mediante su ID de la sucursal en la BD
      * @param sucursalId 
      */
-    async findCabinaBySucursalIdAndFree(sucursalId: string): Promise<CabinaI[]> {
+    async findCabinaBySucursalIdAndFree(sucursalId): Promise<CabinaI[]> {
         return await this.cabinaModel.find(
             {
                 sucursal: sucursalId,

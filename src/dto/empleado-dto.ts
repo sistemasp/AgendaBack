@@ -1,7 +1,8 @@
+import { Document } from "mongoose";
 import { EsquemaDto } from "./esquema-dto";
 import { RolDto } from "./rol-dto";
 
-export class EmpleadoDto {
+export class EmpleadoDto extends Document {
     readonly nombre: String;
     readonly numero_empleado: String;
     readonly telefono: String;

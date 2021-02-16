@@ -1,6 +1,7 @@
+import { Document } from "mongoose";
 import { ServicioDto } from "./servicio-dto";
 
-export class SucursalDto {
+export class SucursalDto extends Document {
     readonly clave: string;
     readonly nombre: string;
     readonly direccion: string;

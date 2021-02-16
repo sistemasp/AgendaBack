@@ -4,8 +4,9 @@ import { SucursalDto } from "./sucursal-dto";
 import { StatusDto } from "./status-dto";
 import { ConsultaDto } from "./consulta-dto";
 import { PagoDto } from "./pago-dto";
+import { Document } from "mongoose";
 
-export class BiopsiaDto {
+export class BiopsiaDto extends Document {
     readonly create_date: Date;
     readonly hora_aplicacion: Date;
     readonly consecutivo: Number;

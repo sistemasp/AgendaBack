@@ -35,7 +35,7 @@ export class AreaService {
      * Busca solo todos los tratamientos mediante su Clave de Servicio en la BD
      * @param idTratamiento 
      */
-    async findAreasByTreatmentServicio(servicioId: string, tratamientoId: string): Promise<AreaI[]> {
+    async findAreasByTreatmentServicio(servicioId, tratamientoId): Promise<AreaI[]> {
         return await this.areaModel.find( { servicio: servicioId, tratamiento: tratamientoId } ).sort('nombre');
     }    
 

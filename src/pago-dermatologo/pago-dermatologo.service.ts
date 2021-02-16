@@ -322,7 +322,7 @@ export class PagoDermatologoService {
     /**
      * Muestra todo el historico de una persona buscando por su numero de telefono
      */
-    async findHistoricByMedicId(dermatologoId: string): Promise<PagoDermatologoI[]> {
+    async findHistoricByMedicId(dermatologoId): Promise<PagoDermatologoI[]> {
         return await this.pagoDermatologoModel.find({ dermatologo: dermatologoId }).sort('consecutivo')
             .populate('paciente')
             .populate('sucursal')

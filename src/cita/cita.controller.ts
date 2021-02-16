@@ -8,34 +8,35 @@ export class CitaController {
 
     TAG = "CitaController";
 
-    constructor(private readonly citaService: CitaService) {}
+    constructor(private readonly citaService: CitaService) { }
 
     @Get()
-    showAllDates() : Promise<CitaI[]> {
+    showAllDates(): Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "showAllDates");
         return this.citaService.showAllDates();
     }
 
     @Get('sucursal/:sucursalId')
-    showAllDatesBySucursal(@Param('sucursalId') sucursalId: string) : Promise<CitaI[]> {
+    showAllDatesBySucursal(@Param('sucursalId') sucursalId: string): Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "showAllDatesBySucursal");
         return this.citaService.showAllDatesBySucursal(sucursalId);
     }
 
+    /*
     @Get('sucursal/:sucursalId/asistio')
     showAllDatesBySucursalAsistio(@Param('sucursalId') sucursalId: string) : Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "showAllDatesBySucursalAsistio");
         return this.citaService.showAllDatesBySucursalAsistio(sucursalId);
     }
-
+    */
     @Get(':dia/:mes/:anio')
-    findDatesByDate(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string) : Promise<CitaI[]> {
+    findDatesByDate(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string): Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "findDatesByDate");
         return this.citaService.findDatesByDate(anio, mes, dia);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId')
-    findDatesByDateAndSucursal(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursalId') sucursalId: string) : Promise<CitaI[]> {
+    findDatesByDateAndSucursal(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, @Param('sucursalId') sucursalId: string): Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "findDatesByDateAndSucursal");
         return this.citaService.findDatesByDateAndSucursal(anio, mes, dia, sucursalId);
     }
@@ -43,7 +44,7 @@ export class CitaController {
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId')
     findDatesByRangeDateAndSucursal(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
-        @Param('sucursalId') sucursalId: string) : Promise<CitaI[]> {
+        @Param('sucursalId') sucursalId: string): Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "findDatesByRangeDateAndSucursal");
         return this.citaService.findDatesByRangeDateAndSucursal(anioi, mesi, diai, aniof, mesf, diaf, sucursalId);
     }
@@ -51,14 +52,14 @@ export class CitaController {
     @Get('fecha_inicio/:diai/:mesi/:anioi/fecha_fin/:diaf/:mesf/:aniof/sucursal/:sucursalId/service/:serviceId')
     findDatesByRangeDateAndSucursalAndService(@Param('diai') diai: string, @Param('mesi') mesi: string, @Param('anioi') anioi: string,
         @Param('diaf') diaf: string, @Param('mesf') mesf: string, @Param('aniof') aniof: string,
-        @Param('sucursalId') sucursalId: string, @Param('serviceId') serviceId: string) : Promise<CitaI[]> {
+        @Param('sucursalId') sucursalId: string, @Param('serviceId') serviceId: string): Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "findDatesByRangeDateAndSucursalAndService", sucursalId, serviceId);
         return this.citaService.findDatesByRangeDateAndSucursalAndService(anioi, mesi, diai, aniof, mesf, diaf, sucursalId, serviceId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/:servicio')
-    findDatesByDateAndSucursalAndService(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
-        @Param('sucursalId') sucursalId: string, @Param('servicio') servicio: string) : Promise<CitaI[]> {
+    findDatesByDateAndSucursalAndService(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
+        @Param('sucursalId') sucursalId: string, @Param('servicio') servicio: string): Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "findDatesByDateAndSucursalAndService");
         return this.citaService.findDatesByDateAndSucursalAndService(anio, mes, dia, sucursalId, servicio);
     }
@@ -82,22 +83,22 @@ export class CitaController {
     }
 
     @Get('sucursal/:sucursalId/asistio/:statusAsistioId')
-    waitingList(@Param('sucursalId') sucursalId: string, @Param('statusAsistioId') statusAsistioId: string) : Promise<CitaI[]> {
+    waitingList(@Param('sucursalId') sucursalId: string, @Param('statusAsistioId') statusAsistioId: string): Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "waitingList");
         return this.citaService.waitingList(sucursalId, statusAsistioId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId')
-    findDatesByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
-    @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,) : Promise<CitaI[]> {
+    findDatesByPayOfDoctor(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
+        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,): Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "findDatesByPayOfDoctor");
         return this.citaService.findDatesByPayOfDoctor(anio, mes, dia, sucursalId, dermatologoId, atendidoId);
     }
 
     @Get(':dia/:mes/:anio/sucursal/:sucursalId/dermatologo/:dermatologoId/atendido/:atendidoId/turno/:turno')
-    findDatesByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string, 
-    @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,
-    @Param('turno') turno: string) : Promise<CitaI[]> {
+    findDatesByPayOfDoctorTurno(@Param('dia') dia: string, @Param('mes') mes: string, @Param('anio') anio: string,
+        @Param('sucursalId') sucursalId: string, @Param('dermatologoId') dermatologoId: string, @Param('atendidoId') atendidoId: string,
+        @Param('turno') turno: string): Promise<CitaI[]> {
         console.log(new Date(), this.TAG, "findDatesByPayOfDoctorTurno");
         return this.citaService.findDatesByPayOfDoctorTurno(anio, mes, dia, sucursalId, dermatologoId, atendidoId, turno);
     }
@@ -108,7 +109,7 @@ export class CitaController {
         return this.citaService.createDate(citaDto);
     }
 
-    @Put(':id') 
+    @Put(':id')
     updateDate(@Param('id') idCita: string, @Body() citaDto: CitaDto): Promise<CitaI> {
         console.log(new Date(), this.TAG, "updateDate");
         return this.citaService.updateDate(idCita, citaDto);

@@ -1,6 +1,7 @@
+import { Document } from "mongoose";
 import { ServicioI } from "./servicio.interface";
 
-export interface SucursalI {
+export interface SucursalI extends Document {
     clave: string;
     nombre: string;
     direccion: string;

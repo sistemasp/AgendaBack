@@ -7,8 +7,9 @@ import { FacialI } from "./facial.interface";
 import { LaserI } from "./laser.interface";
 import { AparatologiaI } from "./aparatologia.interface";
 import { DermapenI } from "./dermapen.interface";
+import { Document } from "mongoose";
 
-export interface PagoDermatologoI {
+export interface PagoDermatologoI extends Document {
     create_date: Date;
     fecha_pago: Date;
     dermatologo: EmpleadoI;

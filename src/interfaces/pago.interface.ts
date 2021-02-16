@@ -8,12 +8,12 @@ import { TipoTarjetaI } from "./tipo-tarjeta.interface";
 import { FormaPagoI } from "./forma-pago.interface";
 import { CitaI } from "./cita.interface";
 import { IngresoI } from "./ingreso.interface";
+import { Document } from "mongoose";
 
-export interface PagoI {
+export interface PagoI extends Document {
     fecha_pago: Date;
     hora_aplicacion: Date;
     paciente: PacienteI;
-    cita: CitaI;
     dermatologo: EmpleadoI;
     tratamientos: TratamientoI[];
     quien_recibe_pago: EmpleadoI;

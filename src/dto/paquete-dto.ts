@@ -1,6 +1,7 @@
+import { Document } from "mongoose";
 import { TratamientoDto } from "./tratamiento-dto";
 
-export class PaqueteDto {
+export class PaqueteDto extends Document {
     readonly nombre : String;
     readonly clave : String;
     readonly tratamientos : TratamientoDto[];

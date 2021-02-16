@@ -3,8 +3,9 @@ import { TipoIngresoDto } from "./tipo-ingreso-dto";
 import { SucursalDto } from "./sucursal-dto";
 import { FormaPagoDto } from "./forma-pago-dto";
 import { TipoEgresoDto } from "./tipo-egreso-dto";
+import { Document } from "mongoose";
 
-export class EgresoDto {
+export class EgresoDto extends Document {
     readonly create_date: Date;
     readonly hora_aplicacion: Date;
     readonly turno: String;

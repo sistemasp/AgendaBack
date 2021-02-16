@@ -1,7 +1,8 @@
+import { Document } from "mongoose";
 import { EsquemaI } from "./esquema.interface";
 import { RolI } from "./rol.interface";
 
-export interface EmpleadoI {
+export interface EmpleadoI extends Document {
     nombre: String;
     numero_empleado: String;
     telefono: String;

@@ -21,12 +21,13 @@ export class ConsultaController {
         console.log(new Date(), this.TAG, "showAllConsultsBySucursal");
         return this.consultaService.showAllConsultsBySucursal(sucursalId);
     }
-
-    @Get('sucursal/:sucursalId/asistio')
-    showAllConsultsBySucursalAsistio(@Param('sucursalId') sucursalId: string): Promise<ConsultaI[]> {
-        console.log(new Date(), this.TAG, "showAllConsultsBySucursalAsistio");
-        return this.consultaService.showAllConsultsBySucursalAsistio(sucursalId);
-    }
+    /*
+        @Get('sucursal/:sucursalId/asistio')
+        showAllConsultsBySucursalAsistio(@Param('sucursalId') sucursalId: string): Promise<ConsultaI[]> {
+            console.log(new Date(), this.TAG, "showAllConsultsBySucursalAsistio");
+            return this.consultaService.showAllConsultsBySucursalAsistio(sucursalId);
+        }
+    */
 
     @Get('sucursal/:sucursalId/pendiente/:pendienteId')
     showAllConsultsBySucursalPendiente(@Param('sucursalId') sucursalId: string,

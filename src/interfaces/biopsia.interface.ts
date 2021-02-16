@@ -3,9 +3,9 @@ import { EmpleadoI } from "./empleado.interface";
 import { PacienteI } from "./paciente.interface";
 import { SucursalI } from "./sucursal.interface";
 import { StatusI } from "./status.interface";
-import { PagoI } from "./pago.interface";
+import { Document } from "mongoose";
 
-export interface BiopsiaI {
+export interface BiopsiaI extends Document {
     create_date: Date;
     hora_aplicacion: Date;
     consecutivo: Number;

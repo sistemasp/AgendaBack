@@ -1,4 +1,6 @@
-export interface EsquemaI {
+import { Document } from "mongoose";
+
+export interface EsquemaI extends Document {
     nombre: String;
     descripcion: String;
     porcentaje_consulta: String;

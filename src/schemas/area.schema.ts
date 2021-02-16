@@ -1,11 +1,12 @@
 import * as mongoose from 'mongoose';
 
+const constMongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 export const AreaSchema = new Schema({
     nombre: { type: String },
-    servicio: { type: Schema.ObjectId, ref: 'Servicio' },
-    tratamiento: { type: Schema.ObjectId, ref: 'Tratamiento' },
+    servicio: { type: constMongoose.ObjectId, ref: 'Servicio' },
+    tratamiento: { type: constMongoose.ObjectId, ref: 'Tratamiento' },
     tiempo: { type: String },
     precio_ma: { type: String },
     precio_rd: { type: String },

@@ -9,8 +9,9 @@ import { ServicioDto } from "./servicio-dto";
 import { MedioDto } from "./medio-dto";
 import { ProductoDto } from "./producto-dto";
 import { FacturaDto } from "./factura-dto";
+import { Document } from "mongoose";
 
-export class ConsultaDto {
+export class ConsultaDto extends Document {
     readonly create_date: Date;
     readonly hora_aplicacion: Date;
     readonly folio: String;

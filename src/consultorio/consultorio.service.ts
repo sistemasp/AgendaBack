@@ -33,7 +33,7 @@ export class ConsultorioService {
      * Busca solo un consultorio mediante su ID de la sucursal en la BD
      * @param sucursalId 
      */
-    async findSurgeryBySucursalId(sucursalId: string): Promise<ConsultorioI[]> {
+    async findSurgeryBySucursalId(sucursalId): Promise<ConsultorioI[]> {
         return await this.consultorioModel.find(
             {
                 sucursal: sucursalId
@@ -47,7 +47,7 @@ export class ConsultorioService {
      * Busca solo un consultorio mediante su ID de la sucursal y el dermatólogo en la BD
      * @param sucursalId 
      */
-    async findSurgeryBySucursalAndDermatologoId(sucursalId: string, dermatologoId: string): Promise<ConsultorioI[]> {
+    async findSurgeryBySucursalAndDermatologoId(sucursalId, dermatologoId): Promise<ConsultorioI> {
         return await this.consultorioModel.findOne(
             {
                 sucursal: sucursalId,
@@ -62,7 +62,7 @@ export class ConsultorioService {
      * Busca solo un consultorio mediante su ID de la sucursal en la BD
      * @param sucursalId 
      */
-    async findSurgeryBySucursalIdWaitingList(sucursalId: string): Promise<ConsultorioI[]> {
+    async findSurgeryBySucursalIdWaitingList(sucursalId): Promise<ConsultorioI[]> {
         return await this.consultorioModel.find(
             {
                 sucursal: sucursalId,
@@ -77,7 +77,7 @@ export class ConsultorioService {
      * Busca solo un consultorio mediante su ID de la sucursal en la BD
      * @param sucursalId 
      */
-    async findSurgeryBySucursalIdAndFree(sucursalId: string): Promise<ConsultorioI[]> {
+    async findSurgeryBySucursalIdAndFree(sucursalId): Promise<ConsultorioI[]> {
         return await this.consultorioModel.find(
             {
                 sucursal: sucursalId,

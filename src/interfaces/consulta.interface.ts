@@ -9,8 +9,9 @@ import { ServicioI } from "./servicio.interface";
 import { MedioI } from "./medio.interface";
 import { ProductoI } from "./producto.interface";
 import { FacturaI } from "./factura.interface";
+import { Document } from "mongoose";
 
-export interface ConsultaI {
+export interface ConsultaI extends Document {
     create_date: Date;
     hora_aplicacion: Date;
     folio: String;
